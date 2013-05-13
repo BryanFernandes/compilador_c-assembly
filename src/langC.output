@@ -8,14 +8,18 @@ Terminals which are not used
    CASE
    FOR
    FLOAT
-   DEMAIS
 
 
 Grammar
 
-    0 $accept: comando $end
+    0 $accept: comandos $end
 
-    1 comando: ID "=" INT ";"
+    1 comandos: atribuicao
+    2         | /* empty */
+
+    3 @1: /* empty */
+
+    4 atribuicao: ID DEMAIS INT DEMAIS @1 comandos
 
 
 Terminals, with rules where they appear
@@ -29,68 +33,101 @@ ELSE (261)
 SWITCH (262)
 CASE (263)
 FOR (264)
-ID (265) 1
-INT (266) 1
+ID (265) 4
+INT (266) 4
 FLOAT (267)
-DEMAIS (268)
-"=" (269) 1
-";" (270) 1
+DEMAIS (268) 4
 
 
 Nonterminals, with rules where they appear
 
-$accept (16)
+$accept (14)
     on left: 0
-comando (17)
-    on left: 1, on right: 0
+comandos (15)
+    on left: 1 2, on right: 0 4
+atribuicao (16)
+    on left: 4, on right: 1
+@1 (17)
+    on left: 3, on right: 4
 
 
 state 0
 
-    0 $accept: . comando $end
+    0 $accept: . comandos $end
 
     ID  shift, and go to state 1
 
-    comando  go to state 2
+    $default  reduce using rule 2 (comandos)
+
+    comandos    go to state 2
+    atribuicao  go to state 3
 
 
 state 1
 
-    1 comando: ID . "=" INT ";"
+    4 atribuicao: ID . DEMAIS INT DEMAIS @1 comandos
 
-    "="  shift, and go to state 3
+    DEMAIS  shift, and go to state 4
 
 
 state 2
 
-    0 $accept: comando . $end
+    0 $accept: comandos . $end
 
-    $end  shift, and go to state 4
+    $end  shift, and go to state 5
 
 
 state 3
 
-    1 comando: ID "=" . INT ";"
+    1 comandos: atribuicao .
 
-    INT  shift, and go to state 5
+    $default  reduce using rule 1 (comandos)
 
 
 state 4
 
-    0 $accept: comando $end .
+    4 atribuicao: ID DEMAIS . INT DEMAIS @1 comandos
 
-    $default  accept
+    INT  shift, and go to state 6
 
 
 state 5
 
-    1 comando: ID "=" INT . ";"
+    0 $accept: comandos $end .
 
-    ";"  shift, and go to state 6
+    $default  accept
 
 
 state 6
 
-    1 comando: ID "=" INT ";" .
+    4 atribuicao: ID DEMAIS INT . DEMAIS @1 comandos
 
-    $default  reduce using rule 1 (comando)
+    DEMAIS  shift, and go to state 7
+
+
+state 7
+
+    4 atribuicao: ID DEMAIS INT DEMAIS . @1 comandos
+
+    $default  reduce using rule 3 (@1)
+
+    @1  go to state 8
+
+
+state 8
+
+    4 atribuicao: ID DEMAIS INT DEMAIS @1 . comandos
+
+    ID  shift, and go to state 1
+
+    $default  reduce using rule 2 (comandos)
+
+    comandos    go to state 9
+    atribuicao  go to state 3
+
+
+state 9
+
+    4 atribuicao: ID DEMAIS INT DEMAIS @1 comandos .
+
+    $default  reduce using rule 4 (atribuicao)
