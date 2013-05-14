@@ -9,19 +9,20 @@
 %token INT
 %token FLOAT
 %token DEMAIS
+%token EQUALS
 %{#include "lex.yy.c"%}
 %%
 
 comandos:
-atribuicao | /*if |*/
+atribuicao | cmdif |
     
 atribuicao:
-ID DEMAIS INT DEMAIS { printf("\nComando reconhecido!\n", yytext)
+ID EQUALS INT DEMAIS { printf("\n\tAtribuicao reconhecida!\n\n", yytext)
                        } comandos
     
-/*if:
-    IF DEMAIS ID DEMAIS DEMAIS INT DEMAIS { printf("\nComando if reconhecido!\n", yytext)
-    } comandos*/
+cmdif:
+IF DEMAIS ID EQUALS EQUALS INT DEMAIS { printf("\n\tComando if reconhecido!\n\n", yytext)
+    } comandos
     
 %%
 main(){

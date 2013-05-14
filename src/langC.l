@@ -9,7 +9,7 @@
 
 DIGIT    [0-9]
 ID       [a-z][a-z0-9]*
-KEYWORD  if|else|for|while|do|switch|case 
+KEYWORD  else|for|while|do|switch|case 
 
 %%
 
@@ -28,10 +28,20 @@ KEYWORD  if|else|for|while|do|switch|case
             printf( "A keyword: %s\n", yytext );
             }
 
+if          {
+            printf("A keyword: %s\n", yytext);
+            return IF;
+            }
+
 {ID}        {
-        printf( "An identifier: %s\n", yytext );
-        return ID;
-        }
+            printf( "An identifier: %s\n", yytext );
+            return ID;
+            }
+
+"="         {
+            printf("A equals: %s\n", yytext);
+            return EQUALS;
+            }
 
 "+"|"-"|"*"|"/"   printf( "An operator: %s\n", yytext );
 

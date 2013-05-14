@@ -49,7 +49,8 @@
      ID = 265,
      INT = 266,
      FLOAT = 267,
-     DEMAIS = 268
+     DEMAIS = 268,
+     EQUALS = 269
    };
 #endif
 /* Tokens.  */
@@ -64,6 +65,7 @@
 #define INT 266
 #define FLOAT 267
 #define DEMAIS 268
+#define EQUALS 269
 
 
 
