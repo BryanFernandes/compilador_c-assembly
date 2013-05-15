@@ -11,20 +11,29 @@
 %token DEMAIS
 %token ENDLINE
 %token ATTRIB
+%token COMP
+%token RIGHT_PARENTHESIS
+%token LEFT_PARENTHESIS
+
 %{#include "lex.yy.c"%}
 %%
 
 comandos:
-atribuicao | /*if |*/
+atribuicao | if |
+
+
+valor:
+ID | INT | FLOAT 
     
 atribuicao:
-ID ATTRIB INT ENDLINE { printf("\nComando reconhecido!\n", yytext)
+ID ATTRIB valor ENDLINE { printf("\nComando reconhecido!\n", yytext)
                        } comandos
     
-/*if:
-    IF DEMAIS ID DEMAIS DEMAIS INT DEMAIS { printf("\nComando if reconhecido!\n", yytext)
-    } comandos*/
-    
+if:
+    IF LEFT_PARENTHESIS valor COMP valor RIGHT_PARENTHESIS { printf("\nComando if reconhecido! %s\n", yytext)
+    } comandos
+
+
 %%
 main(){
     
