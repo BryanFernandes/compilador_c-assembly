@@ -10,6 +10,7 @@
 %token FLOAT
 %token DEMAIS
 %token ENDLINE
+%token ATTRIB
 %{#include "lex.yy.c"%}
 %%
 
@@ -17,7 +18,7 @@ comandos:
 atribuicao | /*if |*/
     
 atribuicao:
-ID DEMAIS INT ENDLINE { printf("\nComando reconhecido!\n", yytext)
+ID ATTRIB INT ENDLINE { printf("\nComando reconhecido!\n", yytext)
                        } comandos
     
 /*if:
@@ -30,6 +31,6 @@ main(){
 	yyparse();
 }
 
-yyerror(){
-    return -1;
+int yyerror(char *s) {
+	printf("%s\n",s);
 }

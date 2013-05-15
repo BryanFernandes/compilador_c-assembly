@@ -9,7 +9,7 @@
 
 DIGIT    [0-9]
 
-ID       [a-z][a-z0-9]*
+ID       [a-zA-Z][a-zA-Z0-9]*
 
 KEYWORD  if|else|for|while|do|switch|case 
 
@@ -35,7 +35,7 @@ KEYWORD  if|else|for|while|do|switch|case
             return ID;
             }
 
-"+"|"-"|"*"|"/"   printf( "An operator: %s\n", yytext );
+"+"|"-"|"*"|"/"   printf( "An arithmethic operator: %s\n", yytext );
 
 "{"[^}\n]*"}"     /* eat up one-line comments */
 
@@ -45,6 +45,11 @@ KEYWORD  if|else|for|while|do|switch|case
 ";"         { printf("An line endpoint: %s\n", yytext);
               return   ENDLINE;
 
+            }
+            
+"="         {
+             printf("An attribution operator: %s\n", yytext);
+             return ATTRIB;
             }
 
 .           {
@@ -71,3 +76,10 @@ int yywrap(void)
 { 
 return 0; 
 }
+
+//o que define uma palavra reservada de outros tokens???
+//como implementar tambem letras maiusculas
+//como implementar atribuição que provem de uma operação matematica
+//como fazer atribuição para tipos de valores diferentes, EX: string int float etc
+// o que exatamente deve entrar na lista de tokens? so as reservadas?
+// como fazer ele mostrar a linha que esta com erro? Implementar um contador?
