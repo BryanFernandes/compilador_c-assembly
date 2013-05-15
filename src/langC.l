@@ -8,7 +8,9 @@
 %}
 
 DIGIT    [0-9]
+
 ID       [a-z][a-z0-9]*
+
 KEYWORD  if|else|for|while|do|switch|case 
 
 %%
@@ -29,15 +31,21 @@ KEYWORD  if|else|for|while|do|switch|case
             }
 
 {ID}        {
-        printf( "An identifier: %s\n", yytext );
-        return ID;
-        }
+             printf( "An identifier: %s\n", yytext );
+            return ID;
+            }
 
 "+"|"-"|"*"|"/"   printf( "An operator: %s\n", yytext );
 
 "{"[^}\n]*"}"     /* eat up one-line comments */
 
 [ \t\n]+          /* eat up whitespace */
+
+
+";"         { printf("An line endpoint: %s\n", yytext);
+              return   ENDLINE;
+
+            }
 
 .           {
             printf( "Unrecognized character: %s\n", yytext );

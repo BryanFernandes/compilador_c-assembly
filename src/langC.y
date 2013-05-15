@@ -9,6 +9,7 @@
 %token INT
 %token FLOAT
 %token DEMAIS
+%token ENDLINE
 %{#include "lex.yy.c"%}
 %%
 
@@ -16,7 +17,7 @@ comandos:
 atribuicao | /*if |*/
     
 atribuicao:
-ID DEMAIS INT DEMAIS { printf("\nComando reconhecido!\n", yytext)
+ID DEMAIS INT ENDLINE { printf("\nComando reconhecido!\n", yytext)
                        } comandos
     
 /*if:
