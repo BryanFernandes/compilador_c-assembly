@@ -50,7 +50,14 @@
      INT = 266,
      FLOAT = 267,
      DEMAIS = 268,
-     EQUALS = 269
+     EQUALS = 269,
+     LEFT_PARENTHENSIS = 270,
+     RIGHT_PARENTHENSIS = 271,
+     FINAL = 272,
+     ATTRIBUITION = 273,
+     COMPARE = 274,
+     LEFT_KEY = 275,
+     RIGHT_KEY = 276
    };
 #endif
 /* Tokens.  */
@@ -66,6 +73,13 @@
 #define FLOAT 267
 #define DEMAIS 268
 #define EQUALS 269
+#define LEFT_PARENTHENSIS 270
+#define RIGHT_PARENTHENSIS 271
+#define FINAL 272
+#define ATTRIBUITION 273
+#define COMPARE 274
+#define LEFT_KEY 275
+#define RIGHT_KEY 276
 
 
 

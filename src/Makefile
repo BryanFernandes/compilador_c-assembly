@@ -4,7 +4,6 @@ CC = gcc
 FLEX = flex
 BISON = bison
 BFLAGS = -d -v
-LIBS = -I../arquivosTeste
 
 prog: 
 	${FLEX} langC.l
@@ -12,7 +11,7 @@ prog:
 	${CC} -o prog langC.tab.c
 
 run:
-	./prog
+	./prog teste.c
 
 clean:
 	rm langC.output

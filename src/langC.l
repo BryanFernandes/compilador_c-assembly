@@ -5,11 +5,18 @@
 #include <stdio.h>
 #include <math.h>
 #include "langC.tab.h"
+int cont = 0;
 %}
 
 DIGIT    [0-9]
 ID       [a-z][a-z0-9]*
-KEYWORD  else|for|while|do|switch|case 
+IF       if
+ELSE     else
+FOR      for
+WHILE    WHILE
+DO       do
+SWITCH   switch
+CASE     case
 
 %%
 
@@ -22,16 +29,42 @@ KEYWORD  else|for|while|do|switch|case
 {DIGIT}+"."{DIGIT}*        {
             printf( "A float: %s (%g)\n", yytext,
                     atof( yytext ) );
+            return FLOAT;
             }
 
-{KEYWORD}       {
-            printf( "A keyword: %s\n", yytext );
-            }
 
-if          {
-            printf("A keyword: %s\n", yytext);
-            return IF;
-            }
+{IF}        {
+    printf( "A keyword: %s\n", yytext );
+    return IF;
+}
+{ELSE}        {
+    printf( "A keyword: %s\n", yytext );
+    return ELSE;
+}
+
+{FOR}        {
+    printf( "A keyword: %s\n", yytext );
+    return FOR;
+}
+
+{WHILE}     {
+    printf( "A keyword: %s\n", yytext );
+    return WHILE;
+}
+{DO}        {
+    printf( "A keyword: %s\n", yytext );
+    return DO;
+}
+{SWITCH}        {
+    printf( "A keyword: %s\n", yytext );
+    return SWITCH;
+}
+
+{CASE}        {
+    printf( "A keyword: %s\n", yytext );
+    return CASE;
+}
+
 
 {ID}        {
             printf( "An identifier: %s\n", yytext );
@@ -39,15 +72,49 @@ if          {
             }
 
 "="         {
-            printf("A equals: %s\n", yytext);
-            return EQUALS;
+                printf("A equals: %s\n", yytext);
+                return ATTRIBUITION;
             }
+
+"=="|"<="|">="|"!="|"<"|">" {
+                        printf("A compare: %s\n", yytext);
+                        return COMPARE;
+                    }
+
+"("         {
+                printf("A Left Parenthesis: %s\n", yytext);
+                return LEFT_PARENTHENSIS;
+            }
+
+")" {
+    printf("A Right Parenthesis: %s\n", yytext);
+    return RIGHT_PARENTHENSIS;
+}
+
+"{" {
+    printf("A left key: %s\n", yytext);
+    return LEFT_KEY;
+}
+
+"}" {
+    printf("A right key: %s\n", yytext);
+    return RIGHT_KEY;
+}
+
+";" {
+    printf("A final: %s\n", yytext);
+    return FINAL;
+}
+
 
 "+"|"-"|"*"|"/"   printf( "An operator: %s\n", yytext );
 
-"{"[^}\n]*"}"     /* eat up one-line comments */
+[ \t]+          /* eat up whitespace */
 
-[ \t\n]+          /* eat up whitespace */
+[\n]        {cont++;
+    printf( "A Line: %d\n", cont );
+}
+
 
 .           {
             printf( "Unrecognized character: %s\n", yytext );

@@ -6,220 +6,301 @@ Terminals which are not used
    SWITCH
    CASE
    FOR
-   FLOAT
+   DEMAIS
+   EQUALS
 
 
 Grammar
 
-    0 $accept: comandos $end
+    0 $accept: commands $end
 
-    1 comandos: atribuicao
+    1 commands: cmdattribuition
     2         | cmdif
     3         | /* empty */
 
-    4 @1: /* empty */
+    4 cmdkey: LEFT_KEY commands RIGHT_KEY
 
-    5 atribuicao: ID EQUALS INT DEMAIS @1 comandos
+    5 value: ID
+    6      | INT
+    7      | FLOAT
 
-    6 @2: /* empty */
+    8 @1: /* empty */
 
-    7 cmdif: IF DEMAIS ID EQUALS EQUALS INT DEMAIS @2 comandos
+    9 cmdattribuition: ID ATTRIBUITION value FINAL @1 commands
+
+   10 @2: /* empty */
+
+   11 cmdif: IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS cmdkey @2 commands
 
 
 Terminals, with rules where they appear
 
 $end (0) 0
 error (256)
-IF (258) 7
+IF (258) 11
 WHILE (259)
 DO (260)
 ELSE (261)
 SWITCH (262)
 CASE (263)
 FOR (264)
-ID (265) 5 7
-INT (266) 5 7
-FLOAT (267)
-DEMAIS (268) 5 7
-EQUALS (269) 5 7
+ID (265) 5 9
+INT (266) 6
+FLOAT (267) 7
+DEMAIS (268)
+EQUALS (269)
+LEFT_PARENTHENSIS (270) 11
+RIGHT_PARENTHENSIS (271) 11
+FINAL (272) 9
+ATTRIBUITION (273) 9
+COMPARE (274) 11
+LEFT_KEY (275) 4
+RIGHT_KEY (276) 4
 
 
 Nonterminals, with rules where they appear
 
-$accept (15)
+$accept (22)
     on left: 0
-comandos (16)
-    on left: 1 2 3, on right: 0 5 7
-atribuicao (17)
-    on left: 5, on right: 1
-@1 (18)
-    on left: 4, on right: 5
-cmdif (19)
-    on left: 7, on right: 2
-@2 (20)
-    on left: 6, on right: 7
+commands (23)
+    on left: 1 2 3, on right: 0 4 9 11
+cmdkey (24)
+    on left: 4, on right: 11
+value (25)
+    on left: 5 6 7, on right: 9 11
+cmdattribuition (26)
+    on left: 9, on right: 1
+@1 (27)
+    on left: 8, on right: 9
+cmdif (28)
+    on left: 11, on right: 2
+@2 (29)
+    on left: 10, on right: 11
 
 
 state 0
 
-    0 $accept: . comandos $end
+    0 $accept: . commands $end
 
     IF  shift, and go to state 1
     ID  shift, and go to state 2
 
-    $default  reduce using rule 3 (comandos)
+    $default  reduce using rule 3 (commands)
 
-    comandos    go to state 3
-    atribuicao  go to state 4
-    cmdif       go to state 5
+    commands         go to state 3
+    cmdattribuition  go to state 4
+    cmdif            go to state 5
 
 
 state 1
 
-    7 cmdif: IF . DEMAIS ID EQUALS EQUALS INT DEMAIS @2 comandos
+   11 cmdif: IF . LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS cmdkey @2 commands
 
-    DEMAIS  shift, and go to state 6
+    LEFT_PARENTHENSIS  shift, and go to state 6
 
 
 state 2
 
-    5 atribuicao: ID . EQUALS INT DEMAIS @1 comandos
+    9 cmdattribuition: ID . ATTRIBUITION value FINAL @1 commands
 
-    EQUALS  shift, and go to state 7
+    ATTRIBUITION  shift, and go to state 7
 
 
 state 3
 
-    0 $accept: comandos . $end
+    0 $accept: commands . $end
 
     $end  shift, and go to state 8
 
 
 state 4
 
-    1 comandos: atribuicao .
+    1 commands: cmdattribuition .
 
-    $default  reduce using rule 1 (comandos)
+    $default  reduce using rule 1 (commands)
 
 
 state 5
 
-    2 comandos: cmdif .
+    2 commands: cmdif .
 
-    $default  reduce using rule 2 (comandos)
+    $default  reduce using rule 2 (commands)
 
 
 state 6
 
-    7 cmdif: IF DEMAIS . ID EQUALS EQUALS INT DEMAIS @2 comandos
+   11 cmdif: IF LEFT_PARENTHENSIS . value COMPARE value RIGHT_PARENTHENSIS cmdkey @2 commands
 
-    ID  shift, and go to state 9
+    ID     shift, and go to state 9
+    INT    shift, and go to state 10
+    FLOAT  shift, and go to state 11
+
+    value  go to state 12
 
 
 state 7
 
-    5 atribuicao: ID EQUALS . INT DEMAIS @1 comandos
+    9 cmdattribuition: ID ATTRIBUITION . value FINAL @1 commands
 
-    INT  shift, and go to state 10
+    ID     shift, and go to state 9
+    INT    shift, and go to state 10
+    FLOAT  shift, and go to state 11
+
+    value  go to state 13
 
 
 state 8
 
-    0 $accept: comandos $end .
+    0 $accept: commands $end .
 
     $default  accept
 
 
 state 9
 
-    7 cmdif: IF DEMAIS ID . EQUALS EQUALS INT DEMAIS @2 comandos
+    5 value: ID .
 
-    EQUALS  shift, and go to state 11
+    $default  reduce using rule 5 (value)
 
 
 state 10
 
-    5 atribuicao: ID EQUALS INT . DEMAIS @1 comandos
+    6 value: INT .
 
-    DEMAIS  shift, and go to state 12
+    $default  reduce using rule 6 (value)
 
 
 state 11
 
-    7 cmdif: IF DEMAIS ID EQUALS . EQUALS INT DEMAIS @2 comandos
+    7 value: FLOAT .
 
-    EQUALS  shift, and go to state 13
+    $default  reduce using rule 7 (value)
 
 
 state 12
 
-    5 atribuicao: ID EQUALS INT DEMAIS . @1 comandos
+   11 cmdif: IF LEFT_PARENTHENSIS value . COMPARE value RIGHT_PARENTHENSIS cmdkey @2 commands
 
-    $default  reduce using rule 4 (@1)
-
-    @1  go to state 14
+    COMPARE  shift, and go to state 14
 
 
 state 13
 
-    7 cmdif: IF DEMAIS ID EQUALS EQUALS . INT DEMAIS @2 comandos
+    9 cmdattribuition: ID ATTRIBUITION value . FINAL @1 commands
 
-    INT  shift, and go to state 15
+    FINAL  shift, and go to state 15
 
 
 state 14
 
-    5 atribuicao: ID EQUALS INT DEMAIS @1 . comandos
+   11 cmdif: IF LEFT_PARENTHENSIS value COMPARE . value RIGHT_PARENTHENSIS cmdkey @2 commands
 
-    IF  shift, and go to state 1
-    ID  shift, and go to state 2
+    ID     shift, and go to state 9
+    INT    shift, and go to state 10
+    FLOAT  shift, and go to state 11
 
-    $default  reduce using rule 3 (comandos)
-
-    comandos    go to state 16
-    atribuicao  go to state 4
-    cmdif       go to state 5
+    value  go to state 16
 
 
 state 15
 
-    7 cmdif: IF DEMAIS ID EQUALS EQUALS INT . DEMAIS @2 comandos
+    9 cmdattribuition: ID ATTRIBUITION value FINAL . @1 commands
 
-    DEMAIS  shift, and go to state 17
+    $default  reduce using rule 8 (@1)
+
+    @1  go to state 17
 
 
 state 16
 
-    5 atribuicao: ID EQUALS INT DEMAIS @1 comandos .
+   11 cmdif: IF LEFT_PARENTHENSIS value COMPARE value . RIGHT_PARENTHENSIS cmdkey @2 commands
 
-    $default  reduce using rule 5 (atribuicao)
+    RIGHT_PARENTHENSIS  shift, and go to state 18
 
 
 state 17
 
-    7 cmdif: IF DEMAIS ID EQUALS EQUALS INT DEMAIS . @2 comandos
-
-    $default  reduce using rule 6 (@2)
-
-    @2  go to state 18
-
-
-state 18
-
-    7 cmdif: IF DEMAIS ID EQUALS EQUALS INT DEMAIS @2 . comandos
+    9 cmdattribuition: ID ATTRIBUITION value FINAL @1 . commands
 
     IF  shift, and go to state 1
     ID  shift, and go to state 2
 
-    $default  reduce using rule 3 (comandos)
+    $default  reduce using rule 3 (commands)
 
-    comandos    go to state 19
-    atribuicao  go to state 4
-    cmdif       go to state 5
+    commands         go to state 19
+    cmdattribuition  go to state 4
+    cmdif            go to state 5
+
+
+state 18
+
+   11 cmdif: IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS . cmdkey @2 commands
+
+    LEFT_KEY  shift, and go to state 20
+
+    cmdkey  go to state 21
 
 
 state 19
 
-    7 cmdif: IF DEMAIS ID EQUALS EQUALS INT DEMAIS @2 comandos .
+    9 cmdattribuition: ID ATTRIBUITION value FINAL @1 commands .
 
-    $default  reduce using rule 7 (cmdif)
+    $default  reduce using rule 9 (cmdattribuition)
+
+
+state 20
+
+    4 cmdkey: LEFT_KEY . commands RIGHT_KEY
+
+    IF  shift, and go to state 1
+    ID  shift, and go to state 2
+
+    $default  reduce using rule 3 (commands)
+
+    commands         go to state 22
+    cmdattribuition  go to state 4
+    cmdif            go to state 5
+
+
+state 21
+
+   11 cmdif: IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS cmdkey . @2 commands
+
+    $default  reduce using rule 10 (@2)
+
+    @2  go to state 23
+
+
+state 22
+
+    4 cmdkey: LEFT_KEY commands . RIGHT_KEY
+
+    RIGHT_KEY  shift, and go to state 24
+
+
+state 23
+
+   11 cmdif: IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS cmdkey @2 . commands
+
+    IF  shift, and go to state 1
+    ID  shift, and go to state 2
+
+    $default  reduce using rule 3 (commands)
+
+    commands         go to state 25
+    cmdattribuition  go to state 4
+    cmdif            go to state 5
+
+
+state 24
+
+    4 cmdkey: LEFT_KEY commands RIGHT_KEY .
+
+    $default  reduce using rule 4 (cmdkey)
+
+
+state 25
+
+   11 cmdif: IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS cmdkey @2 commands .
+
+    $default  reduce using rule 11 (cmdif)
