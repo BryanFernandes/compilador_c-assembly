@@ -5,11 +5,13 @@
 #include <stdio.h>
 #include <math.h>
 #include "langC.tab.h"
+#include <string.h>
+extern YYSTYPE yylval;
 int cont = 0;
 %}
 
 DIGIT    [0-9]
-ID       [a-z][a-z0-9]*
+ID       [a-zA-Z][a-zA-Z0-9]*
 IF       if
 ELSE     else
 FOR      for
@@ -106,6 +108,12 @@ CASE     case
     return FINAL;
 }
 
+
+"\"" {
+    printf("A ASP: %s\n", yytext);
+    yylval.string = strdup(yytext);
+    return ASP;
+}
 
 "+"|"-"|"*"|"/"   printf( "An operator: %s\n", yytext );
 
