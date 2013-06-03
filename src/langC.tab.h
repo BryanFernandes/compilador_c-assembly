@@ -57,7 +57,8 @@
      ATTRIBUITION = 273,
      COMPARE = 274,
      LEFT_KEY = 275,
-     RIGHT_KEY = 276
+     RIGHT_KEY = 276,
+     ASP = 277
    };
 #endif
 /* Tokens.  */
@@ -80,12 +81,20 @@
 #define COMPARE 274
 #define LEFT_KEY 275
 #define RIGHT_KEY 276
+#define ASP 277
 
 
 
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef int YYSTYPE;
+typedef union YYSTYPE
+#line 37 "langC.y"
+{
+  char *string;  /* string buffer */
+}
+/* Line 1529 of yacc.c.  */
+#line 97 "langC.tab.h"
+	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
 # define YYSTYPE_IS_TRIVIAL 1

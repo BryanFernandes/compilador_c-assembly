@@ -41,13 +41,11 @@ FILE *arq;//depuração
 %%
 
 commands:
-cmdattribuition | cmdif |
+cmdattribuition | cmdif | RIGHT_KEY
     
 //command:
 //cmdattribuition | cmdif
     
-cmdkey:
-LEFT_KEY commands RIGHT_KEY
     
 value:
 ID | INT | FLOAT
@@ -57,7 +55,7 @@ ID ATTRIBUITION value FINAL { printf("\n\tAtribuicao reconhecida!\n\n", yytext)
                        } commands
     
 cmdif:
-IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS cmdkey { printf("\n\tComando if reconhecido!\n\n", yytext)
+IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY { printf("\n\tComando if reconhecido!\n\n", yytext)
     } commands
     
 %%
