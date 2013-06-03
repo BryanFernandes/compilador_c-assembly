@@ -1,23 +1,43 @@
-%token IF
-%token WHILE
-%token DO
-%token ELSE
-%token SWITCH
-%token CASE
-%token FOR
-%token ID
-%token INT
-%token FLOAT
-%token DEMAIS
-%token EQUALS
-%token LEFT_PARENTHENSIS
-%token RIGHT_PARENTHENSIS
-%token FINAL
-%token ATTRIBUITION
-%token COMPARE
-%token LEFT_KEY
-%token RIGHT_KEY
+%{
+  /* A lexer for the basic grammar to use for recognizing
+     English sentences. */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+FILE *arq;//depuração
+//arq = fopen("depuração.html","w");//depuração  
+
+%}
+
+
+%token <string>IF
+%token <string>WHILE
+%token <string>DO
+%token <string>ELSE
+%token <string>SWITCH
+%token <string>CASE
+%token <string>FOR
+%token <string>ID
+%token <string>INT
+%token <string>FLOAT
+%token <string>DEMAIS
+%token <string>EQUALS
+%token <string>LEFT_PARENTHENSIS
+%token <string>RIGHT_PARENTHENSIS
+%token <string>FINAL
+%token <string>ATTRIBUITION
+%token <string>COMPARE
+%token <string>LEFT_KEY
+%token <string>RIGHT_KEY
+%token <string>ASP
 %{#include "lex.yy.c"%}
+
+%union {
+  char *string;  /* string buffer */
+}
+
 %%
 
 commands:
