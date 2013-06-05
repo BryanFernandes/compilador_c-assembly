@@ -374,8 +374,8 @@ static yyconst flex_int16_t yy_accept[53] =
         0,    0,   24,   22,   20,   21,   22,   18,   13,   14,
        19,    1,   17,   12,   11,   12,   10,   10,   10,   10,
        10,   10,   10,   10,   15,   16,   20,   12,    2,    1,
-       10,   10,   10,    7,   10,   10,    3,   10,    2,   10,
-       10,   10,    5,   10,   10,    9,    4,   10,    6,   10,
+       10,   10,    7,   10,   10,    3,   10,   10,    2,   10,
+       10,    5,   10,   10,    9,    4,   10,   10,   10,    6,
         8,    0
     } ;
 
@@ -387,14 +387,14 @@ static yyconst flex_int32_t yy_ec[256] =
         1,    2,    4,    5,    1,    1,    1,    1,    1,    6,
         7,    8,    9,    1,   10,   11,   12,   13,   13,   13,
        13,   13,   13,   13,   13,   13,   13,    1,   14,   15,
-       16,   17,    1,    1,   18,   18,   18,   18,   19,   18,
-       18,   20,   21,   18,   18,   22,   18,   18,   18,   18,
-       18,   18,   18,   18,   18,   18,   23,   18,   18,   18,
-        1,    1,    1,    1,    1,    1,   24,   18,   25,   26,
+       16,   17,    1,    1,   18,   18,   18,   18,   18,   18,
+       18,   18,   18,   18,   18,   18,   18,   18,   18,   18,
+       18,   18,   18,   18,   18,   18,   18,   18,   18,   18,
+        1,    1,    1,    1,    1,    1,   19,   18,   20,   21,
 
-       27,   28,   18,   29,   30,   18,   18,   31,   18,   18,
-       32,   18,   18,   33,   34,   35,   18,   18,   36,   18,
-       18,   18,   37,    1,   38,    1,    1,    1,    1,    1,
+       22,   23,   18,   24,   25,   18,   18,   26,   18,   18,
+       27,   18,   18,   28,   29,   30,   18,   18,   31,   18,
+       18,   18,   32,    1,   33,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -411,22 +411,22 @@ static yyconst flex_int32_t yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static yyconst flex_int32_t yy_meta[39] =
+static yyconst flex_int32_t yy_meta[34] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    2,    1,    1,    1,    1,    2,    2,    2,
         2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
-        2,    2,    2,    2,    2,    2,    1,    1
+        2,    1,    1
     } ;
 
 static yyconst flex_int16_t yy_base[54] =
     {   0,
-        0,    0,   71,   72,   68,   72,   53,   72,   72,   72,
-       72,   28,   72,   52,   51,   50,    0,   45,   40,   31,
-       31,   29,   32,   23,   72,   72,   56,   72,   44,   29,
-        0,   35,   21,    0,   20,   20,    0,   22,   38,   28,
-       22,   21,    0,   12,   27,    0,    0,   20,    0,   15,
-        0,   72,   41
+        0,    0,   66,   67,   63,   67,   48,   67,   67,   67,
+       67,   23,   67,   47,   46,   45,    0,   41,   32,   32,
+       30,   33,   24,   30,   67,   67,   51,   67,   39,   24,
+        0,   22,    0,   21,   21,    0,   23,   22,   33,   23,
+       22,    0,   13,   16,    0,    0,   21,   18,   15,    0,
+        0,   67,   36
     } ;
 
 static yyconst flex_int16_t yy_def[54] =
@@ -439,36 +439,34 @@ static yyconst flex_int16_t yy_def[54] =
        53,    0,   52
     } ;
 
-static yyconst flex_int16_t yy_nxt[111] =
+static yyconst flex_int16_t yy_nxt[101] =
     {   0,
         4,    5,    6,    7,    8,    9,   10,   11,   11,   11,
-        4,   11,   12,   13,   14,   15,   16,   17,   17,   17,
-       17,   17,   18,   17,   19,   20,   21,   22,   17,   23,
-       17,   17,   17,   24,   17,   17,   25,   26,   29,   29,
-       30,   30,   31,   51,   50,   49,   48,   47,   46,   45,
-       39,   44,   43,   42,   41,   40,   39,   27,   38,   37,
-       36,   35,   34,   33,   32,   28,   28,   28,   28,   27,
-       52,    3,   52,   52,   52,   52,   52,   52,   52,   52,
+        4,   11,   12,   13,   14,   15,   16,   17,   17,   18,
+       19,   20,   21,   17,   22,   17,   17,   17,   23,   17,
+       24,   25,   26,   29,   29,   30,   30,   31,   51,   50,
+       49,   48,   47,   46,   45,   39,   44,   43,   42,   41,
+       40,   39,   27,   38,   37,   36,   35,   34,   33,   32,
+       28,   28,   28,   28,   27,   52,    3,   52,   52,   52,
        52,   52,   52,   52,   52,   52,   52,   52,   52,   52,
        52,   52,   52,   52,   52,   52,   52,   52,   52,   52,
-
        52,   52,   52,   52,   52,   52,   52,   52,   52,   52
+
     } ;
 
-static yyconst flex_int16_t yy_chk[111] =
+static yyconst flex_int16_t yy_chk[101] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,   12,   30,
-       12,   30,   53,   50,   48,   45,   44,   42,   41,   40,
-       39,   38,   36,   35,   33,   32,   29,   27,   24,   23,
-       22,   21,   20,   19,   18,   16,   15,   14,    7,    5,
-        3,   52,   52,   52,   52,   52,   52,   52,   52,   52,
+        1,    1,    1,   12,   30,   12,   30,   53,   49,   48,
+       47,   44,   43,   41,   40,   39,   38,   37,   35,   34,
+       32,   29,   27,   24,   23,   22,   21,   20,   19,   18,
+       16,   15,   14,    7,    5,    3,   52,   52,   52,   52,
        52,   52,   52,   52,   52,   52,   52,   52,   52,   52,
        52,   52,   52,   52,   52,   52,   52,   52,   52,   52,
-
        52,   52,   52,   52,   52,   52,   52,   52,   52,   52
+
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -495,7 +493,7 @@ char *yytext;
 #include <string.h>
 extern YYSTYPE yylval;
 int cont = 0;
-#line 499 "lex.yy.c"
+#line 497 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -680,7 +678,7 @@ YY_DECL
 #line 23 "langC.l"
 
 
-#line 684 "lex.yy.c"
+#line 682 "lex.yy.c"
 
 	if ( !(yy_init) )
 		{
@@ -739,7 +737,7 @@ yy_match:
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 72 );
+		while ( yy_base[yy_current_state] != 67 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -769,141 +767,158 @@ YY_RULE_SETUP
 {
             printf( "An integer: %s (%d)\n", yytext,
                     atoi( yytext ) );
+                    yylval.string = strdup(yytext);
             return INT;
             }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 31 "langC.l"
+#line 32 "langC.l"
 {
             printf( "A float: %s (%g)\n", yytext,
                     atof( yytext ) );
+                    yylval.string = strdup(yytext);
             return FLOAT;
             }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 38 "langC.l"
+#line 40 "langC.l"
 {
     printf( "A keyword: %s\n", yytext );
+    yylval.string = strdup(yytext);
     return IF;
 }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 42 "langC.l"
+#line 45 "langC.l"
 {
     printf( "A keyword: %s\n", yytext );
+    yylval.string = strdup(yytext);
     return ELSE;
 }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 47 "langC.l"
+#line 51 "langC.l"
 {
     printf( "A keyword: %s\n", yytext );
+    yylval.string = strdup(yytext);
     return FOR;
 }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 52 "langC.l"
+#line 57 "langC.l"
 {
     printf( "A keyword: %s\n", yytext );
+    yylval.string = strdup(yytext);
     return WHILE;
 }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 56 "langC.l"
+#line 62 "langC.l"
 {
     printf( "A keyword: %s\n", yytext );
+    yylval.string = strdup(yytext);
     return DO;
 }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 60 "langC.l"
+#line 67 "langC.l"
 {
     printf( "A keyword: %s\n", yytext );
+    yylval.string = strdup(yytext);
     return SWITCH;
 }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 65 "langC.l"
+#line 73 "langC.l"
 {
     printf( "A keyword: %s\n", yytext );
+    yylval.string = strdup(yytext);
     return CASE;
 }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 71 "langC.l"
+#line 80 "langC.l"
 {
             printf( "An identifier: %s\n", yytext );
+            yylval.string = strdup(yytext);
             return ID;
             }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 76 "langC.l"
+#line 86 "langC.l"
 {
                 printf("A equals: %s\n", yytext);
+                yylval.string = strdup(yytext);
                 return ATTRIBUITION;
             }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 81 "langC.l"
+#line 92 "langC.l"
 {
                         printf("A compare: %s\n", yytext);
+                        yylval.string = strdup(yytext);
                         return COMPARE;
                     }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 86 "langC.l"
+#line 98 "langC.l"
 {
                 printf("A Left Parenthesis: %s\n", yytext);
+                yylval.string = strdup(yytext);
                 return LEFT_PARENTHENSIS;
             }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 91 "langC.l"
+#line 104 "langC.l"
 {
     printf("A Right Parenthesis: %s\n", yytext);
+    yylval.string = strdup(yytext);
     return RIGHT_PARENTHENSIS;
 }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 96 "langC.l"
+#line 110 "langC.l"
 {
     printf("A left key: %s\n", yytext);
+    yylval.string = strdup(yytext);
     return LEFT_KEY;
 }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 101 "langC.l"
+#line 116 "langC.l"
 {
     printf("A right key: %s\n", yytext);
+    yylval.string = strdup(yytext);
     return RIGHT_KEY;
 }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 106 "langC.l"
+#line 122 "langC.l"
 {
     printf("A final: %s\n", yytext);
+    yylval.string = strdup(yytext);
     return FINAL;
 }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 112 "langC.l"
+#line 129 "langC.l"
 {
     printf("A ASP: %s\n", yytext);
     yylval.string = strdup(yytext);
@@ -912,36 +927,37 @@ YY_RULE_SETUP
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 118 "langC.l"
+#line 135 "langC.l"
 printf( "An operator: %s\n", yytext );
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 120 "langC.l"
+#line 137 "langC.l"
 /* eat up whitespace */
 	YY_BREAK
 case 21:
 /* rule 21 can match eol */
 YY_RULE_SETUP
-#line 122 "langC.l"
+#line 139 "langC.l"
 {cont++;
     printf( "A Line: %d\n", cont );
 }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 127 "langC.l"
+#line 144 "langC.l"
 {
             printf( "Unrecognized character: %s\n", yytext );
+            yylval.string = strdup(yytext);
             return DEMAIS;
             }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 132 "langC.l"
+#line 150 "langC.l"
 ECHO;
 	YY_BREAK
-#line 945 "lex.yy.c"
+#line 961 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1938,7 +1954,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 132 "langC.l"
+#line 150 "langC.l"
 
 
 

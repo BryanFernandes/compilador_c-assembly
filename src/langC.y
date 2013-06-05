@@ -7,7 +7,9 @@
 #include <string.h>
 
 FILE *arq;//depuração
-//arq = fopen("depuração.html","w");//depuração  
+//arq = fopen("depuracao.asm","w");//depuração
+
+int contKeys = 0;
 
 %}
 
@@ -41,22 +43,33 @@ FILE *arq;//depuração
 %%
 
 commands:
-cmdattribuition | cmdif | RIGHT_KEY
+cmdattribuition | cmdif | cmdrk
+
+cmdrk:
+RIGHT_KEY { contKeys--; printf("\n\n\tNumero de chaves abertas: %d\n\n", contKeys) }
     
-//command:
-//cmdattribuition | cmdif
-    
-    
+cmdlk:
+LEFT_KEY { contKeys++; printf("\n\n\tNumero de chaves abertas: %d\n\n", contKeys) } 
+
 value:
-ID | INT | FLOAT
+    ID | INT | FLOAT { return 0; }
+    
     
 cmdattribuition:
-ID ATTRIBUITION value FINAL { printf("\n\tAtribuicao reconhecida!\n\n", yytext)
-                       } commands
+ID ATTRIBUITION value FINAL {
+    
+    printf("\n\tAtribuicao reconhecida!\n\n", yytext);
+    fprintf(arq, "\nBIPUSH %s\nISTORE %s", $<string>3, $1);
+    
+} commands
     
 cmdif:
-IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY { printf("\n\tComando if reconhecido!\n\n", yytext)
-    } commands
+IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS cmdlk {
+    
+    printf("\n\tComando if reconhecido!\n\n");
+    fprintf(arq, "\nILOAD %s\nBIPUSH %s\nIF_ICMPEQ L1\nL1:", $<string>3, $<string>5);
+    
+} commands
     
 %%
 main( argc, argv)
@@ -68,7 +81,12 @@ char **argv;
             yyin = fopen( argv[0], "r");
         else
             yyin = stdin;
+            
+        arq = fopen("depuracao.asm", "w");
+
         yyparse();
+        
+        fclose(arq);
     }
 
 yyerror(){

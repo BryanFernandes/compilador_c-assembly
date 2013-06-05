@@ -124,9 +124,11 @@
 #include <string.h>
 
 FILE *arq;//depuração
-//arq = fopen("depuração.html","w");//depuração  
+//arq = fopen("depuracao.asm","w");//depuração
 
-#line 35 "langC.y"
+int contKeys = 0;
+
+#line 37 "langC.y"
 #include "lex.yy.c"
 
 /* Enabling traces.  */
@@ -149,12 +151,12 @@ FILE *arq;//depuração
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 37 "langC.y"
+#line 39 "langC.y"
 {
   char *string;  /* string buffer */
 }
 /* Line 193 of yacc.c.  */
-#line 158 "langC.tab.c"
+#line 160 "langC.tab.c"
 	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
@@ -167,7 +169,7 @@ typedef union YYSTYPE
 
 
 /* Line 216 of yacc.c.  */
-#line 171 "langC.tab.c"
+#line 173 "langC.tab.c"
 
 #ifdef short
 # undef short
@@ -380,18 +382,18 @@ union yyalloc
 #endif
 
 /* YYFINAL -- State number of the termination state.  */
-#define YYFINAL  9
+#define YYFINAL  10
 /* YYLAST -- Last index in YYTABLE.  */
 #define YYLAST   18
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  23
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  7
+#define YYNNTS  9
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  11
+#define YYNRULES  13
 /* YYNRULES -- Number of states.  */
-#define YYNSTATES  24
+#define YYNSTATES  26
 
 /* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
 #define YYUNDEFTOK  2
@@ -438,24 +440,24 @@ static const yytype_uint8 yytranslate[] =
    YYRHS.  */
 static const yytype_uint8 yyprhs[] =
 {
-       0,     0,     3,     5,     7,     9,    11,    13,    15,    16,
-      23,    24
+       0,     0,     3,     5,     7,     9,    11,    13,    15,    17,
+      19,    20,    27,    28
 };
 
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
 static const yytype_int8 yyrhs[] =
 {
-      24,     0,    -1,    26,    -1,    28,    -1,    21,    -1,    10,
-      -1,    11,    -1,    12,    -1,    -1,    10,    18,    25,    17,
-      27,    24,    -1,    -1,     3,    15,    25,    19,    25,    16,
-      20,    29,    24,    -1
+      24,     0,    -1,    28,    -1,    30,    -1,    25,    -1,    21,
+      -1,    20,    -1,    10,    -1,    11,    -1,    12,    -1,    -1,
+      10,    18,    27,    17,    29,    24,    -1,    -1,     3,    15,
+      27,    19,    27,    16,    26,    31,    24,    -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    44,    44,    44,    44,    53,    53,    53,    56,    56,
-      60,    60
+       0,    46,    46,    46,    46,    49,    52,    55,    55,    55,
+      59,    59,    67,    67
 };
 #endif
 
@@ -468,7 +470,7 @@ static const char *const yytname[] =
   "CASE", "FOR", "ID", "INT", "FLOAT", "DEMAIS", "EQUALS",
   "LEFT_PARENTHENSIS", "RIGHT_PARENTHENSIS", "FINAL", "ATTRIBUITION",
   "COMPARE", "LEFT_KEY", "RIGHT_KEY", "ASP", "$accept", "commands",
-  "value", "cmdattribuition", "@1", "cmdif", "@2", 0
+  "cmdrk", "cmdlk", "value", "cmdattribuition", "@1", "cmdif", "@2", 0
 };
 #endif
 
@@ -486,15 +488,15 @@ static const yytype_uint16 yytoknum[] =
 /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,    23,    24,    24,    24,    25,    25,    25,    27,    26,
-      29,    28
+       0,    23,    24,    24,    24,    25,    26,    27,    27,    27,
+      29,    28,    31,    30
 };
 
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
-       0,     2,     1,     1,     1,     1,     1,     1,     0,     6,
-       0,     9
+       0,     2,     1,     1,     1,     1,     1,     1,     1,     1,
+       0,     6,     0,     9
 };
 
 /* YYDEFACT[STATE-NAME] -- Default rule to reduce with in state
@@ -502,31 +504,31 @@ static const yytype_uint8 yyr2[] =
    means the default is an error.  */
 static const yytype_uint8 yydefact[] =
 {
-       0,     0,     0,     4,     0,     2,     3,     0,     0,     1,
-       5,     6,     7,     0,     0,     0,     8,     0,     0,     0,
-       9,    10,     0,    11
+       0,     0,     0,     5,     0,     4,     2,     3,     0,     0,
+       1,     7,     8,     9,     0,     0,     0,    10,     0,     0,
+       0,    11,     6,    12,     0,    13
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     4,    13,     5,    18,     6,    22
+      -1,     4,     5,    23,    14,     6,    19,     7,    24
 };
 
 /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
    STATE-NUM.  */
-#define YYPACT_NINF -17
+#define YYPACT_NINF -16
 static const yytype_int8 yypact[] =
 {
-      -3,   -12,   -14,   -17,     5,   -17,   -17,    -1,    -1,   -17,
-     -17,   -17,   -17,    -6,    -5,    -1,   -17,    -2,    -3,    -4,
-     -17,   -17,    -3,   -17
+      -3,   -13,   -12,   -16,     3,   -16,   -16,   -16,     0,     0,
+     -16,   -16,   -16,   -16,   -14,    -4,     0,   -16,    -2,    -3,
+      -5,   -16,   -16,   -16,    -3,   -16
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -17,   -16,    -7,   -17,   -17,   -17,   -17
+     -16,   -15,   -16,   -16,    -8,   -16,   -16,   -16,   -16
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
@@ -536,23 +538,23 @@ static const yytype_int8 yypgoto[] =
 #define YYTABLE_NINF -1
 static const yytype_uint8 yytable[] =
 {
-       1,    14,    20,     7,     8,     9,    23,     2,    17,    10,
-      11,    12,    16,    15,    19,     0,    21,     0,     3
+       1,    15,     8,    10,    21,    16,     9,     2,    18,    25,
+      11,    12,    13,    17,    20,    22,     0,     0,     3
 };
 
 static const yytype_int8 yycheck[] =
 {
-       3,     8,    18,    15,    18,     0,    22,    10,    15,    10,
-      11,    12,    17,    19,    16,    -1,    20,    -1,    21
+       3,     9,    15,     0,    19,    19,    18,    10,    16,    24,
+      10,    11,    12,    17,    16,    20,    -1,    -1,    21
 };
 
 /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
    symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,     3,    10,    21,    24,    26,    28,    15,    18,     0,
-      10,    11,    12,    25,    25,    19,    17,    25,    27,    16,
-      24,    20,    29,    24
+       0,     3,    10,    21,    24,    25,    28,    30,    15,    18,
+       0,    10,    11,    12,    27,    27,    19,    17,    27,    29,
+      16,    24,    20,    26,    31,    24
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1366,21 +1368,44 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-        case 8:
-#line 56 "langC.y"
-    { printf("\n\tAtribuicao reconhecida!\n\n", yytext)
-                       ;}
+        case 5:
+#line 49 "langC.y"
+    { contKeys--; printf("\n\n\tNumero de chaves abertas: %d\n\n", contKeys) ;}
+    break;
+
+  case 6:
+#line 52 "langC.y"
+    { contKeys++; printf("\n\n\tNumero de chaves abertas: %d\n\n", contKeys) ;}
+    break;
+
+  case 9:
+#line 55 "langC.y"
+    { return 0; ;}
     break;
 
   case 10:
-#line 60 "langC.y"
-    { printf("\n\tComando if reconhecido!\n\n", yytext)
-    ;}
+#line 59 "langC.y"
+    {
+    
+    printf("\n\tAtribuicao reconhecida!\n\n", yytext);
+    fprintf(arq, "\nBIPUSH %s\nISTORE %s", (yyvsp[(3) - (4)].string), (yyvsp[(1) - (4)].string));
+    
+;}
+    break;
+
+  case 12:
+#line 67 "langC.y"
+    {
+    
+    printf("\n\tComando if reconhecido!\n\n");
+    fprintf(arq, "\nILOAD %s\nBIPUSH %s\nIF_ICMPEQ L1\nL1:", (yyvsp[(3) - (7)].string), (yyvsp[(5) - (7)].string));
+    
+;}
     break;
 
 
 /* Line 1267 of yacc.c.  */
-#line 1384 "langC.tab.c"
+#line 1409 "langC.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1594,7 +1619,7 @@ yyreturn:
 }
 
 
-#line 63 "langC.y"
+#line 74 "langC.y"
 
 main( argc, argv)
 int argc;
@@ -1605,7 +1630,12 @@ char **argv;
             yyin = fopen( argv[0], "r");
         else
             yyin = stdin;
+            
+        arq = fopen("depuracao.asm", "w");
+
         yyparse();
+        
+        fclose(arq);
     }
 
 yyerror(){

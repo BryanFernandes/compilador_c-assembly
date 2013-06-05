@@ -17,44 +17,48 @@ Grammar
 
     1 commands: cmdattribuition
     2         | cmdif
-    3         | RIGHT_KEY
+    3         | cmdrk
 
-    4 value: ID
-    5      | INT
-    6      | FLOAT
+    4 cmdrk: RIGHT_KEY
 
-    7 @1: /* empty */
+    5 cmdlk: LEFT_KEY
 
-    8 cmdattribuition: ID ATTRIBUITION value FINAL @1 commands
+    6 value: ID
+    7      | INT
+    8      | FLOAT
 
-    9 @2: /* empty */
+    9 @1: /* empty */
 
-   10 cmdif: IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY @2 commands
+   10 cmdattribuition: ID ATTRIBUITION value FINAL @1 commands
+
+   11 @2: /* empty */
+
+   12 cmdif: IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS cmdlk @2 commands
 
 
 Terminals, with rules where they appear
 
 $end (0) 0
 error (256)
-IF (258) 10
+IF (258) 12
 WHILE (259)
 DO (260)
 ELSE (261)
 SWITCH (262)
 CASE (263)
 FOR (264)
-ID (265) 4 8
-INT (266) 5
-FLOAT (267) 6
+ID (265) 6 10
+INT (266) 7
+FLOAT (267) 8
 DEMAIS (268)
 EQUALS (269)
-LEFT_PARENTHENSIS (270) 10
-RIGHT_PARENTHENSIS (271) 10
-FINAL (272) 8
-ATTRIBUITION (273) 8
-COMPARE (274) 10
-LEFT_KEY (275) 10
-RIGHT_KEY (276) 3
+LEFT_PARENTHENSIS (270) 12
+RIGHT_PARENTHENSIS (271) 12
+FINAL (272) 10
+ATTRIBUITION (273) 10
+COMPARE (274) 12
+LEFT_KEY (275) 5
+RIGHT_KEY (276) 4
 ASP (277)
 
 
@@ -63,17 +67,21 @@ Nonterminals, with rules where they appear
 $accept (23)
     on left: 0
 commands (24)
-    on left: 1 2 3, on right: 0 8 10
-value (25)
-    on left: 4 5 6, on right: 8 10
-cmdattribuition (26)
-    on left: 8, on right: 1
-@1 (27)
-    on left: 7, on right: 8
-cmdif (28)
-    on left: 10, on right: 2
-@2 (29)
+    on left: 1 2 3, on right: 0 10 12
+cmdrk (25)
+    on left: 4, on right: 3
+cmdlk (26)
+    on left: 5, on right: 12
+value (27)
+    on left: 6 7 8, on right: 10 12
+cmdattribuition (28)
+    on left: 10, on right: 1
+@1 (29)
     on left: 9, on right: 10
+cmdif (30)
+    on left: 12, on right: 2
+@2 (31)
+    on left: 11, on right: 12
 
 
 state 0
@@ -85,194 +93,213 @@ state 0
     RIGHT_KEY  shift, and go to state 3
 
     commands         go to state 4
-    cmdattribuition  go to state 5
-    cmdif            go to state 6
+    cmdrk            go to state 5
+    cmdattribuition  go to state 6
+    cmdif            go to state 7
 
 
 state 1
 
-   10 cmdif: IF . LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY @2 commands
+   12 cmdif: IF . LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS cmdlk @2 commands
 
-    LEFT_PARENTHENSIS  shift, and go to state 7
+    LEFT_PARENTHENSIS  shift, and go to state 8
 
 
 state 2
 
-    8 cmdattribuition: ID . ATTRIBUITION value FINAL @1 commands
+   10 cmdattribuition: ID . ATTRIBUITION value FINAL @1 commands
 
-    ATTRIBUITION  shift, and go to state 8
+    ATTRIBUITION  shift, and go to state 9
 
 
 state 3
 
-    3 commands: RIGHT_KEY .
+    4 cmdrk: RIGHT_KEY .
 
-    $default  reduce using rule 3 (commands)
+    $default  reduce using rule 4 (cmdrk)
 
 
 state 4
 
     0 $accept: commands . $end
 
-    $end  shift, and go to state 9
+    $end  shift, and go to state 10
 
 
 state 5
+
+    3 commands: cmdrk .
+
+    $default  reduce using rule 3 (commands)
+
+
+state 6
 
     1 commands: cmdattribuition .
 
     $default  reduce using rule 1 (commands)
 
 
-state 6
+state 7
 
     2 commands: cmdif .
 
     $default  reduce using rule 2 (commands)
 
 
-state 7
-
-   10 cmdif: IF LEFT_PARENTHENSIS . value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY @2 commands
-
-    ID     shift, and go to state 10
-    INT    shift, and go to state 11
-    FLOAT  shift, and go to state 12
-
-    value  go to state 13
-
-
 state 8
 
-    8 cmdattribuition: ID ATTRIBUITION . value FINAL @1 commands
+   12 cmdif: IF LEFT_PARENTHENSIS . value COMPARE value RIGHT_PARENTHENSIS cmdlk @2 commands
 
-    ID     shift, and go to state 10
-    INT    shift, and go to state 11
-    FLOAT  shift, and go to state 12
+    ID     shift, and go to state 11
+    INT    shift, and go to state 12
+    FLOAT  shift, and go to state 13
 
     value  go to state 14
 
 
 state 9
 
+   10 cmdattribuition: ID ATTRIBUITION . value FINAL @1 commands
+
+    ID     shift, and go to state 11
+    INT    shift, and go to state 12
+    FLOAT  shift, and go to state 13
+
+    value  go to state 15
+
+
+state 10
+
     0 $accept: commands $end .
 
     $default  accept
 
 
-state 10
-
-    4 value: ID .
-
-    $default  reduce using rule 4 (value)
-
-
 state 11
 
-    5 value: INT .
-
-    $default  reduce using rule 5 (value)
-
-
-state 12
-
-    6 value: FLOAT .
+    6 value: ID .
 
     $default  reduce using rule 6 (value)
 
 
+state 12
+
+    7 value: INT .
+
+    $default  reduce using rule 7 (value)
+
+
 state 13
 
-   10 cmdif: IF LEFT_PARENTHENSIS value . COMPARE value RIGHT_PARENTHENSIS LEFT_KEY @2 commands
+    8 value: FLOAT .
 
-    COMPARE  shift, and go to state 15
+    $default  reduce using rule 8 (value)
 
 
 state 14
 
-    8 cmdattribuition: ID ATTRIBUITION value . FINAL @1 commands
+   12 cmdif: IF LEFT_PARENTHENSIS value . COMPARE value RIGHT_PARENTHENSIS cmdlk @2 commands
 
-    FINAL  shift, and go to state 16
+    COMPARE  shift, and go to state 16
 
 
 state 15
 
-   10 cmdif: IF LEFT_PARENTHENSIS value COMPARE . value RIGHT_PARENTHENSIS LEFT_KEY @2 commands
+   10 cmdattribuition: ID ATTRIBUITION value . FINAL @1 commands
 
-    ID     shift, and go to state 10
-    INT    shift, and go to state 11
-    FLOAT  shift, and go to state 12
-
-    value  go to state 17
+    FINAL  shift, and go to state 17
 
 
 state 16
 
-    8 cmdattribuition: ID ATTRIBUITION value FINAL . @1 commands
+   12 cmdif: IF LEFT_PARENTHENSIS value COMPARE . value RIGHT_PARENTHENSIS cmdlk @2 commands
 
-    $default  reduce using rule 7 (@1)
+    ID     shift, and go to state 11
+    INT    shift, and go to state 12
+    FLOAT  shift, and go to state 13
 
-    @1  go to state 18
+    value  go to state 18
 
 
 state 17
 
-   10 cmdif: IF LEFT_PARENTHENSIS value COMPARE value . RIGHT_PARENTHENSIS LEFT_KEY @2 commands
+   10 cmdattribuition: ID ATTRIBUITION value FINAL . @1 commands
 
-    RIGHT_PARENTHENSIS  shift, and go to state 19
+    $default  reduce using rule 9 (@1)
+
+    @1  go to state 19
 
 
 state 18
 
-    8 cmdattribuition: ID ATTRIBUITION value FINAL @1 . commands
+   12 cmdif: IF LEFT_PARENTHENSIS value COMPARE value . RIGHT_PARENTHENSIS cmdlk @2 commands
 
-    IF         shift, and go to state 1
-    ID         shift, and go to state 2
-    RIGHT_KEY  shift, and go to state 3
-
-    commands         go to state 20
-    cmdattribuition  go to state 5
-    cmdif            go to state 6
+    RIGHT_PARENTHENSIS  shift, and go to state 20
 
 
 state 19
 
-   10 cmdif: IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS . LEFT_KEY @2 commands
-
-    LEFT_KEY  shift, and go to state 21
-
-
-state 20
-
-    8 cmdattribuition: ID ATTRIBUITION value FINAL @1 commands .
-
-    $default  reduce using rule 8 (cmdattribuition)
-
-
-state 21
-
-   10 cmdif: IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY . @2 commands
-
-    $default  reduce using rule 9 (@2)
-
-    @2  go to state 22
-
-
-state 22
-
-   10 cmdif: IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY @2 . commands
+   10 cmdattribuition: ID ATTRIBUITION value FINAL @1 . commands
 
     IF         shift, and go to state 1
     ID         shift, and go to state 2
     RIGHT_KEY  shift, and go to state 3
 
-    commands         go to state 23
-    cmdattribuition  go to state 5
-    cmdif            go to state 6
+    commands         go to state 21
+    cmdrk            go to state 5
+    cmdattribuition  go to state 6
+    cmdif            go to state 7
+
+
+state 20
+
+   12 cmdif: IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS . cmdlk @2 commands
+
+    LEFT_KEY  shift, and go to state 22
+
+    cmdlk  go to state 23
+
+
+state 21
+
+   10 cmdattribuition: ID ATTRIBUITION value FINAL @1 commands .
+
+    $default  reduce using rule 10 (cmdattribuition)
+
+
+state 22
+
+    5 cmdlk: LEFT_KEY .
+
+    $default  reduce using rule 5 (cmdlk)
 
 
 state 23
 
-   10 cmdif: IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY @2 commands .
+   12 cmdif: IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS cmdlk . @2 commands
 
-    $default  reduce using rule 10 (cmdif)
+    $default  reduce using rule 11 (@2)
+
+    @2  go to state 24
+
+
+state 24
+
+   12 cmdif: IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS cmdlk @2 . commands
+
+    IF         shift, and go to state 1
+    ID         shift, and go to state 2
+    RIGHT_KEY  shift, and go to state 3
+
+    commands         go to state 25
+    cmdrk            go to state 5
+    cmdattribuition  go to state 6
+    cmdif            go to state 7
+
+
+state 25
+
+   12 cmdif: IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS cmdlk @2 commands .
+
+    $default  reduce using rule 12 (cmdif)

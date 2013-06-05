@@ -15,7 +15,7 @@ ID       [a-zA-Z][a-zA-Z0-9]*
 IF       if
 ELSE     else
 FOR      for
-WHILE    WHILE
+WHILE    while
 DO       do
 SWITCH   switch
 CASE     case
@@ -25,86 +25,103 @@ CASE     case
 {DIGIT}+    {
             printf( "An integer: %s (%d)\n", yytext,
                     atoi( yytext ) );
+                    yylval.string = strdup(yytext);
             return INT;
             }
 
 {DIGIT}+"."{DIGIT}*        {
             printf( "A float: %s (%g)\n", yytext,
                     atof( yytext ) );
+                    yylval.string = strdup(yytext);
             return FLOAT;
             }
 
 
 {IF}        {
     printf( "A keyword: %s\n", yytext );
+    yylval.string = strdup(yytext);
     return IF;
 }
 {ELSE}        {
     printf( "A keyword: %s\n", yytext );
+    yylval.string = strdup(yytext);
     return ELSE;
 }
 
 {FOR}        {
     printf( "A keyword: %s\n", yytext );
+    yylval.string = strdup(yytext);
     return FOR;
 }
 
 {WHILE}     {
     printf( "A keyword: %s\n", yytext );
+    yylval.string = strdup(yytext);
     return WHILE;
 }
 {DO}        {
     printf( "A keyword: %s\n", yytext );
+    yylval.string = strdup(yytext);
     return DO;
 }
 {SWITCH}        {
     printf( "A keyword: %s\n", yytext );
+    yylval.string = strdup(yytext);
     return SWITCH;
 }
 
 {CASE}        {
     printf( "A keyword: %s\n", yytext );
+    yylval.string = strdup(yytext);
     return CASE;
 }
 
 
 {ID}        {
             printf( "An identifier: %s\n", yytext );
+            yylval.string = strdup(yytext);
             return ID;
             }
 
 "="         {
                 printf("A equals: %s\n", yytext);
+                yylval.string = strdup(yytext);
                 return ATTRIBUITION;
             }
 
 "=="|"<="|">="|"!="|"<"|">" {
                         printf("A compare: %s\n", yytext);
+                        yylval.string = strdup(yytext);
                         return COMPARE;
                     }
 
 "("         {
                 printf("A Left Parenthesis: %s\n", yytext);
+                yylval.string = strdup(yytext);
                 return LEFT_PARENTHENSIS;
             }
 
 ")" {
     printf("A Right Parenthesis: %s\n", yytext);
+    yylval.string = strdup(yytext);
     return RIGHT_PARENTHENSIS;
 }
 
 "{" {
     printf("A left key: %s\n", yytext);
+    yylval.string = strdup(yytext);
     return LEFT_KEY;
 }
 
 "}" {
     printf("A right key: %s\n", yytext);
+    yylval.string = strdup(yytext);
     return RIGHT_KEY;
 }
 
 ";" {
     printf("A final: %s\n", yytext);
+    yylval.string = strdup(yytext);
     return FINAL;
 }
 
@@ -126,6 +143,7 @@ CASE     case
 
 .           {
             printf( "Unrecognized character: %s\n", yytext );
+            yylval.string = strdup(yytext);
             return DEMAIS;
             }
 
