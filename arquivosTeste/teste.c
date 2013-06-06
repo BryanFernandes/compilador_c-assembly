@@ -1,1 +1,1 @@
-else boa for 3 3.2 switch
+if(abc==5){x=3;}
