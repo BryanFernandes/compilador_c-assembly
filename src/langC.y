@@ -34,6 +34,7 @@ int contKeys = 0;
 %token <string>LEFT_KEY
 %token <string>RIGHT_KEY
 %token <string>ASP
+%token <string>EXIT
 %{#include "lex.yy.c"%}
 
 %union {
@@ -43,16 +44,16 @@ int contKeys = 0;
 %%
 
 commands:
-cmdattribuition | cmdif | cmdrk
+cmdattribuition | cmdif | cmdrk | exit
 
 cmdrk:
-RIGHT_KEY { contKeys--; printf("\n\n\tNumero de chaves abertas: %d\n\n", contKeys) }
+RIGHT_KEY { contKeys--; printf("\n\n\tNumero de chaves abertas: %d\n\n", contKeys) } commands
     
 cmdlk:
-LEFT_KEY { contKeys++; printf("\n\n\tNumero de chaves abertas: %d\n\n", contKeys) } 
+LEFT_KEY { contKeys++; printf("\n\n\tNumero de chaves abertas: %d\n\n", contKeys) }
 
 value:
-    ID | INT | FLOAT { return 0; }
+    ID | INT | FLOAT
     
     
 cmdattribuition:
@@ -70,6 +71,11 @@ IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS cmdlk {
     fprintf(arq, "\nILOAD %s\nBIPUSH %s\nIF_ICMPEQ L1\nL1:", $<string>3, $<string>5);
     
 } commands
+    
+exit: EXIT
+{
+    return;
+}
     
 %%
 main( argc, argv)

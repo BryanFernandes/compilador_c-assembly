@@ -22,6 +22,12 @@ CASE     case
 
 %%
 
+"exit"        {
+    printf( "EOF\n");
+    yylval.string = strdup(yytext);
+    return EXIT;
+}
+
 {DIGIT}+    {
             printf( "An integer: %s (%d)\n", yytext,
                     atoi( yytext ) );
@@ -145,7 +151,8 @@ CASE     case
             printf( "Unrecognized character: %s\n", yytext );
             yylval.string = strdup(yytext);
             return DEMAIS;
-            }
+    }
+
 
 %%
 
