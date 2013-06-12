@@ -1,1 +1,1 @@
-if(bryan==5){x=3;} exit
+if(bryan==5){x=3;}

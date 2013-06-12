@@ -59,7 +59,7 @@
      LEFT_KEY = 275,
      RIGHT_KEY = 276,
      ASP = 277,
-     EXIT = 278
+     END_OF_FILE = 278
    };
 #endif
 /* Tokens.  */
@@ -83,7 +83,7 @@
 #define LEFT_KEY 275
 #define RIGHT_KEY 276
 #define ASP 277
-#define EXIT 278
+#define END_OF_FILE 278
 
 
 

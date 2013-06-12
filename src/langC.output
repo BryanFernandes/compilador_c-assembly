@@ -38,7 +38,7 @@ Grammar
 
    14 cmdif: IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS cmdlk @3 commands
 
-   15 exit: EXIT
+   15 exit: END_OF_FILE
 
 
 Terminals, with rules where they appear
@@ -65,7 +65,7 @@ COMPARE (274) 14
 LEFT_KEY (275) 7
 RIGHT_KEY (276) 6
 ASP (277)
-EXIT (278) 15
+END_OF_FILE (278) 15
 
 
 Nonterminals, with rules where they appear
@@ -98,10 +98,10 @@ state 0
 
     0 $accept: . commands $end
 
-    IF         shift, and go to state 1
-    ID         shift, and go to state 2
-    RIGHT_KEY  shift, and go to state 3
-    EXIT       shift, and go to state 4
+    IF           shift, and go to state 1
+    ID           shift, and go to state 2
+    RIGHT_KEY    shift, and go to state 3
+    END_OF_FILE  shift, and go to state 4
 
     commands         go to state 5
     cmdrk            go to state 6
@@ -135,7 +135,7 @@ state 3
 
 state 4
 
-   15 exit: EXIT .
+   15 exit: END_OF_FILE .
 
     $default  reduce using rule 15 (exit)
 
@@ -201,10 +201,10 @@ state 12
 
     6 cmdrk: RIGHT_KEY @1 . commands
 
-    IF         shift, and go to state 1
-    ID         shift, and go to state 2
-    RIGHT_KEY  shift, and go to state 3
-    EXIT       shift, and go to state 4
+    IF           shift, and go to state 1
+    ID           shift, and go to state 2
+    RIGHT_KEY    shift, and go to state 3
+    END_OF_FILE  shift, and go to state 4
 
     commands         go to state 19
     cmdrk            go to state 6
@@ -293,10 +293,10 @@ state 23
 
    12 cmdattribuition: ID ATTRIBUITION value FINAL @2 . commands
 
-    IF         shift, and go to state 1
-    ID         shift, and go to state 2
-    RIGHT_KEY  shift, and go to state 3
-    EXIT       shift, and go to state 4
+    IF           shift, and go to state 1
+    ID           shift, and go to state 2
+    RIGHT_KEY    shift, and go to state 3
+    END_OF_FILE  shift, and go to state 4
 
     commands         go to state 25
     cmdrk            go to state 6
@@ -341,10 +341,10 @@ state 28
 
    14 cmdif: IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS cmdlk @3 . commands
 
-    IF         shift, and go to state 1
-    ID         shift, and go to state 2
-    RIGHT_KEY  shift, and go to state 3
-    EXIT       shift, and go to state 4
+    IF           shift, and go to state 1
+    ID           shift, and go to state 2
+    RIGHT_KEY    shift, and go to state 3
+    END_OF_FILE  shift, and go to state 4
 
     commands         go to state 29
     cmdrk            go to state 6

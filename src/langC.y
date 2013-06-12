@@ -34,7 +34,7 @@ int contKeys = 0;
 %token <string>LEFT_KEY
 %token <string>RIGHT_KEY
 %token <string>ASP
-%token <string>EXIT
+%token <string>END_OF_FILE
 %{#include "lex.yy.c"%}
 
 %union {
@@ -72,9 +72,9 @@ IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS cmdlk {
     
 } commands
     
-exit: EXIT
+exit: END_OF_FILE
 {
-    return;
+    yyterminate();
 }
     
 %%

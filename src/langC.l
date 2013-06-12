@@ -22,10 +22,11 @@ CASE     case
 
 %%
 
-"exit"        {
-    printf( "EOF\n");
+
+<<EOF>>        {
+    printf("EOF\n");
     yylval.string = strdup(yytext);
-    return EXIT;
+    return END_OF_FILE;
 }
 
 {DIGIT}+    {
@@ -171,5 +172,5 @@ char **argv;
 
 int yywrap(void)
 { 
-return 0; 
+return 1; 
 }

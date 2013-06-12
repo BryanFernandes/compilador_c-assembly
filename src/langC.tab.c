@@ -86,7 +86,7 @@
      LEFT_KEY = 275,
      RIGHT_KEY = 276,
      ASP = 277,
-     EXIT = 278
+     END_OF_FILE = 278
    };
 #endif
 /* Tokens.  */
@@ -110,7 +110,7 @@
 #define LEFT_KEY 275
 #define RIGHT_KEY 276
 #define ASP 277
-#define EXIT 278
+#define END_OF_FILE 278
 
 
 
@@ -472,9 +472,9 @@ static const char *const yytname[] =
   "$end", "error", "$undefined", "IF", "WHILE", "DO", "ELSE", "SWITCH",
   "CASE", "FOR", "ID", "INT", "FLOAT", "DEMAIS", "EQUALS",
   "LEFT_PARENTHENSIS", "RIGHT_PARENTHENSIS", "FINAL", "ATTRIBUITION",
-  "COMPARE", "LEFT_KEY", "RIGHT_KEY", "ASP", "EXIT", "$accept", "commands",
-  "cmdrk", "@1", "cmdlk", "value", "cmdattribuition", "@2", "cmdif", "@3",
-  "exit", 0
+  "COMPARE", "LEFT_KEY", "RIGHT_KEY", "ASP", "END_OF_FILE", "$accept",
+  "commands", "cmdrk", "@1", "cmdlk", "value", "cmdattribuition", "@2",
+  "cmdif", "@3", "exit", 0
 };
 #endif
 
@@ -1409,7 +1409,7 @@ yyreduce:
   case 16:
 #line 76 "langC.y"
     {
-    return;
+    yyterminate();
 ;}
     break;
 
