@@ -59,7 +59,9 @@
      LEFT_KEY = 275,
      RIGHT_KEY = 276,
      ASP = 277,
-     END_OF_FILE = 278
+     END_OF_FILE = 278,
+     OPERATOR = 279,
+     BREAK = 280
    };
 #endif
 /* Tokens.  */
@@ -84,18 +86,20 @@
 #define RIGHT_KEY 276
 #define ASP 277
 #define END_OF_FILE 278
+#define OPERATOR 279
+#define BREAK 280
 
 
 
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 40 "langC.y"
+#line 44 "langC.y"
 {
   char *string;  /* string buffer */
 }
 /* Line 1529 of yacc.c.  */
-#line 99 "langC.tab.h"
+#line 103 "langC.tab.h"
 	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1

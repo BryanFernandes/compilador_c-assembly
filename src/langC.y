@@ -10,6 +10,8 @@ FILE *arq;//depuração
 //arq = fopen("depuracao.asm","w");//depuração
 
 int contKeys = 0;
+int contJumps = 0;
+    int contParenthensis = 0;
 
 %}
 
@@ -35,6 +37,8 @@ int contKeys = 0;
 %token <string>RIGHT_KEY
 %token <string>ASP
 %token <string>END_OF_FILE
+%token <string>OPERATOR
+%token <string>BREAK
 %{#include "lex.yy.c"%}
 
 %union {
@@ -44,36 +48,89 @@ int contKeys = 0;
 %%
 
 commands:
-cmdattribuition | cmdif | cmdrk | exit
+cmdattribuition | cmdif | cmdrk | cmdfor | cmdwhile | cmddowhile | cmdcase | cmdbreak | cmdswitch | cmdlp | cmdrp | exit
 
 cmdrk:
-RIGHT_KEY { contKeys--; printf("\n\n\tNumero de chaves abertas: %d\n\n", contKeys) } commands
+    RIGHT_KEY {
+        contKeys--;
+} commands
     
 cmdlk:
-LEFT_KEY { contKeys++; printf("\n\n\tNumero de chaves abertas: %d\n\n", contKeys) }
-
+    LEFT_KEY {
+        contKeys++;
+} commands
+    
+cmdlp:
+    LEFT_PARENTHENSIS {
+        contParenthensis++;
+    } commands
+    
+cmdrp:
+    RIGHT_PARENTHENSIS {
+        contParenthensis--;
+    } commands
+    
 value:
     ID | INT | FLOAT
     
     
 cmdattribuition:
-ID ATTRIBUITION value FINAL {
+    ID ATTRIBUITION value FINAL {
     
-    printf("\n\tAtribuicao reconhecida!\n\n", yytext);
-    fprintf(arq, "\nBIPUSH %s\nISTORE %s", $<string>3, $1);
+        printf("\n\tAtribuicao reconhecida!\n\n", yytext);
+        fprintf(arq, "\nBIPUSH %s\nISTORE %s", $<string>3, $1);
     
-} commands
+    }
     
 cmdif:
-IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS cmdlk {
+    IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS cmdlk {
     
-    printf("\n\tComando if reconhecido!\n\n");
-    fprintf(arq, "\nILOAD %s\nBIPUSH %s\nIF_ICMPEQ L1\nL1:", $<string>3, $<string>5);
+        printf("\n\tComando if reconhecido!\n\n");
+        contJumps++;
+        fprintf(arq, "\nILOAD %s\nBIPUSH %s\nIF_ICMPEQ L%d\nL%d:", $<string>3, $<string>5, contJumps, contJumps);
     
-} commands
+    } commands
+    
+cmdfor:
+    FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value FINAL value OPERATOR OPERATOR RIGHT_PARENTHENSIS LEFT_KEY RIGHT_KEY {
+    
+        printf("\n\tComando for reconhecido!\n\n");
+    } commands
+    
+cmdwhile:
+    WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY RIGHT_KEY {
+    
+        printf("\n\tComando while reconhecido!\n\n");
+    } commands
+    
+cmddowhile:
+    DO LEFT_KEY commands RIGHT_KEY WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS FINAL {
+
+        printf("\n\tComando do-while reconhecido!\n\n");
+    } commands
+    
+cmdcase:
+    CASE DEMAIS {
+        printf("\n\tComando case  reconhecido!\n\n");
+    } commands
+    
+cmdbreak:
+    BREAK FINAL {
+        printf("\n\tComando break reconhecido!\n\n");
+    } commands
+    
+cmdswitch:
+    SWITCH LEFT_PARENTHENSIS value RIGHT_PARENTHENSIS cmdlk {
+
+        printf("\n\tComando switch reconhecido!\n\n");
+    } commands
+    
+
     
 exit: END_OF_FILE
 {
+    printf("\n\n\tNumero de parentesis abertos: %d\n\n", contParenthensis);
+    printf("\tNumero de chaves abertas: %d\n\n", contKeys);
     yyterminate();
 }
     
@@ -96,5 +153,6 @@ char **argv;
     }
 
 yyerror(){
+    printf("\n\tERROR\n\n");
     return -1;
 }

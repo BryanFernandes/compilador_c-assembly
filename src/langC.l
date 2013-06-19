@@ -7,7 +7,7 @@
 #include "langC.tab.h"
 #include <string.h>
 extern YYSTYPE yylval;
-int cont = 0;
+int cont = 1;
 %}
 
 DIGIT    [0-9]
@@ -19,6 +19,7 @@ WHILE    while
 DO       do
 SWITCH   switch
 CASE     case
+BREAK    break
 
 %%
 
@@ -83,6 +84,12 @@ CASE     case
     return CASE;
 }
 
+{BREAK}     {
+    printf("A keyword: %s\n", yytext );
+    yylval.string = strdup(yytext);
+    return BREAK;
+}
+
 
 {ID}        {
             printf( "An identifier: %s\n", yytext );
@@ -139,7 +146,11 @@ CASE     case
     return ASP;
 }
 
-"+"|"-"|"*"|"/"   printf( "An operator: %s\n", yytext );
+"+"|"-"|"*"|"/"   {
+    printf( "An operator: %s\n", yytext );
+    yylval.string = strdup(yytext);
+    return OPERATOR;
+}
 
 [ \t]+          /* eat up whitespace */
 
