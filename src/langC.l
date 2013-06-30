@@ -21,7 +21,33 @@ SWITCH   switch
 CASE     case
 BREAK    break
 
+
+
+
+
+
+
+
+
+INTEGER  int
+FLOATING float
 %%
+
+{INTEGER}  {
+    printf("PALAVRA RESERVADA %s\n",yytext);
+    return INTEGER;
+}
+
+{FLOATING} {
+    printf("PARAVRA RESERVADA %s\n",yytext);
+    return FLOATING;
+}
+
+
+
+
+
+
 
 
 <<EOF>>        {

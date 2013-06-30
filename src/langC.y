@@ -11,7 +11,15 @@ FILE *arq;//depuração
 
 int contKeys = 0;
 int contJumps = 0;
-    int contParenthensis = 0;
+int contParenthensis = 0;
+
+typedef struct _simbolo{
+    char * type;
+    char * name;
+} simbolo;
+typedef struct _tabela{
+    simbolo * simb;
+} tabela;
 
 %}
 
@@ -39,6 +47,8 @@ int contJumps = 0;
 %token <string>END_OF_FILE
 %token <string>OPERATOR
 %token <string>BREAK
+%token <string>INTEGER
+%token <string>FLOATING
 %{#include "lex.yy.c"%}
 
 %union {
@@ -48,7 +58,7 @@ int contJumps = 0;
 %%
 
 commands:
-cmdattribuition | cmdif | cmdrk | cmdfor | cmdwhile | cmddowhile | cmdcase | cmdbreak | cmdswitch | cmdlp | cmdrp | exit
+cmdattribuition | cmdif | cmdrk | cmdfor | cmdwhile | cmddowhile | cmdcase | cmdbreak | cmdswitch | cmdlp | cmdrp | cmddeclaration | exit
 
 cmdrk:
     RIGHT_KEY {
@@ -72,15 +82,34 @@ cmdrp:
     
 value:
     ID | INT | FLOAT
+
+
+
+
+
+
+
+
+reservated:
+    INTEGER | FLOATING
+
+cmddeclaration:
+    reservated ID FINAL {printf("declaração reconhecida\n\n");} commands
     
-    
+
+
+
+
+
+
+
 cmdattribuition:
     ID ATTRIBUITION value FINAL {
     
         printf("\n\tAtribuicao reconhecida!\n\n", yytext);
         fprintf(arq, "\nBIPUSH %s\nISTORE %s", $<string>3, $1);
     
-    }
+    } commands
     
 cmdif:
     IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS cmdlk {
