@@ -22,13 +22,6 @@ CASE     case
 BREAK    break
 
 
-
-
-
-
-
-
-
 INTEGER  int
 FLOATING float
 %%
@@ -42,12 +35,6 @@ FLOATING float
     printf("PARAVRA RESERVADA %s\n",yytext);
     return FLOATING;
 }
-
-
-
-
-
-
 
 
 <<EOF>>        {

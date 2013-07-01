@@ -13,13 +13,23 @@ int contKeys = 0;
 int contJumps = 0;
 int contParenthensis = 0;
 
+//variaveis para controle das passadas
+int passoSIMBOLO = 0;
+int passoFINAL = 1;
+int contPasso = 0;
+int contSimbolo=0;
+
+
+//estrutura da tabela de simbolos
 typedef struct _simbolo{
     char * type;
     char * name;
+    char * value;
 } simbolo;
 typedef struct _tabela{
     simbolo * simb;
 } tabela;
+
 
 %}
 
@@ -94,22 +104,30 @@ reservated:
     INTEGER | FLOATING
 
 cmddeclaration:
-    reservated ID FINAL {printf("declaração reconhecida\n\n");} commands
+    reservated ID FINAL {
+        if(contPasso==passoFINAL) {
+            printf("declaração reconhecida>> PASSO SIMBOLO\n\n");
+        }
+
+    } commands
     
-
-
-
-
 
 
 
 cmdattribuition:
     ID ATTRIBUITION value FINAL {
-    
-        printf("\n\tAtribuicao reconhecida!\n\n", yytext);
-        fprintf(arq, "\nBIPUSH %s\nISTORE %s", $<string>3, $1);
-    
+        if(contPasso==passoFINAL){
+            printf("\n\tAtribuicao reconhecida!\n\n", yytext);
+            fprintf(arq, "\nBIPUSH %s\nISTORE %s", $<string>3, $1);
+        }
     } commands
+
+
+
+
+
+
+
     
 cmdif:
     IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS cmdlk {
@@ -154,29 +172,55 @@ cmdswitch:
         printf("\n\tComando switch reconhecido!\n\n");
     } commands
     
-
+     
     
 exit: END_OF_FILE
 {
-    printf("\n\n\tNumero de parentesis abertos: %d\n\n", contParenthensis);
-    printf("\tNumero de chaves abertas: %d\n\n", contKeys);
-    yyterminate();
+    switch(contPasso){
+        case 1:
+            printf("\n\n\tNumero de parentesis abertos: %d\n\n", contParenthensis);
+            printf("\tNumero de chaves abertas: %d\n\n", contKeys);
+            yyterminate();
+            break;
+        case 0:
+            contPasso++;
+            printf("PASSO>> %d\n",contPasso);
+           // rewind(arq);
+            //yyparse();
+            yyterminate();
+    }   
+    
+
 }
     
 %%
+
 main( argc, argv)
 int argc;
 char **argv;
     {
         ++argv, --argc;
-        if (argc > 0)
-            yyin = fopen( argv[0], "r");
-        else
-            yyin = stdin;
-            
-        arq = fopen("depuracao.asm", "w");
+        
+        //primeiro passo
+            if (argc > 0)
+                yyin = fopen( argv[0], "r");
+            else
+                yyin = stdin;
+                
+            arq = fopen("depuracao.asm", "w");
 
-        yyparse();
+            if(contPasso==0)
+            yyparse();
+            
+
+        //segundo passo
+            if (argc > 0)
+                yyin = fopen( argv[0], "r");
+            else
+                yyin = stdin;
+                
+            if(contPasso==1)
+            yyparse();
         
         fclose(arq);
     }

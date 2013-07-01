@@ -5,7 +5,8 @@ FLEX = flex
 BISON = bison
 BFLAGS = -d -v
 
-prog: 
+
+prog:
 	${FLEX} langC.l
 	${BISON} ${BFLAGS} langC.y
 	${CC} -o prog langC.tab.c
