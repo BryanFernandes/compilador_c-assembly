@@ -9,15 +9,17 @@
 FILE *arq;//depuração
 //arq = fopen("depuracao.asm","w");//depuração
 
+//contadores
 int contKeys = 0;
 int contJumps = 0;
 int contParenthensis = 0;
-
-//variaveis para controle das passadas
-int passoSIMBOLO = 0;
-int passoFINAL = 1;
 int contPasso = 0;
 int contSimbolo=0;
+
+//variaveis para controle das passadas
+#define PASSO_SIMBOLO 0;
+int PASSO_FINAL = 1;
+
 
 
 //estrutura da tabela de simbolos
@@ -94,39 +96,25 @@ value:
     ID | INT | FLOAT
 
 
-
-
-
-
-
-
 reservated:
     INTEGER | FLOATING
 
 cmddeclaration:
     reservated ID FINAL {
-        if(contPasso==passoFINAL) {
+        if(contPasso == PASSO_FINAL) {
             printf("declaração reconhecida>> PASSO SIMBOLO\n\n");
         }
 
     } commands
-    
-
 
 
 cmdattribuition:
     ID ATTRIBUITION value FINAL {
-        if(contPasso==passoFINAL){
+        if(contPasso == PASSO_FINAL){
             printf("\n\tAtribuicao reconhecida!\n\n", yytext);
             fprintf(arq, "\nBIPUSH %s\nISTORE %s", $<string>3, $1);
         }
     } commands
-
-
-
-
-
-
 
     
 cmdif:

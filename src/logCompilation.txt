@@ -1,0 +1,3 @@
+flex langC.l
+bison -d -v langC.y
+gcc -o prog langC.tab.c
