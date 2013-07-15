@@ -6,6 +6,38 @@ A Constant: #define
 An identifier: TESTE
 An integer: 3 (3)
 A Line: 2
+A Constant: #define
+An identifier: ABCDEF
+An integer: 10 (10)
+A Line: 3
+A Constant: #define
+An identifier: BRYANHF
+An integer: 5 (5)
+A Line: 4
+A Line: 5
+PALAVRA RESERVADA int
+PALAVRA RESERVADA main
+A Left Parenthesis: (
+A Right Parenthesis: )
+A left key: {
+A Line: 6
+A Line: 7
+A keyword: if
+A Left Parenthesis: (
+An identifier: x
+A compare: ==
+An integer: 3 (3)
+A Right Parenthesis: )
+A left key: {
+A Line: 8
+An identifier: x
+A equals: =
+An integer: 5 (5)
+A final: ;
+A Line: 9
+A right key: }
+A Line: 10
+A right key: }
 EOF
 
 Passo 2: IDENTIFICANDO CONSTANTES
@@ -16,12 +48,134 @@ An integer: 3 (3)
 
 	Constante reconhecida!
 
-A Line: 3
+A Line: 11
+A Constant: #define
+An identifier: ABCDEF
+An integer: 10 (10)
+
+	Constante reconhecida!
+
+A Line: 12
+A Constant: #define
+An identifier: BRYANHF
+An integer: 5 (5)
+
+	Constante reconhecida!
+
+A Line: 13
+A Line: 14
+PALAVRA RESERVADA int
+PALAVRA RESERVADA main
+A Left Parenthesis: (
+A Right Parenthesis: )
+A left key: {
+A Line: 15
+A Line: 16
+A keyword: if
+A Left Parenthesis: (
+An identifier: x
+A compare: ==
+An integer: 3 (3)
+A Right Parenthesis: )
+A left key: {
+A Line: 17
+An identifier: x
+A equals: =
+An integer: 5 (5)
+A final: ;
+A Line: 18
+A right key: }
+A Line: 19
+A right key: }
 EOF
+
+Passo 3: LENDO FUNCAO PRINCIPAL
+
 A Constant: #define
 An identifier: TESTE
 An integer: 3 (3)
-A Line: 4
+A Line: 20
+A Constant: #define
+An identifier: ABCDEF
+An integer: 10 (10)
+A Line: 21
+A Constant: #define
+An identifier: BRYANHF
+An integer: 5 (5)
+A Line: 22
+A Line: 23
+PALAVRA RESERVADA int
+PALAVRA RESERVADA main
+A Left Parenthesis: (
+A Right Parenthesis: )
+A left key: {
+
+	Funcao main reconhecida!
+
+A Line: 24
+A Line: 25
+A keyword: if
+A Left Parenthesis: (
+An identifier: x
+A compare: ==
+An integer: 3 (3)
+A Right Parenthesis: )
+A left key: {
+
+	Comando if reconhecido!
+
+A Line: 26
+An identifier: x
+A equals: =
+An integer: 5 (5)
+A final: ;
+
+	Atribuicao reconhecida!
+
+A Line: 27
+A right key: }
+A Line: 28
+A right key: }
+EOF
+
+Passo 0: VERIFICANDO CHAVES
+
+A Constant: #define
+An identifier: TESTE
+An integer: 3 (3)
+A Line: 29
+A Constant: #define
+An identifier: ABCDEF
+An integer: 10 (10)
+A Line: 30
+A Constant: #define
+An identifier: BRYANHF
+An integer: 5 (5)
+A Line: 31
+A Line: 32
+PALAVRA RESERVADA int
+PALAVRA RESERVADA main
+A Left Parenthesis: (
+A Right Parenthesis: )
+A left key: {
+A Line: 33
+A Line: 34
+A keyword: if
+A Left Parenthesis: (
+An identifier: x
+A compare: ==
+An integer: 3 (3)
+A Right Parenthesis: )
+A left key: {
+A Line: 35
+An identifier: x
+A equals: =
+An integer: 5 (5)
+A final: ;
+A Line: 36
+A right key: }
+A Line: 37
+A right key: }
 EOF
 
 

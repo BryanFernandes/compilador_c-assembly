@@ -103,7 +103,8 @@ cmdmain:
 
 cmdrk:
     RIGHT_KEY {
-        contKeys--;
+        if(contPasso == PASSO_LIMPA)
+            contKeys--;
     } commands
     
 cmdlk:
@@ -118,6 +119,7 @@ cmdlp:
     
 cmdrp:
     RIGHT_PARENTHENSIS {
+        if(contPasso == PASSO_LIMPA)
         contParenthensis--;
     } commands
     
@@ -130,8 +132,8 @@ reservated:
 
 cmddeclaration:
     reservated ID FINAL {
-        if(contPasso == PASSO_FINAL) {
-            printf("declaração reconhecida>> PASSO SIMBOLO\n\n");
+        if(contPasso == PASSO_MAIN) {
+            printf("\n\tDeclaração reconhecida!\n\n");
         }
 
     } commands
@@ -139,53 +141,67 @@ cmddeclaration:
 
 cmdattribuition:
     ID ATTRIBUITION value FINAL {
-        if(contPasso == PASSO_FINAL){
+        if(contPasso == PASSO_MAIN){
             printf("\n\tAtribuicao reconhecida!\n\n", yytext);
-            fprintf(arq, "\nBIPUSH %s\nISTORE %s", $<string>3, $1);
+            fprintf(arq, "\n\t\tBIPUSH %s\n\t\tISTORE %s", $<string>3, $1);
         }
     } commands
 
     
 cmdif:
     IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY {
-        contKeys++;
-        printf("\n\tComando if reconhecido!\n\n");
-        contJumps++;
-        fprintf(arq, "\nILOAD %s\nBIPUSH %s\nIF_ICMPEQ L%d\nL%d:", $<string>3, $<string>5, contJumps, contJumps);
+        if(contPasso == PASSO_MAIN){
+            contKeys++;
+            printf("\n\tComando if reconhecido!\n\n");
+            contJumps++;
+            fprintf(arq, "\n\t\tILOAD %s\n\t\tBIPUSH %s\n\t\tIF_ICMPEQ L%d\nL%d:", $<string>3, $<string>5, contJumps, contJumps);
+        }
     
     } commands
     
 cmdfor:
-    FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value FINAL value OPERATOR OPERATOR RIGHT_PARENTHENSIS LEFT_KEY {
-        contKeys++;
-        printf("\n\tComando for reconhecido!\n\n");
+        FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value FINAL value OPERATOR OPERATOR RIGHT_PARENTHENSIS LEFT_KEY {
+            if(contPasso == PASSO_MAIN){
+                contKeys++;
+                printf("\n\tComando for reconhecido!\n\n");
+            }
     } commands
     
 cmdwhile:
     WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY {
-        contKeys++;
-        printf("\n\tComando while reconhecido!\n\n");
+        if(contPasso == PASSO_MAIN){
+            contKeys++;
+            printf("\n\tComando while reconhecido!\n\n");
+        }
     } commands
     
 cmddowhile:
     DO LEFT_KEY RIGHT_KEY WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS FINAL {
-        printf("\n\tComando do-while reconhecido!\n\n");
+        if(contPasso == PASSO_MAIN){
+            printf("\n\tComando do-while reconhecido!\n\n");
+        }
     } commands
     
 cmdcase:
     CASE DEMAIS {
-        printf("\n\tComando case  reconhecido!\n\n");
+        if(contPasso == PASSO_MAIN){
+            printf("\n\tComando case  reconhecido!\n\n");
+        }
     } commands
     
 cmdbreak:
     BREAK FINAL {
-        printf("\n\tComando break reconhecido!\n\n");
+        if(contPasso == PASSO_MAIN){
+            printf("\n\tComando break reconhecido!\n\n");
+        }
     } commands
     
 cmdswitch:
     SWITCH LEFT_PARENTHENSIS value RIGHT_PARENTHENSIS LEFT_KEY {
-        contKeys++;
-        printf("\n\tComando switch reconhecido!\n\n");
+        if(contPasso == PASSO_MAIN){
+            contKeys++;
+            printf("\n\tComando switch reconhecido!\n\n");
+        }
     } commands
     
      
@@ -204,7 +220,13 @@ exit: END_OF_FILE
             yyterminate();
             break;
         
+        case 2:
+            contPasso++;
+            yyterminate();
+            break;
+        
         default:
+            fprintf(arq, "\n.end-main");
             printf("\n\n\tNumero de parentesis abertos: %d\n\n", contParenthensis);
             printf("\tNumero de chaves abertas: %d\n\n", contKeys);
             yyterminate();
@@ -225,7 +247,7 @@ char **argv;
         
         arq = fopen("depuracao.asm", "w");
         
-        //primeiro passo
+        //primeiro passo: LENDO TABELA DE SIMBOLOS
         if (argc > 0)
             yyin = fopen( argv[0], "r");
         else
@@ -238,7 +260,7 @@ char **argv;
         
             
 
-        //segundo passo
+        //segundo passo: IDENTIFICANDO CONSTANTES
             if (argc > 0)
                 yyin = fopen( argv[0], "r");
             else
@@ -250,15 +272,37 @@ char **argv;
             yyparse();
         }
         
+        //terceiro passo: LENDO FUNCAO PRINCIPAL
+        if (argc > 0)
+            yyin = fopen( argv[0], "r");
+        else
+            yyin = stdin;
+        
+        if(contPasso==2){
+            printf("\nPasso %d: LENDO FUNCAO PRINCIPAL\n\n",contPasso+1);
+            fprintf(arq, "\n\n.main");
+            yyparse();
+        }
+        
+        //quarto passo
+        if (argc > 0)
+        yyin = fopen( argv[0], "r");
+        else
+        yyin = stdin;
+        
+        if(contPasso==3){
+            printf("\nPasso %d: VERIFICANDO CHAVES\n\n");
+            yyparse();
+        }
        
-         //terceiro passo
+         //quinta passo
             if (argc > 0)
                 yyin = fopen( argv[0], "r");
             else
                 yyin = stdin;
                 
-            if(contPasso==2)
-                yyparse(); 
+            if(contPasso==4)
+                yyparse();
             
         fclose(arq);
     }

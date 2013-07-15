@@ -517,10 +517,10 @@ static const yytype_uint8 yyrline[] =
 {
        0,    79,    79,    79,    79,    79,    79,    79,    79,    80,
       80,    80,    80,    80,    80,    80,    81,    81,    84,    84,
-      97,    97,   105,   105,   110,   110,   115,   115,   120,   120,
-     125,   125,   125,   129,   129,   132,   132,   141,   141,   150,
-     150,   159,   159,   165,   165,   171,   171,   176,   176,   181,
-     181,   186,   186,   193
+      97,    97,   105,   105,   111,   111,   116,   116,   121,   121,
+     127,   127,   127,   131,   131,   134,   134,   143,   143,   152,
+     152,   163,   163,   171,   171,   179,   179,   186,   186,   193,
+     193,   200,   200,   209
 };
 #endif
 
@@ -1526,109 +1526,125 @@ yyreduce:
   case 22:
 #line 105 "langC.y"
     {
-        contKeys--;
+        if(contPasso == PASSO_LIMPA)
+            contKeys--;
     ;}
     break;
 
   case 24:
-#line 110 "langC.y"
+#line 111 "langC.y"
     {
         contKeys++;
     ;}
     break;
 
   case 26:
-#line 115 "langC.y"
+#line 116 "langC.y"
     {
         contParenthensis++;
     ;}
     break;
 
   case 28:
-#line 120 "langC.y"
+#line 121 "langC.y"
     {
+        if(contPasso == PASSO_LIMPA)
         contParenthensis--;
     ;}
     break;
 
   case 35:
-#line 132 "langC.y"
+#line 134 "langC.y"
     {
-        if(contPasso == PASSO_FINAL) {
-            printf("declaração reconhecida>> PASSO SIMBOLO\n\n");
+        if(contPasso == PASSO_MAIN) {
+            printf("\n\tDeclaração reconhecida!\n\n");
         }
 
     ;}
     break;
 
   case 37:
-#line 141 "langC.y"
+#line 143 "langC.y"
     {
-        if(contPasso == PASSO_FINAL){
+        if(contPasso == PASSO_MAIN){
             printf("\n\tAtribuicao reconhecida!\n\n", yytext);
-            fprintf(arq, "\nBIPUSH %s\nISTORE %s", (yyvsp[(3) - (4)].string), (yyvsp[(1) - (4)].string));
+            fprintf(arq, "\n\t\tBIPUSH %s\n\t\tISTORE %s", (yyvsp[(3) - (4)].string), (yyvsp[(1) - (4)].string));
         }
     ;}
     break;
 
   case 39:
-#line 150 "langC.y"
+#line 152 "langC.y"
     {
-        contKeys++;
-        printf("\n\tComando if reconhecido!\n\n");
-        contJumps++;
-        fprintf(arq, "\nILOAD %s\nBIPUSH %s\nIF_ICMPEQ L%d\nL%d:", (yyvsp[(3) - (7)].string), (yyvsp[(5) - (7)].string), contJumps, contJumps);
+        if(contPasso == PASSO_MAIN){
+            contKeys++;
+            printf("\n\tComando if reconhecido!\n\n");
+            contJumps++;
+            fprintf(arq, "\n\t\tILOAD %s\n\t\tBIPUSH %s\n\t\tIF_ICMPEQ L%d\nL%d:", (yyvsp[(3) - (7)].string), (yyvsp[(5) - (7)].string), contJumps, contJumps);
+        }
     
     ;}
     break;
 
   case 41:
-#line 159 "langC.y"
+#line 163 "langC.y"
     {
-        contKeys++;
-        printf("\n\tComando for reconhecido!\n\n");
+            if(contPasso == PASSO_MAIN){
+                contKeys++;
+                printf("\n\tComando for reconhecido!\n\n");
+            }
     ;}
     break;
 
   case 43:
-#line 165 "langC.y"
+#line 171 "langC.y"
     {
-        contKeys++;
-        printf("\n\tComando while reconhecido!\n\n");
+        if(contPasso == PASSO_MAIN){
+            contKeys++;
+            printf("\n\tComando while reconhecido!\n\n");
+        }
     ;}
     break;
 
   case 45:
-#line 171 "langC.y"
+#line 179 "langC.y"
     {
-        printf("\n\tComando do-while reconhecido!\n\n");
+        if(contPasso == PASSO_MAIN){
+            printf("\n\tComando do-while reconhecido!\n\n");
+        }
     ;}
     break;
 
   case 47:
-#line 176 "langC.y"
+#line 186 "langC.y"
     {
-        printf("\n\tComando case  reconhecido!\n\n");
+        if(contPasso == PASSO_MAIN){
+            printf("\n\tComando case  reconhecido!\n\n");
+        }
     ;}
     break;
 
   case 49:
-#line 181 "langC.y"
+#line 193 "langC.y"
     {
-        printf("\n\tComando break reconhecido!\n\n");
+        if(contPasso == PASSO_MAIN){
+            printf("\n\tComando break reconhecido!\n\n");
+        }
     ;}
     break;
 
   case 51:
-#line 186 "langC.y"
+#line 200 "langC.y"
     {
-        contKeys++;
-        printf("\n\tComando switch reconhecido!\n\n");
+        if(contPasso == PASSO_MAIN){
+            contKeys++;
+            printf("\n\tComando switch reconhecido!\n\n");
+        }
     ;}
     break;
 
   case 53:
-#line 194 "langC.y"
+#line 210 "langC.y"
     {
     switch(contPasso){
         case 0:
@@ -1642,7 +1658,13 @@ yyreduce:
             yyterminate();
             break;
         
+        case 2:
+            contPasso++;
+            yyterminate();
+            break;
+        
         default:
+            fprintf(arq, "\n.end-main");
             printf("\n\n\tNumero de parentesis abertos: %d\n\n", contParenthensis);
             printf("\tNumero de chaves abertas: %d\n\n", contKeys);
             yyterminate();
@@ -1656,7 +1678,7 @@ yyreduce:
 
 
 /* Line 1267 of yacc.c.  */
-#line 1660 "langC.tab.c"
+#line 1682 "langC.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1870,7 +1892,7 @@ yyreturn:
 }
 
 
-#line 218 "langC.y"
+#line 240 "langC.y"
 
 
 main( argc, argv)
@@ -1881,7 +1903,7 @@ char **argv;
         
         arq = fopen("depuracao.asm", "w");
         
-        //primeiro passo
+        //primeiro passo: LENDO TABELA DE SIMBOLOS
         if (argc > 0)
             yyin = fopen( argv[0], "r");
         else
@@ -1894,7 +1916,7 @@ char **argv;
         
             
 
-        //segundo passo
+        //segundo passo: IDENTIFICANDO CONSTANTES
             if (argc > 0)
                 yyin = fopen( argv[0], "r");
             else
@@ -1906,15 +1928,37 @@ char **argv;
             yyparse();
         }
         
+        //terceiro passo: LENDO FUNCAO PRINCIPAL
+        if (argc > 0)
+            yyin = fopen( argv[0], "r");
+        else
+            yyin = stdin;
+        
+        if(contPasso==2){
+            printf("\nPasso %d: LENDO FUNCAO PRINCIPAL\n\n",contPasso+1);
+            fprintf(arq, "\n\n.main");
+            yyparse();
+        }
+        
+        //quarto passo
+        if (argc > 0)
+        yyin = fopen( argv[0], "r");
+        else
+        yyin = stdin;
+        
+        if(contPasso==3){
+            printf("\nPasso %d: VERIFICANDO CHAVES\n\n");
+            yyparse();
+        }
        
-         //terceiro passo
+         //quinta passo
             if (argc > 0)
                 yyin = fopen( argv[0], "r");
             else
                 yyin = stdin;
                 
-            if(contPasso==2)
-                yyparse(); 
+            if(contPasso==4)
+                yyparse();
             
         fclose(arq);
     }

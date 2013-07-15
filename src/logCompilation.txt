@@ -1,3 +1,6 @@
 flex langC.l
 bison -d -v langC.y
 gcc -o prog langC.tab.c
+langC.y: In function ‘main’:
+langC.y:294: warning: too few arguments for format
+langC.y:294: warning: too few arguments for format
