@@ -1,43 +1,27 @@
 ./prog teste.c
-PALAVRA RESERVADA int
-An identifier: felipe
-A final: ;
+
+Passo 1: LENDO TABELA DE SIMBOLOS
+
+A Constant: #define
+An identifier: TESTE
+An integer: 3 (3)
 A Line: 2
-A Line: 3
-PARAVRA RESERVADA float
-An identifier: natalia
-A final: ;
-A Line: 4
-A Line: 5
-An identifier: felipe
-A equals: =
-An integer: 3 (3)
-A final: ;
-A Line: 6
 EOF
-PASSO>> 1
-PALAVRA RESERVADA int
-An identifier: felipe
-A final: ;
-declaração reconhecida>> PASSO SIMBOLO
 
-A Line: 7
-A Line: 8
-PARAVRA RESERVADA float
-An identifier: natalia
-A final: ;
-declaração reconhecida>> PASSO SIMBOLO
+Passo 2: IDENTIFICANDO CONSTANTES
 
-A Line: 9
-A Line: 10
-An identifier: felipe
-A equals: =
+A Constant: #define
+An identifier: TESTE
 An integer: 3 (3)
-A final: ;
 
-	Atribuicao reconhecida!
+	Constante reconhecida!
 
-A Line: 11
+A Line: 3
+EOF
+A Constant: #define
+An identifier: TESTE
+An integer: 3 (3)
+A Line: 4
 EOF
 
 

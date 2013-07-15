@@ -20,11 +20,18 @@ DO       do
 SWITCH   switch
 CASE     case
 BREAK    break
+MAIN     main
 
 
 INTEGER  int
 FLOATING float
 %%
+
+{MAIN}  {
+    printf("PALAVRA RESERVADA %s\n",yytext);
+    return MAIN;
+}
+
 
 {INTEGER}  {
     printf("PALAVRA RESERVADA %s\n",yytext);
@@ -163,6 +170,12 @@ FLOATING float
     printf( "An operator: %s\n", yytext );
     yylval.string = strdup(yytext);
     return OPERATOR;
+}
+
+"#define"   {
+    printf( "A Constant: %s\n", yytext );
+    yylval.string = strdup(yytext);
+    return DEFINE;
 }
 
 [ \t]+          /* eat up whitespace */

@@ -1,5 +1,1 @@
-int felipe;
-
-float natalia;
-
-felipe =3;
+#define TESTE 3

@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 FILE *arq;//depuração
 //arq = fopen("depuracao.asm","w");//depuração
@@ -17,8 +18,11 @@ int contPasso = 0;
 int contSimbolo=0;
 
 //variaveis para controle das passadas
-#define PASSO_SIMBOLO 0;
-int PASSO_FINAL = 1;
+int PASSO_SIMBOLO = 0;
+int PASSO_DEFINE = 1;
+int PASSO_MAIN = 2;
+int PASSO_LIMPA = 3;
+int PASSO_FINAL = 4;
 
 
 
@@ -61,6 +65,8 @@ typedef struct _tabela{
 %token <string>BREAK
 %token <string>INTEGER
 %token <string>FLOATING
+%token <string>MAIN
+%token <string>DEFINE
 %{#include "lex.yy.c"%}
 
 %union {
@@ -70,17 +76,40 @@ typedef struct _tabela{
 %%
 
 commands:
-cmdattribuition | cmdif | cmdrk | cmdfor | cmdwhile | cmddowhile | cmdcase | cmdbreak | cmdswitch | cmdlp | cmdrp | cmddeclaration | exit
+    cmdattribuition | cmdif | cmdrk | cmdlk | cmdfor | cmdwhile | cmddowhile |
+    cmdcase | cmdbreak | cmdswitch | cmdlp | cmdrp | cmddeclaration | cmdmain |
+    cmddefine | exit
+
+cmddefine:
+    DEFINE ID INT {
+        if(contPasso == PASSO_DEFINE){
+            printf("\n\tConstante reconhecida!\n\n");
+            int i;
+            char palavra[strlen($2)];
+            for(i=0;i<strlen($2);i++) {
+                palavra[i]=tolower($2[i]);
+            }
+            fprintf(arq, "\n%s\t%s", palavra, $3);
+        }
+    } commands
+    
+cmdmain:
+    INTEGER MAIN LEFT_PARENTHENSIS RIGHT_PARENTHENSIS LEFT_KEY {
+        if(contPasso == PASSO_MAIN){
+            contKeys++;
+            printf("\n\tFuncao main reconhecida!\n\n");
+        }
+    } commands
 
 cmdrk:
     RIGHT_KEY {
         contKeys--;
-} commands
+    } commands
     
 cmdlk:
     LEFT_KEY {
         contKeys++;
-} commands
+    } commands
     
 cmdlp:
     LEFT_PARENTHENSIS {
@@ -118,8 +147,8 @@ cmdattribuition:
 
     
 cmdif:
-    IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS cmdlk {
-    
+    IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY {
+        contKeys++;
         printf("\n\tComando if reconhecido!\n\n");
         contJumps++;
         fprintf(arq, "\nILOAD %s\nBIPUSH %s\nIF_ICMPEQ L%d\nL%d:", $<string>3, $<string>5, contJumps, contJumps);
@@ -127,20 +156,19 @@ cmdif:
     } commands
     
 cmdfor:
-    FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value FINAL value OPERATOR OPERATOR RIGHT_PARENTHENSIS LEFT_KEY RIGHT_KEY {
-    
+    FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value FINAL value OPERATOR OPERATOR RIGHT_PARENTHENSIS LEFT_KEY {
+        contKeys++;
         printf("\n\tComando for reconhecido!\n\n");
     } commands
     
 cmdwhile:
-    WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY RIGHT_KEY {
-    
+    WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY {
+        contKeys++;
         printf("\n\tComando while reconhecido!\n\n");
     } commands
     
 cmddowhile:
-    DO LEFT_KEY commands RIGHT_KEY WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS FINAL {
-
+    DO LEFT_KEY RIGHT_KEY WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS FINAL {
         printf("\n\tComando do-while reconhecido!\n\n");
     } commands
     
@@ -155,8 +183,8 @@ cmdbreak:
     } commands
     
 cmdswitch:
-    SWITCH LEFT_PARENTHENSIS value RIGHT_PARENTHENSIS cmdlk {
-
+    SWITCH LEFT_PARENTHENSIS value RIGHT_PARENTHENSIS LEFT_KEY {
+        contKeys++;
         printf("\n\tComando switch reconhecido!\n\n");
     } commands
     
@@ -165,17 +193,23 @@ cmdswitch:
 exit: END_OF_FILE
 {
     switch(contPasso){
+        case 0:
+            contPasso++;
+            yyterminate();
+            break;
+            
         case 1:
+            contPasso++;
+            fprintf(arq, "\n.end-constant");
+            yyterminate();
+            break;
+        
+        default:
             printf("\n\n\tNumero de parentesis abertos: %d\n\n", contParenthensis);
             printf("\tNumero de chaves abertas: %d\n\n", contKeys);
             yyterminate();
             break;
-        case 0:
-            contPasso++;
-            printf("PASSO>> %d\n",contPasso);
-           // rewind(arq);
-            //yyparse();
-            yyterminate();
+        
     }   
     
 
@@ -189,16 +223,19 @@ char **argv;
     {
         ++argv, --argc;
         
+        arq = fopen("depuracao.asm", "w");
+        
         //primeiro passo
-            if (argc > 0)
-                yyin = fopen( argv[0], "r");
-            else
-                yyin = stdin;
-                
-            arq = fopen("depuracao.asm", "w");
+        if (argc > 0)
+            yyin = fopen( argv[0], "r");
+        else
+            yyin = stdin;
 
-            if(contPasso==0)
+        if(contPasso==0){
+            printf("\nPasso %d: LENDO TABELA DE SIMBOLOS\n\n",contPasso+1);
             yyparse();
+        }
+        
             
 
         //segundo passo
@@ -207,9 +244,22 @@ char **argv;
             else
                 yyin = stdin;
                 
-            if(contPasso==1)
+        if(contPasso==1){
+            printf("\nPasso %d: IDENTIFICANDO CONSTANTES\n\n",contPasso+1);
+            fprintf(arq, "\n.constant");
             yyparse();
+        }
         
+       
+         //terceiro passo
+            if (argc > 0)
+                yyin = fopen( argv[0], "r");
+            else
+                yyin = stdin;
+                
+            if(contPasso==2)
+                yyparse(); 
+            
         fclose(arq);
     }
 

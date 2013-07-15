@@ -63,7 +63,9 @@
      OPERATOR = 279,
      BREAK = 280,
      INTEGER = 281,
-     FLOATING = 282
+     FLOATING = 282,
+     MAIN = 283,
+     DEFINE = 284
    };
 #endif
 /* Tokens.  */
@@ -92,18 +94,20 @@
 #define BREAK 280
 #define INTEGER 281
 #define FLOATING 282
+#define MAIN 283
+#define DEFINE 284
 
 
 
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 66 "langC.y"
+#line 72 "langC.y"
 {
   char *string;  /* string buffer */
 }
 /* Line 1529 of yacc.c.  */
-#line 107 "langC.tab.h"
+#line 111 "langC.tab.h"
 	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1

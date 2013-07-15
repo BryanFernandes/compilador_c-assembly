@@ -1,3 +1,4 @@
 
-BIPUSH 3
-ISTORE felipe
+.constant
+teste	3
+.end-constant
