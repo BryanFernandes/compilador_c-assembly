@@ -21,6 +21,7 @@ SWITCH   switch
 CASE     case
 BREAK    break
 MAIN     main
+RETURN   return
 
 
 INTEGER  int
@@ -28,18 +29,25 @@ FLOATING float
 %%
 
 {MAIN}  {
-    printf("PALAVRA RESERVADA %s\n",yytext);
+    printf("A keyword: %s\n",yytext);
     return MAIN;
+}
+
+{RETURN} {
+    printf("A keyword: %s\n", yytext);
+    yylval.string = strdup(yytext);
+    return RETURN;
+
 }
 
 
 {INTEGER}  {
-    printf("PALAVRA RESERVADA %s\n",yytext);
+    printf("A keyword: %s\n",yytext);
     return INTEGER;
 }
 
 {FLOATING} {
-    printf("PARAVRA RESERVADA %s\n",yytext);
+    printf("A keyword: %s\n",yytext);
     return FLOATING;
 }
 

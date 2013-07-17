@@ -50,22 +50,22 @@
      INT = 266,
      FLOAT = 267,
      DEMAIS = 268,
-     EQUALS = 269,
-     LEFT_PARENTHENSIS = 270,
-     RIGHT_PARENTHENSIS = 271,
-     FINAL = 272,
-     ATTRIBUITION = 273,
-     COMPARE = 274,
-     LEFT_KEY = 275,
-     RIGHT_KEY = 276,
-     ASP = 277,
-     END_OF_FILE = 278,
-     OPERATOR = 279,
-     BREAK = 280,
-     INTEGER = 281,
-     FLOATING = 282,
-     MAIN = 283,
-     DEFINE = 284
+     LEFT_PARENTHENSIS = 269,
+     RIGHT_PARENTHENSIS = 270,
+     FINAL = 271,
+     ATTRIBUITION = 272,
+     COMPARE = 273,
+     LEFT_KEY = 274,
+     RIGHT_KEY = 275,
+     ASP = 276,
+     END_OF_FILE = 277,
+     OPERATOR = 278,
+     BREAK = 279,
+     INTEGER = 280,
+     FLOATING = 281,
+     MAIN = 282,
+     DEFINE = 283,
+     RETURN = 284
    };
 #endif
 /* Tokens.  */
@@ -80,29 +80,29 @@
 #define INT 266
 #define FLOAT 267
 #define DEMAIS 268
-#define EQUALS 269
-#define LEFT_PARENTHENSIS 270
-#define RIGHT_PARENTHENSIS 271
-#define FINAL 272
-#define ATTRIBUITION 273
-#define COMPARE 274
-#define LEFT_KEY 275
-#define RIGHT_KEY 276
-#define ASP 277
-#define END_OF_FILE 278
-#define OPERATOR 279
-#define BREAK 280
-#define INTEGER 281
-#define FLOATING 282
-#define MAIN 283
-#define DEFINE 284
+#define LEFT_PARENTHENSIS 269
+#define RIGHT_PARENTHENSIS 270
+#define FINAL 271
+#define ATTRIBUITION 272
+#define COMPARE 273
+#define LEFT_KEY 274
+#define RIGHT_KEY 275
+#define ASP 276
+#define END_OF_FILE 277
+#define OPERATOR 278
+#define BREAK 279
+#define INTEGER 280
+#define FLOATING 281
+#define MAIN 282
+#define DEFINE 283
+#define RETURN 284
 
 
 
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 72 "langC.y"
+#line 74 "langC.y"
 {
   char *string;  /* string buffer */
 }

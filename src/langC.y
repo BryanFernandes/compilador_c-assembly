@@ -16,6 +16,7 @@ int contJumps = 0;
 int contParenthensis = 0;
 int contPasso = 0;
 int contSimbolo=0;
+int checkDo = 0;
 
 //variaveis para controle das passadas
 int PASSO_SIMBOLO = 0;
@@ -32,6 +33,7 @@ typedef struct _simbolo{
     char * name;
     char * value;
 } simbolo;
+
 typedef struct _tabela{
     simbolo * simb;
 } tabela;
@@ -51,7 +53,6 @@ typedef struct _tabela{
 %token <string>INT
 %token <string>FLOAT
 %token <string>DEMAIS
-%token <string>EQUALS
 %token <string>LEFT_PARENTHENSIS
 %token <string>RIGHT_PARENTHENSIS
 %token <string>FINAL
@@ -67,6 +68,7 @@ typedef struct _tabela{
 %token <string>FLOATING
 %token <string>MAIN
 %token <string>DEFINE
+%token <string>RETURN
 %{#include "lex.yy.c"%}
 
 %union {
@@ -76,9 +78,9 @@ typedef struct _tabela{
 %%
 
 commands:
-    cmdattribuition | cmdif | cmdrk | cmdlk | cmdfor | cmdwhile | cmddowhile |
-    cmdcase | cmdbreak | cmdswitch | cmdlp | cmdrp | cmddeclaration | cmdmain |
-    cmddefine | exit
+    cmdattribuition | cmdif | cmdrk | cmdlk | cmdfor | cmdwhile | cmddowhile | cmdwhilefinal |
+    cmdcase | cmdbreak | cmdswitch | cmdlp | cmdrp | cmddeclaration | cmddeclarationinst |
+    cmdmain | cmddefine | return | exit
 
 cmddefine:
     DEFINE ID INT {
@@ -100,6 +102,13 @@ cmdmain:
             printf("\n\tFuncao main reconhecida!\n\n");
         }
     } commands
+    
+return:
+    RETURN INT FINAL {
+        if(contPasso == PASSO_MAIN){
+            printf("\n\tRetorno da funcao main reconhecida!\n\n");
+        }
+} commands
 
 cmdrk:
     RIGHT_KEY {
@@ -133,7 +142,15 @@ reservated:
 cmddeclaration:
     reservated ID FINAL {
         if(contPasso == PASSO_MAIN) {
-            printf("\n\tDeclaração reconhecida!\n\n");
+            printf("\n\tDeclaracao reconhecida!\n\n");
+        }
+
+    } commands
+    
+cmddeclarationinst:
+    reservated ID ATTRIBUITION value FINAL {
+        if(contPasso == PASSO_MAIN) {
+            printf("\n\tDeclaracao com instanciacao reconhecida!\n\n");
         }
 
     } commands
@@ -176,9 +193,23 @@ cmdwhile:
     } commands
     
 cmddowhile:
-    DO LEFT_KEY RIGHT_KEY WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS FINAL {
-        if(contPasso == PASSO_MAIN){
+    DO LEFT_KEY {
+       if(contPasso == PASSO_MAIN){
+            contKeys++;
+            checkDo++;
             printf("\n\tComando do-while reconhecido!\n\n");
+        } 
+    } commands
+
+    
+cmdwhilefinal:
+    RIGHT_KEY WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS FINAL {
+        if(contPasso == PASSO_MAIN){
+            contKeys--;
+            checkDo--;
+            if(checkDo > 0){
+                printf("\n\tComando do-while reconhecido!\n\n");
+            }
         }
     } commands
     
@@ -229,10 +260,12 @@ exit: END_OF_FILE
             fprintf(arq, "\n.end-main");
             printf("\n\n\tNumero de parentesis abertos: %d\n\n", contParenthensis);
             printf("\tNumero de chaves abertas: %d\n\n", contKeys);
+            printf("\tEstrutura DO-WHILE completo: %d\n\n", checkDo);
+
             yyterminate();
             break;
         
-    }   
+    } 
     
 
 }
@@ -291,11 +324,11 @@ char **argv;
         yyin = stdin;
         
         if(contPasso==3){
-            printf("\nPasso %d: VERIFICANDO CHAVES\n\n");
+            printf("\nPasso %d: VERIFICANDO CODIGO\n\n", contPasso+1);
             yyparse();
         }
        
-         //quinta passo
+         //quinto passo
             if (argc > 0)
                 yyin = fopen( argv[0], "r");
             else
