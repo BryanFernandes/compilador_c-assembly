@@ -1,0 +1,4 @@
+flex langC.l
+bison -d -v langC.y
+langC.y: conflicts: 1 shift/reduce
+gcc -o prog langC.tab.c

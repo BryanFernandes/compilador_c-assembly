@@ -1,0 +1,404 @@
+./prog teste.c
+
+Passo 1: LENDO TABELA DE SIMBOLOS
+
+A Constant: #define
+An identifier: TESTE
+An integer: 3 (3)
+A Line: 2
+A Constant: #define
+An identifier: ABCDEF
+An integer: 10 (10)
+A Line: 3
+A Constant: #define
+An identifier: BRYANHF
+An integer: 5 (5)
+A Line: 4
+A Line: 5
+A keyword: int
+A keyword: main
+A Left Parenthesis: (
+A Right Parenthesis: )
+A left key: {
+A Line: 6
+A Line: 7
+A keyword: int
+An identifier: x
+A equals: =
+An integer: 3 (3)
+A final: ;
+A Line: 8
+A keyword: int
+An identifier: y
+A final: ;
+A Line: 9
+A Line: 10
+A keyword: if
+A Left Parenthesis: (
+An identifier: x
+A compare: ==
+An integer: 3 (3)
+A Right Parenthesis: )
+A left key: {
+A Line: 11
+An identifier: y
+A equals: =
+An integer: 4 (4)
+A final: ;
+A Line: 12
+A keyword: if
+A Left Parenthesis: (
+An identifier: y
+A compare: ==
+An integer: 4 (4)
+A Right Parenthesis: )
+A left key: {
+A Line: 13
+An identifier: x
+A equals: =
+An integer: 5 (5)
+A final: ;
+A Line: 14
+A right key: }
+A Line: 15
+A right key: }
+A Line: 16
+A Line: 17
+A keyword: do
+A left key: {
+A Line: 18
+An identifier: x
+A equals: =
+An identifier: y
+A final: ;
+A Line: 19
+A right key: }
+A keyword: while
+A Left Parenthesis: (
+An identifier: y
+A compare: <
+An integer: 1 (1)
+A Right Parenthesis: )
+A final: ;
+A Line: 20
+A Line: 21
+A keyword: return
+An integer: 0 (0)
+A final: ;
+A Line: 22
+A right key: }
+EOF
+
+Passo 2: IDENTIFICANDO CONSTANTES
+
+A Constant: #define
+An identifier: TESTE
+An integer: 3 (3)
+
+	Constante reconhecida!
+
+A Line: 23
+A Constant: #define
+An identifier: ABCDEF
+An integer: 10 (10)
+
+	Constante reconhecida!
+
+A Line: 24
+A Constant: #define
+An identifier: BRYANHF
+An integer: 5 (5)
+
+	Constante reconhecida!
+
+A Line: 25
+A Line: 26
+A keyword: int
+A keyword: main
+A Left Parenthesis: (
+A Right Parenthesis: )
+A left key: {
+A Line: 27
+A Line: 28
+A keyword: int
+An identifier: x
+A equals: =
+An integer: 3 (3)
+A final: ;
+A Line: 29
+A keyword: int
+An identifier: y
+A final: ;
+A Line: 30
+A Line: 31
+A keyword: if
+A Left Parenthesis: (
+An identifier: x
+A compare: ==
+An integer: 3 (3)
+A Right Parenthesis: )
+A left key: {
+A Line: 32
+An identifier: y
+A equals: =
+An integer: 4 (4)
+A final: ;
+A Line: 33
+A keyword: if
+A Left Parenthesis: (
+An identifier: y
+A compare: ==
+An integer: 4 (4)
+A Right Parenthesis: )
+A left key: {
+A Line: 34
+An identifier: x
+A equals: =
+An integer: 5 (5)
+A final: ;
+A Line: 35
+A right key: }
+A Line: 36
+A right key: }
+A Line: 37
+A Line: 38
+A keyword: do
+A left key: {
+A Line: 39
+An identifier: x
+A equals: =
+An identifier: y
+A final: ;
+A Line: 40
+A right key: }
+A keyword: while
+A Left Parenthesis: (
+An identifier: y
+A compare: <
+An integer: 1 (1)
+A Right Parenthesis: )
+A final: ;
+A Line: 41
+A Line: 42
+A keyword: return
+An integer: 0 (0)
+A final: ;
+A Line: 43
+A right key: }
+EOF
+
+Passo 3: LENDO FUNCAO PRINCIPAL
+
+A Constant: #define
+An identifier: TESTE
+An integer: 3 (3)
+A Line: 44
+A Constant: #define
+An identifier: ABCDEF
+An integer: 10 (10)
+A Line: 45
+A Constant: #define
+An identifier: BRYANHF
+An integer: 5 (5)
+A Line: 46
+A Line: 47
+A keyword: int
+A keyword: main
+A Left Parenthesis: (
+A Right Parenthesis: )
+A left key: {
+
+	Funcao main reconhecida!
+
+A Line: 48
+A Line: 49
+A keyword: int
+An identifier: x
+A equals: =
+An integer: 3 (3)
+A final: ;
+
+	Declaracao com instanciacao reconhecida!
+
+A Line: 50
+A keyword: int
+An identifier: y
+A final: ;
+
+	Declaracao reconhecida!
+
+A Line: 51
+A Line: 52
+A keyword: if
+A Left Parenthesis: (
+An identifier: x
+A compare: ==
+An integer: 3 (3)
+A Right Parenthesis: )
+A left key: {
+
+	Comando if reconhecido!
+
+A Line: 53
+An identifier: y
+A equals: =
+An integer: 4 (4)
+A final: ;
+
+	Atribuicao reconhecida!
+
+A Line: 54
+A keyword: if
+A Left Parenthesis: (
+An identifier: y
+A compare: ==
+An integer: 4 (4)
+A Right Parenthesis: )
+A left key: {
+
+	Comando if reconhecido!
+
+A Line: 55
+An identifier: x
+A equals: =
+An integer: 5 (5)
+A final: ;
+
+	Atribuicao reconhecida!
+
+A Line: 56
+A right key: }
+A Line: 57
+A right key: }
+A Line: 58
+A Line: 59
+A keyword: do
+A left key: {
+
+	Comando do-while reconhecido!
+
+A Line: 60
+An identifier: x
+A equals: =
+An identifier: y
+A final: ;
+
+	Atribuicao reconhecida!
+
+A Line: 61
+A right key: }
+A keyword: while
+A Left Parenthesis: (
+An identifier: y
+A compare: <
+An integer: 1 (1)
+A Right Parenthesis: )
+A final: ;
+A Line: 62
+A Line: 63
+A keyword: return
+An integer: 0 (0)
+A final: ;
+
+	Retorno da funcao main reconhecida!
+
+A Line: 64
+A right key: }
+EOF
+
+Passo 4: VERIFICANDO CODIGO
+
+A Constant: #define
+An identifier: TESTE
+An integer: 3 (3)
+A Line: 65
+A Constant: #define
+An identifier: ABCDEF
+An integer: 10 (10)
+A Line: 66
+A Constant: #define
+An identifier: BRYANHF
+An integer: 5 (5)
+A Line: 67
+A Line: 68
+A keyword: int
+A keyword: main
+A Left Parenthesis: (
+A Right Parenthesis: )
+A left key: {
+A Line: 69
+A Line: 70
+A keyword: int
+An identifier: x
+A equals: =
+An integer: 3 (3)
+A final: ;
+A Line: 71
+A keyword: int
+An identifier: y
+A final: ;
+A Line: 72
+A Line: 73
+A keyword: if
+A Left Parenthesis: (
+An identifier: x
+A compare: ==
+An integer: 3 (3)
+A Right Parenthesis: )
+A left key: {
+A Line: 74
+An identifier: y
+A equals: =
+An integer: 4 (4)
+A final: ;
+A Line: 75
+A keyword: if
+A Left Parenthesis: (
+An identifier: y
+A compare: ==
+An integer: 4 (4)
+A Right Parenthesis: )
+A left key: {
+A Line: 76
+An identifier: x
+A equals: =
+An integer: 5 (5)
+A final: ;
+A Line: 77
+A right key: }
+A Line: 78
+A right key: }
+A Line: 79
+A Line: 80
+A keyword: do
+A left key: {
+A Line: 81
+An identifier: x
+A equals: =
+An identifier: y
+A final: ;
+A Line: 82
+A right key: }
+A keyword: while
+A Left Parenthesis: (
+An identifier: y
+A compare: <
+An integer: 1 (1)
+A Right Parenthesis: )
+A final: ;
+A Line: 83
+A Line: 84
+A keyword: return
+An integer: 0 (0)
+A final: ;
+A Line: 85
+A right key: }
+EOF
+
+
+	Numero de parentesis abertos: 0
+
+	Numero de chaves abertas: 0
+
+	Estrutura DO-WHILE completo: 0
+
