@@ -1,0 +1,527 @@
+./prog teste.c
+
+Passo 1: LENDO TABELA DE SIMBOLOS
+
+A Constant: #define
+An identifier: TESTE
+An integer: 3 (3)
+A Line: 2
+A Constant: #define
+An identifier: ABCDEF
+An integer: 10 (10)
+A Line: 3
+A Constant: #define
+An identifier: BRYANHF
+An integer: 5 (5)
+A Line: 4
+A Line: 5
+A keyword: int
+A keyword: main
+A Left Parenthesis: (
+A Right Parenthesis: )
+A left key: {
+A Line: 6
+A Line: 7
+A keyword: int
+An identifier: x
+A equals: =
+An integer: 3 (3)
+A final: ;
+A Line: 8
+A keyword: int
+An identifier: y
+A final: ;
+A Line: 9
+A keyword: int
+An identifier: r
+A final: ;
+A Line: 10
+A keyword: int
+An identifier: c
+A final: ;
+A Line: 11
+A Line: 12
+A keyword: if
+A Left Parenthesis: (
+An identifier: x
+A compare: ==
+An integer: 3 (3)
+A Right Parenthesis: )
+A left key: {
+A Line: 13
+An identifier: y
+A equals: =
+An integer: 4 (4)
+A final: ;
+A Line: 14
+A keyword: if
+A Left Parenthesis: (
+An identifier: y
+A compare: ==
+An integer: 4 (4)
+A Right Parenthesis: )
+A left key: {
+A Line: 15
+An identifier: x
+A equals: =
+An integer: 5 (5)
+A final: ;
+A Line: 16
+A right key: }
+A Line: 17
+A right key: }
+A Line: 18
+A Line: 19
+A keyword: do
+A left key: {
+A Line: 20
+An identifier: r
+A equals: =
+An integer: 0 (0)
+A final: ;
+A Line: 21
+A right key: }
+A keyword: while
+A Left Parenthesis: (
+An identifier: y
+A compare: <
+An integer: 1 (1)
+A Right Parenthesis: )
+A final: ;
+A Line: 22
+A Line: 23
+A keyword: if
+A Left Parenthesis: (
+An identifier: c
+A compare: ==
+An integer: 0 (0)
+A Right Parenthesis: )
+A left key: {
+A Line: 24
+An identifier: r
+A equals: =
+An integer: 5 (5)
+A final: ;
+A Line: 25
+A right key: }
+A Line: 26
+A Line: 27
+A Line: 28
+A Line: 29
+A keyword: return
+An integer: 0 (0)
+A final: ;
+A Line: 30
+A right key: }
+A Line: 31
+EOF
+
+Passo 2: IDENTIFICANDO CONSTANTES
+
+A Constant: #define
+An identifier: TESTE
+An integer: 3 (3)
+
+	Constante reconhecida!
+
+A Line: 32
+A Constant: #define
+An identifier: ABCDEF
+An integer: 10 (10)
+
+	Constante reconhecida!
+
+A Line: 33
+A Constant: #define
+An identifier: BRYANHF
+An integer: 5 (5)
+
+	Constante reconhecida!
+
+A Line: 34
+A Line: 35
+A keyword: int
+A keyword: main
+A Left Parenthesis: (
+A Right Parenthesis: )
+A left key: {
+A Line: 36
+A Line: 37
+A keyword: int
+An identifier: x
+A equals: =
+An integer: 3 (3)
+A final: ;
+A Line: 38
+A keyword: int
+An identifier: y
+A final: ;
+A Line: 39
+A keyword: int
+An identifier: r
+A final: ;
+A Line: 40
+A keyword: int
+An identifier: c
+A final: ;
+A Line: 41
+A Line: 42
+A keyword: if
+A Left Parenthesis: (
+An identifier: x
+A compare: ==
+An integer: 3 (3)
+A Right Parenthesis: )
+A left key: {
+A Line: 43
+An identifier: y
+A equals: =
+An integer: 4 (4)
+A final: ;
+A Line: 44
+A keyword: if
+A Left Parenthesis: (
+An identifier: y
+A compare: ==
+An integer: 4 (4)
+A Right Parenthesis: )
+A left key: {
+A Line: 45
+An identifier: x
+A equals: =
+An integer: 5 (5)
+A final: ;
+A Line: 46
+A right key: }
+A Line: 47
+A right key: }
+A Line: 48
+A Line: 49
+A keyword: do
+A left key: {
+A Line: 50
+An identifier: r
+A equals: =
+An integer: 0 (0)
+A final: ;
+A Line: 51
+A right key: }
+A keyword: while
+A Left Parenthesis: (
+An identifier: y
+A compare: <
+An integer: 1 (1)
+A Right Parenthesis: )
+A final: ;
+A Line: 52
+A Line: 53
+A keyword: if
+A Left Parenthesis: (
+An identifier: c
+A compare: ==
+An integer: 0 (0)
+A Right Parenthesis: )
+A left key: {
+A Line: 54
+An identifier: r
+A equals: =
+An integer: 5 (5)
+A final: ;
+A Line: 55
+A right key: }
+A Line: 56
+A Line: 57
+A Line: 58
+A Line: 59
+A keyword: return
+An integer: 0 (0)
+A final: ;
+A Line: 60
+A right key: }
+A Line: 61
+EOF
+
+Passo 3: LENDO FUNCAO PRINCIPAL
+
+A Constant: #define
+An identifier: TESTE
+An integer: 3 (3)
+A Line: 62
+A Constant: #define
+An identifier: ABCDEF
+An integer: 10 (10)
+A Line: 63
+A Constant: #define
+An identifier: BRYANHF
+An integer: 5 (5)
+A Line: 64
+A Line: 65
+A keyword: int
+A keyword: main
+A Left Parenthesis: (
+A Right Parenthesis: )
+A left key: {
+
+	Funcao main reconhecida!
+
+A Line: 66
+A Line: 67
+A keyword: int
+An identifier: x
+A equals: =
+An integer: 3 (3)
+A final: ;
+
+	Declaracao com instanciacao reconhecida!
+
+A Line: 68
+A keyword: int
+An identifier: y
+A final: ;
+
+	Declaracao reconhecida!
+
+A Line: 69
+A keyword: int
+An identifier: r
+A final: ;
+
+	Declaracao reconhecida!
+
+A Line: 70
+A keyword: int
+An identifier: c
+A final: ;
+
+	Declaracao reconhecida!
+
+A Line: 71
+A Line: 72
+A keyword: if
+A Left Parenthesis: (
+An identifier: x
+A compare: ==
+An integer: 3 (3)
+A Right Parenthesis: )
+A left key: {
+
+	Comando if reconhecido!
+
+A Line: 73
+An identifier: y
+A equals: =
+An integer: 4 (4)
+A final: ;
+
+	Atribuicao reconhecida!
+
+A Line: 74
+A keyword: if
+A Left Parenthesis: (
+An identifier: y
+A compare: ==
+An integer: 4 (4)
+A Right Parenthesis: )
+A left key: {
+
+	Comando if reconhecido!
+
+A Line: 75
+An identifier: x
+A equals: =
+An integer: 5 (5)
+A final: ;
+
+	Atribuicao reconhecida!
+
+A Line: 76
+A right key: }
+A Line: 77
+A right key: }
+A Line: 78
+A Line: 79
+A keyword: do
+A left key: {
+
+	Comando do-while reconhecido!
+
+A Line: 80
+An identifier: r
+A equals: =
+An integer: 0 (0)
+A final: ;
+
+	Atribuicao reconhecida!
+
+A Line: 81
+A right key: }
+A keyword: while
+A Left Parenthesis: (
+An identifier: y
+A compare: <
+An integer: 1 (1)
+A Right Parenthesis: )
+A final: ;
+
+	Comando final do-while reconhecido!
+
+A Line: 82
+A Line: 83
+A keyword: if
+A Left Parenthesis: (
+An identifier: c
+A compare: ==
+An integer: 0 (0)
+A Right Parenthesis: )
+A left key: {
+
+	Comando if reconhecido!
+
+A Line: 84
+An identifier: r
+A equals: =
+An integer: 5 (5)
+A final: ;
+
+	Atribuicao reconhecida!
+
+A Line: 85
+A right key: }
+A Line: 86
+A Line: 87
+A Line: 88
+A Line: 89
+A keyword: return
+An integer: 0 (0)
+A final: ;
+
+	Retorno da funcao main reconhecida!
+
+A Line: 90
+A right key: }
+A Line: 91
+EOF
+
+Passo 4: VERIFICANDO CODIGO
+
+A Constant: #define
+An identifier: TESTE
+An integer: 3 (3)
+A Line: 92
+A Constant: #define
+An identifier: ABCDEF
+An integer: 10 (10)
+A Line: 93
+A Constant: #define
+An identifier: BRYANHF
+An integer: 5 (5)
+A Line: 94
+A Line: 95
+A keyword: int
+A keyword: main
+A Left Parenthesis: (
+A Right Parenthesis: )
+A left key: {
+A Line: 96
+A Line: 97
+A keyword: int
+An identifier: x
+A equals: =
+An integer: 3 (3)
+A final: ;
+A Line: 98
+A keyword: int
+An identifier: y
+A final: ;
+A Line: 99
+A keyword: int
+An identifier: r
+A final: ;
+A Line: 100
+A keyword: int
+An identifier: c
+A final: ;
+A Line: 101
+A Line: 102
+A keyword: if
+A Left Parenthesis: (
+An identifier: x
+A compare: ==
+An integer: 3 (3)
+A Right Parenthesis: )
+A left key: {
+A Line: 103
+An identifier: y
+A equals: =
+An integer: 4 (4)
+A final: ;
+A Line: 104
+A keyword: if
+A Left Parenthesis: (
+An identifier: y
+A compare: ==
+An integer: 4 (4)
+A Right Parenthesis: )
+A left key: {
+A Line: 105
+An identifier: x
+A equals: =
+An integer: 5 (5)
+A final: ;
+A Line: 106
+A right key: }
+A Line: 107
+A right key: }
+A Line: 108
+A Line: 109
+A keyword: do
+A left key: {
+A Line: 110
+An identifier: r
+A equals: =
+An integer: 0 (0)
+A final: ;
+A Line: 111
+A right key: }
+A keyword: while
+A Left Parenthesis: (
+An identifier: y
+A compare: <
+An integer: 1 (1)
+A Right Parenthesis: )
+A final: ;
+A Line: 112
+A Line: 113
+A keyword: if
+A Left Parenthesis: (
+An identifier: c
+A compare: ==
+An integer: 0 (0)
+A Right Parenthesis: )
+A left key: {
+A Line: 114
+An identifier: r
+A equals: =
+An integer: 5 (5)
+A final: ;
+A Line: 115
+A right key: }
+A Line: 116
+A Line: 117
+A Line: 118
+A Line: 119
+A keyword: return
+An integer: 0 (0)
+A final: ;
+A Line: 120
+A right key: }
+A Line: 121
+EOF
+
+
+	Numero de parentesis abertos: 0
+
+	Numero de chaves abertas: 0
+
+	Estrutura DO-WHILE completo: 0
+

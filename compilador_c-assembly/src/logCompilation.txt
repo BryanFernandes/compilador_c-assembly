@@ -1,0 +1,4 @@
+flex langC.l
+bison -d -v langC.y
+langC.y: conflitos: 1 de deslocamento/redução
+gcc -o prog langC.tab.c
