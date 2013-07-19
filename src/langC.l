@@ -43,11 +43,13 @@ FLOATING float
 
 {INTEGER}  {
     printf("A keyword: %s\n",yytext);
+    yylval.string = strdup(yytext);
     return INTEGER;
 }
 
 {FLOATING} {
     printf("A keyword: %s\n",yytext);
+    yylval.string = strdup(yytext);
     return FLOATING;
 }
 

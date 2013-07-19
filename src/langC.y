@@ -19,7 +19,7 @@ int contSimbolo=0;
 int checkDo = 0;
 
 //variaveis para controle das passadas
-int PASSO_SIMBOLO = 0;
+int PASSO_SIMBOLO = 0,PASSO_SIMBOLO_SET=0;
 int PASSO_DEFINE = 1;
 int PASSO_MAIN = 2;
 int PASSO_LIMPA = 3;
@@ -38,6 +38,7 @@ typedef struct _tabela{
     simbolo * simb;
 } tabela;
 
+simbolo * table;
 
 %}
 
@@ -84,14 +85,41 @@ commands:
 
 cmddefine:
     DEFINE ID INT {
+        if(contPasso == PASSO_SIMBOLO){
+            
+            printf("\n\t SIMBOLO reconhecido, nome: %s valor: %s tipo: %s tamanho tabela: %d\n", $2,$<string>3,$<string>1,contSimbolo);
+            contSimbolo++;
+            if(PASSO_SIMBOLO_SET==1){
+                int aux =verify_table(table , $2);
+                
+                if(aux!=-1) {
+                    printf("\n\tERROR : Simbolo %s ja foi definido\n",$2);
+                    contSimbolo--; 
+                //    yyterminate();
+
+                }else{
+
+                table[contSimbolo-1].name = $2; 
+                table[contSimbolo-1].value = $<string>3;
+                table[contSimbolo-1].type = $<string>1;
+                printf("\n\t testando função %d",aux!=-1);
+                 printf("\n\t TESTANDO TABELA DE SIMBOLOS>> %s valor: %s tipo: %s indice: %d\n", table[contSimbolo-1].name, 
+                                                                                               table[contSimbolo-1].value,
+                                                                                               table[contSimbolo-1].type,
+                                                                                               contSimbolo-1);
+
+                }
+            }
+        }
         if(contPasso == PASSO_DEFINE){
+
             printf("\n\tConstante reconhecida!\n\n");
             int i;
             char palavra[strlen($2)];
             for(i=0;i<strlen($2);i++) {
                 palavra[i]=tolower($2[i]);
             }
-            fprintf(arq, "\n%s\t%s", palavra, $3);
+            fprintf(arq, "\n%s\t%s",palavra, $3);
         }
     } commands
     
@@ -141,6 +169,33 @@ reservated:
 
 cmddeclaration:
     reservated ID FINAL {
+        if(contPasso == PASSO_SIMBOLO){
+            
+            printf("\n\t SIMBOLO reconhecido, nome: %s valor: VAZIO tipo: %s indice: %d\n\n", $2,$<string>1,contSimbolo);
+            contSimbolo++;
+            if(PASSO_SIMBOLO_SET==1){
+               
+                int aux =verify_table(table , $2);
+                if(aux!=-1) {
+                    printf("\n\tERROR : Simbolo %s ja foi definido\n",$2);
+                    contSimbolo--; 
+                //    yyterminate();
+
+                }else{
+
+                table[contSimbolo-1].name = $2; 
+                table[contSimbolo-1].value = NULL;
+                table[contSimbolo-1].type = $<string>1;
+                printf("\n\t testando função %d",aux);
+                printf("\n\t WARNING :TESTANDO TABELA DE SIMBOLOS>> %s valor: VAZIO %p Tipo: %s indice: %d\n", table[contSimbolo-1].name, 
+                                                                                               NULL,
+                                                                                               table[contSimbolo-1].type,
+                                                                                               contSimbolo-1);
+
+                }
+            }
+            
+        }
         if(contPasso == PASSO_MAIN) {
             printf("\n\tDeclaracao reconhecida!\n\n");
         }
@@ -149,6 +204,35 @@ cmddeclaration:
     
 cmddeclarationinst:
     reservated ID ATTRIBUITION value FINAL {
+        if(contPasso == PASSO_SIMBOLO){
+            
+             printf("\n\t SIMBOLO reconhecido, nome: %s valor: %s tipo: %s indice: %d\n\n", $2,$<string>4,$<string>1,contSimbolo);
+             contSimbolo++;
+            if(PASSO_SIMBOLO_SET==1){
+               
+                int aux =verify_table(table , $2);
+                if(aux!=-1) {
+                    printf("\n\tERROR : Simbolo %s ja foi definido\n",$2);
+                    contSimbolo--; 
+                //    yyterminate();
+
+                }else{
+
+                table[contSimbolo-1].name = $2; 
+                table[contSimbolo-1].value = $<string>4;
+                table[contSimbolo-1].type = $<string>1;
+                printf("\n\t testando função %d",aux);
+                printf("\n\t TESTANDO TABELA DE SIMBOLOS>> %s valor: %s Tipo: %s indice: %d\n", table[contSimbolo-1].name, 
+                                                                                               $<string>4,
+                                                                                               table[contSimbolo-1].type,
+                                                                                               contSimbolo-1);
+
+                }
+            }
+
+
+
+        }
         if(contPasso == PASSO_MAIN) {
             printf("\n\tDeclaracao com instanciacao reconhecida!\n\n");
         }
@@ -241,6 +325,14 @@ exit: END_OF_FILE
 {
     switch(contPasso){
         case 0:
+            if(PASSO_SIMBOLO_SET==0){
+                table = (simbolo *) calloc(contSimbolo,sizeof(simbolo));     
+                PASSO_SIMBOLO_SET++;
+               
+                contSimbolo =0;
+                yyterminate();
+            }
+            print_table(table);
             contPasso++;
             yyterminate();
             break;
@@ -261,7 +353,7 @@ exit: END_OF_FILE
             printf("\n\n\tNumero de parentesis abertos: %d\n\n", contParenthensis);
             printf("\tNumero de chaves abertas: %d\n\n", contKeys);
             printf("\tEstrutura DO-WHILE completo: %d\n\n", checkDo);
-
+             printf("\tNumero de simbolos na tabela %d\n\n", contSimbolo);
             yyterminate();
             break;
         
@@ -281,17 +373,29 @@ char **argv;
         arq = fopen("depuracao.asm", "w");
         
         //primeiro passo: LENDO TABELA DE SIMBOLOS
-        if (argc > 0)
-            yyin = fopen( argv[0], "r");
-        else
-            yyin = stdin;
+        // este passo é composto de 2 sub-passos um para contar os simbolos e outro para realizar as alterações e verificações
+            //primeiro sub-passo
+                if (argc > 0)
+                    yyin = fopen( argv[0], "r");
+                else
+                    yyin = stdin;
 
-        if(contPasso==0){
-            printf("\nPasso %d: LENDO TABELA DE SIMBOLOS\n\n",contPasso+1);
-            yyparse();
-        }
-        
-            
+                if(contPasso==0){
+                    printf("\nPasso %d: LENDO TABELA DE SIMBOLOS\n\n",contPasso+1);
+                    yyparse();
+                }
+
+            //segundo sub-passo
+                if (argc > 0)
+                    yyin = fopen( argv[0], "r");
+                else
+                    yyin = stdin;
+
+                if(contPasso==0){
+                    printf("\nPasso %d: LENDO TABELA DE SIMBOLOS AGAIN\n\n",contPasso+1);
+                    yyparse();
+                }
+                
 
         //segundo passo: IDENTIFICANDO CONSTANTES
             if (argc > 0)
@@ -299,34 +403,34 @@ char **argv;
             else
                 yyin = stdin;
                 
-        if(contPasso==1){
-            printf("\nPasso %d: IDENTIFICANDO CONSTANTES\n\n",contPasso+1);
-            fprintf(arq, "\n.constant");
-            yyparse();
-        }
+            if(contPasso==1){
+                printf("\nPasso %d: IDENTIFICANDO CONSTANTES\n\n",contPasso+1);
+                fprintf(arq, "\n.constant");
+                yyparse();
+            }
         
         //terceiro passo: LENDO FUNCAO PRINCIPAL
-        if (argc > 0)
-            yyin = fopen( argv[0], "r");
-        else
-            yyin = stdin;
-        
-        if(contPasso==2){
-            printf("\nPasso %d: LENDO FUNCAO PRINCIPAL\n\n",contPasso+1);
-            fprintf(arq, "\n\n.main");
-            yyparse();
-        }
+            if (argc > 0)
+                yyin = fopen( argv[0], "r");
+            else
+                yyin = stdin;
+            
+            if(contPasso==2){
+                printf("\nPasso %d: LENDO FUNCAO PRINCIPAL\n\n",contPasso+1);
+                fprintf(arq, "\n\n.main");
+                yyparse();
+            }
         
         //quarto passo
-        if (argc > 0)
-        yyin = fopen( argv[0], "r");
-        else
-        yyin = stdin;
-        
-        if(contPasso==3){
-            printf("\nPasso %d: VERIFICANDO CODIGO\n\n", contPasso+1);
-            yyparse();
-        }
+            if (argc > 0)
+            yyin = fopen( argv[0], "r");
+            else
+            yyin = stdin;
+            
+            if(contPasso==3){
+                printf("\nPasso %d: VERIFICANDO CODIGO\n\n", contPasso+1);
+                yyparse();
+            }
        
          //quinto passo
             if (argc > 0)
@@ -343,4 +447,30 @@ char **argv;
 yyerror(){
     printf("\n\tERROR\n\n");
     return -1;
+}
+
+//procura na tabela por um nome, caso exista retorna o indice do mesmo.
+int verify_table(simbolo * table , char * name){
+    int i;
+    printf("\n\tTOTAL = %d", contSimbolo);
+    for (i = 0; i < contSimbolo-1; ++i)
+    {
+        printf("\n>>>>>>> [%s]    [%s]",table[i].name , name);
+        if(strcmp(table[i].name , name)==0) return i;
+        
+    }
+
+    return -1;
+}
+
+void print_table(simbolo * table){
+    int i;
+    printf("\n\t TAMANHO TOTAL TABELA: %d\n", contSimbolo);
+    for (i = 0; i < contSimbolo; ++i)
+    {
+        printf("\n\t INDICE: %d \t nome: %s \t valor: %s \t tipo: %s ",i, table[i].name ,table[i].value,table[i].type);
+        
+    }
+
+
 }
