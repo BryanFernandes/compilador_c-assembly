@@ -8,9 +8,11 @@ int main(){
 
     int y;
     int x = 3;
+
+    z = 7.3;
     if(x==3){
         y=4;
-        if (y==4) {
+        if (P==4) {
             x=5;
         }
     }

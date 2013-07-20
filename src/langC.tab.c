@@ -511,13 +511,13 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,    82,    82,    82,    82,    82,    82,    82,    82,    82,
-      83,    83,    83,    83,    83,    83,    83,    84,    84,    84,
-      84,    87,    87,   127,   127,   135,   135,   142,   142,   148,
-     148,   153,   153,   158,   158,   164,   164,   164,   168,   168,
-     171,   171,   206,   206,   244,   244,   253,   253,   264,   264,
-     272,   272,   280,   280,   290,   290,   301,   301,   308,   308,
-     315,   315,   324
+       0,    82,    82,    83,    83,    83,    84,    85,    85,    85,
+      86,    86,    86,    87,    87,    88,    88,    89,    90,    91,
+      91,    94,    94,   134,   134,   142,   142,   149,   149,   155,
+     155,   160,   160,   165,   165,   171,   190,   190,   194,   194,
+     197,   197,   232,   232,   270,   270,   301,   301,   312,   312,
+     320,   320,   328,   328,   338,   338,   349,   349,   356,   356,
+     363,   363,   372
 };
 #endif
 
@@ -1533,12 +1533,12 @@ yyreduce:
         case 21:
 
 /* Line 1806 of yacc.c  */
-#line 87 "langC.y"
+#line 94 "langC.y"
     {
         if(contPasso == PASSO_SIMBOLO){
-            contSimbolo++;
-            printf("\n\t SIMBOLO reconhecido, nome: %s valor: %s tipo: %s tamanho tabela: %d\n", (yyvsp[(2) - (3)].string),(yyvsp[(3) - (3)].string),(yyvsp[(1) - (3)].string),contSimbolo);
             
+            printf("\n\t SIMBOLO reconhecido, nome: %s valor: %s tipo: %s tamanho tabela: %d\n", (yyvsp[(2) - (3)].string),(yyvsp[(3) - (3)].string),(yyvsp[(1) - (3)].string),contSimbolo);
+            contSimbolo++;
             if(PASSO_SIMBOLO_SET==1){
                 int aux =verify_table(table , (yyvsp[(2) - (3)].string));
                 
@@ -1577,7 +1577,7 @@ yyreduce:
   case 23:
 
 /* Line 1806 of yacc.c  */
-#line 127 "langC.y"
+#line 134 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             contKeys++;
@@ -1589,7 +1589,7 @@ yyreduce:
   case 25:
 
 /* Line 1806 of yacc.c  */
-#line 135 "langC.y"
+#line 142 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             printf("\n\tRetorno da funcao main reconhecida!\n\n");
@@ -1600,7 +1600,7 @@ yyreduce:
   case 27:
 
 /* Line 1806 of yacc.c  */
-#line 142 "langC.y"
+#line 149 "langC.y"
     {
         if(contPasso == PASSO_LIMPA)
             contKeys--;
@@ -1610,7 +1610,7 @@ yyreduce:
   case 29:
 
 /* Line 1806 of yacc.c  */
-#line 148 "langC.y"
+#line 155 "langC.y"
     {
         contKeys++;
     }
@@ -1619,7 +1619,7 @@ yyreduce:
   case 31:
 
 /* Line 1806 of yacc.c  */
-#line 153 "langC.y"
+#line 160 "langC.y"
     {
         contParenthensis++;
     }
@@ -1628,22 +1628,48 @@ yyreduce:
   case 33:
 
 /* Line 1806 of yacc.c  */
-#line 158 "langC.y"
+#line 165 "langC.y"
     {
         if(contPasso == PASSO_LIMPA)
         contParenthensis--;
     }
     break;
 
-  case 40:
+  case 35:
 
 /* Line 1806 of yacc.c  */
 #line 171 "langC.y"
+    {if(contPasso == PASSO_SIMBOLO){
+            //printf("\n\t AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            if(PASSO_SIMBOLO_SET==1){
+                   
+                    int aux =verify_table(table , (yyvsp[(1) - (1)].string));
+                    if(aux==-1) {// o simbolo TEM que existir
+                    printf("\n\tERROR : Simbolo %s NUNCA foi definido\n",(yyvsp[(1) - (1)].string));
+                    //yyterminate();
+
+                    }else{
+
+                    table[aux].name = (yyvsp[(1) - (1)].string); 
+                    //table[aux].value = $<string>3;
+                    //printf("\n\t testando função %d",aux);
+                    //printf("\n\t TESTANDO TABELA DE SIMBOLOS>> %s valor: %s Tipo: %s indice: %d\n", table[aux].name,$<string>3,table[aux].type,aux);
+
+                    }
+            }
+        }
+    }
+    break;
+
+  case 40:
+
+/* Line 1806 of yacc.c  */
+#line 197 "langC.y"
     {
         if(contPasso == PASSO_SIMBOLO){
-            contSimbolo++;
+            
             printf("\n\t SIMBOLO reconhecido, nome: %s valor: VAZIO tipo: %s indice: %d\n\n", (yyvsp[(2) - (3)].string),(yyvsp[(1) - (3)].string),contSimbolo);
-
+            contSimbolo++;
             if(PASSO_SIMBOLO_SET==1){
                
                 int aux =verify_table(table , (yyvsp[(2) - (3)].string));
@@ -1658,7 +1684,7 @@ yyreduce:
                 table[contSimbolo-1].value = NULL;
                 table[contSimbolo-1].type = (yyvsp[(1) - (3)].string);
                 printf("\n\t testando função %d",aux);
-                printf("\n\t WARNING :TESTANDO TABELA DE SIMBOLOS>> %s valor: VAZIO %p Tipo: %s indice: %d\n", table[contSimbolo-1].name, 
+                printf("\n\t TESTANDO TABELA DE SIMBOLOS>> %s valor: VAZIO %p Tipo: %s indice: %d\n", table[contSimbolo-1].name, 
                                                                                                NULL,
                                                                                                table[contSimbolo-1].type,
                                                                                                contSimbolo-1);
@@ -1677,14 +1703,14 @@ yyreduce:
   case 42:
 
 /* Line 1806 of yacc.c  */
-#line 206 "langC.y"
+#line 232 "langC.y"
     {
         if(contPasso == PASSO_SIMBOLO){
-            contSimbolo++;
-             printf("\n\t SIMBOLO reconhecido, nome: %s valor: %s tipo: %s indice: %d\n\n", (yyvsp[(2) - (5)].string),(yyvsp[(4) - (5)].string),(yyvsp[(1) - (5)].string),contSimbolo);
             
+             printf("\n\t SIMBOLO reconhecido, nome: %s valor: %s tipo: %s indice: %d\n\n", (yyvsp[(2) - (5)].string),(yyvsp[(4) - (5)].string),(yyvsp[(1) - (5)].string),contSimbolo);
+             contSimbolo++;
             if(PASSO_SIMBOLO_SET==1){
-               
+                //contSimbolo++;
                 int aux =verify_table(table , (yyvsp[(2) - (5)].string));
                 if(aux!=-1) {
                     printf("\n\tERROR : Simbolo %s ja foi definido\n",(yyvsp[(2) - (5)].string));
@@ -1701,7 +1727,7 @@ yyreduce:
                                                                                                (yyvsp[(4) - (5)].string),
                                                                                                table[contSimbolo-1].type,
                                                                                                contSimbolo-1);
-
+                //contSimbolo--;
                 }
             }
 
@@ -1718,8 +1744,30 @@ yyreduce:
   case 44:
 
 /* Line 1806 of yacc.c  */
-#line 244 "langC.y"
-    {
+#line 270 "langC.y"
+    {   
+        if(contPasso == PASSO_SIMBOLO){
+            printf("\n\t ATRIBUICAO reconhecido, nome: %s valor: %s indice: %d\n\n", (yyvsp[(1) - (4)].string),(yyvsp[(3) - (4)].string),contSimbolo);
+            if(PASSO_SIMBOLO_SET==1){
+                   
+                    int aux =verify_table(table , (yyvsp[(1) - (4)].string));
+                    if(aux==-1) {// o simbolo TEM que existir
+                        printf("\n\tERROR : Simbolo %s NUNCA foi definido\n",(yyvsp[(1) - (4)].string));
+                    //yyterminate();
+
+                    }else{
+
+                    table[aux].name = (yyvsp[(1) - (4)].string); 
+                    table[aux].value = (yyvsp[(3) - (4)].string);
+                    printf("\n\t testando função %d",aux);
+                    printf("\n\t TESTANDO TABELA DE SIMBOLOS>> %s valor: %s Tipo: %s indice: %d\n", table[aux].name, 
+                                                                                                   (yyvsp[(3) - (4)].string),
+                                                                                                   table[aux].type,
+                                                                                                   aux);
+
+                    }
+            }
+        }
         if(contPasso == PASSO_MAIN){
             printf("\n\tAtribuicao reconhecida!\n\n", yytext);
             fprintf(arq, "\n\t\tBIPUSH %s\n\t\tISTORE %s", (yyvsp[(3) - (4)].string), (yyvsp[(1) - (4)].string));
@@ -1730,7 +1778,7 @@ yyreduce:
   case 46:
 
 /* Line 1806 of yacc.c  */
-#line 253 "langC.y"
+#line 301 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             contKeys++;
@@ -1745,7 +1793,7 @@ yyreduce:
   case 48:
 
 /* Line 1806 of yacc.c  */
-#line 264 "langC.y"
+#line 312 "langC.y"
     {
             if(contPasso == PASSO_MAIN){
                 contKeys++;
@@ -1757,7 +1805,7 @@ yyreduce:
   case 50:
 
 /* Line 1806 of yacc.c  */
-#line 272 "langC.y"
+#line 320 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             contKeys++;
@@ -1769,7 +1817,7 @@ yyreduce:
   case 52:
 
 /* Line 1806 of yacc.c  */
-#line 280 "langC.y"
+#line 328 "langC.y"
     {
        if(contPasso == PASSO_MAIN){
             contKeys++;
@@ -1782,7 +1830,7 @@ yyreduce:
   case 54:
 
 /* Line 1806 of yacc.c  */
-#line 290 "langC.y"
+#line 338 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             contKeys--;
@@ -1797,7 +1845,7 @@ yyreduce:
   case 56:
 
 /* Line 1806 of yacc.c  */
-#line 301 "langC.y"
+#line 349 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             printf("\n\tComando case  reconhecido!\n\n");
@@ -1808,7 +1856,7 @@ yyreduce:
   case 58:
 
 /* Line 1806 of yacc.c  */
-#line 308 "langC.y"
+#line 356 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             printf("\n\tComando break reconhecido!\n\n");
@@ -1819,7 +1867,7 @@ yyreduce:
   case 60:
 
 /* Line 1806 of yacc.c  */
-#line 315 "langC.y"
+#line 363 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             contKeys++;
@@ -1831,7 +1879,7 @@ yyreduce:
   case 62:
 
 /* Line 1806 of yacc.c  */
-#line 325 "langC.y"
+#line 373 "langC.y"
     {
     switch(contPasso){
         case 0:
@@ -1876,7 +1924,7 @@ yyreduce:
 
 
 /* Line 1806 of yacc.c  */
-#line 1880 "langC.tab.c"
+#line 1928 "langC.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2107,7 +2155,7 @@ yyreturn:
 
 
 /* Line 2067 of yacc.c  */
-#line 365 "langC.y"
+#line 413 "langC.y"
 
 
 main( argc, argv)
@@ -2199,10 +2247,11 @@ yyerror(){
 int verify_table(simbolo * table , char * name){
     int i;
     printf("\n\tTOTAL = %d", contSimbolo);
-    for (i = 0; i < contSimbolo-1; ++i)
+    for (i = 0; i <= contSimbolo-1; i++)
     {
-        printf("\n>>>>>>> [%s]    [%s]",table[i].name , name);
-        if(strcmp(table[i].name , name)==0) return i;
+        printf("\n>>>>>>> [%s]\t[%s] %d",table[i].name , name,i);
+        // se nao testar para NULL ele da um erro de segmentação de comparação entre string e ponteiro
+        if(table[i].name!= NULL && strcmp(table[i].name , name)==0) return i;
         
     }
 
@@ -2212,7 +2261,7 @@ int verify_table(simbolo * table , char * name){
 void print_table(simbolo * table){
     int i;
     printf("\n\t TAMANHO TOTAL TABELA: %d\n", contSimbolo);
-    for (i = 0; i < contSimbolo; ++i)
+    for (i = 0; i < contSimbolo; i++)
     {
         printf("\n\t INDICE: %d \t nome: %s \t valor: %s \t tipo: %s ",i, table[i].name ,table[i].value,table[i].type);
         

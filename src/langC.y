@@ -79,9 +79,16 @@ simbolo * table;
 %%
 
 commands:
-    cmdattribuition | cmdif | cmdrk | cmdlk | cmdfor | cmdwhile | cmddowhile | cmdwhilefinal |
-    cmdcase | cmdbreak | cmdswitch | cmdlp | cmdrp | cmddeclaration | cmddeclarationinst |
-    cmdmain | cmddefine | return | exit
+    cmdattribuition | 
+    cmdif | cmdrk | cmdlk | 
+    cmdfor | 
+    cmdwhile | cmddowhile | cmdwhilefinal |
+    cmdcase | cmdbreak | cmdswitch | 
+    cmdlp | cmdrp | 
+    cmddeclaration | cmddeclarationinst |
+    cmdmain | 
+    cmddefine | 
+    return | exit
 
 cmddefine:
     DEFINE ID INT {
@@ -161,7 +168,26 @@ cmdrp:
     } commands
     
 value:
-    ID | INT | FLOAT
+    ID  {if(contPasso == PASSO_SIMBOLO){
+            //printf("\n\t AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            if(PASSO_SIMBOLO_SET==1){
+                   
+                    int aux =verify_table(table , $1);
+                    if(aux==-1) {// o simbolo TEM que existir
+                    printf("\n\tERROR : Simbolo %s NUNCA foi definido\n",$1);
+                    //yyterminate();
+
+                    }else{
+
+                    table[aux].name = $1; 
+                    //table[aux].value = $<string>3;
+                    //printf("\n\t testando função %d",aux);
+                    //printf("\n\t TESTANDO TABELA DE SIMBOLOS>> %s valor: %s Tipo: %s indice: %d\n", table[aux].name,$<string>3,table[aux].type,aux);
+
+                    }
+            }
+        }
+    }| INT | FLOAT
 
 
 reservated:
@@ -187,7 +213,7 @@ cmddeclaration:
                 table[contSimbolo-1].value = NULL;
                 table[contSimbolo-1].type = $<string>1;
                 printf("\n\t testando função %d",aux);
-                printf("\n\t WARNING :TESTANDO TABELA DE SIMBOLOS>> %s valor: VAZIO %p Tipo: %s indice: %d\n", table[contSimbolo-1].name, 
+                printf("\n\t TESTANDO TABELA DE SIMBOLOS>> %s valor: VAZIO %p Tipo: %s indice: %d\n", table[contSimbolo-1].name, 
                                                                                                NULL,
                                                                                                table[contSimbolo-1].type,
                                                                                                contSimbolo-1);
@@ -209,7 +235,7 @@ cmddeclarationinst:
              printf("\n\t SIMBOLO reconhecido, nome: %s valor: %s tipo: %s indice: %d\n\n", $2,$<string>4,$<string>1,contSimbolo);
              contSimbolo++;
             if(PASSO_SIMBOLO_SET==1){
-               
+                //contSimbolo++;
                 int aux =verify_table(table , $2);
                 if(aux!=-1) {
                     printf("\n\tERROR : Simbolo %s ja foi definido\n",$2);
@@ -226,7 +252,7 @@ cmddeclarationinst:
                                                                                                $<string>4,
                                                                                                table[contSimbolo-1].type,
                                                                                                contSimbolo-1);
-
+                //contSimbolo--;
                 }
             }
 
@@ -241,7 +267,29 @@ cmddeclarationinst:
 
 
 cmdattribuition:
-    ID ATTRIBUITION value FINAL {
+    ID ATTRIBUITION value FINAL {   
+        if(contPasso == PASSO_SIMBOLO){
+            printf("\n\t ATRIBUICAO reconhecido, nome: %s valor: %s indice: %d\n\n", $1,$<string>3,contSimbolo);
+            if(PASSO_SIMBOLO_SET==1){
+                   
+                    int aux =verify_table(table , $1);
+                    if(aux==-1) {// o simbolo TEM que existir
+                        printf("\n\tERROR : Simbolo %s NUNCA foi definido\n",$1);
+                    //yyterminate();
+
+                    }else{
+
+                    table[aux].name = $1; 
+                    table[aux].value = $<string>3;
+                    printf("\n\t testando função %d",aux);
+                    printf("\n\t TESTANDO TABELA DE SIMBOLOS>> %s valor: %s Tipo: %s indice: %d\n", table[aux].name, 
+                                                                                                   $<string>3,
+                                                                                                   table[aux].type,
+                                                                                                   aux);
+
+                    }
+            }
+        }
         if(contPasso == PASSO_MAIN){
             printf("\n\tAtribuicao reconhecida!\n\n", yytext);
             fprintf(arq, "\n\t\tBIPUSH %s\n\t\tISTORE %s", $<string>3, $1);
@@ -453,10 +501,11 @@ yyerror(){
 int verify_table(simbolo * table , char * name){
     int i;
     printf("\n\tTOTAL = %d", contSimbolo);
-    for (i = 0; i < contSimbolo-1; ++i)
+    for (i = 0; i <= contSimbolo-1; i++)
     {
-        printf("\n>>>>>>> [%s]    [%s]",table[i].name , name);
-        if(strcmp(table[i].name , name)==0) return i;
+        printf("\n>>>>>>> [%s]\t[%s] %d",table[i].name , name,i);
+        // se nao testar para NULL ele da um erro de segmentação de comparação entre string e ponteiro
+        if(table[i].name!= NULL && strcmp(table[i].name , name)==0) return i;
         
     }
 
@@ -466,7 +515,7 @@ int verify_table(simbolo * table , char * name){
 void print_table(simbolo * table){
     int i;
     printf("\n\t TAMANHO TOTAL TABELA: %d\n", contSimbolo);
-    for (i = 0; i < contSimbolo; ++i)
+    for (i = 0; i < contSimbolo; i++)
     {
         printf("\n\t INDICE: %d \t nome: %s \t valor: %s \t tipo: %s ",i, table[i].name ,table[i].value,table[i].type);
         

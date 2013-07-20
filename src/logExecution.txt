@@ -7,19 +7,19 @@ A Constant: #define
 An identifier: TESTE
 An integer: 3 (3)
 
-	 SIMBOLO reconhecido, nome: TESTE valor: 3 tipo: #define tamanho tabela: 1
+	 SIMBOLO reconhecido, nome: TESTE valor: 3 tipo: #define tamanho tabela: 0
 A Line: 3
 A Constant: #define
 An identifier: ABCDEF
 An integer: 10 (10)
 
-	 SIMBOLO reconhecido, nome: ABCDEF valor: 10 tipo: #define tamanho tabela: 2
+	 SIMBOLO reconhecido, nome: ABCDEF valor: 10 tipo: #define tamanho tabela: 1
 A Line: 4
 A Constant: #define
 An identifier: BRYANHF
 An integer: 5 (5)
 
-	 SIMBOLO reconhecido, nome: BRYANHF valor: 5 tipo: #define tamanho tabela: 3
+	 SIMBOLO reconhecido, nome: BRYANHF valor: 5 tipo: #define tamanho tabela: 2
 A Line: 5
 A Line: 6
 A keyword: int
@@ -34,7 +34,7 @@ A keyword: int
 An identifier: y
 A final: ;
 
-	 SIMBOLO reconhecido, nome: y valor: VAZIO tipo: int indice: 4
+	 SIMBOLO reconhecido, nome: y valor: VAZIO tipo: int indice: 3
 
 A Line: 10
 A keyword: int
@@ -43,9 +43,18 @@ A equals: =
 An integer: 3 (3)
 A final: ;
 
-	 SIMBOLO reconhecido, nome: x valor: 3 tipo: int indice: 5
+	 SIMBOLO reconhecido, nome: x valor: 3 tipo: int indice: 4
 
 A Line: 11
+A Line: 12
+An identifier: z
+A equals: =
+A float: 7.3 (7.3)
+A final: ;
+
+	 ATRIBUICAO reconhecido, nome: z valor: 7.3 indice: 5
+
+A Line: 13
 A keyword: if
 A Left Parenthesis: (
 An identifier: x
@@ -53,38 +62,47 @@ A compare: ==
 An integer: 3 (3)
 A Right Parenthesis: )
 A left key: {
-A Line: 12
+A Line: 14
 An identifier: y
 A equals: =
 An integer: 4 (4)
 A final: ;
-A Line: 13
+
+	 ATRIBUICAO reconhecido, nome: y valor: 4 indice: 5
+
+A Line: 15
 A keyword: if
 A Left Parenthesis: (
-An identifier: y
+An identifier: P
 A compare: ==
 An integer: 4 (4)
 A Right Parenthesis: )
 A left key: {
-A Line: 14
+A Line: 16
 An identifier: x
 A equals: =
 An integer: 5 (5)
 A final: ;
-A Line: 15
-A right key: }
-A Line: 16
-A right key: }
+
+	 ATRIBUICAO reconhecido, nome: x valor: 5 indice: 5
+
 A Line: 17
+A right key: }
 A Line: 18
+A right key: }
+A Line: 19
+A Line: 20
 A keyword: do
 A left key: {
-A Line: 19
+A Line: 21
 An identifier: x
 A equals: =
 An identifier: y
 A final: ;
-A Line: 20
+
+	 ATRIBUICAO reconhecido, nome: x valor: y indice: 5
+
+A Line: 22
 A right key: }
 A keyword: while
 A Left Parenthesis: (
@@ -93,144 +111,225 @@ A compare: <
 An integer: 1 (1)
 A Right Parenthesis: )
 A final: ;
-A Line: 21
-A Line: 22
+A Line: 23
+A Line: 24
 A keyword: return
 An integer: 0 (0)
 A final: ;
-A Line: 23
+A Line: 25
 A right key: }
 EOF
 
 Passo 1: LENDO TABELA DE SIMBOLOS AGAIN
 
-A Line: 24
+A Line: 26
 A Constant: #define
 An identifier: TESTE
 An integer: 3 (3)
 
-	 SIMBOLO reconhecido, nome: TESTE valor: 3 tipo: #define tamanho tabela: 1
+	 SIMBOLO reconhecido, nome: TESTE valor: 3 tipo: #define tamanho tabela: 0
 
 	TOTAL = 1
+>>>>>>> [(null)]	[TESTE] 0
 	 testando função 0
 	 TESTANDO TABELA DE SIMBOLOS>> TESTE valor: 3 tipo: #define indice: 0
-A Line: 25
+A Line: 27
 A Constant: #define
 An identifier: ABCDEF
 An integer: 10 (10)
 
-	 SIMBOLO reconhecido, nome: ABCDEF valor: 10 tipo: #define tamanho tabela: 2
+	 SIMBOLO reconhecido, nome: ABCDEF valor: 10 tipo: #define tamanho tabela: 1
 
 	TOTAL = 2
->>>>>>> [TESTE]    [ABCDEF]
+>>>>>>> [TESTE]	[ABCDEF] 0
+>>>>>>> [(null)]	[ABCDEF] 1
 	 testando função 0
 	 TESTANDO TABELA DE SIMBOLOS>> ABCDEF valor: 10 tipo: #define indice: 1
-A Line: 26
+A Line: 28
 A Constant: #define
 An identifier: BRYANHF
 An integer: 5 (5)
 
-	 SIMBOLO reconhecido, nome: BRYANHF valor: 5 tipo: #define tamanho tabela: 3
+	 SIMBOLO reconhecido, nome: BRYANHF valor: 5 tipo: #define tamanho tabela: 2
 
 	TOTAL = 3
->>>>>>> [TESTE]    [BRYANHF]
->>>>>>> [ABCDEF]    [BRYANHF]
+>>>>>>> [TESTE]	[BRYANHF] 0
+>>>>>>> [ABCDEF]	[BRYANHF] 1
+>>>>>>> [(null)]	[BRYANHF] 2
 	 testando função 0
 	 TESTANDO TABELA DE SIMBOLOS>> BRYANHF valor: 5 tipo: #define indice: 2
-A Line: 27
-A Line: 28
+A Line: 29
+A Line: 30
 A keyword: int
 A keyword: main
 A Left Parenthesis: (
 A Right Parenthesis: )
 A left key: {
-A Line: 29
-A Line: 30
 A Line: 31
+A Line: 32
+A Line: 33
 A keyword: int
 An identifier: y
 A final: ;
 
-	 SIMBOLO reconhecido, nome: y valor: VAZIO tipo: int indice: 4
+	 SIMBOLO reconhecido, nome: y valor: VAZIO tipo: int indice: 3
 
 
 	TOTAL = 4
->>>>>>> [TESTE]    [y]
->>>>>>> [ABCDEF]    [y]
->>>>>>> [BRYANHF]    [y]
+>>>>>>> [TESTE]	[y] 0
+>>>>>>> [ABCDEF]	[y] 1
+>>>>>>> [BRYANHF]	[y] 2
+>>>>>>> [(null)]	[y] 3
 	 testando função -1
-	 WARNING :TESTANDO TABELA DE SIMBOLOS>> y valor: VAZIO (nil) Tipo: int indice: 3
-A Line: 32
+	 TESTANDO TABELA DE SIMBOLOS>> y valor: VAZIO (nil) Tipo: int indice: 3
+A Line: 34
 A keyword: int
 An identifier: x
 A equals: =
 An integer: 3 (3)
 A final: ;
 
-	 SIMBOLO reconhecido, nome: x valor: 3 tipo: int indice: 5
+	 SIMBOLO reconhecido, nome: x valor: 3 tipo: int indice: 4
 
 
 	TOTAL = 5
->>>>>>> [TESTE]    [x]
->>>>>>> [ABCDEF]    [x]
->>>>>>> [BRYANHF]    [x]
->>>>>>> [y]    [x]
+>>>>>>> [TESTE]	[x] 0
+>>>>>>> [ABCDEF]	[x] 1
+>>>>>>> [BRYANHF]	[x] 2
+>>>>>>> [y]	[x] 3
+>>>>>>> [(null)]	[x] 4
 	 testando função -1
 	 TESTANDO TABELA DE SIMBOLOS>> x valor: 3 Tipo: int indice: 4
-A Line: 33
+A Line: 35
+A Line: 36
+An identifier: z
+A equals: =
+A float: 7.3 (7.3)
+A final: ;
+
+	 ATRIBUICAO reconhecido, nome: z valor: 7.3 indice: 5
+
+
+	TOTAL = 5
+>>>>>>> [TESTE]	[z] 0
+>>>>>>> [ABCDEF]	[z] 1
+>>>>>>> [BRYANHF]	[z] 2
+>>>>>>> [y]	[z] 3
+>>>>>>> [x]	[z] 4
+	ERROR : Simbolo z NUNCA foi definido
+A Line: 37
 A keyword: if
 A Left Parenthesis: (
 An identifier: x
-A compare: ==
+
+	TOTAL = 5
+>>>>>>> [TESTE]	[x] 0
+>>>>>>> [ABCDEF]	[x] 1
+>>>>>>> [BRYANHF]	[x] 2
+>>>>>>> [y]	[x] 3
+>>>>>>> [x]	[x] 4A compare: ==
 An integer: 3 (3)
 A Right Parenthesis: )
 A left key: {
-A Line: 34
+A Line: 38
 An identifier: y
 A equals: =
 An integer: 4 (4)
 A final: ;
-A Line: 35
+
+	 ATRIBUICAO reconhecido, nome: y valor: 4 indice: 5
+
+
+	TOTAL = 5
+>>>>>>> [TESTE]	[y] 0
+>>>>>>> [ABCDEF]	[y] 1
+>>>>>>> [BRYANHF]	[y] 2
+>>>>>>> [y]	[y] 3
+	 testando função 3
+	 TESTANDO TABELA DE SIMBOLOS>> y valor: 4 Tipo: int indice: 3
+A Line: 39
 A keyword: if
 A Left Parenthesis: (
-An identifier: y
+An identifier: P
+
+	TOTAL = 5
+>>>>>>> [TESTE]	[P] 0
+>>>>>>> [ABCDEF]	[P] 1
+>>>>>>> [BRYANHF]	[P] 2
+>>>>>>> [y]	[P] 3
+>>>>>>> [x]	[P] 4
+	ERROR : Simbolo P NUNCA foi definido
 A compare: ==
 An integer: 4 (4)
 A Right Parenthesis: )
 A left key: {
-A Line: 36
+A Line: 40
 An identifier: x
 A equals: =
 An integer: 5 (5)
 A final: ;
-A Line: 37
+
+	 ATRIBUICAO reconhecido, nome: x valor: 5 indice: 5
+
+
+	TOTAL = 5
+>>>>>>> [TESTE]	[x] 0
+>>>>>>> [ABCDEF]	[x] 1
+>>>>>>> [BRYANHF]	[x] 2
+>>>>>>> [y]	[x] 3
+>>>>>>> [x]	[x] 4
+	 testando função 4
+	 TESTANDO TABELA DE SIMBOLOS>> x valor: 5 Tipo: int indice: 4
+A Line: 41
 A right key: }
-A Line: 38
+A Line: 42
 A right key: }
-A Line: 39
-A Line: 40
+A Line: 43
+A Line: 44
 A keyword: do
 A left key: {
-A Line: 41
+A Line: 45
 An identifier: x
 A equals: =
 An identifier: y
-A final: ;
-A Line: 42
+
+	TOTAL = 5
+>>>>>>> [TESTE]	[y] 0
+>>>>>>> [ABCDEF]	[y] 1
+>>>>>>> [BRYANHF]	[y] 2
+>>>>>>> [y]	[y] 3A final: ;
+
+	 ATRIBUICAO reconhecido, nome: x valor: y indice: 5
+
+
+	TOTAL = 5
+>>>>>>> [TESTE]	[x] 0
+>>>>>>> [ABCDEF]	[x] 1
+>>>>>>> [BRYANHF]	[x] 2
+>>>>>>> [y]	[x] 3
+>>>>>>> [x]	[x] 4
+	 testando função 4
+	 TESTANDO TABELA DE SIMBOLOS>> x valor: y Tipo: int indice: 4
+A Line: 46
 A right key: }
 A keyword: while
 A Left Parenthesis: (
 An identifier: y
-A compare: <
+
+	TOTAL = 5
+>>>>>>> [TESTE]	[y] 0
+>>>>>>> [ABCDEF]	[y] 1
+>>>>>>> [BRYANHF]	[y] 2
+>>>>>>> [y]	[y] 3A compare: <
 An integer: 1 (1)
 A Right Parenthesis: )
 A final: ;
-A Line: 43
-A Line: 44
+A Line: 47
+A Line: 48
 A keyword: return
 An integer: 0 (0)
 A final: ;
-A Line: 45
+A Line: 49
 A right key: }
 EOF
 
@@ -239,51 +338,57 @@ EOF
 	 INDICE: 0 	 nome: TESTE 	 valor: 3 	 tipo: #define 
 	 INDICE: 1 	 nome: ABCDEF 	 valor: 10 	 tipo: #define 
 	 INDICE: 2 	 nome: BRYANHF 	 valor: 5 	 tipo: #define 
-	 INDICE: 3 	 nome: y 	 valor: (null) 	 tipo: int 
-	 INDICE: 4 	 nome: x 	 valor: 3 	 tipo: int 
+	 INDICE: 3 	 nome: y 	 valor: 4 	 tipo: int 
+	 INDICE: 4 	 nome: x 	 valor: y 	 tipo: int 
 Passo 2: IDENTIFICANDO CONSTANTES
 
-A Line: 46
+A Line: 50
 A Constant: #define
 An identifier: TESTE
 An integer: 3 (3)
 
 	Constante reconhecida!
 
-A Line: 47
+A Line: 51
 A Constant: #define
 An identifier: ABCDEF
 An integer: 10 (10)
 
 	Constante reconhecida!
 
-A Line: 48
+A Line: 52
 A Constant: #define
 An identifier: BRYANHF
 An integer: 5 (5)
 
 	Constante reconhecida!
 
-A Line: 49
-A Line: 50
+A Line: 53
+A Line: 54
 A keyword: int
 A keyword: main
 A Left Parenthesis: (
 A Right Parenthesis: )
 A left key: {
-A Line: 51
-A Line: 52
-A Line: 53
-A keyword: int
-An identifier: y
-A final: ;
-A Line: 54
-A keyword: int
-An identifier: x
-A equals: =
-An integer: 3 (3)
-A final: ;
 A Line: 55
+A Line: 56
+A Line: 57
+A keyword: int
+An identifier: y
+A final: ;
+A Line: 58
+A keyword: int
+An identifier: x
+A equals: =
+An integer: 3 (3)
+A final: ;
+A Line: 59
+A Line: 60
+An identifier: z
+A equals: =
+A float: 7.3 (7.3)
+A final: ;
+A Line: 61
 A keyword: if
 A Left Parenthesis: (
 An identifier: x
@@ -291,38 +396,38 @@ A compare: ==
 An integer: 3 (3)
 A Right Parenthesis: )
 A left key: {
-A Line: 56
+A Line: 62
 An identifier: y
 A equals: =
 An integer: 4 (4)
 A final: ;
-A Line: 57
+A Line: 63
 A keyword: if
 A Left Parenthesis: (
-An identifier: y
+An identifier: P
 A compare: ==
 An integer: 4 (4)
 A Right Parenthesis: )
 A left key: {
-A Line: 58
+A Line: 64
 An identifier: x
 A equals: =
 An integer: 5 (5)
 A final: ;
-A Line: 59
+A Line: 65
 A right key: }
-A Line: 60
+A Line: 66
 A right key: }
-A Line: 61
-A Line: 62
+A Line: 67
+A Line: 68
 A keyword: do
 A left key: {
-A Line: 63
+A Line: 69
 An identifier: x
 A equals: =
 An identifier: y
 A final: ;
-A Line: 64
+A Line: 70
 A right key: }
 A keyword: while
 A Left Parenthesis: (
@@ -331,31 +436,31 @@ A compare: <
 An integer: 1 (1)
 A Right Parenthesis: )
 A final: ;
-A Line: 65
-A Line: 66
+A Line: 71
+A Line: 72
 A keyword: return
 An integer: 0 (0)
 A final: ;
-A Line: 67
+A Line: 73
 A right key: }
 EOF
 
 Passo 3: LENDO FUNCAO PRINCIPAL
 
-A Line: 68
+A Line: 74
 A Constant: #define
 An identifier: TESTE
 An integer: 3 (3)
-A Line: 69
+A Line: 75
 A Constant: #define
 An identifier: ABCDEF
 An integer: 10 (10)
-A Line: 70
+A Line: 76
 A Constant: #define
 An identifier: BRYANHF
 An integer: 5 (5)
-A Line: 71
-A Line: 72
+A Line: 77
+A Line: 78
 A keyword: int
 A keyword: main
 A Left Parenthesis: (
@@ -364,16 +469,16 @@ A left key: {
 
 	Funcao main reconhecida!
 
-A Line: 73
-A Line: 74
-A Line: 75
+A Line: 79
+A Line: 80
+A Line: 81
 A keyword: int
 An identifier: y
 A final: ;
 
 	Declaracao reconhecida!
 
-A Line: 76
+A Line: 82
 A keyword: int
 An identifier: x
 A equals: =
@@ -382,7 +487,16 @@ A final: ;
 
 	Declaracao com instanciacao reconhecida!
 
-A Line: 77
+A Line: 83
+A Line: 84
+An identifier: z
+A equals: =
+A float: 7.3 (7.3)
+A final: ;
+
+	Atribuicao reconhecida!
+
+A Line: 85
 A keyword: if
 A Left Parenthesis: (
 An identifier: x
@@ -393,7 +507,7 @@ A left key: {
 
 	Comando if reconhecido!
 
-A Line: 78
+A Line: 86
 An identifier: y
 A equals: =
 An integer: 4 (4)
@@ -401,10 +515,10 @@ A final: ;
 
 	Atribuicao reconhecida!
 
-A Line: 79
+A Line: 87
 A keyword: if
 A Left Parenthesis: (
-An identifier: y
+An identifier: P
 A compare: ==
 An integer: 4 (4)
 A Right Parenthesis: )
@@ -412,7 +526,7 @@ A left key: {
 
 	Comando if reconhecido!
 
-A Line: 80
+A Line: 88
 An identifier: x
 A equals: =
 An integer: 5 (5)
@@ -420,18 +534,18 @@ A final: ;
 
 	Atribuicao reconhecida!
 
-A Line: 81
+A Line: 89
 A right key: }
-A Line: 82
+A Line: 90
 A right key: }
-A Line: 83
-A Line: 84
+A Line: 91
+A Line: 92
 A keyword: do
 A left key: {
 
 	Comando do-while reconhecido!
 
-A Line: 85
+A Line: 93
 An identifier: x
 A equals: =
 An identifier: y
@@ -439,7 +553,7 @@ A final: ;
 
 	Atribuicao reconhecida!
 
-A Line: 86
+A Line: 94
 A right key: }
 A keyword: while
 A Left Parenthesis: (
@@ -448,52 +562,58 @@ A compare: <
 An integer: 1 (1)
 A Right Parenthesis: )
 A final: ;
-A Line: 87
-A Line: 88
+A Line: 95
+A Line: 96
 A keyword: return
 An integer: 0 (0)
 A final: ;
 
 	Retorno da funcao main reconhecida!
 
-A Line: 89
+A Line: 97
 A right key: }
 EOF
 
 Passo 4: VERIFICANDO CODIGO
 
-A Line: 90
+A Line: 98
 A Constant: #define
 An identifier: TESTE
 An integer: 3 (3)
-A Line: 91
+A Line: 99
 A Constant: #define
 An identifier: ABCDEF
 An integer: 10 (10)
-A Line: 92
+A Line: 100
 A Constant: #define
 An identifier: BRYANHF
 An integer: 5 (5)
-A Line: 93
-A Line: 94
+A Line: 101
+A Line: 102
 A keyword: int
 A keyword: main
 A Left Parenthesis: (
 A Right Parenthesis: )
 A left key: {
-A Line: 95
-A Line: 96
-A Line: 97
+A Line: 103
+A Line: 104
+A Line: 105
 A keyword: int
 An identifier: y
 A final: ;
-A Line: 98
+A Line: 106
 A keyword: int
 An identifier: x
 A equals: =
 An integer: 3 (3)
 A final: ;
-A Line: 99
+A Line: 107
+A Line: 108
+An identifier: z
+A equals: =
+A float: 7.3 (7.3)
+A final: ;
+A Line: 109
 A keyword: if
 A Left Parenthesis: (
 An identifier: x
@@ -501,38 +621,38 @@ A compare: ==
 An integer: 3 (3)
 A Right Parenthesis: )
 A left key: {
-A Line: 100
+A Line: 110
 An identifier: y
 A equals: =
 An integer: 4 (4)
 A final: ;
-A Line: 101
+A Line: 111
 A keyword: if
 A Left Parenthesis: (
-An identifier: y
+An identifier: P
 A compare: ==
 An integer: 4 (4)
 A Right Parenthesis: )
 A left key: {
-A Line: 102
+A Line: 112
 An identifier: x
 A equals: =
 An integer: 5 (5)
 A final: ;
-A Line: 103
+A Line: 113
 A right key: }
-A Line: 104
+A Line: 114
 A right key: }
-A Line: 105
-A Line: 106
+A Line: 115
+A Line: 116
 A keyword: do
 A left key: {
-A Line: 107
+A Line: 117
 An identifier: x
 A equals: =
 An identifier: y
 A final: ;
-A Line: 108
+A Line: 118
 A right key: }
 A keyword: while
 A Left Parenthesis: (
@@ -541,12 +661,12 @@ A compare: <
 An integer: 1 (1)
 A Right Parenthesis: )
 A final: ;
-A Line: 109
-A Line: 110
+A Line: 119
+A Line: 120
 A keyword: return
 An integer: 0 (0)
 A final: ;
-A Line: 111
+A Line: 121
 A right key: }
 EOF
 
