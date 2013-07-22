@@ -433,25 +433,30 @@ exit: END_OF_FILE
                 PASSO_SIMBOLO_SET++;
                
                 contSimbolo =0;
+                cont = 1;  
                 yyterminate();
             }
             print_table(table);
             contPasso++;
+            cont =0;
             yyterminate();
             break;
             
         case 1:
             contPasso++;
+            cont = 1;
             fprintf(arq, "\n.end-constant");
             yyterminate();
             break;
         
         case 2:
             contPasso++;
+            cont = 1;
             yyterminate();
             break;
         
         default:
+            fprintf(arq, "\nhalt");
             fprintf(arq, "\n.end-main");
             printf("\n\n\tNumero de parentesis abertos: %d\n\n", contParenthensis);
             printf("\tNumero de chaves abertas: %d\n\n", contKeys);
@@ -528,7 +533,7 @@ char **argv;
                 for (i = 0; i < contSimbolo; i++){
                     if(table[i].name!= NULL && strcmp(table[i].type , "#define")!=0) fprintf(arq,"\n%s", table[i].name);
                 }
-                fprintf(arq,"\n.end-var");
+                fprintf(arq,"\n.end-var\n");
 
                 yyparse();
             }

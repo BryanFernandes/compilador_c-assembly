@@ -1,6 +1,6 @@
 
 .constant
-teste	3
+pal ÿ	3
 abcdef	10
 bryanhf	5
 .end-constant
@@ -11,10 +11,11 @@ bryanhf	5
 y
 x
 .end-var
+
 		BIPUSH 3
 		ISTORE x
 		ILOAD x
-		BIPUSH 5
+		ILOAD y
 		ISUB
 		ISTORE x
 		ILOAD x

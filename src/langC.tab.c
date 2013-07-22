@@ -1951,21 +1951,25 @@ yyreduce:
                 PASSO_SIMBOLO_SET++;
                
                 contSimbolo =0;
+                cont = 1;  
                 yyterminate();
             }
             print_table(table);
             contPasso++;
+            cont =0;
             yyterminate();
             break;
             
         case 1:
             contPasso++;
+            cont = 1;
             fprintf(arq, "\n.end-constant");
             yyterminate();
             break;
         
         case 2:
             contPasso++;
+            cont = 1;
             yyterminate();
             break;
         
@@ -1987,7 +1991,7 @@ yyreduce:
 
 
 /* Line 1806 of yacc.c  */
-#line 1991 "langC.tab.c"
+#line 1995 "langC.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2218,7 +2222,7 @@ yyreturn:
 
 
 /* Line 2067 of yacc.c  */
-#line 468 "langC.y"
+#line 472 "langC.y"
 
 
 main( argc, argv)
@@ -2282,7 +2286,7 @@ char **argv;
                 for (i = 0; i < contSimbolo; i++){
                     if(table[i].name!= NULL && strcmp(table[i].type , "#define")!=0) fprintf(arq,"\n%s", table[i].name);
                 }
-                fprintf(arq,"\n.end-var");
+                fprintf(arq,"\n.end-var\n");
 
                 yyparse();
             }
