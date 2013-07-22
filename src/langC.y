@@ -37,8 +37,10 @@ typedef struct _simbolo{
 typedef struct _tabela{
     simbolo * simb;
 } tabela;
-
 simbolo * table;
+// setar 0 para nao abortar ao encontrar erros , 1 para abortar ao encontrar erros
+int abortar = 1;
+
 
 %}
 
@@ -105,7 +107,7 @@ cmddefine:
                 if(aux!=-1) {
                     printf("\n\tERROR : Simbolo %s ja foi definido\n",$2);
                     contSimbolo--; 
-                //    yyterminate();
+                if(abortar!=0){printf("\n ABORTANDO COMPILAÇÃO!!!!!\n\n\n");contPasso+=10; yyterminate();}if(abortar!=0){printf("\n ABORTANDO COMPILAÇÃO!!!!!\n\n\n");contPasso+=10; yyterminate();}
 
                 }else{
 
@@ -178,7 +180,8 @@ value:
                     int aux =verify_table(table , $1);
                     if(aux==-1) {// o simbolo TEM que existir
                     printf("\n\tERROR : Simbolo %s NUNCA foi definido\n",$1);
-                    //yyterminate();
+
+                    if(abortar!=0){printf("\n ABORTANDO COMPILAÇÃO!!!!!\n\n\n");contPasso+=10; yyterminate();}
 
                     }else{
 
@@ -246,7 +249,7 @@ cmddeclaration:
                 if(aux!=-1) {
                     printf("\n\tERROR : Simbolo %s ja foi definido\n",$2);
                     contSimbolo--; 
-                //    yyterminate();
+                if(abortar!=0){printf("\n ABORTANDO COMPILAÇÃO!!!!!\n\n\n");contPasso+=10; yyterminate();}
 
                 }else{
 
@@ -281,7 +284,7 @@ cmddeclarationinst:
                 if(aux!=-1) {
                     printf("\n\tERROR : Simbolo %s ja foi definido\n",$2);
                     contSimbolo--; 
-                //    yyterminate();
+                if(abortar!=0){printf("\n ABORTANDO COMPILAÇÃO!!!!!\n\n\n");contPasso+=10; yyterminate();}
 
                 }else{
 

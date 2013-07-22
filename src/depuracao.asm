@@ -14,7 +14,7 @@ x
 		BIPUSH 3
 		ISTORE x
 		ILOAD x
-		ILOAD p
+		BIPUSH 4
 		ISUB
 		ISTORE x
 		ILOAD x

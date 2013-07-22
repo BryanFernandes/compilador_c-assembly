@@ -50,7 +50,7 @@ An identifier: x
 A equals: =
 An identifier: x
 A minus operator: -
-An identifier: p
+An integer: 4 (4)
 A final: ;
 
 	SOMA reconhecidoA Line: 12
@@ -210,15 +210,7 @@ An identifier: x
 >>>>>>> [BRYANHF]	[x] 2
 >>>>>>> [y]	[x] 3
 >>>>>>> [x]	[x] 4A minus operator: -
-An identifier: p
-
-	TOTAL = 5
->>>>>>> [TESTE]	[p] 0
->>>>>>> [ABCDEF]	[p] 1
->>>>>>> [BRYANHF]	[p] 2
->>>>>>> [y]	[p] 3
->>>>>>> [x]	[p] 4
-	ERROR : Simbolo p NUNCA foi definido
+An integer: 4 (4)
 A final: ;
 
 	SOMA reconhecido
@@ -394,7 +386,7 @@ An identifier: x
 A equals: =
 An identifier: x
 A minus operator: -
-An identifier: p
+An integer: 4 (4)
 A final: ;
 A Line: 58
 A keyword: if
@@ -500,7 +492,7 @@ An identifier: x
 A equals: =
 An identifier: x
 A minus operator: -
-An identifier: p
+An integer: 4 (4)
 A final: ;
 
 	Soma reconhecida!
@@ -621,7 +613,7 @@ An identifier: x
 A equals: =
 An identifier: x
 A minus operator: -
-An identifier: p
+An integer: 4 (4)
 A final: ;
 A Line: 104
 A keyword: if

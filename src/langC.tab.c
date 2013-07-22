@@ -106,16 +106,18 @@ typedef struct _simbolo{
 typedef struct _tabela{
     simbolo * simb;
 } tabela;
-
 simbolo * table;
+// setar 0 para nao abortar ao encontrar erros , 1 para abortar ao encontrar erros
+int abortar = 1;
+
 
 
 /* Line 268 of yacc.c  */
-#line 75 "langC.y"
+#line 77 "langC.y"
 #include "lex.yy.c"
 
 /* Line 268 of yacc.c  */
-#line 119 "langC.tab.c"
+#line 121 "langC.tab.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -181,14 +183,14 @@ typedef union YYSTYPE
 {
 
 /* Line 293 of yacc.c  */
-#line 77 "langC.y"
+#line 79 "langC.y"
 
   char *string;  /* string buffer */
 
 
 
 /* Line 293 of yacc.c  */
-#line 192 "langC.tab.c"
+#line 194 "langC.tab.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -200,7 +202,7 @@ typedef union YYSTYPE
 
 
 /* Line 343 of yacc.c  */
-#line 204 "langC.tab.c"
+#line 206 "langC.tab.c"
 
 #ifdef short
 # undef short
@@ -515,13 +517,13 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,    84,    84,    85,    86,    86,    86,    87,    88,    88,
-      88,    89,    89,    89,    90,    90,    91,    91,    92,    93,
-      94,    94,    97,    97,   137,   137,   145,   145,   152,   152,
-     158,   158,   163,   163,   168,   168,   174,   193,   193,   197,
-     197,   200,   200,   203,   203,   238,   238,   273,   273,   318,
-     318,   353,   353,   364,   364,   372,   372,   380,   380,   390,
-     390,   401,   401,   408,   408,   415,   415,   424
+       0,    86,    86,    87,    88,    88,    88,    89,    90,    90,
+      90,    91,    91,    91,    92,    92,    93,    93,    94,    95,
+      96,    96,    99,    99,   139,   139,   147,   147,   154,   154,
+     160,   160,   165,   165,   170,   170,   176,   196,   196,   200,
+     200,   203,   203,   206,   206,   241,   241,   276,   276,   321,
+     321,   356,   356,   367,   367,   375,   375,   383,   383,   393,
+     393,   404,   404,   411,   411,   418,   418,   427
 };
 #endif
 
@@ -1544,7 +1546,7 @@ yyreduce:
         case 22:
 
 /* Line 1806 of yacc.c  */
-#line 97 "langC.y"
+#line 99 "langC.y"
     {
         if(contPasso == PASSO_SIMBOLO){
             
@@ -1556,7 +1558,7 @@ yyreduce:
                 if(aux!=-1) {
                     printf("\n\tERROR : Simbolo %s ja foi definido\n",(yyvsp[(2) - (3)].string));
                     contSimbolo--; 
-                //    yyterminate();
+                if(abortar!=0){printf("\n ABORTANDO COMPILAÇÃO!!!!!\n\n\n");contPasso+=10; yyterminate();}if(abortar!=0){printf("\n ABORTANDO COMPILAÇÃO!!!!!\n\n\n");contPasso+=10; yyterminate();}
 
                 }else{
 
@@ -1588,7 +1590,7 @@ yyreduce:
   case 24:
 
 /* Line 1806 of yacc.c  */
-#line 137 "langC.y"
+#line 139 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             contKeys++;
@@ -1600,7 +1602,7 @@ yyreduce:
   case 26:
 
 /* Line 1806 of yacc.c  */
-#line 145 "langC.y"
+#line 147 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             printf("\n\tRetorno da funcao main reconhecida!\n\n");
@@ -1611,7 +1613,7 @@ yyreduce:
   case 28:
 
 /* Line 1806 of yacc.c  */
-#line 152 "langC.y"
+#line 154 "langC.y"
     {
         if(contPasso == PASSO_LIMPA)
             contKeys--;
@@ -1621,7 +1623,7 @@ yyreduce:
   case 30:
 
 /* Line 1806 of yacc.c  */
-#line 158 "langC.y"
+#line 160 "langC.y"
     {
         contKeys++;
     }
@@ -1630,7 +1632,7 @@ yyreduce:
   case 32:
 
 /* Line 1806 of yacc.c  */
-#line 163 "langC.y"
+#line 165 "langC.y"
     {
         contParenthensis++;
     }
@@ -1639,7 +1641,7 @@ yyreduce:
   case 34:
 
 /* Line 1806 of yacc.c  */
-#line 168 "langC.y"
+#line 170 "langC.y"
     {
         if(contPasso == PASSO_LIMPA)
         contParenthensis--;
@@ -1649,7 +1651,7 @@ yyreduce:
   case 36:
 
 /* Line 1806 of yacc.c  */
-#line 174 "langC.y"
+#line 176 "langC.y"
     {if(contPasso == PASSO_SIMBOLO){
             //printf("\n\t AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             if(PASSO_SIMBOLO_SET==1){
@@ -1657,7 +1659,8 @@ yyreduce:
                     int aux =verify_table(table , (yyvsp[(1) - (1)].string));
                     if(aux==-1) {// o simbolo TEM que existir
                     printf("\n\tERROR : Simbolo %s NUNCA foi definido\n",(yyvsp[(1) - (1)].string));
-                    //yyterminate();
+
+                    if(abortar!=0){printf("\n ABORTANDO COMPILAÇÃO!!!!!\n\n\n");contPasso+=10; yyterminate();}
 
                     }else{
 
@@ -1675,7 +1678,7 @@ yyreduce:
   case 43:
 
 /* Line 1806 of yacc.c  */
-#line 203 "langC.y"
+#line 206 "langC.y"
     {
         if(contPasso == PASSO_SIMBOLO){
             printf("\n\tSOMA reconhecido" );
@@ -1713,7 +1716,7 @@ yyreduce:
   case 45:
 
 /* Line 1806 of yacc.c  */
-#line 238 "langC.y"
+#line 241 "langC.y"
     {
         if(contPasso == PASSO_SIMBOLO){
             
@@ -1725,7 +1728,7 @@ yyreduce:
                 if(aux!=-1) {
                     printf("\n\tERROR : Simbolo %s ja foi definido\n",(yyvsp[(2) - (3)].string));
                     contSimbolo--; 
-                //    yyterminate();
+                if(abortar!=0){printf("\n ABORTANDO COMPILAÇÃO!!!!!\n\n\n");contPasso+=10; yyterminate();}
 
                 }else{
 
@@ -1752,7 +1755,7 @@ yyreduce:
   case 47:
 
 /* Line 1806 of yacc.c  */
-#line 273 "langC.y"
+#line 276 "langC.y"
     {
         if(contPasso == PASSO_SIMBOLO){
             
@@ -1764,7 +1767,7 @@ yyreduce:
                 if(aux!=-1) {
                     printf("\n\tERROR : Simbolo %s ja foi definido\n",(yyvsp[(2) - (5)].string));
                     contSimbolo--; 
-                //    yyterminate();
+                if(abortar!=0){printf("\n ABORTANDO COMPILAÇÃO!!!!!\n\n\n");contPasso+=10; yyterminate();}
 
                 }else{
 
@@ -1800,7 +1803,7 @@ yyreduce:
   case 49:
 
 /* Line 1806 of yacc.c  */
-#line 318 "langC.y"
+#line 321 "langC.y"
     {   
         if(contPasso == PASSO_SIMBOLO){
             printf("\n\t ATRIBUICAO reconhecido, nome: %s valor: %s indice: %d\n\n", (yyvsp[(1) - (4)].string),(yyvsp[(3) - (4)].string),contSimbolo);
@@ -1838,7 +1841,7 @@ yyreduce:
   case 51:
 
 /* Line 1806 of yacc.c  */
-#line 353 "langC.y"
+#line 356 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             contKeys++;
@@ -1853,7 +1856,7 @@ yyreduce:
   case 53:
 
 /* Line 1806 of yacc.c  */
-#line 364 "langC.y"
+#line 367 "langC.y"
     {
             if(contPasso == PASSO_MAIN){
                 contKeys++;
@@ -1865,7 +1868,7 @@ yyreduce:
   case 55:
 
 /* Line 1806 of yacc.c  */
-#line 372 "langC.y"
+#line 375 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             contKeys++;
@@ -1877,7 +1880,7 @@ yyreduce:
   case 57:
 
 /* Line 1806 of yacc.c  */
-#line 380 "langC.y"
+#line 383 "langC.y"
     {
        if(contPasso == PASSO_MAIN){
             contKeys++;
@@ -1890,7 +1893,7 @@ yyreduce:
   case 59:
 
 /* Line 1806 of yacc.c  */
-#line 390 "langC.y"
+#line 393 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             contKeys--;
@@ -1905,7 +1908,7 @@ yyreduce:
   case 61:
 
 /* Line 1806 of yacc.c  */
-#line 401 "langC.y"
+#line 404 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             printf("\n\tComando case  reconhecido!\n\n");
@@ -1916,7 +1919,7 @@ yyreduce:
   case 63:
 
 /* Line 1806 of yacc.c  */
-#line 408 "langC.y"
+#line 411 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             printf("\n\tComando break reconhecido!\n\n");
@@ -1927,7 +1930,7 @@ yyreduce:
   case 65:
 
 /* Line 1806 of yacc.c  */
-#line 415 "langC.y"
+#line 418 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             contKeys++;
@@ -1939,7 +1942,7 @@ yyreduce:
   case 67:
 
 /* Line 1806 of yacc.c  */
-#line 425 "langC.y"
+#line 428 "langC.y"
     {
     switch(contPasso){
         case 0:
@@ -1984,7 +1987,7 @@ yyreduce:
 
 
 /* Line 1806 of yacc.c  */
-#line 1988 "langC.tab.c"
+#line 1991 "langC.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2215,7 +2218,7 @@ yyreturn:
 
 
 /* Line 2067 of yacc.c  */
-#line 465 "langC.y"
+#line 468 "langC.y"
 
 
 main( argc, argv)
