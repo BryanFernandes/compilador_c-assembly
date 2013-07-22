@@ -107,7 +107,7 @@ cmddefine:
                 if(aux!=-1) {
                     printf("\n\tERROR : Simbolo %s ja foi definido\n",$2);
                     contSimbolo--; 
-                if(abortar!=0){printf("\n ABORTANDO COMPILAÇÃO!!!!!\n\n\n");contPasso+=10; yyterminate();}if(abortar!=0){printf("\n ABORTANDO COMPILAÇÃO!!!!!\n\n\n");contPasso+=10; yyterminate();}
+                if(abortar!=0){printf("\n ABORTANDO COMPILAÇÃO!!!!! LINHA: %d\n\n\n",cont);contPasso+=10; yyterminate();}
 
                 }else{
 
@@ -181,7 +181,7 @@ value:
                     if(aux==-1) {// o simbolo TEM que existir
                     printf("\n\tERROR : Simbolo %s NUNCA foi definido\n",$1);
 
-                    if(abortar!=0){printf("\n ABORTANDO COMPILAÇÃO!!!!!\n\n\n");contPasso+=10; yyterminate();}
+                    if(abortar!=0){printf("\n ABORTANDO COMPILAÇÃO!!!!! LINHA: %d\n\n\n",cont);contPasso+=10; yyterminate();}
 
                     }else{
 
@@ -249,7 +249,7 @@ cmddeclaration:
                 if(aux!=-1) {
                     printf("\n\tERROR : Simbolo %s ja foi definido\n",$2);
                     contSimbolo--; 
-                if(abortar!=0){printf("\n ABORTANDO COMPILAÇÃO!!!!!\n\n\n");contPasso+=10; yyterminate();}
+                if(abortar!=0){printf("\n ABORTANDO COMPILAÇÃO!!!!! LINHA: %d\n\n\n",cont);contPasso+=10; yyterminate();}
 
                 }else{
 
@@ -284,7 +284,7 @@ cmddeclarationinst:
                 if(aux!=-1) {
                     printf("\n\tERROR : Simbolo %s ja foi definido\n",$2);
                     contSimbolo--; 
-                if(abortar!=0){printf("\n ABORTANDO COMPILAÇÃO!!!!!\n\n\n");contPasso+=10; yyterminate();}
+                if(abortar!=0){printf("\n ABORTANDO COMPILAÇÃO!!!!! LINHA: %d\n\n\n",cont);contPasso+=10; yyterminate();}
 
                 }else{
 

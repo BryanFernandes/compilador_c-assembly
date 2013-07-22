@@ -1558,7 +1558,7 @@ yyreduce:
                 if(aux!=-1) {
                     printf("\n\tERROR : Simbolo %s ja foi definido\n",(yyvsp[(2) - (3)].string));
                     contSimbolo--; 
-                if(abortar!=0){printf("\n ABORTANDO COMPILAÇÃO!!!!!\n\n\n");contPasso+=10; yyterminate();}if(abortar!=0){printf("\n ABORTANDO COMPILAÇÃO!!!!!\n\n\n");contPasso+=10; yyterminate();}
+                if(abortar!=0){printf("\n ABORTANDO COMPILAÇÃO!!!!! LINHA: %d\n\n\n",cont);contPasso+=10; yyterminate();}
 
                 }else{
 
@@ -1660,7 +1660,7 @@ yyreduce:
                     if(aux==-1) {// o simbolo TEM que existir
                     printf("\n\tERROR : Simbolo %s NUNCA foi definido\n",(yyvsp[(1) - (1)].string));
 
-                    if(abortar!=0){printf("\n ABORTANDO COMPILAÇÃO!!!!!\n\n\n");contPasso+=10; yyterminate();}
+                    if(abortar!=0){printf("\n ABORTANDO COMPILAÇÃO!!!!! LINHA: %d\n\n\n",cont);contPasso+=10; yyterminate();}
 
                     }else{
 
@@ -1728,7 +1728,7 @@ yyreduce:
                 if(aux!=-1) {
                     printf("\n\tERROR : Simbolo %s ja foi definido\n",(yyvsp[(2) - (3)].string));
                     contSimbolo--; 
-                if(abortar!=0){printf("\n ABORTANDO COMPILAÇÃO!!!!!\n\n\n");contPasso+=10; yyterminate();}
+                if(abortar!=0){printf("\n ABORTANDO COMPILAÇÃO!!!!! LINHA: %d\n\n\n",cont);contPasso+=10; yyterminate();}
 
                 }else{
 
@@ -1767,7 +1767,7 @@ yyreduce:
                 if(aux!=-1) {
                     printf("\n\tERROR : Simbolo %s ja foi definido\n",(yyvsp[(2) - (5)].string));
                     contSimbolo--; 
-                if(abortar!=0){printf("\n ABORTANDO COMPILAÇÃO!!!!!\n\n\n");contPasso+=10; yyterminate();}
+                if(abortar!=0){printf("\n ABORTANDO COMPILAÇÃO!!!!! LINHA: %d\n\n\n",cont);contPasso+=10; yyterminate();}
 
                 }else{
 

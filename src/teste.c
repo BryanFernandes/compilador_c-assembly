@@ -8,7 +8,7 @@ int main(){
 
     int y;
     int x = 3;
-    x= x-4;
+    x= x-5;
     if(x==3){
         y=4;
         if (y==4) {
