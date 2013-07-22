@@ -58,12 +58,14 @@
      ASP = 276,
      END_OF_FILE = 277,
      OPERATOR = 278,
-     BREAK = 279,
-     INTEGER = 280,
-     FLOATING = 281,
-     MAIN = 282,
-     DEFINE = 283,
-     RETURN = 284
+     ADD = 279,
+     SUB = 280,
+     BREAK = 281,
+     INTEGER = 282,
+     FLOATING = 283,
+     MAIN = 284,
+     DEFINE = 285,
+     RETURN = 286
    };
 #endif
 
@@ -74,14 +76,14 @@ typedef union YYSTYPE
 {
 
 /* Line 2068 of yacc.c  */
-#line 75 "langC.y"
+#line 77 "langC.y"
 
   char *string;  /* string buffer */
 
 
 
 /* Line 2068 of yacc.c  */
-#line 85 "langC.tab.h"
+#line 87 "langC.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

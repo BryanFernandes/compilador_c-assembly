@@ -40,13 +40,20 @@ A Line: 10
 A keyword: int
 An identifier: x
 A equals: =
+An integer: 3 (3)
+A final: ;
+
+	 SIMBOLO reconhecido, nome: x valor: 3 tipo: int indice: 4
+
+A Line: 11
+An identifier: x
+A equals: =
+An identifier: x
+A minus operator: -
 An identifier: p
 A final: ;
 
-	 SIMBOLO reconhecido, nome: x valor: p tipo: int indice: 4
-
-A Line: 11
-A Line: 12
+	SOMA reconhecidoA Line: 12
 A keyword: if
 A Left Parenthesis: (
 An identifier: x
@@ -112,7 +119,7 @@ A Line: 24
 A right key: }
 EOF
 
-Passo 1: LENDO TABELA DE SIMBOLOS AGAIN
+Passo 1: AINDA LENDO TABELA DE SIMBOLOS
 
 A Line: 25
 A Constant: #define
@@ -178,17 +185,10 @@ A Line: 33
 A keyword: int
 An identifier: x
 A equals: =
-An identifier: p
-
-	TOTAL = 4
->>>>>>> [TESTE]	[p] 0
->>>>>>> [ABCDEF]	[p] 1
->>>>>>> [BRYANHF]	[p] 2
->>>>>>> [y]	[p] 3
-	ERROR : Simbolo p NUNCA foi definido
+An integer: 3 (3)
 A final: ;
 
-	 SIMBOLO reconhecido, nome: x valor: p tipo: int indice: 4
+	 SIMBOLO reconhecido, nome: x valor: 3 tipo: int indice: 4
 
 
 	TOTAL = 5
@@ -198,9 +198,36 @@ A final: ;
 >>>>>>> [y]	[x] 3
 >>>>>>> [(null)]	[x] 4
 	 testando função -1
-	 TESTANDO TABELA DE SIMBOLOS>> x valor: p Tipo: int indice: 4
+	 TESTANDO TABELA DE SIMBOLOS>> x valor: 3 Tipo: int indice: 4
 A Line: 34
-A Line: 35
+An identifier: x
+A equals: =
+An identifier: x
+
+	TOTAL = 5
+>>>>>>> [TESTE]	[x] 0
+>>>>>>> [ABCDEF]	[x] 1
+>>>>>>> [BRYANHF]	[x] 2
+>>>>>>> [y]	[x] 3
+>>>>>>> [x]	[x] 4A minus operator: -
+An identifier: p
+
+	TOTAL = 5
+>>>>>>> [TESTE]	[p] 0
+>>>>>>> [ABCDEF]	[p] 1
+>>>>>>> [BRYANHF]	[p] 2
+>>>>>>> [y]	[p] 3
+>>>>>>> [x]	[p] 4
+	ERROR : Simbolo p NUNCA foi definido
+A final: ;
+
+	SOMA reconhecido
+	TOTAL = 5
+>>>>>>> [TESTE]	[x] 0
+>>>>>>> [ABCDEF]	[x] 1
+>>>>>>> [BRYANHF]	[x] 2
+>>>>>>> [y]	[x] 3
+>>>>>>> [x]	[x] 4A Line: 35
 A keyword: if
 A Left Parenthesis: (
 An identifier: x
@@ -360,9 +387,15 @@ A Line: 56
 A keyword: int
 An identifier: x
 A equals: =
-An identifier: p
+An integer: 3 (3)
 A final: ;
 A Line: 57
+An identifier: x
+A equals: =
+An identifier: x
+A minus operator: -
+An identifier: p
+A final: ;
 A Line: 58
 A keyword: if
 A Left Parenthesis: (
@@ -457,12 +490,21 @@ A Line: 79
 A keyword: int
 An identifier: x
 A equals: =
-An identifier: p
+An integer: 3 (3)
 A final: ;
 
 	Declaracao com instanciacao reconhecida!
 
 A Line: 80
+An identifier: x
+A equals: =
+An identifier: x
+A minus operator: -
+An identifier: p
+A final: ;
+
+	Soma reconhecida!
+
 A Line: 81
 A keyword: if
 A Left Parenthesis: (
@@ -572,9 +614,15 @@ A Line: 102
 A keyword: int
 An identifier: x
 A equals: =
-An identifier: p
+An integer: 3 (3)
 A final: ;
 A Line: 103
+An identifier: x
+A equals: =
+An identifier: x
+A minus operator: -
+An identifier: p
+A final: ;
 A Line: 104
 A keyword: if
 A Left Parenthesis: (

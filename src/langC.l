@@ -176,7 +176,19 @@ FLOATING float
     return ASP;
 }
 
-"+"|"-"|"*"|"/"   {
+"+" {
+    printf( "A plus operator: %s\n", yytext );
+    yylval.string = strdup(yytext);
+    return ADD;
+}
+"-" {
+    printf( "A minus operator: %s\n", yytext );
+    yylval.string = strdup(yytext);
+    return SUB;
+}
+
+
+"*"|"/"   {
     printf( "An operator: %s\n", yytext );
     yylval.string = strdup(yytext);
     return OPERATOR;

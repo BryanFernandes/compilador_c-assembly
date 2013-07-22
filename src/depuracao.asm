@@ -11,7 +11,11 @@ bryanhf	5
 y
 x
 .end-var
+		BIPUSH 3
+		ISTORE x
+		ILOAD x
 		ILOAD p
+		ISUB
 		ISTORE x
 		ILOAD x
 		BIPUSH 3

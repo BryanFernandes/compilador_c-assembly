@@ -64,6 +64,8 @@ simbolo * table;
 %token <string>ASP
 %token <string>END_OF_FILE
 %token <string>OPERATOR
+%token <string>ADD
+%token <string>SUB
 %token <string>BREAK
 %token <string>INTEGER
 %token <string>FLOATING
@@ -79,6 +81,7 @@ simbolo * table;
 %%
 
 commands:
+    cmdaddsub|
     cmdattribuition | 
     cmdif | cmdrk | cmdlk | 
     cmdfor | 
@@ -192,6 +195,44 @@ value:
 
 reservated:
     INTEGER | FLOATING
+
+operatoras:
+    ADD | SUB 
+
+cmdaddsub:
+    ID ATTRIBUITION value operatoras value FINAL{
+        if(contPasso == PASSO_SIMBOLO){
+            printf("\n\tSOMA reconhecido" );
+            if(PASSO_SIMBOLO_SET==1){
+                   
+                    int aux =verify_table(table , $1);
+                    if(aux==-1) {// o simbolo TEM que existir
+                        printf("\n\tERROR : Simbolo %s NUNCA foi definido\n",$1);
+                    //yyterminate();
+
+                    }
+            }
+        }
+        if(contPasso == PASSO_MAIN){
+            printf("\n\tSoma reconhecida!\n\n", yytext);
+            // verificaçao se é um numero ou uma variavel
+            if(strtol($<string>3 , NULL , 0)!=0)
+                fprintf(arq, "\n\t\tBIPUSH %s", $<string>3);
+            else
+                fprintf(arq, "\n\t\tILOAD %s", $<string>3);
+            if(strtol($<string>5 , NULL , 0)!=0)
+                fprintf(arq, "\n\t\tBIPUSH %s", $<string>5);
+            else
+                fprintf(arq, "\n\t\tILOAD %s", $<string>5);
+            if(strcmp($<string>4 , "+")==0)
+                fprintf(arq, "\n\t\tIADD");
+            else
+                fprintf(arq, "\n\t\tISUB");
+            fprintf(arq, "\n\t\tISTORE %s", $<string>1);
+        }
+
+    }commands
+
 
 cmddeclaration:
     reservated ID FINAL {
@@ -320,7 +361,7 @@ cmdif:
     } commands
     
 cmdfor:
-        FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value FINAL value OPERATOR OPERATOR RIGHT_PARENTHENSIS LEFT_KEY {
+        FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value FINAL value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY {
             if(contPasso == PASSO_MAIN){
                 contKeys++;
                 printf("\n\tComando for reconhecido!\n\n");
@@ -451,7 +492,7 @@ char **argv;
                     yyin = stdin;
 
                 if(contPasso==0){
-                    printf("\nPasso %d: LENDO TABELA DE SIMBOLOS AGAIN\n\n",contPasso+1);
+                    printf("\nPasso %d: AINDA LENDO TABELA DE SIMBOLOS\n\n",contPasso+1);
                     yyparse();
                 }
                 
