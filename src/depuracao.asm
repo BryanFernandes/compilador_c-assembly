@@ -11,10 +11,8 @@ bryanhf	5
 y
 x
 .end-var
-		BIPUSH 3
+		ILOAD p
 		ISTORE x
-		BIPUSH 10
-		ISTORE p
 		ILOAD x
 		BIPUSH 3
 		IF_ICMPEQ L1
