@@ -261,6 +261,7 @@ cmddeclarationinst:
         }
         if(contPasso == PASSO_MAIN) {
             printf("\n\tDeclaracao com instanciacao reconhecida!\n\n");
+            fprintf(arq,"\n\t\tBIPUSH %s\n\t\tISTORE %s",$2,$<string>4);
         }
 
     } commands
@@ -466,6 +467,15 @@ char **argv;
             if(contPasso==2){
                 printf("\nPasso %d: LENDO FUNCAO PRINCIPAL\n\n",contPasso+1);
                 fprintf(arq, "\n\n.main");
+                
+                //imprimindo declaração de variaveis dentro da função main
+                fprintf(arq,"\n\n.var");
+                int i;
+                for (i = 0; i < contSimbolo; i++){
+                    if(table[i].name!= NULL && strcmp(table[i].type , "#define")!=0) fprintf(arq,"\n%s", table[i].name);
+                }
+                fprintf(arq,"\n.end-var");
+
                 yyparse();
             }
         

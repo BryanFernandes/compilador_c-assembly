@@ -515,9 +515,9 @@ static const yytype_uint16 yyrline[] =
       86,    86,    86,    87,    87,    88,    88,    89,    90,    91,
       91,    94,    94,   134,   134,   142,   142,   149,   149,   155,
      155,   160,   160,   165,   165,   171,   190,   190,   194,   194,
-     197,   197,   232,   232,   270,   270,   301,   301,   312,   312,
-     320,   320,   328,   328,   338,   338,   349,   349,   356,   356,
-     363,   363,   372
+     197,   197,   232,   232,   271,   271,   302,   302,   313,   313,
+     321,   321,   329,   329,   339,   339,   350,   350,   357,   357,
+     364,   364,   373
 };
 #endif
 
@@ -1736,6 +1736,7 @@ yyreduce:
         }
         if(contPasso == PASSO_MAIN) {
             printf("\n\tDeclaracao com instanciacao reconhecida!\n\n");
+            fprintf(arq,"\n\t\tBIPUSH %s\n\t\tISTORE %s",(yyvsp[(2) - (5)].string),(yyvsp[(4) - (5)].string));
         }
 
     }
@@ -1744,7 +1745,7 @@ yyreduce:
   case 44:
 
 /* Line 1806 of yacc.c  */
-#line 270 "langC.y"
+#line 271 "langC.y"
     {   
         if(contPasso == PASSO_SIMBOLO){
             printf("\n\t ATRIBUICAO reconhecido, nome: %s valor: %s indice: %d\n\n", (yyvsp[(1) - (4)].string),(yyvsp[(3) - (4)].string),contSimbolo);
@@ -1778,7 +1779,7 @@ yyreduce:
   case 46:
 
 /* Line 1806 of yacc.c  */
-#line 301 "langC.y"
+#line 302 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             contKeys++;
@@ -1793,7 +1794,7 @@ yyreduce:
   case 48:
 
 /* Line 1806 of yacc.c  */
-#line 312 "langC.y"
+#line 313 "langC.y"
     {
             if(contPasso == PASSO_MAIN){
                 contKeys++;
@@ -1805,7 +1806,7 @@ yyreduce:
   case 50:
 
 /* Line 1806 of yacc.c  */
-#line 320 "langC.y"
+#line 321 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             contKeys++;
@@ -1817,7 +1818,7 @@ yyreduce:
   case 52:
 
 /* Line 1806 of yacc.c  */
-#line 328 "langC.y"
+#line 329 "langC.y"
     {
        if(contPasso == PASSO_MAIN){
             contKeys++;
@@ -1830,7 +1831,7 @@ yyreduce:
   case 54:
 
 /* Line 1806 of yacc.c  */
-#line 338 "langC.y"
+#line 339 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             contKeys--;
@@ -1845,7 +1846,7 @@ yyreduce:
   case 56:
 
 /* Line 1806 of yacc.c  */
-#line 349 "langC.y"
+#line 350 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             printf("\n\tComando case  reconhecido!\n\n");
@@ -1856,7 +1857,7 @@ yyreduce:
   case 58:
 
 /* Line 1806 of yacc.c  */
-#line 356 "langC.y"
+#line 357 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             printf("\n\tComando break reconhecido!\n\n");
@@ -1867,7 +1868,7 @@ yyreduce:
   case 60:
 
 /* Line 1806 of yacc.c  */
-#line 363 "langC.y"
+#line 364 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             contKeys++;
@@ -1879,7 +1880,7 @@ yyreduce:
   case 62:
 
 /* Line 1806 of yacc.c  */
-#line 373 "langC.y"
+#line 374 "langC.y"
     {
     switch(contPasso){
         case 0:
@@ -1924,7 +1925,7 @@ yyreduce:
 
 
 /* Line 1806 of yacc.c  */
-#line 1928 "langC.tab.c"
+#line 1929 "langC.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2155,7 +2156,7 @@ yyreturn:
 
 
 /* Line 2067 of yacc.c  */
-#line 413 "langC.y"
+#line 414 "langC.y"
 
 
 main( argc, argv)
@@ -2212,6 +2213,15 @@ char **argv;
             if(contPasso==2){
                 printf("\nPasso %d: LENDO FUNCAO PRINCIPAL\n\n",contPasso+1);
                 fprintf(arq, "\n\n.main");
+                
+                //imprimindo declaração de variaveis dentro da função main
+                fprintf(arq,"\n\n.var");
+                int i;
+                for (i = 0; i < contSimbolo; i++){
+                    if(table[i].name!= NULL && strcmp(table[i].type , "#define")!=0) fprintf(arq,"\n%s", table[i].name);
+                }
+                fprintf(arq,"\n.end-var");
+
                 yyparse();
             }
         

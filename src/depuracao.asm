@@ -6,15 +6,20 @@ bryanhf	5
 .end-constant
 
 .main
-		BIPUSH 7.3
-		ISTORE z
+
+.var
+y
+x
+.end-var
+		BIPUSH x
+		ISTORE 3
 		ILOAD x
 		BIPUSH 3
 		IF_ICMPEQ L1
 L1:
 		BIPUSH 4
 		ISTORE y
-		ILOAD P
+		ILOAD y
 		BIPUSH 4
 		IF_ICMPEQ L2
 L2:
