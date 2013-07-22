@@ -261,7 +261,7 @@ cmddeclarationinst:
         }
         if(contPasso == PASSO_MAIN) {
             printf("\n\tDeclaracao com instanciacao reconhecida!\n\n");
-            fprintf(arq,"\n\t\tBIPUSH %s\n\t\tISTORE %s",$2,$<string>4);
+            fprintf(arq,"\n\t\tBIPUSH %s\n\t\tISTORE %s",$<string>4,$2);
         }
 
     } commands
@@ -293,7 +293,11 @@ cmdattribuition:
         }
         if(contPasso == PASSO_MAIN){
             printf("\n\tAtribuicao reconhecida!\n\n", yytext);
-            fprintf(arq, "\n\t\tBIPUSH %s\n\t\tISTORE %s", $<string>3, $1);
+            // verificaçao se é um numero ou uma variavel
+            if(strtol($<string>3 , NULL , 0)!=0)
+                fprintf(arq, "\n\t\tBIPUSH %s\n\t\tISTORE %s", $<string>3, $1);
+            else
+                fprintf(arq, "\n\t\tILOAD %s\n\t\tISTORE %s", $<string>3, $1);
         }
     } commands
 

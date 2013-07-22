@@ -515,9 +515,9 @@ static const yytype_uint16 yyrline[] =
       86,    86,    86,    87,    87,    88,    88,    89,    90,    91,
       91,    94,    94,   134,   134,   142,   142,   149,   149,   155,
      155,   160,   160,   165,   165,   171,   190,   190,   194,   194,
-     197,   197,   232,   232,   271,   271,   302,   302,   313,   313,
-     321,   321,   329,   329,   339,   339,   350,   350,   357,   357,
-     364,   364,   373
+     197,   197,   232,   232,   271,   271,   306,   306,   317,   317,
+     325,   325,   333,   333,   343,   343,   354,   354,   361,   361,
+     368,   368,   377
 };
 #endif
 
@@ -1736,7 +1736,7 @@ yyreduce:
         }
         if(contPasso == PASSO_MAIN) {
             printf("\n\tDeclaracao com instanciacao reconhecida!\n\n");
-            fprintf(arq,"\n\t\tBIPUSH %s\n\t\tISTORE %s",(yyvsp[(2) - (5)].string),(yyvsp[(4) - (5)].string));
+            fprintf(arq,"\n\t\tBIPUSH %s\n\t\tISTORE %s",(yyvsp[(4) - (5)].string),(yyvsp[(2) - (5)].string));
         }
 
     }
@@ -1771,7 +1771,11 @@ yyreduce:
         }
         if(contPasso == PASSO_MAIN){
             printf("\n\tAtribuicao reconhecida!\n\n", yytext);
-            fprintf(arq, "\n\t\tBIPUSH %s\n\t\tISTORE %s", (yyvsp[(3) - (4)].string), (yyvsp[(1) - (4)].string));
+            // verificaçao se é um numero ou uma variavel
+            if(strtol((yyvsp[(3) - (4)].string) , NULL , 0)!=0)
+                fprintf(arq, "\n\t\tBIPUSH %s\n\t\tISTORE %s", (yyvsp[(3) - (4)].string), (yyvsp[(1) - (4)].string));
+            else
+                fprintf(arq, "\n\t\tILOAD %s\n\t\tISTORE %s", (yyvsp[(3) - (4)].string), (yyvsp[(1) - (4)].string));
         }
     }
     break;
@@ -1779,7 +1783,7 @@ yyreduce:
   case 46:
 
 /* Line 1806 of yacc.c  */
-#line 302 "langC.y"
+#line 306 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             contKeys++;
@@ -1794,7 +1798,7 @@ yyreduce:
   case 48:
 
 /* Line 1806 of yacc.c  */
-#line 313 "langC.y"
+#line 317 "langC.y"
     {
             if(contPasso == PASSO_MAIN){
                 contKeys++;
@@ -1806,7 +1810,7 @@ yyreduce:
   case 50:
 
 /* Line 1806 of yacc.c  */
-#line 321 "langC.y"
+#line 325 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             contKeys++;
@@ -1818,7 +1822,7 @@ yyreduce:
   case 52:
 
 /* Line 1806 of yacc.c  */
-#line 329 "langC.y"
+#line 333 "langC.y"
     {
        if(contPasso == PASSO_MAIN){
             contKeys++;
@@ -1831,7 +1835,7 @@ yyreduce:
   case 54:
 
 /* Line 1806 of yacc.c  */
-#line 339 "langC.y"
+#line 343 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             contKeys--;
@@ -1846,7 +1850,7 @@ yyreduce:
   case 56:
 
 /* Line 1806 of yacc.c  */
-#line 350 "langC.y"
+#line 354 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             printf("\n\tComando case  reconhecido!\n\n");
@@ -1857,7 +1861,7 @@ yyreduce:
   case 58:
 
 /* Line 1806 of yacc.c  */
-#line 357 "langC.y"
+#line 361 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             printf("\n\tComando break reconhecido!\n\n");
@@ -1868,7 +1872,7 @@ yyreduce:
   case 60:
 
 /* Line 1806 of yacc.c  */
-#line 364 "langC.y"
+#line 368 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             contKeys++;
@@ -1880,7 +1884,7 @@ yyreduce:
   case 62:
 
 /* Line 1806 of yacc.c  */
-#line 374 "langC.y"
+#line 378 "langC.y"
     {
     switch(contPasso){
         case 0:
@@ -1925,7 +1929,7 @@ yyreduce:
 
 
 /* Line 1806 of yacc.c  */
-#line 1929 "langC.tab.c"
+#line 1933 "langC.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2156,7 +2160,7 @@ yyreturn:
 
 
 /* Line 2067 of yacc.c  */
-#line 414 "langC.y"
+#line 418 "langC.y"
 
 
 main( argc, argv)

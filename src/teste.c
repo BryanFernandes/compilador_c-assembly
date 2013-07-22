@@ -9,6 +9,8 @@ int main(){
     int y;
     int x = 3;
 
+    p = 10;
+
     if(x==3){
         y=4;
         if (y==4) {
