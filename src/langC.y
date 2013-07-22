@@ -262,6 +262,7 @@ cmddeclarationinst:
         if(contPasso == PASSO_MAIN) {
             printf("\n\tDeclaracao com instanciacao reconhecida!\n\n");
             //fprintf(arq,"\n\t\tBIPUSH %s\n\t\tISTORE %s",$<string>4,$2);
+            // verificaçao se é um numero ou uma variavel
             if(strtol($<string>4 , NULL , 0)!=0)
                 fprintf(arq, "\n\t\tBIPUSH %s\n\t\tISTORE %s", $<string>4, $2);
             else

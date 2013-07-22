@@ -7,7 +7,7 @@ int main(){
  
 
     int y;
-    int x = p;
+    int x = 3;
 
     if(x==3){
         y=4;
