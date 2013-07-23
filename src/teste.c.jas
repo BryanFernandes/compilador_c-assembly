@@ -28,6 +28,13 @@ G1:
 		BIPUSH 3
 		IADD
 		ISTORE p
+DO1:
+		BIPUSH 5
+		ISTORE x
+		ILOAD x
+		BIPUSH 3
+		IF_ICMPEQ DO1
+
 
 
 halt

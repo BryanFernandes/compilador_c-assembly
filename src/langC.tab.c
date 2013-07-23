@@ -148,13 +148,15 @@ FILE *arq;//depuração
 //contadores
 int contKeys = 0;
 int contJumps = 0;
+int contJumpsDo = 0;
 int contParenthensis = 0;
 int contPasso = 0;
 int contSimbolo=0;
 int checkDo = 0;
 
 //variaveis para controle das passadas
-int PASSO_SIMBOLO = 0,PASSO_SIMBOLO_SET=0;
+int PASSO_SIMBOLO = 0;
+int PASSO_SIMBOLO_SET = 0;
 int PASSO_DEFINE = 1;
 int PASSO_MAIN = 2;
 int PASSO_LIMPA = 3;
@@ -179,7 +181,7 @@ int abortar = 1;
 FILE * temp;
 int to_buffer = 0;
 
-#line 79 "langC.y"
+#line 81 "langC.y"
 #include "lex.yy.c"
 
 /* Enabling traces.  */
@@ -202,12 +204,12 @@ int to_buffer = 0;
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 81 "langC.y"
+#line 83 "langC.y"
 {
   char *string;  /* string buffer */
 }
 /* Line 193 of yacc.c.  */
-#line 211 "langC.tab.c"
+#line 213 "langC.tab.c"
 	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
@@ -220,7 +222,7 @@ typedef union YYSTYPE
 
 
 /* Line 216 of yacc.c.  */
-#line 224 "langC.tab.c"
+#line 226 "langC.tab.c"
 
 #ifdef short
 # undef short
@@ -531,13 +533,13 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,    88,    88,    89,    90,    90,    90,    91,    92,    92,
-      92,    93,    93,    93,    94,    94,    95,    95,    96,    97,
-      98,    98,   101,   101,   141,   141,   149,   149,   156,   156,
-     167,   167,   172,   172,   177,   177,   183,   203,   203,   207,
-     207,   210,   210,   213,   213,   268,   268,   303,   303,   358,
-     358,   401,   401,   418,   418,   426,   426,   434,   434,   444,
-     444,   455,   455,   462,   462,   469,   469,   478
+       0,    90,    90,    91,    92,    92,    92,    93,    94,    94,
+      94,    95,    95,    95,    96,    96,    97,    97,    98,    99,
+     100,   100,   103,   103,   143,   143,   151,   151,   158,   158,
+     169,   169,   174,   174,   179,   179,   185,   205,   205,   209,
+     209,   212,   212,   215,   215,   270,   270,   305,   305,   360,
+     360,   403,   403,   420,   420,   428,   428,   436,   436,   448,
+     448,   460,   460,   467,   467,   474,   474,   483
 };
 #endif
 
@@ -1532,7 +1534,7 @@ yyreduce:
   switch (yyn)
     {
         case 22:
-#line 101 "langC.y"
+#line 103 "langC.y"
     {
         if(contPasso == PASSO_SIMBOLO){
             
@@ -1574,7 +1576,7 @@ yyreduce:
     break;
 
   case 24:
-#line 141 "langC.y"
+#line 143 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             contKeys++;
@@ -1584,7 +1586,7 @@ yyreduce:
     break;
 
   case 26:
-#line 149 "langC.y"
+#line 151 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             printf("\n\tRetorno da funcao main reconhecida!\n\n");
@@ -1593,7 +1595,7 @@ yyreduce:
     break;
 
   case 28:
-#line 156 "langC.y"
+#line 158 "langC.y"
     {
         if(contPasso == PASSO_LIMPA)
             contKeys--;
@@ -1606,21 +1608,21 @@ yyreduce:
     break;
 
   case 30:
-#line 167 "langC.y"
+#line 169 "langC.y"
     {
         contKeys++;
     ;}
     break;
 
   case 32:
-#line 172 "langC.y"
+#line 174 "langC.y"
     {
         contParenthensis++;
     ;}
     break;
 
   case 34:
-#line 177 "langC.y"
+#line 179 "langC.y"
     {
         if(contPasso == PASSO_LIMPA)
         contParenthensis--;
@@ -1628,7 +1630,7 @@ yyreduce:
     break;
 
   case 36:
-#line 183 "langC.y"
+#line 185 "langC.y"
     {if(contPasso == PASSO_SIMBOLO){
             //printf("\n\t AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             if(PASSO_SIMBOLO_SET==1){
@@ -1653,7 +1655,7 @@ yyreduce:
     break;
 
   case 43:
-#line 213 "langC.y"
+#line 215 "langC.y"
     {
         if(contPasso == PASSO_SIMBOLO){
             printf("\n\tSOMA reconhecido" );
@@ -1709,7 +1711,7 @@ yyreduce:
     break;
 
   case 45:
-#line 268 "langC.y"
+#line 270 "langC.y"
     {
         if(contPasso == PASSO_SIMBOLO){
             
@@ -1746,7 +1748,7 @@ yyreduce:
     break;
 
   case 47:
-#line 303 "langC.y"
+#line 305 "langC.y"
     {
         if(contPasso == PASSO_SIMBOLO){
             
@@ -1802,7 +1804,7 @@ yyreduce:
     break;
 
   case 49:
-#line 358 "langC.y"
+#line 360 "langC.y"
     {   
         if(contPasso == PASSO_SIMBOLO){
             printf("\n\t ATRIBUICAO reconhecido, nome: %s valor: %s indice: %d\n\n", (yyvsp[(1) - (4)].string),(yyvsp[(3) - (4)].string),contSimbolo);
@@ -1846,7 +1848,7 @@ yyreduce:
     break;
 
   case 51:
-#line 401 "langC.y"
+#line 403 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             contKeys++;
@@ -1865,7 +1867,7 @@ yyreduce:
     break;
 
   case 53:
-#line 418 "langC.y"
+#line 420 "langC.y"
     {
             if(contPasso == PASSO_MAIN){
                 contKeys++;
@@ -1875,7 +1877,7 @@ yyreduce:
     break;
 
   case 55:
-#line 426 "langC.y"
+#line 428 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             contKeys++;
@@ -1885,31 +1887,34 @@ yyreduce:
     break;
 
   case 57:
-#line 434 "langC.y"
+#line 436 "langC.y"
     {
        if(contPasso == PASSO_MAIN){
             contKeys++;
             checkDo++;
+            contJumpsDo++;
             printf("\n\tComando do-while reconhecido!\n\n");
+           fprintf(arq, "\nDO%d:", contJumpsDo);
         } 
     ;}
     break;
 
   case 59:
-#line 444 "langC.y"
+#line 448 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             contKeys--;
-            checkDo--;
             if(checkDo > 0){
+                checkDo--;
                 printf("\n\tComando do-while reconhecido!\n\n");
+                fprintf(arq, "\n\t\tILOAD %s\n\t\tBIPUSH %s\n\t\tIF_ICMPEQ DO%d\n", (yyvsp[(4) - (8)].string), (yyvsp[(6) - (8)].string), contJumpsDo);
             }
         }
     ;}
     break;
 
   case 61:
-#line 455 "langC.y"
+#line 460 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             printf("\n\tComando case  reconhecido!\n\n");
@@ -1918,7 +1923,7 @@ yyreduce:
     break;
 
   case 63:
-#line 462 "langC.y"
+#line 467 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             printf("\n\tComando break reconhecido!\n\n");
@@ -1927,7 +1932,7 @@ yyreduce:
     break;
 
   case 65:
-#line 469 "langC.y"
+#line 474 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             contKeys++;
@@ -1937,7 +1942,7 @@ yyreduce:
     break;
 
   case 67:
-#line 479 "langC.y"
+#line 484 "langC.y"
     {
     switch(contPasso){
         case 0:
@@ -2006,7 +2011,7 @@ yyreduce:
 
 
 /* Line 1267 of yacc.c.  */
-#line 2010 "langC.tab.c"
+#line 2015 "langC.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -2220,7 +2225,7 @@ yyreturn:
 }
 
 
-#line 544 "langC.y"
+#line 549 "langC.y"
 
 
 main( argc, argv)

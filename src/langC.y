@@ -13,6 +13,7 @@ FILE *arq;//depuração
 //contadores
 int contKeys = 0;
 int contJumps = 0;
+int contJumpsDo = 0;
 int contParenthensis = 0;
 int contPasso = 0;
 int contSimbolo=0;
@@ -20,7 +21,7 @@ int checkDo = 0;
 
 //variaveis para controle das passadas
 int PASSO_SIMBOLO = 0;
-int PASSO_SIMBOLO_SET=0;
+int PASSO_SIMBOLO_SET = 0;
 int PASSO_DEFINE = 1;
 int PASSO_MAIN = 2;
 int PASSO_LIMPA = 3;
@@ -436,7 +437,9 @@ cmddowhile:
        if(contPasso == PASSO_MAIN){
             contKeys++;
             checkDo++;
+            contJumpsDo++;
             printf("\n\tComando do-while reconhecido!\n\n");
+           fprintf(arq, "\nDO%d:", contJumpsDo);
         } 
     } commands
 
@@ -445,9 +448,10 @@ cmdwhilefinal:
     RIGHT_KEY WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS FINAL {
         if(contPasso == PASSO_MAIN){
             contKeys--;
-            checkDo--;
             if(checkDo > 0){
+                checkDo--;
                 printf("\n\tComando do-while reconhecido!\n\n");
+                fprintf(arq, "\n\t\tILOAD %s\n\t\tBIPUSH %s\n\t\tIF_ICMPEQ DO%d\n", $<string>4, $<string>6, contJumpsDo);
             }
         }
     } commands

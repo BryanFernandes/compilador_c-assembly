@@ -16,6 +16,10 @@ int main(){
     int j;
 
     p=PALMITO+3;
+    
+    do {
+        x=5;
+    } while (x>3);
 
     return 0;
 }
