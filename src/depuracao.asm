@@ -1,6 +1,6 @@
 
 .constant
-pal ÿ	3
+palÿ	3
 abcdef	10
 bryanhf	5
 .end-constant
@@ -10,6 +10,8 @@ bryanhf	5
 .var
 y
 x
+p
+j
 .end-var
 
 		BIPUSH 3
@@ -18,18 +20,23 @@ x
 		ILOAD y
 		ISUB
 		ISTORE x
-		ILOAD x
+		ILOAD 3
 		BIPUSH 3
 		IF_ICMPEQ L1
+G1:
+		ILOAD PAL
+		BIPUSH 3
+		IADD
+		ISTORE p
+
+
+halt
 L1:
-		BIPUSH 4
+		BIPUSH 7
+		ISTORE p
+		BIPUSH 29
 		ISTORE y
-		ILOAD y
-		BIPUSH 4
-		IF_ICMPEQ L2
-L2:
-		BIPUSH 5
-		ISTORE x
-		ILOAD y
-		ISTORE x
+GOTO G1
+
+
 .end-main

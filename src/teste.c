@@ -8,16 +8,14 @@ int main(){
     int y;
     int x = 3;
     x= x-y;
-    if(x==3){
-        y=4;
-        if (y==4) {
-            x=5;
-        }
+    if(3==3){
+        int p=7;
+        y=29;
     }
-    
-    do {
-        x=y;
-    } while (y<1);
+
+    int j;
+
+    p=PAL+3;
 
     return 0;
 }

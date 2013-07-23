@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-
+#define POOL 1048576
 FILE *arq;//depuração
 //arq = fopen("depuracao.asm","w");//depuração
 
@@ -40,7 +40,9 @@ typedef struct _tabela{
 simbolo * table;
 // setar 0 para nao abortar ao encontrar erros , 1 para abortar ao encontrar erros
 int abortar = 1;
-
+//variavel para armasenar temporariamente o codigo
+FILE * temp;
+int to_buffer = 0;
 
 %}
 
@@ -154,6 +156,11 @@ cmdrk:
     RIGHT_KEY {
         if(contPasso == PASSO_LIMPA)
             contKeys--;
+        if(contPasso == PASSO_MAIN && to_buffer==1){
+            fprintf(temp, "\nGOTO G%d\n\n",contJumps);
+            to_buffer--;
+
+        }
     } commands
     
 cmdlk:
@@ -217,21 +224,41 @@ cmdaddsub:
             }
         }
         if(contPasso == PASSO_MAIN){
-            printf("\n\tSoma reconhecida!\n\n", yytext);
-            // verificaçao se é um numero ou uma variavel
-            if(strtol($<string>3 , NULL , 0)!=0)
-                fprintf(arq, "\n\t\tBIPUSH %s", $<string>3);
-            else
-                fprintf(arq, "\n\t\tILOAD %s", $<string>3);
-            if(strtol($<string>5 , NULL , 0)!=0)
-                fprintf(arq, "\n\t\tBIPUSH %s", $<string>5);
-            else
-                fprintf(arq, "\n\t\tILOAD %s", $<string>5);
-            if(strcmp($<string>4 , "+")==0)
-                fprintf(arq, "\n\t\tIADD");
-            else
-                fprintf(arq, "\n\t\tISUB");
-            fprintf(arq, "\n\t\tISTORE %s", $<string>1);
+            if(to_buffer==0){
+                printf("\n\tSoma reconhecida!\n\n", yytext);
+                // verificaçao se é um numero ou uma variavel
+                if(strtol($<string>3 , NULL , 0)!=0)
+                    fprintf(arq, "\n\t\tBIPUSH %s", $<string>3);
+                else
+                    fprintf(arq, "\n\t\tILOAD %s", $<string>3);
+                if(strtol($<string>5 , NULL , 0)!=0)
+                    fprintf(arq, "\n\t\tBIPUSH %s", $<string>5);
+                else
+                    fprintf(arq, "\n\t\tILOAD %s", $<string>5);
+                if(strcmp($<string>4 , "+")==0)
+                    fprintf(arq, "\n\t\tIADD");
+                else
+                    fprintf(arq, "\n\t\tISUB");
+                fprintf(arq, "\n\t\tISTORE %s", $<string>1);
+            }
+            if (to_buffer==1){
+                printf("\n\tSoma reconhecida!\n\n", yytext);
+                // verificaçao se é um numero ou uma variavel
+                if(strtol($<string>3 , NULL , 0)!=0)
+                    fprintf(temp, "\n\t\tBIPUSH %s", $<string>3);
+                else
+                    fprintf(temp, "\n\t\tILOAD %s", $<string>3);
+                if(strtol($<string>5 , NULL , 0)!=0)
+                    fprintf(temp, "\n\t\tBIPUSH %s", $<string>5);
+                else
+                    fprintf(temp, "\n\t\tILOAD %s", $<string>5);
+                if(strcmp($<string>4 , "+")==0)
+                    fprintf(temp, "\n\t\tIADD");
+                else
+                    fprintf(temp, "\n\t\tISUB");
+                fprintf(temp, "\n\t\tISTORE %s", $<string>1);
+                /* code */
+            }
         }
 
     }commands
@@ -307,10 +334,20 @@ cmddeclarationinst:
             printf("\n\tDeclaracao com instanciacao reconhecida!\n\n");
             //fprintf(arq,"\n\t\tBIPUSH %s\n\t\tISTORE %s",$<string>4,$2);
             // verificaçao se é um numero ou uma variavel
-            if(strtol($<string>4 , NULL , 0)!=0)
-                fprintf(arq, "\n\t\tBIPUSH %s\n\t\tISTORE %s", $<string>4, $2);
-            else
-                fprintf(arq, "\n\t\tILOAD %s\n\t\tISTORE %s", $<string>4, $2);
+            if(to_buffer==0){
+                if(strtol($<string>4 , NULL , 0)!=0)
+                    fprintf(arq, "\n\t\tBIPUSH %s\n\t\tISTORE %s", $<string>4, $2);
+                else
+                    fprintf(arq, "\n\t\tILOAD %s\n\t\tISTORE %s", $<string>4, $2);
+            }
+
+            if(to_buffer==1){
+                if(strtol($<string>4 , NULL , 0)!=0)
+                    fprintf(temp, "\n\t\tBIPUSH %s\n\t\tISTORE %s", $<string>4, $2);
+                else
+                    fprintf(temp, "\n\t\tILOAD %s\n\t\tISTORE %s", $<string>4, $2);
+            }
+
 
         }
 
@@ -342,12 +379,20 @@ cmdattribuition:
             }
         }
         if(contPasso == PASSO_MAIN){
-            printf("\n\tAtribuicao reconhecida!\n\n", yytext);
-            // verificaçao se é um numero ou uma variavel
-            if(strtol($<string>3 , NULL , 0)!=0)
-                fprintf(arq, "\n\t\tBIPUSH %s\n\t\tISTORE %s", $<string>3, $1);
-            else
-                fprintf(arq, "\n\t\tILOAD %s\n\t\tISTORE %s", $<string>3, $1);
+            if(to_buffer==0){
+                printf("\n\tAtribuicao reconhecida!\n\n", yytext);
+                // verificaçao se é um numero ou uma variavel
+                if(strtol($<string>3 , NULL , 0)!=0)
+                    fprintf(arq, "\n\t\tBIPUSH %s\n\t\tISTORE %s", $<string>3, $1);
+                else
+                    fprintf(arq, "\n\t\tILOAD %s\n\t\tISTORE %s", $<string>3, $1);
+            }
+            if (to_buffer==1){
+                if(strtol($<string>3 , NULL , 0)!=0)
+                    fprintf(temp, "\n\t\tBIPUSH %s\n\t\tISTORE %s", $<string>3, $1);
+                else
+                    fprintf(temp, "\n\t\tILOAD %s\n\t\tISTORE %s", $<string>3, $1);
+            }
         }
     } commands
 
@@ -356,9 +401,15 @@ cmdif:
     IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY {
         if(contPasso == PASSO_MAIN){
             contKeys++;
-            printf("\n\tComando if reconhecido!\n\n");
             contJumps++;
-            fprintf(arq, "\n\t\tILOAD %s\n\t\tBIPUSH %s\n\t\tIF_ICMPEQ L%d\nL%d:", $<string>3, $<string>5, contJumps, contJumps);
+            if(to_buffer==0){
+                printf("\n\tComando if reconhecido!\n\n");
+                
+                fprintf(arq, "\n\t\tILOAD %s\n\t\tBIPUSH %s\n\t\tIF_ICMPEQ L%d\nG%d:", $<string>3, $<string>5, contJumps, contJumps);
+                fprintf(temp,"L%d:",contJumps);
+                to_buffer++;
+            }     
+
         }
     
     } commands
@@ -429,8 +480,9 @@ exit: END_OF_FILE
     switch(contPasso){
         case 0:
             if(PASSO_SIMBOLO_SET==0){
-                table = (simbolo *) calloc(contSimbolo,sizeof(simbolo));     
+                table = (simbolo *) calloc(contSimbolo,sizeof(simbolo));    
                 PASSO_SIMBOLO_SET++;
+
                
                 contSimbolo =0;
                 cont = 1;  
@@ -456,7 +508,26 @@ exit: END_OF_FILE
             break;
         
         default:
-            fprintf(arq, "\nhalt");
+            
+
+            //imprime as funções armasenadas no buffer
+
+            fclose(temp);
+            temp = fopen("temp.txt","r");
+            fprintf(arq,"\n\n");
+            fprintf(arq, "\nhalt\n");
+            char c;
+            while (c != EOF){
+                c = fgetc(temp);
+                if(c!= EOF)
+                fprintf(arq, "%c",c);
+            }
+            fclose (temp);
+            
+          
+
+
+            // encerra o programa
             fprintf(arq, "\n.end-main");
             printf("\n\n\tNumero de parentesis abertos: %d\n\n", contParenthensis);
             printf("\tNumero de chaves abertas: %d\n\n", contKeys);
@@ -479,6 +550,7 @@ char **argv;
         ++argv, --argc;
         
         arq = fopen("depuracao.asm", "w");
+        temp = fopen("temp.txt", "w");
         
         //primeiro passo: LENDO TABELA DE SIMBOLOS
         // este passo é composto de 2 sub-passos um para contar os simbolos e outro para realizar as alterações e verificações

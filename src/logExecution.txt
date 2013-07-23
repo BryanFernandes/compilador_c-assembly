@@ -55,66 +55,53 @@ A final: ;
 	SOMA reconhecidoA Line: 11
 A keyword: if
 A Left Parenthesis: (
-An identifier: x
+An integer: 3 (3)
 A compare: ==
 An integer: 3 (3)
 A Right Parenthesis: )
 A left key: {
 A Line: 12
-An identifier: y
+A keyword: int
+An identifier: p
 A equals: =
-An integer: 4 (4)
+An integer: 7 (7)
 A final: ;
 
-	 ATRIBUICAO reconhecido, nome: y valor: 4 indice: 5
+	 SIMBOLO reconhecido, nome: p valor: 7 tipo: int indice: 5
 
 A Line: 13
-A keyword: if
-A Left Parenthesis: (
 An identifier: y
-A compare: ==
-An integer: 4 (4)
-A Right Parenthesis: )
-A left key: {
-A Line: 14
-An identifier: x
 A equals: =
-An integer: 5 (5)
+An integer: 29 (29)
 A final: ;
 
-	 ATRIBUICAO reconhecido, nome: x valor: 5 indice: 5
+	 ATRIBUICAO reconhecido, nome: y valor: 29 indice: 6
 
+A Line: 14
+A right key: }
 A Line: 15
-A right key: }
 A Line: 16
-A right key: }
+A keyword: int
+An identifier: j
+A final: ;
+
+	 SIMBOLO reconhecido, nome: j valor: VAZIO tipo: int indice: 6
+
 A Line: 17
 A Line: 18
-A keyword: do
-A left key: {
-A Line: 19
-An identifier: x
+An identifier: p
 A equals: =
-An identifier: y
+An identifier: PAL
+A plus operator: +
+An integer: 3 (3)
 A final: ;
 
-	 ATRIBUICAO reconhecido, nome: x valor: y indice: 5
-
+	SOMA reconhecidoA Line: 19
 A Line: 20
-A right key: }
-A keyword: while
-A Left Parenthesis: (
-An identifier: y
-A compare: <
-An integer: 1 (1)
-A Right Parenthesis: )
-A final: ;
-A Line: 21
-A Line: 22
 A keyword: return
 An integer: 0 (0)
 A final: ;
-A Line: 23
+A Line: 21
 A right key: }
 EOF
 
@@ -225,123 +212,103 @@ An identifier: y
 >>>>>>> [x]	[x] 4A Line: 11
 A keyword: if
 A Left Parenthesis: (
-An identifier: x
-
-	TOTAL = 5
->>>>>>> [PAL]	[x] 0
->>>>>>> [ABCDEF]	[x] 1
->>>>>>> [BRYANHF]	[x] 2
->>>>>>> [y]	[x] 3
->>>>>>> [x]	[x] 4A compare: ==
+An integer: 3 (3)
+A compare: ==
 An integer: 3 (3)
 A Right Parenthesis: )
 A left key: {
 A Line: 12
-An identifier: y
+A keyword: int
+An identifier: p
 A equals: =
-An integer: 4 (4)
+An integer: 7 (7)
 A final: ;
 
-	 ATRIBUICAO reconhecido, nome: y valor: 4 indice: 5
+	 SIMBOLO reconhecido, nome: p valor: 7 tipo: int indice: 5
 
 
-	TOTAL = 5
+	TOTAL = 6
+>>>>>>> [PAL]	[p] 0
+>>>>>>> [ABCDEF]	[p] 1
+>>>>>>> [BRYANHF]	[p] 2
+>>>>>>> [y]	[p] 3
+>>>>>>> [x]	[p] 4
+>>>>>>> [(null)]	[p] 5
+	 testando função -1
+	 TESTANDO TABELA DE SIMBOLOS>> p valor: 7 Tipo: int indice: 5
+A Line: 13
+An identifier: y
+A equals: =
+An integer: 29 (29)
+A final: ;
+
+	 ATRIBUICAO reconhecido, nome: y valor: 29 indice: 6
+
+
+	TOTAL = 6
 >>>>>>> [PAL]	[y] 0
 >>>>>>> [ABCDEF]	[y] 1
 >>>>>>> [BRYANHF]	[y] 2
 >>>>>>> [y]	[y] 3
 	 testando função 3
-	 TESTANDO TABELA DE SIMBOLOS>> y valor: 4 Tipo: int indice: 3
-A Line: 13
-A keyword: if
-A Left Parenthesis: (
-An identifier: y
-
-	TOTAL = 5
->>>>>>> [PAL]	[y] 0
->>>>>>> [ABCDEF]	[y] 1
->>>>>>> [BRYANHF]	[y] 2
->>>>>>> [y]	[y] 3A compare: ==
-An integer: 4 (4)
-A Right Parenthesis: )
-A left key: {
+	 TESTANDO TABELA DE SIMBOLOS>> y valor: 29 Tipo: int indice: 3
 A Line: 14
-An identifier: x
-A equals: =
-An integer: 5 (5)
+A right key: }
+A Line: 15
+A Line: 16
+A keyword: int
+An identifier: j
 A final: ;
 
-	 ATRIBUICAO reconhecido, nome: x valor: 5 indice: 5
+	 SIMBOLO reconhecido, nome: j valor: VAZIO tipo: int indice: 6
 
 
-	TOTAL = 5
->>>>>>> [PAL]	[x] 0
->>>>>>> [ABCDEF]	[x] 1
->>>>>>> [BRYANHF]	[x] 2
->>>>>>> [y]	[x] 3
->>>>>>> [x]	[x] 4
-	 testando função 4
-	 TESTANDO TABELA DE SIMBOLOS>> x valor: 5 Tipo: int indice: 4
-A Line: 15
-A right key: }
-A Line: 16
-A right key: }
+	TOTAL = 7
+>>>>>>> [PAL]	[j] 0
+>>>>>>> [ABCDEF]	[j] 1
+>>>>>>> [BRYANHF]	[j] 2
+>>>>>>> [y]	[j] 3
+>>>>>>> [x]	[j] 4
+>>>>>>> [p]	[j] 5
+>>>>>>> [(null)]	[j] 6
+	 testando função -1
+	 TESTANDO TABELA DE SIMBOLOS>> j valor: VAZIO (nil) Tipo: int indice: 6
 A Line: 17
 A Line: 18
-A keyword: do
-A left key: {
-A Line: 19
-An identifier: x
+An identifier: p
 A equals: =
-An identifier: y
+An identifier: PAL
 
-	TOTAL = 5
->>>>>>> [PAL]	[y] 0
->>>>>>> [ABCDEF]	[y] 1
->>>>>>> [BRYANHF]	[y] 2
->>>>>>> [y]	[y] 3A final: ;
-
-	 ATRIBUICAO reconhecido, nome: x valor: y indice: 5
-
-
-	TOTAL = 5
->>>>>>> [PAL]	[x] 0
->>>>>>> [ABCDEF]	[x] 1
->>>>>>> [BRYANHF]	[x] 2
->>>>>>> [y]	[x] 3
->>>>>>> [x]	[x] 4
-	 testando função 4
-	 TESTANDO TABELA DE SIMBOLOS>> x valor: y Tipo: int indice: 4
-A Line: 20
-A right key: }
-A keyword: while
-A Left Parenthesis: (
-An identifier: y
-
-	TOTAL = 5
->>>>>>> [PAL]	[y] 0
->>>>>>> [ABCDEF]	[y] 1
->>>>>>> [BRYANHF]	[y] 2
->>>>>>> [y]	[y] 3A compare: <
-An integer: 1 (1)
-A Right Parenthesis: )
+	TOTAL = 7
+>>>>>>> [PAL]	[PAL] 0A plus operator: +
+An integer: 3 (3)
 A final: ;
-A Line: 21
-A Line: 22
+
+	SOMA reconhecido
+	TOTAL = 7
+>>>>>>> [PAL]	[p] 0
+>>>>>>> [ABCDEF]	[p] 1
+>>>>>>> [BRYANHF]	[p] 2
+>>>>>>> [y]	[p] 3
+>>>>>>> [x]	[p] 4
+>>>>>>> [p]	[p] 5A Line: 19
+A Line: 20
 A keyword: return
 An integer: 0 (0)
 A final: ;
-A Line: 23
+A Line: 21
 A right key: }
 EOF
 
-	 TAMANHO TOTAL TABELA: 5
+	 TAMANHO TOTAL TABELA: 7
 
 	 INDICE: 0 	 nome: PAL 	 valor: 3 	 tipo: #define 
 	 INDICE: 1 	 nome: ABCDEF 	 valor: 10 	 tipo: #define 
 	 INDICE: 2 	 nome: BRYANHF 	 valor: 5 	 tipo: #define 
-	 INDICE: 3 	 nome: y 	 valor: 4 	 tipo: int 
-	 INDICE: 4 	 nome: x 	 valor: y 	 tipo: int 
+	 INDICE: 3 	 nome: y 	 valor: 29 	 tipo: int 
+	 INDICE: 4 	 nome: x 	 valor: 3 	 tipo: int 
+	 INDICE: 5 	 nome: p 	 valor: 7 	 tipo: int 
+	 INDICE: 6 	 nome: j 	 valor: (null) 	 tipo: int 
 Passo 2: IDENTIFICANDO CONSTANTES
 
 A Constant: #define
@@ -393,57 +360,43 @@ A final: ;
 A Line: 10
 A keyword: if
 A Left Parenthesis: (
-An identifier: x
+An integer: 3 (3)
 A compare: ==
 An integer: 3 (3)
 A Right Parenthesis: )
 A left key: {
 A Line: 11
-An identifier: y
+A keyword: int
+An identifier: p
 A equals: =
-An integer: 4 (4)
+An integer: 7 (7)
 A final: ;
 A Line: 12
-A keyword: if
-A Left Parenthesis: (
 An identifier: y
-A compare: ==
-An integer: 4 (4)
-A Right Parenthesis: )
-A left key: {
-A Line: 13
-An identifier: x
 A equals: =
-An integer: 5 (5)
+An integer: 29 (29)
 A final: ;
+A Line: 13
+A right key: }
 A Line: 14
-A right key: }
 A Line: 15
-A right key: }
+A keyword: int
+An identifier: j
+A final: ;
 A Line: 16
 A Line: 17
-A keyword: do
-A left key: {
-A Line: 18
-An identifier: x
+An identifier: p
 A equals: =
-An identifier: y
+An identifier: PAL
+A plus operator: +
+An integer: 3 (3)
 A final: ;
+A Line: 18
 A Line: 19
-A right key: }
-A keyword: while
-A Left Parenthesis: (
-An identifier: y
-A compare: <
-An integer: 1 (1)
-A Right Parenthesis: )
-A final: ;
-A Line: 20
-A Line: 21
 A keyword: return
 An integer: 0 (0)
 A final: ;
-A Line: 22
+A Line: 20
 A right key: }
 EOF
 
@@ -501,7 +454,7 @@ A final: ;
 A Line: 11
 A keyword: if
 A Left Parenthesis: (
-An identifier: x
+An integer: 3 (3)
 A compare: ==
 An integer: 3 (3)
 A Right Parenthesis: )
@@ -510,69 +463,49 @@ A left key: {
 	Comando if reconhecido!
 
 A Line: 12
-An identifier: y
+A keyword: int
+An identifier: p
 A equals: =
-An integer: 4 (4)
+An integer: 7 (7)
 A final: ;
 
-	Atribuicao reconhecida!
+	Declaracao com instanciacao reconhecida!
 
 A Line: 13
-A keyword: if
-A Left Parenthesis: (
 An identifier: y
-A compare: ==
-An integer: 4 (4)
-A Right Parenthesis: )
-A left key: {
-
-	Comando if reconhecido!
-
-A Line: 14
-An identifier: x
 A equals: =
-An integer: 5 (5)
+An integer: 29 (29)
+A final: ;
+A Line: 14
+A right key: }
+A Line: 15
+A Line: 16
+A keyword: int
+An identifier: j
 A final: ;
 
-	Atribuicao reconhecida!
+	Declaracao reconhecida!
 
-A Line: 15
-A right key: }
-A Line: 16
-A right key: }
 A Line: 17
 A Line: 18
-A keyword: do
-A left key: {
+An identifier: p
+A equals: =
+An identifier: PAL
+A plus operator: +
+An integer: 3 (3)
+A final: ;
 
-	Comando do-while reconhecido!
+	Soma reconhecida!
 
 A Line: 19
-An identifier: x
-A equals: =
-An identifier: y
-A final: ;
-
-	Atribuicao reconhecida!
-
 A Line: 20
-A right key: }
-A keyword: while
-A Left Parenthesis: (
-An identifier: y
-A compare: <
-An integer: 1 (1)
-A Right Parenthesis: )
-A final: ;
-A Line: 21
-A Line: 22
 A keyword: return
 An integer: 0 (0)
 A final: ;
 
 	Retorno da funcao main reconhecida!
 
-A Line: 23
+A Line: 21
 A right key: }
 EOF
 
@@ -618,57 +551,43 @@ A final: ;
 A Line: 11
 A keyword: if
 A Left Parenthesis: (
-An identifier: x
+An integer: 3 (3)
 A compare: ==
 An integer: 3 (3)
 A Right Parenthesis: )
 A left key: {
 A Line: 12
-An identifier: y
+A keyword: int
+An identifier: p
 A equals: =
-An integer: 4 (4)
+An integer: 7 (7)
 A final: ;
 A Line: 13
-A keyword: if
-A Left Parenthesis: (
 An identifier: y
-A compare: ==
-An integer: 4 (4)
-A Right Parenthesis: )
-A left key: {
-A Line: 14
-An identifier: x
 A equals: =
-An integer: 5 (5)
+An integer: 29 (29)
 A final: ;
+A Line: 14
+A right key: }
 A Line: 15
-A right key: }
 A Line: 16
-A right key: }
+A keyword: int
+An identifier: j
+A final: ;
 A Line: 17
 A Line: 18
-A keyword: do
-A left key: {
-A Line: 19
-An identifier: x
+An identifier: p
 A equals: =
-An identifier: y
+An identifier: PAL
+A plus operator: +
+An integer: 3 (3)
 A final: ;
+A Line: 19
 A Line: 20
-A right key: }
-A keyword: while
-A Left Parenthesis: (
-An identifier: y
-A compare: <
-An integer: 1 (1)
-A Right Parenthesis: )
-A final: ;
-A Line: 21
-A Line: 22
 A keyword: return
 An integer: 0 (0)
 A final: ;
-A Line: 23
+A Line: 21
 A right key: }
 EOF
 
@@ -679,5 +598,5 @@ EOF
 
 	Estrutura DO-WHILE completo: 0
 
-	Numero de simbolos na tabela 5
+	Numero de simbolos na tabela 7
 

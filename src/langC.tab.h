@@ -76,7 +76,7 @@ typedef union YYSTYPE
 {
 
 /* Line 2068 of yacc.c  */
-#line 79 "langC.y"
+#line 81 "langC.y"
 
   char *string;  /* string buffer */
 
