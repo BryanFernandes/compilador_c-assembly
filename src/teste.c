@@ -20,6 +20,10 @@ int main(){
     do {
         x=5;
     } while (x>3);
+    
+    while (x>3) {
+        y = 5;
+    }
 
     return 0;
 }

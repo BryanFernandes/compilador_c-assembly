@@ -35,6 +35,13 @@ DO1:
 		BIPUSH 3
 		IF_ICMPEQ DO1
 
+W1: 
+		ILOAD x
+		BIPUSH 3
+		IF_ICMPEQ LW1
+G2:
+		BIPUSH 5
+		ISTORE y
 
 
 halt

@@ -119,10 +119,29 @@ A Right Parenthesis: )
 A final: ;
 A Line: 23
 A Line: 24
+A keyword: while
+A Left Parenthesis: (
+An identifier: x
+A compare: >
+An integer: 3 (3)
+A Right Parenthesis: )
+A left key: {
+A Line: 25
+An identifier: y
+A equals: =
+An integer: 5 (5)
+A final: ;
+
+	 ATRIBUICAO reconhecido, nome: y valor: 5 indice: 7
+
+A Line: 26
+A right key: }
+A Line: 27
+A Line: 28
 A keyword: return
 An integer: 0 (0)
 A final: ;
-A Line: 25
+A Line: 29
 A right key: }
 EOF
 
@@ -350,10 +369,43 @@ A Right Parenthesis: )
 A final: ;
 A Line: 23
 A Line: 24
+A keyword: while
+A Left Parenthesis: (
+An identifier: x
+
+	TOTAL = 7
+>>>>>>> [PALMITO]	[x] 0
+>>>>>>> [ABCDEF]	[x] 1
+>>>>>>> [BRYANHF]	[x] 2
+>>>>>>> [y]	[x] 3
+>>>>>>> [x]	[x] 4A compare: >
+An integer: 3 (3)
+A Right Parenthesis: )
+A left key: {
+A Line: 25
+An identifier: y
+A equals: =
+An integer: 5 (5)
+A final: ;
+
+	 ATRIBUICAO reconhecido, nome: y valor: 5 indice: 7
+
+
+	TOTAL = 7
+>>>>>>> [PALMITO]	[y] 0
+>>>>>>> [ABCDEF]	[y] 1
+>>>>>>> [BRYANHF]	[y] 2
+>>>>>>> [y]	[y] 3
+	 testando função 3
+	 TESTANDO TABELA DE SIMBOLOS>> y valor: 5 Tipo: int indice: 3
+A Line: 26
+A right key: }
+A Line: 27
+A Line: 28
 A keyword: return
 An integer: 0 (0)
 A final: ;
-A Line: 25
+A Line: 29
 A right key: }
 EOF
 
@@ -362,7 +414,7 @@ EOF
 	 INDICE: 0 	 nome: PALMITO 	 valor: 3 	 tipo: #define 
 	 INDICE: 1 	 nome: ABCDEF 	 valor: 10 	 tipo: #define 
 	 INDICE: 2 	 nome: BRYANHF 	 valor: 5 	 tipo: #define 
-	 INDICE: 3 	 nome: y 	 valor: 29 	 tipo: int 
+	 INDICE: 3 	 nome: y 	 valor: 5 	 tipo: int 
 	 INDICE: 4 	 nome: x 	 valor: 5 	 tipo: int 
 	 INDICE: 5 	 nome: p 	 valor: 7 	 tipo: int 
 	 INDICE: 6 	 nome: j 	 valor: (null) 	 tipo: int 
@@ -468,10 +520,26 @@ A Right Parenthesis: )
 A final: ;
 A Line: 22
 A Line: 23
+A keyword: while
+A Left Parenthesis: (
+An identifier: x
+A compare: >
+An integer: 3 (3)
+A Right Parenthesis: )
+A left key: {
+A Line: 24
+An identifier: y
+A equals: =
+An integer: 5 (5)
+A final: ;
+A Line: 25
+A right key: }
+A Line: 26
+A Line: 27
 A keyword: return
 An integer: 0 (0)
 A final: ;
-A Line: 24
+A Line: 28
 A right key: }
 EOF
 
@@ -601,13 +669,35 @@ A final: ;
 
 A Line: 23
 A Line: 24
+A keyword: while
+A Left Parenthesis: (
+An identifier: x
+A compare: >
+An integer: 3 (3)
+A Right Parenthesis: )
+A left key: {
+
+	Comando while reconhecido!
+
+A Line: 25
+An identifier: y
+A equals: =
+An integer: 5 (5)
+A final: ;
+
+	Atribuicao reconhecida!
+
+A Line: 26
+A right key: }
+A Line: 27
+A Line: 28
 A keyword: return
 An integer: 0 (0)
 A final: ;
 
 	Retorno da funcao main reconhecida!
 
-A Line: 25
+A Line: 29
 A right key: }
 EOF
 
@@ -704,10 +794,26 @@ A Right Parenthesis: )
 A final: ;
 A Line: 23
 A Line: 24
+A keyword: while
+A Left Parenthesis: (
+An identifier: x
+A compare: >
+An integer: 3 (3)
+A Right Parenthesis: )
+A left key: {
+A Line: 25
+An identifier: y
+A equals: =
+An integer: 5 (5)
+A final: ;
+A Line: 26
+A right key: }
+A Line: 27
+A Line: 28
 A keyword: return
 An integer: 0 (0)
 A final: ;
-A Line: 25
+A Line: 29
 A right key: }
 EOF
 

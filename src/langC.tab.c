@@ -148,6 +148,7 @@ FILE *arq;//depuração
 //contadores
 int contKeys = 0;
 int contJumps = 0;
+int contJumpGeral = 0;
 int contJumpsDo = 0;
 int contJumpWhile = 0;
 int contParenthensis = 0;
@@ -180,9 +181,10 @@ simbolo * table;
 int abortar = 1;
 //variavel para armasenar temporariamente o codigo
 FILE * temp;
-int to_buffer = 0;
+int to_buffer_if = 0;
+int to_buffer_while = 0;
 
-#line 82 "langC.y"
+#line 84 "langC.y"
 #include "lex.yy.c"
 
 /* Enabling traces.  */
@@ -205,12 +207,12 @@ int to_buffer = 0;
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 84 "langC.y"
+#line 86 "langC.y"
 {
   char *string;  /* string buffer */
 }
 /* Line 193 of yacc.c.  */
-#line 214 "langC.tab.c"
+#line 216 "langC.tab.c"
 	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
@@ -223,7 +225,7 @@ typedef union YYSTYPE
 
 
 /* Line 216 of yacc.c.  */
-#line 227 "langC.tab.c"
+#line 229 "langC.tab.c"
 
 #ifdef short
 # undef short
@@ -534,13 +536,13 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,    91,    91,    92,    93,    93,    93,    94,    95,    95,
-      95,    96,    96,    96,    97,    97,    98,    98,    99,   100,
-     101,   101,   104,   104,   144,   144,   152,   152,   159,   159,
-     170,   170,   175,   175,   180,   180,   186,   206,   206,   210,
-     210,   213,   213,   216,   216,   271,   271,   306,   306,   361,
-     361,   404,   404,   421,   421,   429,   429,   439,   439,   451,
-     451,   463,   463,   470,   470,   477,   477,   486
+       0,    93,    93,    94,    95,    95,    95,    96,    97,    97,
+      97,    98,    98,    98,    99,    99,   100,   100,   101,   102,
+     103,   103,   106,   106,   146,   146,   154,   154,   161,   161,
+     172,   172,   177,   177,   182,   182,   188,   208,   208,   212,
+     212,   215,   215,   218,   218,   273,   273,   308,   308,   363,
+     363,   406,   406,   424,   424,   432,   432,   443,   443,   455,
+     455,   467,   467,   474,   474,   481,   481,   490
 };
 #endif
 
@@ -1535,7 +1537,7 @@ yyreduce:
   switch (yyn)
     {
         case 22:
-#line 104 "langC.y"
+#line 106 "langC.y"
     {
         if(contPasso == PASSO_SIMBOLO){
             
@@ -1577,7 +1579,7 @@ yyreduce:
     break;
 
   case 24:
-#line 144 "langC.y"
+#line 146 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             contKeys++;
@@ -1587,7 +1589,7 @@ yyreduce:
     break;
 
   case 26:
-#line 152 "langC.y"
+#line 154 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             printf("\n\tRetorno da funcao main reconhecida!\n\n");
@@ -1596,34 +1598,34 @@ yyreduce:
     break;
 
   case 28:
-#line 159 "langC.y"
+#line 161 "langC.y"
     {
         if(contPasso == PASSO_LIMPA)
             contKeys--;
-        if(contPasso == PASSO_MAIN && to_buffer==1){
-            fprintf(temp, "\nGOTO G%d\n\n",contJumps);
-            to_buffer--;
+        if(contPasso == PASSO_MAIN && to_buffer_if==1){
+            fprintf(temp, "\nGOTO G%d\n\n",contJumpGeral);
+            to_buffer_if--;
 
         }
     ;}
     break;
 
   case 30:
-#line 170 "langC.y"
+#line 172 "langC.y"
     {
         contKeys++;
     ;}
     break;
 
   case 32:
-#line 175 "langC.y"
+#line 177 "langC.y"
     {
         contParenthensis++;
     ;}
     break;
 
   case 34:
-#line 180 "langC.y"
+#line 182 "langC.y"
     {
         if(contPasso == PASSO_LIMPA)
         contParenthensis--;
@@ -1631,7 +1633,7 @@ yyreduce:
     break;
 
   case 36:
-#line 186 "langC.y"
+#line 188 "langC.y"
     {if(contPasso == PASSO_SIMBOLO){
             //printf("\n\t AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             if(PASSO_SIMBOLO_SET==1){
@@ -1656,7 +1658,7 @@ yyreduce:
     break;
 
   case 43:
-#line 216 "langC.y"
+#line 218 "langC.y"
     {
         if(contPasso == PASSO_SIMBOLO){
             printf("\n\tSOMA reconhecido" );
@@ -1671,7 +1673,7 @@ yyreduce:
             }
         }
         if(contPasso == PASSO_MAIN){
-            if(to_buffer==0){
+            if(to_buffer_if==0){
                 printf("\n\tSoma reconhecida!\n\n", yytext);
                 // verificaçao se é um numero ou uma variavel
                 if(strtol((yyvsp[(3) - (6)].string) , NULL , 0)!=0)
@@ -1688,7 +1690,7 @@ yyreduce:
                     fprintf(arq, "\n\t\tISUB");
                 fprintf(arq, "\n\t\tISTORE %s", (yyvsp[(1) - (6)].string));
             }
-            if (to_buffer==1){
+            if (to_buffer_if==1){
                 printf("\n\tSoma reconhecida!\n\n", yytext);
                 // verificaçao se é um numero ou uma variavel
                 if(strtol((yyvsp[(3) - (6)].string) , NULL , 0)!=0)
@@ -1712,7 +1714,7 @@ yyreduce:
     break;
 
   case 45:
-#line 271 "langC.y"
+#line 273 "langC.y"
     {
         if(contPasso == PASSO_SIMBOLO){
             
@@ -1749,7 +1751,7 @@ yyreduce:
     break;
 
   case 47:
-#line 306 "langC.y"
+#line 308 "langC.y"
     {
         if(contPasso == PASSO_SIMBOLO){
             
@@ -1784,14 +1786,14 @@ yyreduce:
             printf("\n\tDeclaracao com instanciacao reconhecida!\n\n");
             //fprintf(arq,"\n\t\tBIPUSH %s\n\t\tISTORE %s",$<string>4,$2);
             // verificaçao se é um numero ou uma variavel
-            if(to_buffer==0){
+            if(to_buffer_if==0){
                 if(strtol((yyvsp[(4) - (5)].string) , NULL , 0)!=0)
                     fprintf(arq, "\n\t\tBIPUSH %s\n\t\tISTORE %s", (yyvsp[(4) - (5)].string), (yyvsp[(2) - (5)].string));
                 else
                     fprintf(arq, "\n\t\tILOAD %s\n\t\tISTORE %s", (yyvsp[(4) - (5)].string), (yyvsp[(2) - (5)].string));
             }
 
-            if(to_buffer==1){
+            if(to_buffer_if==1){
                 if(strtol((yyvsp[(4) - (5)].string) , NULL , 0)!=0)
                     fprintf(temp, "\n\t\tBIPUSH %s\n\t\tISTORE %s", (yyvsp[(4) - (5)].string), (yyvsp[(2) - (5)].string));
                 else
@@ -1805,7 +1807,7 @@ yyreduce:
     break;
 
   case 49:
-#line 361 "langC.y"
+#line 363 "langC.y"
     {   
         if(contPasso == PASSO_SIMBOLO){
             printf("\n\t ATRIBUICAO reconhecido, nome: %s valor: %s indice: %d\n\n", (yyvsp[(1) - (4)].string),(yyvsp[(3) - (4)].string),contSimbolo);
@@ -1830,7 +1832,7 @@ yyreduce:
             }
         }
         if(contPasso == PASSO_MAIN){
-            if(to_buffer==0){
+            if(to_buffer_if==0){
                 printf("\n\tAtribuicao reconhecida!\n\n", yytext);
                 // verificaçao se é um numero ou uma variavel
                 if(strtol((yyvsp[(3) - (4)].string) , NULL , 0)!=0)
@@ -1838,7 +1840,7 @@ yyreduce:
                 else
                     fprintf(arq, "\n\t\tILOAD %s\n\t\tISTORE %s", (yyvsp[(3) - (4)].string), (yyvsp[(1) - (4)].string));
             }
-            if (to_buffer==1){
+            if (to_buffer_if==1){
                 if(strtol((yyvsp[(3) - (4)].string) , NULL , 0)!=0)
                     fprintf(temp, "\n\t\tBIPUSH %s\n\t\tISTORE %s", (yyvsp[(3) - (4)].string), (yyvsp[(1) - (4)].string));
                 else
@@ -1849,17 +1851,18 @@ yyreduce:
     break;
 
   case 51:
-#line 404 "langC.y"
+#line 406 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             contKeys++;
             contJumps++;
-            if(to_buffer==0){
+            contJumpGeral++;
+            if(to_buffer_if==0){
                 printf("\n\tComando if reconhecido!\n\n");
                 
-                fprintf(arq, "\n\t\tILOAD %s\n\t\tBIPUSH %s\n\t\tIF_ICMPEQ L%d\nG%d:", (yyvsp[(3) - (7)].string), (yyvsp[(5) - (7)].string), contJumps, contJumps);
+                fprintf(arq, "\n\t\tILOAD %s\n\t\tBIPUSH %s\n\t\tIF_ICMPEQ L%d\nG%d:", (yyvsp[(3) - (7)].string), (yyvsp[(5) - (7)].string), contJumps, contJumpGeral);
                 fprintf(temp,"L%d:",contJumps);
-                to_buffer++;
+                to_buffer_if++;
             }     
 
         }
@@ -1868,7 +1871,7 @@ yyreduce:
     break;
 
   case 53:
-#line 421 "langC.y"
+#line 424 "langC.y"
     {
             if(contPasso == PASSO_MAIN){
                 contKeys++;
@@ -1878,19 +1881,20 @@ yyreduce:
     break;
 
   case 55:
-#line 429 "langC.y"
+#line 432 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             contKeys++;
-            //contJumpWhile++;
+            contJumpWhile++;
+            contJumpGeral++;
             printf("\n\tComando while reconhecido!\n\n");
-            //fprintf(arq, "\nW%d: \n\t\tILOAD %s\n\t\tBIPUSH %s\n\t\tIF_ICMPEQ L%d\nG%d:", contJumpWhile);
+            fprintf(arq, "\nW%d: \n\t\tILOAD %s\n\t\tBIPUSH %s\n\t\tIF_ICMPEQ LW%d\nG%d:", contJumpWhile, (yyvsp[(3) - (7)].string), (yyvsp[(5) - (7)].string), contJumpWhile, contJumpGeral);
         }
     ;}
     break;
 
   case 57:
-#line 439 "langC.y"
+#line 443 "langC.y"
     {
        if(contPasso == PASSO_MAIN){
             contKeys++;
@@ -1903,7 +1907,7 @@ yyreduce:
     break;
 
   case 59:
-#line 451 "langC.y"
+#line 455 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             contKeys--;
@@ -1917,7 +1921,7 @@ yyreduce:
     break;
 
   case 61:
-#line 463 "langC.y"
+#line 467 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             printf("\n\tComando case  reconhecido!\n\n");
@@ -1926,7 +1930,7 @@ yyreduce:
     break;
 
   case 63:
-#line 470 "langC.y"
+#line 474 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             printf("\n\tComando break reconhecido!\n\n");
@@ -1935,7 +1939,7 @@ yyreduce:
     break;
 
   case 65:
-#line 477 "langC.y"
+#line 481 "langC.y"
     {
         if(contPasso == PASSO_MAIN){
             contKeys++;
@@ -1945,7 +1949,7 @@ yyreduce:
     break;
 
   case 67:
-#line 487 "langC.y"
+#line 491 "langC.y"
     {
     switch(contPasso){
         case 0:
@@ -2014,7 +2018,7 @@ yyreduce:
 
 
 /* Line 1267 of yacc.c.  */
-#line 2018 "langC.tab.c"
+#line 2022 "langC.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -2228,7 +2232,7 @@ yyreturn:
 }
 
 
-#line 552 "langC.y"
+#line 556 "langC.y"
 
 
 main( argc, argv)

@@ -13,6 +13,7 @@ FILE *arq;//depuração
 //contadores
 int contKeys = 0;
 int contJumps = 0;
+int contJumpGeral = 0;
 int contJumpsDo = 0;
 int contJumpWhile = 0;
 int contParenthensis = 0;
@@ -45,7 +46,8 @@ simbolo * table;
 int abortar = 1;
 //variavel para armasenar temporariamente o codigo
 FILE * temp;
-int to_buffer = 0;
+int to_buffer_if = 0;
+int to_buffer_while = 0;
 
 %}
 
@@ -159,9 +161,9 @@ cmdrk:
     RIGHT_KEY {
         if(contPasso == PASSO_LIMPA)
             contKeys--;
-        if(contPasso == PASSO_MAIN && to_buffer==1){
-            fprintf(temp, "\nGOTO G%d\n\n",contJumps);
-            to_buffer--;
+        if(contPasso == PASSO_MAIN && to_buffer_if==1){
+            fprintf(temp, "\nGOTO G%d\n\n",contJumpGeral);
+            to_buffer_if--;
 
         }
     } commands
@@ -227,7 +229,7 @@ cmdaddsub:
             }
         }
         if(contPasso == PASSO_MAIN){
-            if(to_buffer==0){
+            if(to_buffer_if==0){
                 printf("\n\tSoma reconhecida!\n\n", yytext);
                 // verificaçao se é um numero ou uma variavel
                 if(strtol($<string>3 , NULL , 0)!=0)
@@ -244,7 +246,7 @@ cmdaddsub:
                     fprintf(arq, "\n\t\tISUB");
                 fprintf(arq, "\n\t\tISTORE %s", $<string>1);
             }
-            if (to_buffer==1){
+            if (to_buffer_if==1){
                 printf("\n\tSoma reconhecida!\n\n", yytext);
                 // verificaçao se é um numero ou uma variavel
                 if(strtol($<string>3 , NULL , 0)!=0)
@@ -337,14 +339,14 @@ cmddeclarationinst:
             printf("\n\tDeclaracao com instanciacao reconhecida!\n\n");
             //fprintf(arq,"\n\t\tBIPUSH %s\n\t\tISTORE %s",$<string>4,$2);
             // verificaçao se é um numero ou uma variavel
-            if(to_buffer==0){
+            if(to_buffer_if==0){
                 if(strtol($<string>4 , NULL , 0)!=0)
                     fprintf(arq, "\n\t\tBIPUSH %s\n\t\tISTORE %s", $<string>4, $2);
                 else
                     fprintf(arq, "\n\t\tILOAD %s\n\t\tISTORE %s", $<string>4, $2);
             }
 
-            if(to_buffer==1){
+            if(to_buffer_if==1){
                 if(strtol($<string>4 , NULL , 0)!=0)
                     fprintf(temp, "\n\t\tBIPUSH %s\n\t\tISTORE %s", $<string>4, $2);
                 else
@@ -382,7 +384,7 @@ cmdattribuition:
             }
         }
         if(contPasso == PASSO_MAIN){
-            if(to_buffer==0){
+            if(to_buffer_if==0){
                 printf("\n\tAtribuicao reconhecida!\n\n", yytext);
                 // verificaçao se é um numero ou uma variavel
                 if(strtol($<string>3 , NULL , 0)!=0)
@@ -390,7 +392,7 @@ cmdattribuition:
                 else
                     fprintf(arq, "\n\t\tILOAD %s\n\t\tISTORE %s", $<string>3, $1);
             }
-            if (to_buffer==1){
+            if (to_buffer_if==1){
                 if(strtol($<string>3 , NULL , 0)!=0)
                     fprintf(temp, "\n\t\tBIPUSH %s\n\t\tISTORE %s", $<string>3, $1);
                 else
@@ -405,12 +407,13 @@ cmdif:
         if(contPasso == PASSO_MAIN){
             contKeys++;
             contJumps++;
-            if(to_buffer==0){
+            contJumpGeral++;
+            if(to_buffer_if==0){
                 printf("\n\tComando if reconhecido!\n\n");
                 
-                fprintf(arq, "\n\t\tILOAD %s\n\t\tBIPUSH %s\n\t\tIF_ICMPEQ L%d\nG%d:", $<string>3, $<string>5, contJumps, contJumps);
+                fprintf(arq, "\n\t\tILOAD %s\n\t\tBIPUSH %s\n\t\tIF_ICMPEQ L%d\nG%d:", $<string>3, $<string>5, contJumps, contJumpGeral);
                 fprintf(temp,"L%d:",contJumps);
-                to_buffer++;
+                to_buffer_if++;
             }     
 
         }
@@ -429,9 +432,10 @@ cmdwhile:
     WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY {
         if(contPasso == PASSO_MAIN){
             contKeys++;
-            //contJumpWhile++;
+            contJumpWhile++;
+            contJumpGeral++;
             printf("\n\tComando while reconhecido!\n\n");
-            //fprintf(arq, "\nW%d: \n\t\tILOAD %s\n\t\tBIPUSH %s\n\t\tIF_ICMPEQ L%d\nG%d:", contJumpWhile);
+            fprintf(arq, "\nW%d: \n\t\tILOAD %s\n\t\tBIPUSH %s\n\t\tIF_ICMPEQ LW%d\nG%d:", contJumpWhile, $<string>3, $<string>5, contJumpWhile, contJumpGeral);
         }
     } commands
     
