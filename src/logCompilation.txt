@@ -1,6 +1,6 @@
 flex langC.l
 bison -d -v langC.y
-langC.y: conflitos: 1 de deslocamento/redução
+langC.y: conflicts: 1 shift/reduce
 gcc -o prog langC.tab.c
-langC.y:656:6: aviso: conflicting types for ‘print_table’ [habilitado por padrão]
-langC.y:491:13: nota: previous implicit declaration of ‘print_table’ was here
+langC.y:660: warning: conflicting types for ‘print_table’
+langC.y:491: warning: previous implicit declaration of ‘print_table’ was here

@@ -19,7 +19,8 @@ int contSimbolo=0;
 int checkDo = 0;
 
 //variaveis para controle das passadas
-int PASSO_SIMBOLO = 0,PASSO_SIMBOLO_SET=0;
+int PASSO_SIMBOLO = 0;
+int PASSO_SIMBOLO_SET=0;
 int PASSO_DEFINE = 1;
 int PASSO_MAIN = 2;
 int PASSO_LIMPA = 3;
@@ -548,15 +549,19 @@ int argc;
 char **argv;
     {
         ++argv, --argc;
+        char nameRead[30], nameWrite[30], name[30];
+        memcpy(nameRead, argv[0], strlen(argv[0]));
+        memcpy(name, nameRead, strlen(nameRead));
+        sprintf(nameWrite, "%s.jas", name);
         
-        arq = fopen("depuracao.asm", "w");
+        arq = fopen(nameWrite, "w");
         temp = fopen("temp.txt", "w");
         
         //primeiro passo: LENDO TABELA DE SIMBOLOS
         // este passo é composto de 2 sub-passos um para contar os simbolos e outro para realizar as alterações e verificações
             //primeiro sub-passo
                 if (argc > 0)
-                    yyin = fopen( argv[0], "r");
+                    yyin = fopen( nameRead, "r");
                 else
                     yyin = stdin;
 
@@ -567,7 +572,7 @@ char **argv;
 
             //segundo sub-passo
                 if (argc > 0)
-                    yyin = fopen( argv[0], "r");
+                    yyin = fopen( nameRead, "r");
                 else
                     yyin = stdin;
 
@@ -579,7 +584,7 @@ char **argv;
 
         //segundo passo: IDENTIFICANDO CONSTANTES
             if (argc > 0)
-                yyin = fopen( argv[0], "r");
+                yyin = fopen( nameRead, "r");
             else
                 yyin = stdin;
                 
@@ -591,7 +596,7 @@ char **argv;
         
         //terceiro passo: LENDO FUNCAO PRINCIPAL
             if (argc > 0)
-                yyin = fopen( argv[0], "r");
+                yyin = fopen( nameRead, "r");
             else
                 yyin = stdin;
             
@@ -612,7 +617,7 @@ char **argv;
         
         //quarto passo
             if (argc > 0)
-            yyin = fopen( argv[0], "r");
+            yyin = fopen( nameRead, "r");
             else
             yyin = stdin;
             
@@ -623,7 +628,7 @@ char **argv;
        
          //quinto passo
             if (argc > 0)
-                yyin = fopen( argv[0], "r");
+                yyin = fopen( nameRead, "r");
             else
                 yyin = stdin;
                 

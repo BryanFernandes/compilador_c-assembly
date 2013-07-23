@@ -3,10 +3,10 @@
 Passo 1: LENDO TABELA DE SIMBOLOS
 
 A Constant: #define
-An identifier: PAL
+An identifier: PALMITO
 An integer: 3 (3)
 
-	 SIMBOLO reconhecido, nome: PAL valor: 3 tipo: #define tamanho tabela: 0
+	 SIMBOLO reconhecido, nome: PALMITO valor: 3 tipo: #define tamanho tabela: 0
 A Line: 2
 A Constant: #define
 An identifier: ABCDEF
@@ -91,7 +91,7 @@ A Line: 17
 A Line: 18
 An identifier: p
 A equals: =
-An identifier: PAL
+An identifier: PALMITO
 A plus operator: +
 An integer: 3 (3)
 A final: ;
@@ -108,15 +108,15 @@ EOF
 Passo 1: AINDA LENDO TABELA DE SIMBOLOS
 
 A Constant: #define
-An identifier: PAL
+An identifier: PALMITO
 An integer: 3 (3)
 
-	 SIMBOLO reconhecido, nome: PAL valor: 3 tipo: #define tamanho tabela: 0
+	 SIMBOLO reconhecido, nome: PALMITO valor: 3 tipo: #define tamanho tabela: 0
 
 	TOTAL = 1
->>>>>>> [(null)]	[PAL] 0
+>>>>>>> [(null)]	[PALMITO] 0
 	 testando função 0
-	 TESTANDO TABELA DE SIMBOLOS>> PAL valor: 3 tipo: #define indice: 0
+	 TESTANDO TABELA DE SIMBOLOS>> PALMITO valor: 3 tipo: #define indice: 0
 A Line: 2
 A Constant: #define
 An identifier: ABCDEF
@@ -125,7 +125,7 @@ An integer: 10 (10)
 	 SIMBOLO reconhecido, nome: ABCDEF valor: 10 tipo: #define tamanho tabela: 1
 
 	TOTAL = 2
->>>>>>> [PAL]	[ABCDEF] 0
+>>>>>>> [PALMITO]	[ABCDEF] 0
 >>>>>>> [(null)]	[ABCDEF] 1
 	 testando função 0
 	 TESTANDO TABELA DE SIMBOLOS>> ABCDEF valor: 10 tipo: #define indice: 1
@@ -137,7 +137,7 @@ An integer: 5 (5)
 	 SIMBOLO reconhecido, nome: BRYANHF valor: 5 tipo: #define tamanho tabela: 2
 
 	TOTAL = 3
->>>>>>> [PAL]	[BRYANHF] 0
+>>>>>>> [PALMITO]	[BRYANHF] 0
 >>>>>>> [ABCDEF]	[BRYANHF] 1
 >>>>>>> [(null)]	[BRYANHF] 2
 	 testando função 0
@@ -160,12 +160,12 @@ A final: ;
 
 
 	TOTAL = 4
->>>>>>> [PAL]	[y] 0
+>>>>>>> [PALMITO]	[y] 0
 >>>>>>> [ABCDEF]	[y] 1
 >>>>>>> [BRYANHF]	[y] 2
 >>>>>>> [(null)]	[y] 3
 	 testando função -1
-	 TESTANDO TABELA DE SIMBOLOS>> y valor: VAZIO (nil) Tipo: int indice: 3
+	 TESTANDO TABELA DE SIMBOLOS>> y valor: VAZIO 0x0 Tipo: int indice: 3
 A Line: 9
 A keyword: int
 An identifier: x
@@ -177,7 +177,7 @@ A final: ;
 
 
 	TOTAL = 5
->>>>>>> [PAL]	[x] 0
+>>>>>>> [PALMITO]	[x] 0
 >>>>>>> [ABCDEF]	[x] 1
 >>>>>>> [BRYANHF]	[x] 2
 >>>>>>> [y]	[x] 3
@@ -190,7 +190,7 @@ A equals: =
 An identifier: x
 
 	TOTAL = 5
->>>>>>> [PAL]	[x] 0
+>>>>>>> [PALMITO]	[x] 0
 >>>>>>> [ABCDEF]	[x] 1
 >>>>>>> [BRYANHF]	[x] 2
 >>>>>>> [y]	[x] 3
@@ -198,14 +198,14 @@ An identifier: x
 An identifier: y
 
 	TOTAL = 5
->>>>>>> [PAL]	[y] 0
+>>>>>>> [PALMITO]	[y] 0
 >>>>>>> [ABCDEF]	[y] 1
 >>>>>>> [BRYANHF]	[y] 2
 >>>>>>> [y]	[y] 3A final: ;
 
 	SOMA reconhecido
 	TOTAL = 5
->>>>>>> [PAL]	[x] 0
+>>>>>>> [PALMITO]	[x] 0
 >>>>>>> [ABCDEF]	[x] 1
 >>>>>>> [BRYANHF]	[x] 2
 >>>>>>> [y]	[x] 3
@@ -228,7 +228,7 @@ A final: ;
 
 
 	TOTAL = 6
->>>>>>> [PAL]	[p] 0
+>>>>>>> [PALMITO]	[p] 0
 >>>>>>> [ABCDEF]	[p] 1
 >>>>>>> [BRYANHF]	[p] 2
 >>>>>>> [y]	[p] 3
@@ -246,7 +246,7 @@ A final: ;
 
 
 	TOTAL = 6
->>>>>>> [PAL]	[y] 0
+>>>>>>> [PALMITO]	[y] 0
 >>>>>>> [ABCDEF]	[y] 1
 >>>>>>> [BRYANHF]	[y] 2
 >>>>>>> [y]	[y] 3
@@ -264,7 +264,7 @@ A final: ;
 
 
 	TOTAL = 7
->>>>>>> [PAL]	[j] 0
+>>>>>>> [PALMITO]	[j] 0
 >>>>>>> [ABCDEF]	[j] 1
 >>>>>>> [BRYANHF]	[j] 2
 >>>>>>> [y]	[j] 3
@@ -272,21 +272,21 @@ A final: ;
 >>>>>>> [p]	[j] 5
 >>>>>>> [(null)]	[j] 6
 	 testando função -1
-	 TESTANDO TABELA DE SIMBOLOS>> j valor: VAZIO (nil) Tipo: int indice: 6
+	 TESTANDO TABELA DE SIMBOLOS>> j valor: VAZIO 0x0 Tipo: int indice: 6
 A Line: 17
 A Line: 18
 An identifier: p
 A equals: =
-An identifier: PAL
+An identifier: PALMITO
 
 	TOTAL = 7
->>>>>>> [PAL]	[PAL] 0A plus operator: +
+>>>>>>> [PALMITO]	[PALMITO] 0A plus operator: +
 An integer: 3 (3)
 A final: ;
 
 	SOMA reconhecido
 	TOTAL = 7
->>>>>>> [PAL]	[p] 0
+>>>>>>> [PALMITO]	[p] 0
 >>>>>>> [ABCDEF]	[p] 1
 >>>>>>> [BRYANHF]	[p] 2
 >>>>>>> [y]	[p] 3
@@ -302,7 +302,7 @@ EOF
 
 	 TAMANHO TOTAL TABELA: 7
 
-	 INDICE: 0 	 nome: PAL 	 valor: 3 	 tipo: #define 
+	 INDICE: 0 	 nome: PALMITO 	 valor: 3 	 tipo: #define 
 	 INDICE: 1 	 nome: ABCDEF 	 valor: 10 	 tipo: #define 
 	 INDICE: 2 	 nome: BRYANHF 	 valor: 5 	 tipo: #define 
 	 INDICE: 3 	 nome: y 	 valor: 29 	 tipo: int 
@@ -312,7 +312,7 @@ EOF
 Passo 2: IDENTIFICANDO CONSTANTES
 
 A Constant: #define
-An identifier: PAL
+An identifier: PALMITO
 An integer: 3 (3)
 
 	Constante reconhecida!
@@ -387,7 +387,7 @@ A Line: 16
 A Line: 17
 An identifier: p
 A equals: =
-An identifier: PAL
+An identifier: PALMITO
 A plus operator: +
 An integer: 3 (3)
 A final: ;
@@ -403,7 +403,7 @@ EOF
 Passo 3: LENDO FUNCAO PRINCIPAL
 
 A Constant: #define
-An identifier: PAL
+An identifier: PALMITO
 An integer: 3 (3)
 A Line: 2
 A Constant: #define
@@ -490,7 +490,7 @@ A Line: 17
 A Line: 18
 An identifier: p
 A equals: =
-An identifier: PAL
+An identifier: PALMITO
 A plus operator: +
 An integer: 3 (3)
 A final: ;
@@ -512,7 +512,7 @@ EOF
 Passo 4: VERIFICANDO CODIGO
 
 A Constant: #define
-An identifier: PAL
+An identifier: PALMITO
 An integer: 3 (3)
 A Line: 2
 A Constant: #define
@@ -578,7 +578,7 @@ A Line: 17
 A Line: 18
 An identifier: p
 A equals: =
-An identifier: PAL
+An identifier: PALMITO
 A plus operator: +
 An integer: 3 (3)
 A final: ;

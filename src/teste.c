@@ -1,4 +1,4 @@
-#define PAL 3
+#define PALMITO 3
 #define ABCDEF 10
 #define BRYANHF 5
 
@@ -15,7 +15,7 @@ int main(){
 
     int j;
 
-    p=PAL+3;
+    p=PALMITO+3;
 
     return 0;
 }
