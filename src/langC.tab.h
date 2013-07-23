@@ -106,7 +106,7 @@
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 83 "langC.y"
+#line 84 "langC.y"
 {
   char *string;  /* string buffer */
 }

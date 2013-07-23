@@ -2,5 +2,5 @@ flex langC.l
 bison -d -v langC.y
 langC.y: conflicts: 1 shift/reduce
 gcc -o prog langC.tab.c
-langC.y:665: warning: conflicting types for ‘print_table’
-langC.y:496: warning: previous implicit declaration of ‘print_table’ was here
+langC.y:668: warning: conflicting types for ‘print_table’
+langC.y:499: warning: previous implicit declaration of ‘print_table’ was here

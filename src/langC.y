@@ -14,6 +14,7 @@ FILE *arq;//depuração
 int contKeys = 0;
 int contJumps = 0;
 int contJumpsDo = 0;
+int contJumpWhile = 0;
 int contParenthensis = 0;
 int contPasso = 0;
 int contSimbolo=0;
@@ -428,7 +429,9 @@ cmdwhile:
     WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY {
         if(contPasso == PASSO_MAIN){
             contKeys++;
+            //contJumpWhile++;
             printf("\n\tComando while reconhecido!\n\n");
+            //fprintf(arq, "\nW%d: \n\t\tILOAD %s\n\t\tBIPUSH %s\n\t\tIF_ICMPEQ L%d\nG%d:", contJumpWhile);
         }
     } commands
     
