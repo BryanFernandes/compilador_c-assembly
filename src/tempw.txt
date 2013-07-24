@@ -1,0 +1,5 @@
+
+		BIPUSH 5
+		ISTORE y
+GOTO G2
+

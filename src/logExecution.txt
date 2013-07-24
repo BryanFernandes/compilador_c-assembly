@@ -73,11 +73,11 @@ A Line: 13
 An identifier: y
 A equals: =
 An integer: 29 (29)
+A plus operator: +
+An integer: 3 (3)
 A final: ;
 
-	 ATRIBUICAO reconhecido, nome: y valor: 29 indice: 6
-
-A Line: 14
+	SOMA reconhecidoA Line: 14
 A right key: }
 A Line: 15
 A Line: 16
@@ -280,19 +280,16 @@ A Line: 13
 An identifier: y
 A equals: =
 An integer: 29 (29)
+A plus operator: +
+An integer: 3 (3)
 A final: ;
 
-	 ATRIBUICAO reconhecido, nome: y valor: 29 indice: 6
-
-
+	SOMA reconhecido
 	TOTAL = 6
 >>>>>>> [PALMITO]	[y] 0
 >>>>>>> [ABCDEF]	[y] 1
 >>>>>>> [BRYANHF]	[y] 2
->>>>>>> [y]	[y] 3
-	 testando função 3
-	 TESTANDO TABELA DE SIMBOLOS>> y valor: 29 Tipo: int indice: 3
-A Line: 14
+>>>>>>> [y]	[y] 3A Line: 14
 A right key: }
 A Line: 15
 A Line: 16
@@ -484,6 +481,8 @@ A Line: 12
 An identifier: y
 A equals: =
 An integer: 29 (29)
+A plus operator: +
+An integer: 3 (3)
 A final: ;
 A Line: 13
 A right key: }
@@ -618,7 +617,12 @@ A Line: 13
 An identifier: y
 A equals: =
 An integer: 29 (29)
+A plus operator: +
+An integer: 3 (3)
 A final: ;
+
+	Soma reconhecida!
+
 A Line: 14
 A right key: }
 A Line: 15
@@ -758,6 +762,8 @@ A Line: 13
 An identifier: y
 A equals: =
 An integer: 29 (29)
+A plus operator: +
+An integer: 3 (3)
 A final: ;
 A Line: 14
 A right key: }

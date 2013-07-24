@@ -10,7 +10,7 @@ int main(){
     x= x-y;
     if(3==3){
         int p=7;
-        y=29;
+        y=29 +3;
     }
 
     int j;

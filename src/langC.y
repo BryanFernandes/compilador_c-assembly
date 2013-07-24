@@ -46,6 +46,7 @@ simbolo * table;
 int abortar = 1;
 //variavel para armasenar temporariamente o codigo
 FILE * temp;
+FILE * tempw;
 int to_buffer_if = 0;
 int to_buffer_while = 0;
 
@@ -125,6 +126,14 @@ cmdprintf:
                     fprintf(temp, "\n\t\tBIPUSH '%c'\n\t\tOUT", $4[i]);
                 }
              }
+            if(to_buffer_while == 1){
+
+                char palavra[strlen($4)];
+                int i;
+                for(i=0;i<strlen($4);i++) {
+                    fprintf(tempw, "\n\t\tBIPUSH '%c'\n\t\tOUT", $4[i]);
+                }
+            } 
         }
 
     }commands
@@ -191,6 +200,11 @@ cmdrk:
         if(contPasso == PASSO_MAIN && to_buffer_if==1){
             fprintf(temp, "\nGOTO G%d\n\n",contJumpGeral);
             to_buffer_if--;
+
+        }
+        if(contPasso == PASSO_MAIN && to_buffer_while == 1){
+            fprintf(tempw, "\nGOTO G%d\n\n",contJumpGeral);
+            to_buffer_while--;
 
         }
     } commands
@@ -291,6 +305,24 @@ cmdaddsub:
                 fprintf(temp, "\n\t\tISTORE %s", $<string>1);
                 /* code */
             }
+            if (to_buffer_while ==1){
+                printf("\n\tSoma reconhecida!\n\n", yytext);
+                // verificaçao se é um numero ou uma variavel
+                if(strtol($<string>3 , NULL , 0)!=0)
+                    fprintf(tempw, "\n\t\tBIPUSH %s", $<string>3);
+                else
+                    fprintf(tempw, "\n\t\tILOAD %s", $<string>3);
+                if(strtol($<string>5 , NULL , 0)!=0)
+                    fprintf(tempw, "\n\t\tBIPUSH %s", $<string>5);
+                else
+                    fprintf(tempw, "\n\t\tILOAD %s", $<string>5);
+                if(strcmp($<string>4 , "+")==0)
+                    fprintf(tempw, "\n\t\tIADD");
+                else
+                    fprintf(tempw, "\n\t\tISUB");
+                fprintf(tempw, "\n\t\tISTORE %s", $<string>1);
+                /* code */
+            }
         }
 
     }commands
@@ -379,6 +411,12 @@ cmddeclarationinst:
                 else
                     fprintf(temp, "\n\t\tILOAD %s\n\t\tISTORE %s", $<string>4, $2);
             }
+            if(to_buffer_while==1){
+                if(strtol($<string>4 , NULL , 0)!=0)
+                    fprintf(tempw, "\n\t\tBIPUSH %s\n\t\tISTORE %s", $<string>4, $2);
+                else
+                    fprintf(tempw, "\n\t\tILOAD %s\n\t\tISTORE %s", $<string>4, $2);
+            }
 
 
         }
@@ -425,6 +463,12 @@ cmdattribuition:
                 else
                     fprintf(temp, "\n\t\tILOAD %s\n\t\tISTORE %s", $<string>3, $1);
             }
+            if (to_buffer_while ==1){
+                if(strtol($<string>3 , NULL , 0)!=0)
+                    fprintf(tempw, "\n\t\tBIPUSH %s\n\t\tISTORE %s", $<string>3, $1);
+                else
+                    fprintf(tempw, "\n\t\tILOAD %s\n\t\tISTORE %s", $<string>3, $1);
+            }
         }
     } commands
 
@@ -461,6 +505,7 @@ cmdwhile:
             contKeys++;
             contJumpWhile++;
             contJumpGeral++;
+            to_buffer_while++;
             printf("\n\tComando while reconhecido!\n\n");
             fprintf(arq, "\nW%d: \n\t\tILOAD %s\n\t\tBIPUSH %s\n\t\tIF_ICMPEQ LW%d\nG%d:", contJumpWhile, $<string>3, $<string>5, contJumpWhile, contJumpGeral);
         }
@@ -552,16 +597,32 @@ exit: END_OF_FILE
             //imprime as funções armasenadas no buffer
 
             fclose(temp);
+            fclose(tempw);
             temp = fopen("temp.txt","r");
+            tempw = fopen("tempw.txt","r");
             fprintf(arq,"\n\n");
             fprintf(arq, "\nhalt\n");
             char c;
+
             while (c != EOF){
                 c = fgetc(temp);
                 if(c!= EOF)
                 fprintf(arq, "%c",c);
             }
+
+            c = ' ';
+            while (c != EOF){
+                c = fgetc(tempw);
+                if(c!= EOF)
+                fprintf(arq, "%c",c);
+            }
+
+
+
+
+
             fclose (temp);
+            fclose(tempw);
             
           
 
@@ -594,6 +655,7 @@ char **argv;
         
         arq = fopen(nameWrite, "w");
         temp = fopen("temp.txt", "w");
+        tempw = fopen("tempw.txt", "w");
         
         //primeiro passo: LENDO TABELA DE SIMBOLOS
         // este passo é composto de 2 sub-passos um para contar os simbolos e outro para realizar as alterações e verificações
