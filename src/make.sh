@@ -15,4 +15,5 @@ echo "RODANDO APLICACAO..."
 echo " "
 make run &> logExecution.txt
 cat < logExecution.txt
-echo rm temp.txt
+rm temp.txt
+rm tempw.txt
