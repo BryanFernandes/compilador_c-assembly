@@ -1,0 +1,34 @@
+comentarios sobre o programa
+
+>> nosso programa nao verifica a diferença entre FLOAT e INT
+>> operações sempre em pares e atribuições
+>> o compilador nao verifica QUANDO uma variavel foi declarada, pois para o assmbly IJVM TODAS devem ser declaradas no inicio do método, ou seja ele irá executar de qualquer maneira, porem se nao for "inicializado" antes de ser utilizado pode nao atender as expectativas
+
+
+FEATURES:
+	Tabela de simbolos é escrita e utilizada para apontar erros e warnings
+	Verificação de parentesis, chaves, do - while; 
+	diferencia atribuição entre variaveis  e entre variavel e numero
+	Estrutura de IF dentro de IF completa
+	operações de soma e subtração sempre em PARES
+	o comando "value" é muuito importande para a verificação de erros do codigo
+
+
+BUG:
+>> concertar o empilhamento de DEFINES, TEM QUE SER COM LDC_W
+
+TODO:
+
+	alterar o nome do arquivo de depuração para a extensão ".jas"
+	na operação de soma e subtração, colocar comandos para empilhar DEFINES
+	fazer printf
+	fazer FOR
+	
+
+
+OBS:
+	reconhecer as estruturas é facil, dificil e converter para a SEMANTICA do assembly
+	em IJVM estamos sempre trabalhando com PILHA
+	a parte FLOAT do compilador será desconsiderada
+	as instruções estão bem separadas devido ao fato de que no assembly IJVM so pode haver uma por linha (melhor sobrar do que faltar)
+	NAO PODE HAVER ESTRUTURAS CONCATENADAS com chaves!!!

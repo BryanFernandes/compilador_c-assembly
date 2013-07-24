@@ -1,0 +1,58 @@
+
+.constant
+palmito	3
+abcdef	10
+bryanhf	5
+.end-constant
+
+.main
+
+.var
+y
+x
+.end-var
+
+		BIPUSH 3
+		ISTORE x
+		ILOAD x
+		ILOAD y
+		ISUB
+		ISTORE x
+		ILOAD x
+		BIPUSH 3
+		IF_ICMPEQ L1
+G1:
+
+
+halt
+L1:
+		BIPUSH 't'
+		OUT
+		BIPUSH 'e'
+		OUT
+		BIPUSH 's'
+		OUT
+		BIPUSH 't'
+		OUT
+		BIPUSH 'a'
+		OUT
+		BIPUSH 'n'
+		OUT
+		BIPUSH 'd'
+		OUT
+		BIPUSH 'o'
+		OUT
+		BIPUSH 'a'
+		OUT
+		BIPUSH 'a'
+		OUT
+		BIPUSH 'a'
+		OUT
+		BIPUSH 'a'
+		OUT
+		BIPUSH 'a'
+		OUT
+GOTO G1
+
+
+.end-main

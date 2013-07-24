@@ -51,7 +51,7 @@ int to_buffer_while = 0;
 
 %}
 
-
+%token <string>PRINTF
 %token <string>IF
 %token <string>WHILE
 %token <string>DO
@@ -99,8 +99,35 @@ commands:
     cmdlp | cmdrp | 
     cmddeclaration | cmddeclarationinst |
     cmdmain | 
-    cmddefine | 
+    cmddefine | cmdprintf |
     return | exit
+
+
+
+cmdprintf:
+    PRINTF LEFT_PARENTHENSIS ASP ID ASP RIGHT_PARENTHENSIS FINAL {
+        if(contPasso==PASSO_MAIN){
+            printf("\n\t\tComando PRINTF reconhecido!!\n\n");
+            if(to_buffer_if==0){
+
+                char palavra[strlen($4)];
+                int i;
+                for(i=0;i<strlen($4);i++) {
+                    fprintf(arq, "\n\t\tBIPUSH '%c'\n\t\tOUT", $4[i]);
+                }
+             }
+
+            if(to_buffer_if==1){
+
+                char palavra[strlen($4)];
+                int i;
+                for(i=0;i<strlen($4);i++) {
+                    fprintf(temp, "\n\t\tBIPUSH '%c'\n\t\tOUT", $4[i]);
+                }
+             }
+        }
+
+    }commands
 
 cmddefine:
     DEFINE ID INT {

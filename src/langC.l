@@ -23,7 +23,7 @@ BREAK    break
 MAIN     main
 RETURN   return
 
-
+PRINTF   printf
 INTEGER  int
 FLOATING float
 %%
@@ -40,6 +40,11 @@ FLOATING float
 
 }
 
+{PRINTF} {
+    printf("A printf function: %s\n",yytext);
+    yylval.string = strdup(yytext);
+    return PRINTF;   
+}
 
 {INTEGER}  {
     printf("A keyword: %s\n",yytext);
