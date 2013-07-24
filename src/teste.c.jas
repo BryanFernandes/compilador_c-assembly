@@ -10,6 +10,8 @@ bryanhf	5
 .var
 y
 x
+p
+j
 .end-var
 
 		BIPUSH 3
@@ -18,40 +20,36 @@ x
 		ILOAD y
 		ISUB
 		ISTORE x
-		ILOAD x
+		ILOAD 3
 		BIPUSH 3
 		IF_ICMPEQ L1
 G1:
+		ILOAD PALMITO
+		BIPUSH 3
+		IADD
+		ISTORE p
+DO1:
+		BIPUSH 5
+		ISTORE x
+		ILOAD x
+		BIPUSH 3
+		IF_ICMPEQ DO1
+
+W1: 
+		ILOAD x
+		BIPUSH 3
+		IF_ICMPEQ LW1
+G2:
+		BIPUSH 5
+		ISTORE y
 
 
 halt
 L1:
-		BIPUSH 't'
-		OUT
-		BIPUSH 'e'
-		OUT
-		BIPUSH 's'
-		OUT
-		BIPUSH 't'
-		OUT
-		BIPUSH 'a'
-		OUT
-		BIPUSH 'n'
-		OUT
-		BIPUSH 'd'
-		OUT
-		BIPUSH 'o'
-		OUT
-		BIPUSH 'a'
-		OUT
-		BIPUSH 'a'
-		OUT
-		BIPUSH 'a'
-		OUT
-		BIPUSH 'a'
-		OUT
-		BIPUSH 'a'
-		OUT
+		BIPUSH 7
+		ISTORE p
+		BIPUSH 29
+		ISTORE y
 GOTO G1
 
 

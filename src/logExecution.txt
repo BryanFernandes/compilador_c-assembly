@@ -55,26 +55,93 @@ A final: ;
 	SOMA reconhecidoA Line: 11
 A keyword: if
 A Left Parenthesis: (
-An identifier: x
+An integer: 3 (3)
 A compare: ==
 An integer: 3 (3)
 A Right Parenthesis: )
 A left key: {
 A Line: 12
-A printf function: printf
+A keyword: int
+An identifier: p
+A equals: =
+An integer: 7 (7)
+A final: ;
+
+	 SIMBOLO reconhecido, nome: p valor: 7 tipo: int indice: 5
+
+A Line: 13
+An identifier: y
+A equals: =
+An integer: 29 (29)
+A final: ;
+
+	 ATRIBUICAO reconhecido, nome: y valor: 29 indice: 6
+
+A Line: 14
+A right key: }
+A Line: 15
+A Line: 16
+A keyword: int
+An identifier: j
+A final: ;
+
+	 SIMBOLO reconhecido, nome: j valor: VAZIO tipo: int indice: 6
+
+A Line: 17
+A Line: 18
+An identifier: p
+A equals: =
+An identifier: PALMITO
+A plus operator: +
+An integer: 3 (3)
+A final: ;
+
+	SOMA reconhecidoA Line: 19
+A Line: 20
+A keyword: do
+A left key: {
+A Line: 21
+An identifier: x
+A equals: =
+An integer: 5 (5)
+A final: ;
+
+	 ATRIBUICAO reconhecido, nome: x valor: 5 indice: 7
+
+A Line: 22
+A right key: }
+A keyword: while
 A Left Parenthesis: (
-A ASP: "
-An identifier: testandoaaaaa
-A ASP: "
+An identifier: x
+A compare: >
+An integer: 3 (3)
 A Right Parenthesis: )
 A final: ;
-A Line: 13
+A Line: 23
+A Line: 24
+A keyword: while
+A Left Parenthesis: (
+An identifier: x
+A compare: >
+An integer: 3 (3)
+A Right Parenthesis: )
+A left key: {
+A Line: 25
+An identifier: y
+A equals: =
+An integer: 5 (5)
+A final: ;
+
+	 ATRIBUICAO reconhecido, nome: y valor: 5 indice: 7
+
+A Line: 26
 A right key: }
-A Line: 14
+A Line: 27
+A Line: 28
 A keyword: return
 An integer: 0 (0)
 A final: ;
-A Line: 15
+A Line: 29
 A right key: }
 EOF
 
@@ -185,42 +252,172 @@ An identifier: y
 >>>>>>> [x]	[x] 4A Line: 11
 A keyword: if
 A Left Parenthesis: (
-An identifier: x
-
-	TOTAL = 5
->>>>>>> [PALMITO]	[x] 0
->>>>>>> [ABCDEF]	[x] 1
->>>>>>> [BRYANHF]	[x] 2
->>>>>>> [y]	[x] 3
->>>>>>> [x]	[x] 4A compare: ==
+An integer: 3 (3)
+A compare: ==
 An integer: 3 (3)
 A Right Parenthesis: )
 A left key: {
 A Line: 12
-A printf function: printf
+A keyword: int
+An identifier: p
+A equals: =
+An integer: 7 (7)
+A final: ;
+
+	 SIMBOLO reconhecido, nome: p valor: 7 tipo: int indice: 5
+
+
+	TOTAL = 6
+>>>>>>> [PALMITO]	[p] 0
+>>>>>>> [ABCDEF]	[p] 1
+>>>>>>> [BRYANHF]	[p] 2
+>>>>>>> [y]	[p] 3
+>>>>>>> [x]	[p] 4
+>>>>>>> [(null)]	[p] 5
+	 testando função -1
+	 TESTANDO TABELA DE SIMBOLOS>> p valor: 7 Tipo: int indice: 5
+A Line: 13
+An identifier: y
+A equals: =
+An integer: 29 (29)
+A final: ;
+
+	 ATRIBUICAO reconhecido, nome: y valor: 29 indice: 6
+
+
+	TOTAL = 6
+>>>>>>> [PALMITO]	[y] 0
+>>>>>>> [ABCDEF]	[y] 1
+>>>>>>> [BRYANHF]	[y] 2
+>>>>>>> [y]	[y] 3
+	 testando função 3
+	 TESTANDO TABELA DE SIMBOLOS>> y valor: 29 Tipo: int indice: 3
+A Line: 14
+A right key: }
+A Line: 15
+A Line: 16
+A keyword: int
+An identifier: j
+A final: ;
+
+	 SIMBOLO reconhecido, nome: j valor: VAZIO tipo: int indice: 6
+
+
+	TOTAL = 7
+>>>>>>> [PALMITO]	[j] 0
+>>>>>>> [ABCDEF]	[j] 1
+>>>>>>> [BRYANHF]	[j] 2
+>>>>>>> [y]	[j] 3
+>>>>>>> [x]	[j] 4
+>>>>>>> [p]	[j] 5
+>>>>>>> [(null)]	[j] 6
+	 testando função -1
+	 TESTANDO TABELA DE SIMBOLOS>> j valor: VAZIO (nil) Tipo: int indice: 6
+A Line: 17
+A Line: 18
+An identifier: p
+A equals: =
+An identifier: PALMITO
+
+	TOTAL = 7
+>>>>>>> [PALMITO]	[PALMITO] 0A plus operator: +
+An integer: 3 (3)
+A final: ;
+
+	SOMA reconhecido
+	TOTAL = 7
+>>>>>>> [PALMITO]	[p] 0
+>>>>>>> [ABCDEF]	[p] 1
+>>>>>>> [BRYANHF]	[p] 2
+>>>>>>> [y]	[p] 3
+>>>>>>> [x]	[p] 4
+>>>>>>> [p]	[p] 5A Line: 19
+A Line: 20
+A keyword: do
+A left key: {
+A Line: 21
+An identifier: x
+A equals: =
+An integer: 5 (5)
+A final: ;
+
+	 ATRIBUICAO reconhecido, nome: x valor: 5 indice: 7
+
+
+	TOTAL = 7
+>>>>>>> [PALMITO]	[x] 0
+>>>>>>> [ABCDEF]	[x] 1
+>>>>>>> [BRYANHF]	[x] 2
+>>>>>>> [y]	[x] 3
+>>>>>>> [x]	[x] 4
+	 testando função 4
+	 TESTANDO TABELA DE SIMBOLOS>> x valor: 5 Tipo: int indice: 4
+A Line: 22
+A right key: }
+A keyword: while
 A Left Parenthesis: (
-A ASP: "
-An identifier: testandoaaaaa
-A ASP: "
+An identifier: x
+
+	TOTAL = 7
+>>>>>>> [PALMITO]	[x] 0
+>>>>>>> [ABCDEF]	[x] 1
+>>>>>>> [BRYANHF]	[x] 2
+>>>>>>> [y]	[x] 3
+>>>>>>> [x]	[x] 4A compare: >
+An integer: 3 (3)
 A Right Parenthesis: )
 A final: ;
-A Line: 13
+A Line: 23
+A Line: 24
+A keyword: while
+A Left Parenthesis: (
+An identifier: x
+
+	TOTAL = 7
+>>>>>>> [PALMITO]	[x] 0
+>>>>>>> [ABCDEF]	[x] 1
+>>>>>>> [BRYANHF]	[x] 2
+>>>>>>> [y]	[x] 3
+>>>>>>> [x]	[x] 4A compare: >
+An integer: 3 (3)
+A Right Parenthesis: )
+A left key: {
+A Line: 25
+An identifier: y
+A equals: =
+An integer: 5 (5)
+A final: ;
+
+	 ATRIBUICAO reconhecido, nome: y valor: 5 indice: 7
+
+
+	TOTAL = 7
+>>>>>>> [PALMITO]	[y] 0
+>>>>>>> [ABCDEF]	[y] 1
+>>>>>>> [BRYANHF]	[y] 2
+>>>>>>> [y]	[y] 3
+	 testando função 3
+	 TESTANDO TABELA DE SIMBOLOS>> y valor: 5 Tipo: int indice: 3
+A Line: 26
 A right key: }
-A Line: 14
+A Line: 27
+A Line: 28
 A keyword: return
 An integer: 0 (0)
 A final: ;
-A Line: 15
+A Line: 29
 A right key: }
 EOF
 
-	 TAMANHO TOTAL TABELA: 5
+	 TAMANHO TOTAL TABELA: 7
 
 	 INDICE: 0 	 nome: PALMITO 	 valor: 3 	 tipo: #define 
 	 INDICE: 1 	 nome: ABCDEF 	 valor: 10 	 tipo: #define 
 	 INDICE: 2 	 nome: BRYANHF 	 valor: 5 	 tipo: #define 
-	 INDICE: 3 	 nome: y 	 valor: (null) 	 tipo: int 
-	 INDICE: 4 	 nome: x 	 valor: 3 	 tipo: int 
+	 INDICE: 3 	 nome: y 	 valor: 5 	 tipo: int 
+	 INDICE: 4 	 nome: x 	 valor: 5 	 tipo: int 
+	 INDICE: 5 	 nome: p 	 valor: 7 	 tipo: int 
+	 INDICE: 6 	 nome: j 	 valor: (null) 	 tipo: int 
 Passo 2: IDENTIFICANDO CONSTANTES
 
 A Constant: #define
@@ -272,26 +469,77 @@ A final: ;
 A Line: 10
 A keyword: if
 A Left Parenthesis: (
-An identifier: x
+An integer: 3 (3)
 A compare: ==
 An integer: 3 (3)
 A Right Parenthesis: )
 A left key: {
 A Line: 11
-A printf function: printf
-A Left Parenthesis: (
-A ASP: "
-An identifier: testandoaaaaa
-A ASP: "
-A Right Parenthesis: )
+A keyword: int
+An identifier: p
+A equals: =
+An integer: 7 (7)
 A final: ;
 A Line: 12
-A right key: }
+An identifier: y
+A equals: =
+An integer: 29 (29)
+A final: ;
 A Line: 13
+A right key: }
+A Line: 14
+A Line: 15
+A keyword: int
+An identifier: j
+A final: ;
+A Line: 16
+A Line: 17
+An identifier: p
+A equals: =
+An identifier: PALMITO
+A plus operator: +
+An integer: 3 (3)
+A final: ;
+A Line: 18
+A Line: 19
+A keyword: do
+A left key: {
+A Line: 20
+An identifier: x
+A equals: =
+An integer: 5 (5)
+A final: ;
+A Line: 21
+A right key: }
+A keyword: while
+A Left Parenthesis: (
+An identifier: x
+A compare: >
+An integer: 3 (3)
+A Right Parenthesis: )
+A final: ;
+A Line: 22
+A Line: 23
+A keyword: while
+A Left Parenthesis: (
+An identifier: x
+A compare: >
+An integer: 3 (3)
+A Right Parenthesis: )
+A left key: {
+A Line: 24
+An identifier: y
+A equals: =
+An integer: 5 (5)
+A final: ;
+A Line: 25
+A right key: }
+A Line: 26
+A Line: 27
 A keyword: return
 An integer: 0 (0)
 A final: ;
-A Line: 14
+A Line: 28
 A right key: }
 EOF
 
@@ -349,7 +597,7 @@ A final: ;
 A Line: 11
 A keyword: if
 A Left Parenthesis: (
-An identifier: x
+An integer: 3 (3)
 A compare: ==
 An integer: 3 (3)
 A Right Parenthesis: )
@@ -358,26 +606,98 @@ A left key: {
 	Comando if reconhecido!
 
 A Line: 12
-A printf function: printf
+A keyword: int
+An identifier: p
+A equals: =
+An integer: 7 (7)
+A final: ;
+
+	Declaracao com instanciacao reconhecida!
+
+A Line: 13
+An identifier: y
+A equals: =
+An integer: 29 (29)
+A final: ;
+A Line: 14
+A right key: }
+A Line: 15
+A Line: 16
+A keyword: int
+An identifier: j
+A final: ;
+
+	Declaracao reconhecida!
+
+A Line: 17
+A Line: 18
+An identifier: p
+A equals: =
+An identifier: PALMITO
+A plus operator: +
+An integer: 3 (3)
+A final: ;
+
+	Soma reconhecida!
+
+A Line: 19
+A Line: 20
+A keyword: do
+A left key: {
+
+	Comando do-while reconhecido!
+
+A Line: 21
+An identifier: x
+A equals: =
+An integer: 5 (5)
+A final: ;
+
+	Atribuicao reconhecida!
+
+A Line: 22
+A right key: }
+A keyword: while
 A Left Parenthesis: (
-A ASP: "
-An identifier: testandoaaaaa
-A ASP: "
+An identifier: x
+A compare: >
+An integer: 3 (3)
 A Right Parenthesis: )
 A final: ;
 
-		Comando PRINTF reconhecido!!
+	Comando do-while reconhecido!
 
-A Line: 13
+A Line: 23
+A Line: 24
+A keyword: while
+A Left Parenthesis: (
+An identifier: x
+A compare: >
+An integer: 3 (3)
+A Right Parenthesis: )
+A left key: {
+
+	Comando while reconhecido!
+
+A Line: 25
+An identifier: y
+A equals: =
+An integer: 5 (5)
+A final: ;
+
+	Atribuicao reconhecida!
+
+A Line: 26
 A right key: }
-A Line: 14
+A Line: 27
+A Line: 28
 A keyword: return
 An integer: 0 (0)
 A final: ;
 
 	Retorno da funcao main reconhecida!
 
-A Line: 15
+A Line: 29
 A right key: }
 EOF
 
@@ -423,26 +743,77 @@ A final: ;
 A Line: 11
 A keyword: if
 A Left Parenthesis: (
-An identifier: x
+An integer: 3 (3)
 A compare: ==
 An integer: 3 (3)
 A Right Parenthesis: )
 A left key: {
 A Line: 12
-A printf function: printf
-A Left Parenthesis: (
-A ASP: "
-An identifier: testandoaaaaa
-A ASP: "
-A Right Parenthesis: )
+A keyword: int
+An identifier: p
+A equals: =
+An integer: 7 (7)
 A final: ;
 A Line: 13
-A right key: }
+An identifier: y
+A equals: =
+An integer: 29 (29)
+A final: ;
 A Line: 14
+A right key: }
+A Line: 15
+A Line: 16
+A keyword: int
+An identifier: j
+A final: ;
+A Line: 17
+A Line: 18
+An identifier: p
+A equals: =
+An identifier: PALMITO
+A plus operator: +
+An integer: 3 (3)
+A final: ;
+A Line: 19
+A Line: 20
+A keyword: do
+A left key: {
+A Line: 21
+An identifier: x
+A equals: =
+An integer: 5 (5)
+A final: ;
+A Line: 22
+A right key: }
+A keyword: while
+A Left Parenthesis: (
+An identifier: x
+A compare: >
+An integer: 3 (3)
+A Right Parenthesis: )
+A final: ;
+A Line: 23
+A Line: 24
+A keyword: while
+A Left Parenthesis: (
+An identifier: x
+A compare: >
+An integer: 3 (3)
+A Right Parenthesis: )
+A left key: {
+A Line: 25
+An identifier: y
+A equals: =
+An integer: 5 (5)
+A final: ;
+A Line: 26
+A right key: }
+A Line: 27
+A Line: 28
 A keyword: return
 An integer: 0 (0)
 A final: ;
-A Line: 15
+A Line: 29
 A right key: }
 EOF
 
@@ -453,5 +824,5 @@ EOF
 
 	Estrutura DO-WHILE completo: 0
 
-	Numero de simbolos na tabela 5
+	Numero de simbolos na tabela 7
 
