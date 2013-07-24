@@ -108,7 +108,7 @@ commands:
 cmdprintf:
     PRINTF LEFT_PARENTHENSIS ASP ID ASP RIGHT_PARENTHENSIS FINAL {
         if(contPasso==PASSO_MAIN){
-            printf("\n\t\tComando PRINTF reconhecido!!\n\n");
+            printf("\n\tComando printf reconhecido!!\n\n");
             if(to_buffer_if==0){
 
                 char palavra[strlen($4)];
@@ -618,14 +618,8 @@ exit: END_OF_FILE
             }
 
 
-
-
-
             fclose (temp);
             fclose(tempw);
-            
-          
-
 
             // encerra o programa
             fprintf(arq, "\n.end-main");
@@ -635,7 +629,6 @@ exit: END_OF_FILE
              printf("\tNumero de simbolos na tabela %d\n\n", contSimbolo);
             yyterminate();
             break;
-        
     } 
     
 
@@ -666,7 +659,7 @@ char **argv;
                     yyin = stdin;
 
                 if(contPasso==0){
-                    printf("\nPasso %d: LENDO TABELA DE SIMBOLOS\n\n",contPasso+1);
+                    printf("\nPasso %d: RECONHECENDO SIMBOLOS\n\n",contPasso+1);
                     yyparse();
                 }
 
@@ -677,7 +670,7 @@ char **argv;
                     yyin = stdin;
 
                 if(contPasso==0){
-                    printf("\nPasso %d: AINDA LENDO TABELA DE SIMBOLOS\n\n",contPasso+1);
+                    printf("\nPasso %d: POPULANDO TABELA DE SIMBOLOS\n\n",contPasso+2);
                     yyparse();
                 }
                 
@@ -689,7 +682,7 @@ char **argv;
                 yyin = stdin;
                 
             if(contPasso==1){
-                printf("\nPasso %d: IDENTIFICANDO CONSTANTES\n\n",contPasso+1);
+                printf("\n\nPasso %d: IDENTIFICANDO CONSTANTES\n\n",contPasso+2);
                 fprintf(arq, "\n.constant");
                 yyparse();
             }
@@ -701,7 +694,7 @@ char **argv;
                 yyin = stdin;
             
             if(contPasso==2){
-                printf("\nPasso %d: LENDO FUNCAO PRINCIPAL\n\n",contPasso+1);
+                printf("\nPasso %d: LENDO FUNCAO PRINCIPAL\n\n",contPasso+2);
                 fprintf(arq, "\n\n.main");
                 
                 //imprimindo declaração de variaveis dentro da função main
@@ -722,7 +715,7 @@ char **argv;
             yyin = stdin;
             
             if(contPasso==3){
-                printf("\nPasso %d: VERIFICANDO CODIGO\n\n", contPasso+1);
+                printf("\nPasso %d: VERIFICANDO CODIGO\n\n", contPasso+2);
                 yyparse();
             }
        

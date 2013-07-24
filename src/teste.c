@@ -17,6 +17,8 @@ int main(){
 
     p=PALMITO+3;
     
+    printf("Helloword");
+    
     do {
         x=5;
     } while (x>3);

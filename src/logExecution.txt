@@ -1,6 +1,6 @@
 ./prog teste.c
 
-Passo 1: LENDO TABELA DE SIMBOLOS
+Passo 1: RECONHECENDO SIMBOLOS
 
 A Constant: #define
 An identifier: PALMITO
@@ -98,9 +98,18 @@ A final: ;
 
 	SOMA reconhecidoA Line: 19
 A Line: 20
+A printf function: printf
+A Left Parenthesis: (
+A ASP: "
+An identifier: Helloword
+A ASP: "
+A Right Parenthesis: )
+A final: ;
+A Line: 21
+A Line: 22
 A keyword: do
 A left key: {
-A Line: 21
+A Line: 23
 An identifier: x
 A equals: =
 An integer: 5 (5)
@@ -108,7 +117,7 @@ A final: ;
 
 	 ATRIBUICAO reconhecido, nome: x valor: 5 indice: 7
 
-A Line: 22
+A Line: 24
 A right key: }
 A keyword: while
 A Left Parenthesis: (
@@ -117,8 +126,8 @@ A compare: >
 An integer: 3 (3)
 A Right Parenthesis: )
 A final: ;
-A Line: 23
-A Line: 24
+A Line: 25
+A Line: 26
 A keyword: while
 A Left Parenthesis: (
 An identifier: x
@@ -126,7 +135,7 @@ A compare: >
 An integer: 3 (3)
 A Right Parenthesis: )
 A left key: {
-A Line: 25
+A Line: 27
 An identifier: y
 A equals: =
 An integer: 5 (5)
@@ -134,18 +143,18 @@ A final: ;
 
 	 ATRIBUICAO reconhecido, nome: y valor: 5 indice: 7
 
-A Line: 26
-A right key: }
-A Line: 27
 A Line: 28
+A right key: }
+A Line: 29
+A Line: 30
 A keyword: return
 An integer: 0 (0)
 A final: ;
-A Line: 29
+A Line: 31
 A right key: }
 EOF
 
-Passo 1: AINDA LENDO TABELA DE SIMBOLOS
+Passo 2: POPULANDO TABELA DE SIMBOLOS
 
 A Constant: #define
 An identifier: PALMITO
@@ -205,7 +214,7 @@ A final: ;
 >>>>>>> [BRYANHF]	[y] 2
 >>>>>>> [(null)]	[y] 3
 	 testando função -1
-	 TESTANDO TABELA DE SIMBOLOS>> y valor: VAZIO (nil) Tipo: int indice: 3
+	 TESTANDO TABELA DE SIMBOLOS>> y valor: VAZIO 0x0 Tipo: int indice: 3
 A Line: 9
 A keyword: int
 An identifier: x
@@ -309,7 +318,7 @@ A final: ;
 >>>>>>> [p]	[j] 5
 >>>>>>> [(null)]	[j] 6
 	 testando função -1
-	 TESTANDO TABELA DE SIMBOLOS>> j valor: VAZIO (nil) Tipo: int indice: 6
+	 TESTANDO TABELA DE SIMBOLOS>> j valor: VAZIO 0x0 Tipo: int indice: 6
 A Line: 17
 A Line: 18
 An identifier: p
@@ -330,9 +339,18 @@ A final: ;
 >>>>>>> [x]	[p] 4
 >>>>>>> [p]	[p] 5A Line: 19
 A Line: 20
+A printf function: printf
+A Left Parenthesis: (
+A ASP: "
+An identifier: Helloword
+A ASP: "
+A Right Parenthesis: )
+A final: ;
+A Line: 21
+A Line: 22
 A keyword: do
 A left key: {
-A Line: 21
+A Line: 23
 An identifier: x
 A equals: =
 An integer: 5 (5)
@@ -349,7 +367,7 @@ A final: ;
 >>>>>>> [x]	[x] 4
 	 testando função 4
 	 TESTANDO TABELA DE SIMBOLOS>> x valor: 5 Tipo: int indice: 4
-A Line: 22
+A Line: 24
 A right key: }
 A keyword: while
 A Left Parenthesis: (
@@ -364,8 +382,8 @@ An identifier: x
 An integer: 3 (3)
 A Right Parenthesis: )
 A final: ;
-A Line: 23
-A Line: 24
+A Line: 25
+A Line: 26
 A keyword: while
 A Left Parenthesis: (
 An identifier: x
@@ -379,7 +397,7 @@ An identifier: x
 An integer: 3 (3)
 A Right Parenthesis: )
 A left key: {
-A Line: 25
+A Line: 27
 An identifier: y
 A equals: =
 An integer: 5 (5)
@@ -395,14 +413,14 @@ A final: ;
 >>>>>>> [y]	[y] 3
 	 testando função 3
 	 TESTANDO TABELA DE SIMBOLOS>> y valor: 5 Tipo: int indice: 3
-A Line: 26
-A right key: }
-A Line: 27
 A Line: 28
+A right key: }
+A Line: 29
+A Line: 30
 A keyword: return
 An integer: 0 (0)
 A final: ;
-A Line: 29
+A Line: 31
 A right key: }
 EOF
 
@@ -415,7 +433,8 @@ EOF
 	 INDICE: 4 	 nome: x 	 valor: 5 	 tipo: int 
 	 INDICE: 5 	 nome: p 	 valor: 7 	 tipo: int 
 	 INDICE: 6 	 nome: j 	 valor: (null) 	 tipo: int 
-Passo 2: IDENTIFICANDO CONSTANTES
+
+Passo 3: IDENTIFICANDO CONSTANTES
 
 A Constant: #define
 An identifier: PALMITO
@@ -501,14 +520,23 @@ An integer: 3 (3)
 A final: ;
 A Line: 18
 A Line: 19
+A printf function: printf
+A Left Parenthesis: (
+A ASP: "
+An identifier: Helloword
+A ASP: "
+A Right Parenthesis: )
+A final: ;
+A Line: 20
+A Line: 21
 A keyword: do
 A left key: {
-A Line: 20
+A Line: 22
 An identifier: x
 A equals: =
 An integer: 5 (5)
 A final: ;
-A Line: 21
+A Line: 23
 A right key: }
 A keyword: while
 A Left Parenthesis: (
@@ -517,8 +545,8 @@ A compare: >
 An integer: 3 (3)
 A Right Parenthesis: )
 A final: ;
-A Line: 22
-A Line: 23
+A Line: 24
+A Line: 25
 A keyword: while
 A Left Parenthesis: (
 An identifier: x
@@ -526,23 +554,23 @@ A compare: >
 An integer: 3 (3)
 A Right Parenthesis: )
 A left key: {
-A Line: 24
+A Line: 26
 An identifier: y
 A equals: =
 An integer: 5 (5)
 A final: ;
-A Line: 25
-A right key: }
-A Line: 26
 A Line: 27
+A right key: }
+A Line: 28
+A Line: 29
 A keyword: return
 An integer: 0 (0)
 A final: ;
-A Line: 28
+A Line: 30
 A right key: }
 EOF
 
-Passo 3: LENDO FUNCAO PRINCIPAL
+Passo 4: LENDO FUNCAO PRINCIPAL
 
 A Constant: #define
 An identifier: PALMITO
@@ -646,12 +674,24 @@ A final: ;
 
 A Line: 19
 A Line: 20
+A printf function: printf
+A Left Parenthesis: (
+A ASP: "
+An identifier: Helloword
+A ASP: "
+A Right Parenthesis: )
+A final: ;
+
+	Comando printf reconhecido!!
+
+A Line: 21
+A Line: 22
 A keyword: do
 A left key: {
 
 	Comando do-while reconhecido!
 
-A Line: 21
+A Line: 23
 An identifier: x
 A equals: =
 An integer: 5 (5)
@@ -659,7 +699,7 @@ A final: ;
 
 	Atribuicao reconhecida!
 
-A Line: 22
+A Line: 24
 A right key: }
 A keyword: while
 A Left Parenthesis: (
@@ -671,8 +711,8 @@ A final: ;
 
 	Comando do-while reconhecido!
 
-A Line: 23
-A Line: 24
+A Line: 25
+A Line: 26
 A keyword: while
 A Left Parenthesis: (
 An identifier: x
@@ -683,7 +723,7 @@ A left key: {
 
 	Comando while reconhecido!
 
-A Line: 25
+A Line: 27
 An identifier: y
 A equals: =
 An integer: 5 (5)
@@ -691,21 +731,21 @@ A final: ;
 
 	Atribuicao reconhecida!
 
-A Line: 26
-A right key: }
-A Line: 27
 A Line: 28
+A right key: }
+A Line: 29
+A Line: 30
 A keyword: return
 An integer: 0 (0)
 A final: ;
 
 	Retorno da funcao main reconhecida!
 
-A Line: 29
+A Line: 31
 A right key: }
 EOF
 
-Passo 4: VERIFICANDO CODIGO
+Passo 5: VERIFICANDO CODIGO
 
 A Constant: #define
 An identifier: PALMITO
@@ -782,14 +822,23 @@ An integer: 3 (3)
 A final: ;
 A Line: 19
 A Line: 20
+A printf function: printf
+A Left Parenthesis: (
+A ASP: "
+An identifier: Helloword
+A ASP: "
+A Right Parenthesis: )
+A final: ;
+A Line: 21
+A Line: 22
 A keyword: do
 A left key: {
-A Line: 21
+A Line: 23
 An identifier: x
 A equals: =
 An integer: 5 (5)
 A final: ;
-A Line: 22
+A Line: 24
 A right key: }
 A keyword: while
 A Left Parenthesis: (
@@ -798,8 +847,8 @@ A compare: >
 An integer: 3 (3)
 A Right Parenthesis: )
 A final: ;
-A Line: 23
-A Line: 24
+A Line: 25
+A Line: 26
 A keyword: while
 A Left Parenthesis: (
 An identifier: x
@@ -807,19 +856,19 @@ A compare: >
 An integer: 3 (3)
 A Right Parenthesis: )
 A left key: {
-A Line: 25
+A Line: 27
 An identifier: y
 A equals: =
 An integer: 5 (5)
 A final: ;
-A Line: 26
-A right key: }
-A Line: 27
 A Line: 28
+A right key: }
+A Line: 29
+A Line: 30
 A keyword: return
 An integer: 0 (0)
 A final: ;
-A Line: 29
+A Line: 31
 A right key: }
 EOF
 
