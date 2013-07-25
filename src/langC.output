@@ -1,13 +1,13 @@
-Terminals which are not used
+Terminais não utilizados na gramática
 
    ELSE
    OPERATOR
 
 
-State 12 conflicts: 1 shift/reduce
+Estado 12 conflitos: 1 de deslocamento/redução
 
 
-Grammar
+Gramática
 
     0 $accept: commands $end
 
@@ -33,37 +33,37 @@ Grammar
    20         | return
    21         | exit
 
-   22 @1: /* empty */
+   22 $@1: /* vazio */
 
-   23 cmdprintf: PRINTF LEFT_PARENTHENSIS ASP ID ASP RIGHT_PARENTHENSIS FINAL @1 commands
+   23 cmdprintf: PRINTF LEFT_PARENTHENSIS ASP ID ASP RIGHT_PARENTHENSIS FINAL $@1 commands
 
-   24 @2: /* empty */
+   24 $@2: /* vazio */
 
-   25 cmddefine: DEFINE ID INT @2 commands
+   25 cmddefine: DEFINE ID INT $@2 commands
 
-   26 @3: /* empty */
+   26 $@3: /* vazio */
 
-   27 cmdmain: INTEGER MAIN LEFT_PARENTHENSIS RIGHT_PARENTHENSIS LEFT_KEY @3 commands
+   27 cmdmain: INTEGER MAIN LEFT_PARENTHENSIS RIGHT_PARENTHENSIS LEFT_KEY $@3 commands
 
-   28 @4: /* empty */
+   28 $@4: /* vazio */
 
-   29 return: RETURN INT FINAL @4 commands
+   29 return: RETURN INT FINAL $@4 commands
 
-   30 @5: /* empty */
+   30 $@5: /* vazio */
 
-   31 cmdrk: RIGHT_KEY @5 commands
+   31 cmdrk: RIGHT_KEY $@5 commands
 
-   32 @6: /* empty */
+   32 $@6: /* vazio */
 
-   33 cmdlk: LEFT_KEY @6 commands
+   33 cmdlk: LEFT_KEY $@6 commands
 
-   34 @7: /* empty */
+   34 $@7: /* vazio */
 
-   35 cmdlp: LEFT_PARENTHENSIS @7 commands
+   35 cmdlp: LEFT_PARENTHENSIS $@7 commands
 
-   36 @8: /* empty */
+   36 $@8: /* vazio */
 
-   37 cmdrp: RIGHT_PARENTHENSIS @8 commands
+   37 cmdrp: RIGHT_PARENTHENSIS $@8 commands
 
    38 value: ID
    39      | INT
@@ -75,58 +75,58 @@ Grammar
    43 operatoras: ADD
    44           | SUB
 
-   45 @9: /* empty */
+   45 $@9: /* vazio */
 
-   46 cmdaddsub: ID ATTRIBUITION value operatoras value FINAL @9 commands
+   46 cmdaddsub: ID ATTRIBUITION value operatoras value FINAL $@9 commands
 
-   47 @10: /* empty */
+   47 $@10: /* vazio */
 
-   48 cmddeclaration: reservated ID FINAL @10 commands
+   48 cmddeclaration: reservated ID FINAL $@10 commands
 
-   49 @11: /* empty */
+   49 $@11: /* vazio */
 
-   50 cmddeclarationinst: reservated ID ATTRIBUITION value FINAL @11 commands
+   50 cmddeclarationinst: reservated ID ATTRIBUITION value FINAL $@11 commands
 
-   51 @12: /* empty */
+   51 $@12: /* vazio */
 
-   52 cmdattribuition: ID ATTRIBUITION value FINAL @12 commands
+   52 cmdattribuition: ID ATTRIBUITION value FINAL $@12 commands
 
-   53 @13: /* empty */
+   53 $@13: /* vazio */
 
-   54 cmdif: IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY @13 commands
+   54 cmdif: IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY $@13 commands
 
-   55 @14: /* empty */
+   55 $@14: /* vazio */
 
-   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value FINAL value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY @14 commands
+   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value FINAL value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY $@14 commands
 
-   57 @15: /* empty */
+   57 $@15: /* vazio */
 
-   58 cmdwhile: WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY @15 commands
+   58 cmdwhile: WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY $@15 commands
 
-   59 @16: /* empty */
+   59 $@16: /* vazio */
 
-   60 cmddowhile: DO LEFT_KEY @16 commands
+   60 cmddowhile: DO LEFT_KEY $@16 commands
 
-   61 @17: /* empty */
+   61 $@17: /* vazio */
 
-   62 cmdwhilefinal: RIGHT_KEY WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS FINAL @17 commands
+   62 cmdwhilefinal: RIGHT_KEY WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS FINAL $@17 commands
 
-   63 @18: /* empty */
+   63 $@18: /* vazio */
 
-   64 cmdcase: CASE DEMAIS @18 commands
+   64 cmdcase: CASE DEMAIS $@18 commands
 
-   65 @19: /* empty */
+   65 $@19: /* vazio */
 
-   66 cmdbreak: BREAK FINAL @19 commands
+   66 cmdbreak: BREAK FINAL $@19 commands
 
-   67 @20: /* empty */
+   67 $@20: /* vazio */
 
-   68 cmdswitch: SWITCH LEFT_PARENTHENSIS value RIGHT_PARENTHENSIS LEFT_KEY @20 commands
+   68 cmdswitch: SWITCH LEFT_PARENTHENSIS value RIGHT_PARENTHENSIS LEFT_KEY $@20 commands
 
    69 exit: END_OF_FILE
 
 
-Terminals, with rules where they appear
+Terminais, com as regras onde eles aparecem
 
 $end (0) 0
 error (256)
@@ -162,2154 +162,2154 @@ DEFINE (286) 25
 RETURN (287) 29
 
 
-Nonterminals, with rules where they appear
+Não-terminais com as regras onde eles aparecem
 
 $accept (33)
-    on left: 0
+    à esquerda: 0
 commands (34)
-    on left: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21
-   , on right: 0 23 25 27 29 31 33 35 37 46 48 50 52 54 56 58 60 62
-    64 66 68
+    à esquerda: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+    21, à direita: 0 23 25 27 29 31 33 35 37 46 48 50 52 54 56 58
+    60 62 64 66 68
 cmdprintf (35)
-    on left: 23, on right: 19
-@1 (36)
-    on left: 22, on right: 23
+    à esquerda: 23, à direita: 19
+$@1 (36)
+    à esquerda: 22, à direita: 23
 cmddefine (37)
-    on left: 25, on right: 18
-@2 (38)
-    on left: 24, on right: 25
+    à esquerda: 25, à direita: 18
+$@2 (38)
+    à esquerda: 24, à direita: 25
 cmdmain (39)
-    on left: 27, on right: 17
-@3 (40)
-    on left: 26, on right: 27
+    à esquerda: 27, à direita: 17
+$@3 (40)
+    à esquerda: 26, à direita: 27
 return (41)
-    on left: 29, on right: 20
-@4 (42)
-    on left: 28, on right: 29
+    à esquerda: 29, à direita: 20
+$@4 (42)
+    à esquerda: 28, à direita: 29
 cmdrk (43)
-    on left: 31, on right: 4
-@5 (44)
-    on left: 30, on right: 31
+    à esquerda: 31, à direita: 4
+$@5 (44)
+    à esquerda: 30, à direita: 31
 cmdlk (45)
-    on left: 33, on right: 5
-@6 (46)
-    on left: 32, on right: 33
+    à esquerda: 33, à direita: 5
+$@6 (46)
+    à esquerda: 32, à direita: 33
 cmdlp (47)
-    on left: 35, on right: 13
-@7 (48)
-    on left: 34, on right: 35
+    à esquerda: 35, à direita: 13
+$@7 (48)
+    à esquerda: 34, à direita: 35
 cmdrp (49)
-    on left: 37, on right: 14
-@8 (50)
-    on left: 36, on right: 37
+    à esquerda: 37, à direita: 14
+$@8 (50)
+    à esquerda: 36, à direita: 37
 value (51)
-    on left: 38 39 40, on right: 46 50 52 54 56 58 62 68
+    à esquerda: 38 39 40, à direita: 46 50 52 54 56 58 62 68
 reservated (52)
-    on left: 41 42, on right: 48 50
+    à esquerda: 41 42, à direita: 48 50
 operatoras (53)
-    on left: 43 44, on right: 46 56
+    à esquerda: 43 44, à direita: 46 56
 cmdaddsub (54)
-    on left: 46, on right: 1
-@9 (55)
-    on left: 45, on right: 46
+    à esquerda: 46, à direita: 1
+$@9 (55)
+    à esquerda: 45, à direita: 46
 cmddeclaration (56)
-    on left: 48, on right: 15
-@10 (57)
-    on left: 47, on right: 48
+    à esquerda: 48, à direita: 15
+$@10 (57)
+    à esquerda: 47, à direita: 48
 cmddeclarationinst (58)
-    on left: 50, on right: 16
-@11 (59)
-    on left: 49, on right: 50
+    à esquerda: 50, à direita: 16
+$@11 (59)
+    à esquerda: 49, à direita: 50
 cmdattribuition (60)
-    on left: 52, on right: 2
-@12 (61)
-    on left: 51, on right: 52
+    à esquerda: 52, à direita: 2
+$@12 (61)
+    à esquerda: 51, à direita: 52
 cmdif (62)
-    on left: 54, on right: 3
-@13 (63)
-    on left: 53, on right: 54
+    à esquerda: 54, à direita: 3
+$@13 (63)
+    à esquerda: 53, à direita: 54
 cmdfor (64)
-    on left: 56, on right: 6
-@14 (65)
-    on left: 55, on right: 56
+    à esquerda: 56, à direita: 6
+$@14 (65)
+    à esquerda: 55, à direita: 56
 cmdwhile (66)
-    on left: 58, on right: 7
-@15 (67)
-    on left: 57, on right: 58
+    à esquerda: 58, à direita: 7
+$@15 (67)
+    à esquerda: 57, à direita: 58
 cmddowhile (68)
-    on left: 60, on right: 8
-@16 (69)
-    on left: 59, on right: 60
+    à esquerda: 60, à direita: 8
+$@16 (69)
+    à esquerda: 59, à direita: 60
 cmdwhilefinal (70)
-    on left: 62, on right: 9
-@17 (71)
-    on left: 61, on right: 62
+    à esquerda: 62, à direita: 9
+$@17 (71)
+    à esquerda: 61, à direita: 62
 cmdcase (72)
-    on left: 64, on right: 10
-@18 (73)
-    on left: 63, on right: 64
+    à esquerda: 64, à direita: 10
+$@18 (73)
+    à esquerda: 63, à direita: 64
 cmdbreak (74)
-    on left: 66, on right: 11
-@19 (75)
-    on left: 65, on right: 66
+    à esquerda: 66, à direita: 11
+$@19 (75)
+    à esquerda: 65, à direita: 66
 cmdswitch (76)
-    on left: 68, on right: 12
-@20 (77)
-    on left: 67, on right: 68
+    à esquerda: 68, à direita: 12
+$@20 (77)
+    à esquerda: 67, à direita: 68
 exit (78)
-    on left: 69, on right: 21
+    à esquerda: 69, à direita: 21
 
 
-state 0
+estado 0
 
     0 $accept: . commands $end
 
-    PRINTF              shift, and go to state 1
-    IF                  shift, and go to state 2
-    WHILE               shift, and go to state 3
-    DO                  shift, and go to state 4
-    SWITCH              shift, and go to state 5
-    CASE                shift, and go to state 6
-    FOR                 shift, and go to state 7
-    ID                  shift, and go to state 8
-    LEFT_PARENTHENSIS   shift, and go to state 9
-    RIGHT_PARENTHENSIS  shift, and go to state 10
-    LEFT_KEY            shift, and go to state 11
-    RIGHT_KEY           shift, and go to state 12
-    END_OF_FILE         shift, and go to state 13
-    BREAK               shift, and go to state 14
-    INTEGER             shift, and go to state 15
-    FLOATING            shift, and go to state 16
-    DEFINE              shift, and go to state 17
-    RETURN              shift, and go to state 18
+    PRINTF              deslocar, e ir ao estado 1
+    IF                  deslocar, e ir ao estado 2
+    WHILE               deslocar, e ir ao estado 3
+    DO                  deslocar, e ir ao estado 4
+    SWITCH              deslocar, e ir ao estado 5
+    CASE                deslocar, e ir ao estado 6
+    FOR                 deslocar, e ir ao estado 7
+    ID                  deslocar, e ir ao estado 8
+    LEFT_PARENTHENSIS   deslocar, e ir ao estado 9
+    RIGHT_PARENTHENSIS  deslocar, e ir ao estado 10
+    LEFT_KEY            deslocar, e ir ao estado 11
+    RIGHT_KEY           deslocar, e ir ao estado 12
+    END_OF_FILE         deslocar, e ir ao estado 13
+    BREAK               deslocar, e ir ao estado 14
+    INTEGER             deslocar, e ir ao estado 15
+    FLOATING            deslocar, e ir ao estado 16
+    DEFINE              deslocar, e ir ao estado 17
+    RETURN              deslocar, e ir ao estado 18
 
-    commands            go to state 19
-    cmdprintf           go to state 20
-    cmddefine           go to state 21
-    cmdmain             go to state 22
-    return              go to state 23
-    cmdrk               go to state 24
-    cmdlk               go to state 25
-    cmdlp               go to state 26
-    cmdrp               go to state 27
-    reservated          go to state 28
-    cmdaddsub           go to state 29
-    cmddeclaration      go to state 30
-    cmddeclarationinst  go to state 31
-    cmdattribuition     go to state 32
-    cmdif               go to state 33
-    cmdfor              go to state 34
-    cmdwhile            go to state 35
-    cmddowhile          go to state 36
-    cmdwhilefinal       go to state 37
-    cmdcase             go to state 38
-    cmdbreak            go to state 39
-    cmdswitch           go to state 40
-    exit                go to state 41
-
-
-state 1
-
-   23 cmdprintf: PRINTF . LEFT_PARENTHENSIS ASP ID ASP RIGHT_PARENTHENSIS FINAL @1 commands
-
-    LEFT_PARENTHENSIS  shift, and go to state 42
+    commands            ir ao estado 19
+    cmdprintf           ir ao estado 20
+    cmddefine           ir ao estado 21
+    cmdmain             ir ao estado 22
+    return              ir ao estado 23
+    cmdrk               ir ao estado 24
+    cmdlk               ir ao estado 25
+    cmdlp               ir ao estado 26
+    cmdrp               ir ao estado 27
+    reservated          ir ao estado 28
+    cmdaddsub           ir ao estado 29
+    cmddeclaration      ir ao estado 30
+    cmddeclarationinst  ir ao estado 31
+    cmdattribuition     ir ao estado 32
+    cmdif               ir ao estado 33
+    cmdfor              ir ao estado 34
+    cmdwhile            ir ao estado 35
+    cmddowhile          ir ao estado 36
+    cmdwhilefinal       ir ao estado 37
+    cmdcase             ir ao estado 38
+    cmdbreak            ir ao estado 39
+    cmdswitch           ir ao estado 40
+    exit                ir ao estado 41
 
 
-state 2
+estado 1
 
-   54 cmdif: IF . LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY @13 commands
+   23 cmdprintf: PRINTF . LEFT_PARENTHENSIS ASP ID ASP RIGHT_PARENTHENSIS FINAL $@1 commands
 
-    LEFT_PARENTHENSIS  shift, and go to state 43
-
-
-state 3
-
-   58 cmdwhile: WHILE . LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY @15 commands
-
-    LEFT_PARENTHENSIS  shift, and go to state 44
+    LEFT_PARENTHENSIS  deslocar, e ir ao estado 42
 
 
-state 4
+estado 2
 
-   60 cmddowhile: DO . LEFT_KEY @16 commands
+   54 cmdif: IF . LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY $@13 commands
 
-    LEFT_KEY  shift, and go to state 45
-
-
-state 5
-
-   68 cmdswitch: SWITCH . LEFT_PARENTHENSIS value RIGHT_PARENTHENSIS LEFT_KEY @20 commands
-
-    LEFT_PARENTHENSIS  shift, and go to state 46
+    LEFT_PARENTHENSIS  deslocar, e ir ao estado 43
 
 
-state 6
+estado 3
 
-   64 cmdcase: CASE . DEMAIS @18 commands
+   58 cmdwhile: WHILE . LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY $@15 commands
 
-    DEMAIS  shift, and go to state 47
-
-
-state 7
-
-   56 cmdfor: FOR . LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value FINAL value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY @14 commands
-
-    LEFT_PARENTHENSIS  shift, and go to state 48
+    LEFT_PARENTHENSIS  deslocar, e ir ao estado 44
 
 
-state 8
+estado 4
 
-   46 cmdaddsub: ID . ATTRIBUITION value operatoras value FINAL @9 commands
-   52 cmdattribuition: ID . ATTRIBUITION value FINAL @12 commands
+   60 cmddowhile: DO . LEFT_KEY $@16 commands
 
-    ATTRIBUITION  shift, and go to state 49
-
-
-state 9
-
-   35 cmdlp: LEFT_PARENTHENSIS . @7 commands
-
-    $default  reduce using rule 34 (@7)
-
-    @7  go to state 50
+    LEFT_KEY  deslocar, e ir ao estado 45
 
 
-state 10
+estado 5
 
-   37 cmdrp: RIGHT_PARENTHENSIS . @8 commands
+   68 cmdswitch: SWITCH . LEFT_PARENTHENSIS value RIGHT_PARENTHENSIS LEFT_KEY $@20 commands
 
-    $default  reduce using rule 36 (@8)
-
-    @8  go to state 51
+    LEFT_PARENTHENSIS  deslocar, e ir ao estado 46
 
 
-state 11
+estado 6
 
-   33 cmdlk: LEFT_KEY . @6 commands
+   64 cmdcase: CASE . DEMAIS $@18 commands
 
-    $default  reduce using rule 32 (@6)
-
-    @6  go to state 52
+    DEMAIS  deslocar, e ir ao estado 47
 
 
-state 12
+estado 7
 
-   31 cmdrk: RIGHT_KEY . @5 commands
-   62 cmdwhilefinal: RIGHT_KEY . WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS FINAL @17 commands
+   56 cmdfor: FOR . LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value FINAL value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY $@14 commands
 
-    WHILE  shift, and go to state 53
-
-    WHILE     [reduce using rule 30 (@5)]
-    $default  reduce using rule 30 (@5)
-
-    @5  go to state 54
+    LEFT_PARENTHENSIS  deslocar, e ir ao estado 48
 
 
-state 13
+estado 8
+
+   46 cmdaddsub: ID . ATTRIBUITION value operatoras value FINAL $@9 commands
+   52 cmdattribuition: ID . ATTRIBUITION value FINAL $@12 commands
+
+    ATTRIBUITION  deslocar, e ir ao estado 49
+
+
+estado 9
+
+   35 cmdlp: LEFT_PARENTHENSIS . $@7 commands
+
+    $padrão  reduzir usando a regra 34 ($@7)
+
+    $@7  ir ao estado 50
+
+
+estado 10
+
+   37 cmdrp: RIGHT_PARENTHENSIS . $@8 commands
+
+    $padrão  reduzir usando a regra 36 ($@8)
+
+    $@8  ir ao estado 51
+
+
+estado 11
+
+   33 cmdlk: LEFT_KEY . $@6 commands
+
+    $padrão  reduzir usando a regra 32 ($@6)
+
+    $@6  ir ao estado 52
+
+
+estado 12
+
+   31 cmdrk: RIGHT_KEY . $@5 commands
+   62 cmdwhilefinal: RIGHT_KEY . WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS FINAL $@17 commands
+
+    WHILE  deslocar, e ir ao estado 53
+
+    WHILE     [reduzir usando a regra 30 ($@5)]
+    $padrão  reduzir usando a regra 30 ($@5)
+
+    $@5  ir ao estado 54
+
+
+estado 13
 
    69 exit: END_OF_FILE .
 
-    $default  reduce using rule 69 (exit)
+    $padrão  reduzir usando a regra 69 (exit)
 
 
-state 14
+estado 14
 
-   66 cmdbreak: BREAK . FINAL @19 commands
+   66 cmdbreak: BREAK . FINAL $@19 commands
 
-    FINAL  shift, and go to state 55
+    FINAL  deslocar, e ir ao estado 55
 
 
-state 15
+estado 15
 
-   27 cmdmain: INTEGER . MAIN LEFT_PARENTHENSIS RIGHT_PARENTHENSIS LEFT_KEY @3 commands
+   27 cmdmain: INTEGER . MAIN LEFT_PARENTHENSIS RIGHT_PARENTHENSIS LEFT_KEY $@3 commands
    41 reservated: INTEGER .
 
-    MAIN  shift, and go to state 56
+    MAIN  deslocar, e ir ao estado 56
 
-    $default  reduce using rule 41 (reservated)
+    $padrão  reduzir usando a regra 41 (reservated)
 
 
-state 16
+estado 16
 
    42 reservated: FLOATING .
 
-    $default  reduce using rule 42 (reservated)
+    $padrão  reduzir usando a regra 42 (reservated)
 
 
-state 17
+estado 17
 
-   25 cmddefine: DEFINE . ID INT @2 commands
+   25 cmddefine: DEFINE . ID INT $@2 commands
 
-    ID  shift, and go to state 57
-
-
-state 18
-
-   29 return: RETURN . INT FINAL @4 commands
-
-    INT  shift, and go to state 58
+    ID  deslocar, e ir ao estado 57
 
 
-state 19
+estado 18
+
+   29 return: RETURN . INT FINAL $@4 commands
+
+    INT  deslocar, e ir ao estado 58
+
+
+estado 19
 
     0 $accept: commands . $end
 
-    $end  shift, and go to state 59
+    $end  deslocar, e ir ao estado 59
 
 
-state 20
+estado 20
 
    19 commands: cmdprintf .
 
-    $default  reduce using rule 19 (commands)
+    $padrão  reduzir usando a regra 19 (commands)
 
 
-state 21
+estado 21
 
    18 commands: cmddefine .
 
-    $default  reduce using rule 18 (commands)
+    $padrão  reduzir usando a regra 18 (commands)
 
 
-state 22
+estado 22
 
    17 commands: cmdmain .
 
-    $default  reduce using rule 17 (commands)
+    $padrão  reduzir usando a regra 17 (commands)
 
 
-state 23
+estado 23
 
    20 commands: return .
 
-    $default  reduce using rule 20 (commands)
+    $padrão  reduzir usando a regra 20 (commands)
 
 
-state 24
+estado 24
 
     4 commands: cmdrk .
 
-    $default  reduce using rule 4 (commands)
+    $padrão  reduzir usando a regra 4 (commands)
 
 
-state 25
+estado 25
 
     5 commands: cmdlk .
 
-    $default  reduce using rule 5 (commands)
+    $padrão  reduzir usando a regra 5 (commands)
 
 
-state 26
+estado 26
 
    13 commands: cmdlp .
 
-    $default  reduce using rule 13 (commands)
+    $padrão  reduzir usando a regra 13 (commands)
 
 
-state 27
+estado 27
 
    14 commands: cmdrp .
 
-    $default  reduce using rule 14 (commands)
+    $padrão  reduzir usando a regra 14 (commands)
 
 
-state 28
+estado 28
 
-   48 cmddeclaration: reservated . ID FINAL @10 commands
-   50 cmddeclarationinst: reservated . ID ATTRIBUITION value FINAL @11 commands
+   48 cmddeclaration: reservated . ID FINAL $@10 commands
+   50 cmddeclarationinst: reservated . ID ATTRIBUITION value FINAL $@11 commands
 
-    ID  shift, and go to state 60
+    ID  deslocar, e ir ao estado 60
 
 
-state 29
+estado 29
 
     1 commands: cmdaddsub .
 
-    $default  reduce using rule 1 (commands)
+    $padrão  reduzir usando a regra 1 (commands)
 
 
-state 30
+estado 30
 
    15 commands: cmddeclaration .
 
-    $default  reduce using rule 15 (commands)
+    $padrão  reduzir usando a regra 15 (commands)
 
 
-state 31
+estado 31
 
    16 commands: cmddeclarationinst .
 
-    $default  reduce using rule 16 (commands)
+    $padrão  reduzir usando a regra 16 (commands)
 
 
-state 32
+estado 32
 
     2 commands: cmdattribuition .
 
-    $default  reduce using rule 2 (commands)
+    $padrão  reduzir usando a regra 2 (commands)
 
 
-state 33
+estado 33
 
     3 commands: cmdif .
 
-    $default  reduce using rule 3 (commands)
+    $padrão  reduzir usando a regra 3 (commands)
 
 
-state 34
+estado 34
 
     6 commands: cmdfor .
 
-    $default  reduce using rule 6 (commands)
+    $padrão  reduzir usando a regra 6 (commands)
 
 
-state 35
+estado 35
 
     7 commands: cmdwhile .
 
-    $default  reduce using rule 7 (commands)
+    $padrão  reduzir usando a regra 7 (commands)
 
 
-state 36
+estado 36
 
     8 commands: cmddowhile .
 
-    $default  reduce using rule 8 (commands)
+    $padrão  reduzir usando a regra 8 (commands)
 
 
-state 37
+estado 37
 
     9 commands: cmdwhilefinal .
 
-    $default  reduce using rule 9 (commands)
+    $padrão  reduzir usando a regra 9 (commands)
 
 
-state 38
+estado 38
 
    10 commands: cmdcase .
 
-    $default  reduce using rule 10 (commands)
+    $padrão  reduzir usando a regra 10 (commands)
 
 
-state 39
+estado 39
 
    11 commands: cmdbreak .
 
-    $default  reduce using rule 11 (commands)
+    $padrão  reduzir usando a regra 11 (commands)
 
 
-state 40
+estado 40
 
    12 commands: cmdswitch .
 
-    $default  reduce using rule 12 (commands)
+    $padrão  reduzir usando a regra 12 (commands)
 
 
-state 41
+estado 41
 
    21 commands: exit .
 
-    $default  reduce using rule 21 (commands)
+    $padrão  reduzir usando a regra 21 (commands)
 
 
-state 42
+estado 42
 
-   23 cmdprintf: PRINTF LEFT_PARENTHENSIS . ASP ID ASP RIGHT_PARENTHENSIS FINAL @1 commands
+   23 cmdprintf: PRINTF LEFT_PARENTHENSIS . ASP ID ASP RIGHT_PARENTHENSIS FINAL $@1 commands
 
-    ASP  shift, and go to state 61
+    ASP  deslocar, e ir ao estado 61
 
 
-state 43
+estado 43
 
-   54 cmdif: IF LEFT_PARENTHENSIS . value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY @13 commands
+   54 cmdif: IF LEFT_PARENTHENSIS . value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY $@13 commands
 
-    ID     shift, and go to state 62
-    INT    shift, and go to state 63
-    FLOAT  shift, and go to state 64
+    ID     deslocar, e ir ao estado 62
+    INT    deslocar, e ir ao estado 63
+    FLOAT  deslocar, e ir ao estado 64
 
-    value  go to state 65
+    value  ir ao estado 65
 
 
-state 44
+estado 44
 
-   58 cmdwhile: WHILE LEFT_PARENTHENSIS . value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY @15 commands
+   58 cmdwhile: WHILE LEFT_PARENTHENSIS . value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY $@15 commands
 
-    ID     shift, and go to state 62
-    INT    shift, and go to state 63
-    FLOAT  shift, and go to state 64
+    ID     deslocar, e ir ao estado 62
+    INT    deslocar, e ir ao estado 63
+    FLOAT  deslocar, e ir ao estado 64
 
-    value  go to state 66
+    value  ir ao estado 66
 
 
-state 45
+estado 45
 
-   60 cmddowhile: DO LEFT_KEY . @16 commands
+   60 cmddowhile: DO LEFT_KEY . $@16 commands
 
-    $default  reduce using rule 59 (@16)
+    $padrão  reduzir usando a regra 59 ($@16)
 
-    @16  go to state 67
+    $@16  ir ao estado 67
 
 
-state 46
+estado 46
 
-   68 cmdswitch: SWITCH LEFT_PARENTHENSIS . value RIGHT_PARENTHENSIS LEFT_KEY @20 commands
+   68 cmdswitch: SWITCH LEFT_PARENTHENSIS . value RIGHT_PARENTHENSIS LEFT_KEY $@20 commands
 
-    ID     shift, and go to state 62
-    INT    shift, and go to state 63
-    FLOAT  shift, and go to state 64
+    ID     deslocar, e ir ao estado 62
+    INT    deslocar, e ir ao estado 63
+    FLOAT  deslocar, e ir ao estado 64
 
-    value  go to state 68
+    value  ir ao estado 68
 
 
-state 47
+estado 47
 
-   64 cmdcase: CASE DEMAIS . @18 commands
+   64 cmdcase: CASE DEMAIS . $@18 commands
 
-    $default  reduce using rule 63 (@18)
+    $padrão  reduzir usando a regra 63 ($@18)
 
-    @18  go to state 69
+    $@18  ir ao estado 69
 
 
-state 48
+estado 48
 
-   56 cmdfor: FOR LEFT_PARENTHENSIS . value ATTRIBUITION value FINAL value COMPARE value FINAL value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY @14 commands
+   56 cmdfor: FOR LEFT_PARENTHENSIS . value ATTRIBUITION value FINAL value COMPARE value FINAL value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY $@14 commands
 
-    ID     shift, and go to state 62
-    INT    shift, and go to state 63
-    FLOAT  shift, and go to state 64
+    ID     deslocar, e ir ao estado 62
+    INT    deslocar, e ir ao estado 63
+    FLOAT  deslocar, e ir ao estado 64
 
-    value  go to state 70
+    value  ir ao estado 70
 
 
-state 49
+estado 49
 
-   46 cmdaddsub: ID ATTRIBUITION . value operatoras value FINAL @9 commands
-   52 cmdattribuition: ID ATTRIBUITION . value FINAL @12 commands
+   46 cmdaddsub: ID ATTRIBUITION . value operatoras value FINAL $@9 commands
+   52 cmdattribuition: ID ATTRIBUITION . value FINAL $@12 commands
 
-    ID     shift, and go to state 62
-    INT    shift, and go to state 63
-    FLOAT  shift, and go to state 64
+    ID     deslocar, e ir ao estado 62
+    INT    deslocar, e ir ao estado 63
+    FLOAT  deslocar, e ir ao estado 64
 
-    value  go to state 71
+    value  ir ao estado 71
 
 
-state 50
+estado 50
 
-   35 cmdlp: LEFT_PARENTHENSIS @7 . commands
+   35 cmdlp: LEFT_PARENTHENSIS $@7 . commands
 
-    PRINTF              shift, and go to state 1
-    IF                  shift, and go to state 2
-    WHILE               shift, and go to state 3
-    DO                  shift, and go to state 4
-    SWITCH              shift, and go to state 5
-    CASE                shift, and go to state 6
-    FOR                 shift, and go to state 7
-    ID                  shift, and go to state 8
-    LEFT_PARENTHENSIS   shift, and go to state 9
-    RIGHT_PARENTHENSIS  shift, and go to state 10
-    LEFT_KEY            shift, and go to state 11
-    RIGHT_KEY           shift, and go to state 12
-    END_OF_FILE         shift, and go to state 13
-    BREAK               shift, and go to state 14
-    INTEGER             shift, and go to state 15
-    FLOATING            shift, and go to state 16
-    DEFINE              shift, and go to state 17
-    RETURN              shift, and go to state 18
-
-    commands            go to state 72
-    cmdprintf           go to state 20
-    cmddefine           go to state 21
-    cmdmain             go to state 22
-    return              go to state 23
-    cmdrk               go to state 24
-    cmdlk               go to state 25
-    cmdlp               go to state 26
-    cmdrp               go to state 27
-    reservated          go to state 28
-    cmdaddsub           go to state 29
-    cmddeclaration      go to state 30
-    cmddeclarationinst  go to state 31
-    cmdattribuition     go to state 32
-    cmdif               go to state 33
-    cmdfor              go to state 34
-    cmdwhile            go to state 35
-    cmddowhile          go to state 36
-    cmdwhilefinal       go to state 37
-    cmdcase             go to state 38
-    cmdbreak            go to state 39
-    cmdswitch           go to state 40
-    exit                go to state 41
-
-
-state 51
-
-   37 cmdrp: RIGHT_PARENTHENSIS @8 . commands
-
-    PRINTF              shift, and go to state 1
-    IF                  shift, and go to state 2
-    WHILE               shift, and go to state 3
-    DO                  shift, and go to state 4
-    SWITCH              shift, and go to state 5
-    CASE                shift, and go to state 6
-    FOR                 shift, and go to state 7
-    ID                  shift, and go to state 8
-    LEFT_PARENTHENSIS   shift, and go to state 9
-    RIGHT_PARENTHENSIS  shift, and go to state 10
-    LEFT_KEY            shift, and go to state 11
-    RIGHT_KEY           shift, and go to state 12
-    END_OF_FILE         shift, and go to state 13
-    BREAK               shift, and go to state 14
-    INTEGER             shift, and go to state 15
-    FLOATING            shift, and go to state 16
-    DEFINE              shift, and go to state 17
-    RETURN              shift, and go to state 18
-
-    commands            go to state 73
-    cmdprintf           go to state 20
-    cmddefine           go to state 21
-    cmdmain             go to state 22
-    return              go to state 23
-    cmdrk               go to state 24
-    cmdlk               go to state 25
-    cmdlp               go to state 26
-    cmdrp               go to state 27
-    reservated          go to state 28
-    cmdaddsub           go to state 29
-    cmddeclaration      go to state 30
-    cmddeclarationinst  go to state 31
-    cmdattribuition     go to state 32
-    cmdif               go to state 33
-    cmdfor              go to state 34
-    cmdwhile            go to state 35
-    cmddowhile          go to state 36
-    cmdwhilefinal       go to state 37
-    cmdcase             go to state 38
-    cmdbreak            go to state 39
-    cmdswitch           go to state 40
-    exit                go to state 41
-
-
-state 52
-
-   33 cmdlk: LEFT_KEY @6 . commands
-
-    PRINTF              shift, and go to state 1
-    IF                  shift, and go to state 2
-    WHILE               shift, and go to state 3
-    DO                  shift, and go to state 4
-    SWITCH              shift, and go to state 5
-    CASE                shift, and go to state 6
-    FOR                 shift, and go to state 7
-    ID                  shift, and go to state 8
-    LEFT_PARENTHENSIS   shift, and go to state 9
-    RIGHT_PARENTHENSIS  shift, and go to state 10
-    LEFT_KEY            shift, and go to state 11
-    RIGHT_KEY           shift, and go to state 12
-    END_OF_FILE         shift, and go to state 13
-    BREAK               shift, and go to state 14
-    INTEGER             shift, and go to state 15
-    FLOATING            shift, and go to state 16
-    DEFINE              shift, and go to state 17
-    RETURN              shift, and go to state 18
-
-    commands            go to state 74
-    cmdprintf           go to state 20
-    cmddefine           go to state 21
-    cmdmain             go to state 22
-    return              go to state 23
-    cmdrk               go to state 24
-    cmdlk               go to state 25
-    cmdlp               go to state 26
-    cmdrp               go to state 27
-    reservated          go to state 28
-    cmdaddsub           go to state 29
-    cmddeclaration      go to state 30
-    cmddeclarationinst  go to state 31
-    cmdattribuition     go to state 32
-    cmdif               go to state 33
-    cmdfor              go to state 34
-    cmdwhile            go to state 35
-    cmddowhile          go to state 36
-    cmdwhilefinal       go to state 37
-    cmdcase             go to state 38
-    cmdbreak            go to state 39
-    cmdswitch           go to state 40
-    exit                go to state 41
-
-
-state 53
-
-   62 cmdwhilefinal: RIGHT_KEY WHILE . LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS FINAL @17 commands
-
-    LEFT_PARENTHENSIS  shift, and go to state 75
-
-
-state 54
-
-   31 cmdrk: RIGHT_KEY @5 . commands
-
-    PRINTF              shift, and go to state 1
-    IF                  shift, and go to state 2
-    WHILE               shift, and go to state 3
-    DO                  shift, and go to state 4
-    SWITCH              shift, and go to state 5
-    CASE                shift, and go to state 6
-    FOR                 shift, and go to state 7
-    ID                  shift, and go to state 8
-    LEFT_PARENTHENSIS   shift, and go to state 9
-    RIGHT_PARENTHENSIS  shift, and go to state 10
-    LEFT_KEY            shift, and go to state 11
-    RIGHT_KEY           shift, and go to state 12
-    END_OF_FILE         shift, and go to state 13
-    BREAK               shift, and go to state 14
-    INTEGER             shift, and go to state 15
-    FLOATING            shift, and go to state 16
-    DEFINE              shift, and go to state 17
-    RETURN              shift, and go to state 18
-
-    commands            go to state 76
-    cmdprintf           go to state 20
-    cmddefine           go to state 21
-    cmdmain             go to state 22
-    return              go to state 23
-    cmdrk               go to state 24
-    cmdlk               go to state 25
-    cmdlp               go to state 26
-    cmdrp               go to state 27
-    reservated          go to state 28
-    cmdaddsub           go to state 29
-    cmddeclaration      go to state 30
-    cmddeclarationinst  go to state 31
-    cmdattribuition     go to state 32
-    cmdif               go to state 33
-    cmdfor              go to state 34
-    cmdwhile            go to state 35
-    cmddowhile          go to state 36
-    cmdwhilefinal       go to state 37
-    cmdcase             go to state 38
-    cmdbreak            go to state 39
-    cmdswitch           go to state 40
-    exit                go to state 41
-
-
-state 55
-
-   66 cmdbreak: BREAK FINAL . @19 commands
-
-    $default  reduce using rule 65 (@19)
-
-    @19  go to state 77
-
-
-state 56
-
-   27 cmdmain: INTEGER MAIN . LEFT_PARENTHENSIS RIGHT_PARENTHENSIS LEFT_KEY @3 commands
-
-    LEFT_PARENTHENSIS  shift, and go to state 78
-
-
-state 57
-
-   25 cmddefine: DEFINE ID . INT @2 commands
-
-    INT  shift, and go to state 79
-
-
-state 58
-
-   29 return: RETURN INT . FINAL @4 commands
-
-    FINAL  shift, and go to state 80
-
-
-state 59
+    PRINTF              deslocar, e ir ao estado 1
+    IF                  deslocar, e ir ao estado 2
+    WHILE               deslocar, e ir ao estado 3
+    DO                  deslocar, e ir ao estado 4
+    SWITCH              deslocar, e ir ao estado 5
+    CASE                deslocar, e ir ao estado 6
+    FOR                 deslocar, e ir ao estado 7
+    ID                  deslocar, e ir ao estado 8
+    LEFT_PARENTHENSIS   deslocar, e ir ao estado 9
+    RIGHT_PARENTHENSIS  deslocar, e ir ao estado 10
+    LEFT_KEY            deslocar, e ir ao estado 11
+    RIGHT_KEY           deslocar, e ir ao estado 12
+    END_OF_FILE         deslocar, e ir ao estado 13
+    BREAK               deslocar, e ir ao estado 14
+    INTEGER             deslocar, e ir ao estado 15
+    FLOATING            deslocar, e ir ao estado 16
+    DEFINE              deslocar, e ir ao estado 17
+    RETURN              deslocar, e ir ao estado 18
+
+    commands            ir ao estado 72
+    cmdprintf           ir ao estado 20
+    cmddefine           ir ao estado 21
+    cmdmain             ir ao estado 22
+    return              ir ao estado 23
+    cmdrk               ir ao estado 24
+    cmdlk               ir ao estado 25
+    cmdlp               ir ao estado 26
+    cmdrp               ir ao estado 27
+    reservated          ir ao estado 28
+    cmdaddsub           ir ao estado 29
+    cmddeclaration      ir ao estado 30
+    cmddeclarationinst  ir ao estado 31
+    cmdattribuition     ir ao estado 32
+    cmdif               ir ao estado 33
+    cmdfor              ir ao estado 34
+    cmdwhile            ir ao estado 35
+    cmddowhile          ir ao estado 36
+    cmdwhilefinal       ir ao estado 37
+    cmdcase             ir ao estado 38
+    cmdbreak            ir ao estado 39
+    cmdswitch           ir ao estado 40
+    exit                ir ao estado 41
+
+
+estado 51
+
+   37 cmdrp: RIGHT_PARENTHENSIS $@8 . commands
+
+    PRINTF              deslocar, e ir ao estado 1
+    IF                  deslocar, e ir ao estado 2
+    WHILE               deslocar, e ir ao estado 3
+    DO                  deslocar, e ir ao estado 4
+    SWITCH              deslocar, e ir ao estado 5
+    CASE                deslocar, e ir ao estado 6
+    FOR                 deslocar, e ir ao estado 7
+    ID                  deslocar, e ir ao estado 8
+    LEFT_PARENTHENSIS   deslocar, e ir ao estado 9
+    RIGHT_PARENTHENSIS  deslocar, e ir ao estado 10
+    LEFT_KEY            deslocar, e ir ao estado 11
+    RIGHT_KEY           deslocar, e ir ao estado 12
+    END_OF_FILE         deslocar, e ir ao estado 13
+    BREAK               deslocar, e ir ao estado 14
+    INTEGER             deslocar, e ir ao estado 15
+    FLOATING            deslocar, e ir ao estado 16
+    DEFINE              deslocar, e ir ao estado 17
+    RETURN              deslocar, e ir ao estado 18
+
+    commands            ir ao estado 73
+    cmdprintf           ir ao estado 20
+    cmddefine           ir ao estado 21
+    cmdmain             ir ao estado 22
+    return              ir ao estado 23
+    cmdrk               ir ao estado 24
+    cmdlk               ir ao estado 25
+    cmdlp               ir ao estado 26
+    cmdrp               ir ao estado 27
+    reservated          ir ao estado 28
+    cmdaddsub           ir ao estado 29
+    cmddeclaration      ir ao estado 30
+    cmddeclarationinst  ir ao estado 31
+    cmdattribuition     ir ao estado 32
+    cmdif               ir ao estado 33
+    cmdfor              ir ao estado 34
+    cmdwhile            ir ao estado 35
+    cmddowhile          ir ao estado 36
+    cmdwhilefinal       ir ao estado 37
+    cmdcase             ir ao estado 38
+    cmdbreak            ir ao estado 39
+    cmdswitch           ir ao estado 40
+    exit                ir ao estado 41
+
+
+estado 52
+
+   33 cmdlk: LEFT_KEY $@6 . commands
+
+    PRINTF              deslocar, e ir ao estado 1
+    IF                  deslocar, e ir ao estado 2
+    WHILE               deslocar, e ir ao estado 3
+    DO                  deslocar, e ir ao estado 4
+    SWITCH              deslocar, e ir ao estado 5
+    CASE                deslocar, e ir ao estado 6
+    FOR                 deslocar, e ir ao estado 7
+    ID                  deslocar, e ir ao estado 8
+    LEFT_PARENTHENSIS   deslocar, e ir ao estado 9
+    RIGHT_PARENTHENSIS  deslocar, e ir ao estado 10
+    LEFT_KEY            deslocar, e ir ao estado 11
+    RIGHT_KEY           deslocar, e ir ao estado 12
+    END_OF_FILE         deslocar, e ir ao estado 13
+    BREAK               deslocar, e ir ao estado 14
+    INTEGER             deslocar, e ir ao estado 15
+    FLOATING            deslocar, e ir ao estado 16
+    DEFINE              deslocar, e ir ao estado 17
+    RETURN              deslocar, e ir ao estado 18
+
+    commands            ir ao estado 74
+    cmdprintf           ir ao estado 20
+    cmddefine           ir ao estado 21
+    cmdmain             ir ao estado 22
+    return              ir ao estado 23
+    cmdrk               ir ao estado 24
+    cmdlk               ir ao estado 25
+    cmdlp               ir ao estado 26
+    cmdrp               ir ao estado 27
+    reservated          ir ao estado 28
+    cmdaddsub           ir ao estado 29
+    cmddeclaration      ir ao estado 30
+    cmddeclarationinst  ir ao estado 31
+    cmdattribuition     ir ao estado 32
+    cmdif               ir ao estado 33
+    cmdfor              ir ao estado 34
+    cmdwhile            ir ao estado 35
+    cmddowhile          ir ao estado 36
+    cmdwhilefinal       ir ao estado 37
+    cmdcase             ir ao estado 38
+    cmdbreak            ir ao estado 39
+    cmdswitch           ir ao estado 40
+    exit                ir ao estado 41
+
+
+estado 53
+
+   62 cmdwhilefinal: RIGHT_KEY WHILE . LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS FINAL $@17 commands
+
+    LEFT_PARENTHENSIS  deslocar, e ir ao estado 75
+
+
+estado 54
+
+   31 cmdrk: RIGHT_KEY $@5 . commands
+
+    PRINTF              deslocar, e ir ao estado 1
+    IF                  deslocar, e ir ao estado 2
+    WHILE               deslocar, e ir ao estado 3
+    DO                  deslocar, e ir ao estado 4
+    SWITCH              deslocar, e ir ao estado 5
+    CASE                deslocar, e ir ao estado 6
+    FOR                 deslocar, e ir ao estado 7
+    ID                  deslocar, e ir ao estado 8
+    LEFT_PARENTHENSIS   deslocar, e ir ao estado 9
+    RIGHT_PARENTHENSIS  deslocar, e ir ao estado 10
+    LEFT_KEY            deslocar, e ir ao estado 11
+    RIGHT_KEY           deslocar, e ir ao estado 12
+    END_OF_FILE         deslocar, e ir ao estado 13
+    BREAK               deslocar, e ir ao estado 14
+    INTEGER             deslocar, e ir ao estado 15
+    FLOATING            deslocar, e ir ao estado 16
+    DEFINE              deslocar, e ir ao estado 17
+    RETURN              deslocar, e ir ao estado 18
+
+    commands            ir ao estado 76
+    cmdprintf           ir ao estado 20
+    cmddefine           ir ao estado 21
+    cmdmain             ir ao estado 22
+    return              ir ao estado 23
+    cmdrk               ir ao estado 24
+    cmdlk               ir ao estado 25
+    cmdlp               ir ao estado 26
+    cmdrp               ir ao estado 27
+    reservated          ir ao estado 28
+    cmdaddsub           ir ao estado 29
+    cmddeclaration      ir ao estado 30
+    cmddeclarationinst  ir ao estado 31
+    cmdattribuition     ir ao estado 32
+    cmdif               ir ao estado 33
+    cmdfor              ir ao estado 34
+    cmdwhile            ir ao estado 35
+    cmddowhile          ir ao estado 36
+    cmdwhilefinal       ir ao estado 37
+    cmdcase             ir ao estado 38
+    cmdbreak            ir ao estado 39
+    cmdswitch           ir ao estado 40
+    exit                ir ao estado 41
+
+
+estado 55
+
+   66 cmdbreak: BREAK FINAL . $@19 commands
+
+    $padrão  reduzir usando a regra 65 ($@19)
+
+    $@19  ir ao estado 77
+
+
+estado 56
+
+   27 cmdmain: INTEGER MAIN . LEFT_PARENTHENSIS RIGHT_PARENTHENSIS LEFT_KEY $@3 commands
+
+    LEFT_PARENTHENSIS  deslocar, e ir ao estado 78
+
+
+estado 57
+
+   25 cmddefine: DEFINE ID . INT $@2 commands
+
+    INT  deslocar, e ir ao estado 79
+
+
+estado 58
+
+   29 return: RETURN INT . FINAL $@4 commands
+
+    FINAL  deslocar, e ir ao estado 80
+
+
+estado 59
 
     0 $accept: commands $end .
 
-    $default  accept
+    $padrão  aceitar
 
 
-state 60
+estado 60
 
-   48 cmddeclaration: reservated ID . FINAL @10 commands
-   50 cmddeclarationinst: reservated ID . ATTRIBUITION value FINAL @11 commands
+   48 cmddeclaration: reservated ID . FINAL $@10 commands
+   50 cmddeclarationinst: reservated ID . ATTRIBUITION value FINAL $@11 commands
 
-    FINAL         shift, and go to state 81
-    ATTRIBUITION  shift, and go to state 82
-
-
-state 61
-
-   23 cmdprintf: PRINTF LEFT_PARENTHENSIS ASP . ID ASP RIGHT_PARENTHENSIS FINAL @1 commands
-
-    ID  shift, and go to state 83
+    FINAL         deslocar, e ir ao estado 81
+    ATTRIBUITION  deslocar, e ir ao estado 82
 
 
-state 62
+estado 61
+
+   23 cmdprintf: PRINTF LEFT_PARENTHENSIS ASP . ID ASP RIGHT_PARENTHENSIS FINAL $@1 commands
+
+    ID  deslocar, e ir ao estado 83
+
+
+estado 62
 
    38 value: ID .
 
-    $default  reduce using rule 38 (value)
+    $padrão  reduzir usando a regra 38 (value)
 
 
-state 63
+estado 63
 
    39 value: INT .
 
-    $default  reduce using rule 39 (value)
+    $padrão  reduzir usando a regra 39 (value)
 
 
-state 64
+estado 64
 
    40 value: FLOAT .
 
-    $default  reduce using rule 40 (value)
-
-
-state 65
-
-   54 cmdif: IF LEFT_PARENTHENSIS value . COMPARE value RIGHT_PARENTHENSIS LEFT_KEY @13 commands
-
-    COMPARE  shift, and go to state 84
-
-
-state 66
-
-   58 cmdwhile: WHILE LEFT_PARENTHENSIS value . COMPARE value RIGHT_PARENTHENSIS LEFT_KEY @15 commands
-
-    COMPARE  shift, and go to state 85
-
-
-state 67
-
-   60 cmddowhile: DO LEFT_KEY @16 . commands
-
-    PRINTF              shift, and go to state 1
-    IF                  shift, and go to state 2
-    WHILE               shift, and go to state 3
-    DO                  shift, and go to state 4
-    SWITCH              shift, and go to state 5
-    CASE                shift, and go to state 6
-    FOR                 shift, and go to state 7
-    ID                  shift, and go to state 8
-    LEFT_PARENTHENSIS   shift, and go to state 9
-    RIGHT_PARENTHENSIS  shift, and go to state 10
-    LEFT_KEY            shift, and go to state 11
-    RIGHT_KEY           shift, and go to state 12
-    END_OF_FILE         shift, and go to state 13
-    BREAK               shift, and go to state 14
-    INTEGER             shift, and go to state 15
-    FLOATING            shift, and go to state 16
-    DEFINE              shift, and go to state 17
-    RETURN              shift, and go to state 18
-
-    commands            go to state 86
-    cmdprintf           go to state 20
-    cmddefine           go to state 21
-    cmdmain             go to state 22
-    return              go to state 23
-    cmdrk               go to state 24
-    cmdlk               go to state 25
-    cmdlp               go to state 26
-    cmdrp               go to state 27
-    reservated          go to state 28
-    cmdaddsub           go to state 29
-    cmddeclaration      go to state 30
-    cmddeclarationinst  go to state 31
-    cmdattribuition     go to state 32
-    cmdif               go to state 33
-    cmdfor              go to state 34
-    cmdwhile            go to state 35
-    cmddowhile          go to state 36
-    cmdwhilefinal       go to state 37
-    cmdcase             go to state 38
-    cmdbreak            go to state 39
-    cmdswitch           go to state 40
-    exit                go to state 41
+    $padrão  reduzir usando a regra 40 (value)
+
+
+estado 65
+
+   54 cmdif: IF LEFT_PARENTHENSIS value . COMPARE value RIGHT_PARENTHENSIS LEFT_KEY $@13 commands
+
+    COMPARE  deslocar, e ir ao estado 84
+
+
+estado 66
+
+   58 cmdwhile: WHILE LEFT_PARENTHENSIS value . COMPARE value RIGHT_PARENTHENSIS LEFT_KEY $@15 commands
+
+    COMPARE  deslocar, e ir ao estado 85
+
+
+estado 67
+
+   60 cmddowhile: DO LEFT_KEY $@16 . commands
+
+    PRINTF              deslocar, e ir ao estado 1
+    IF                  deslocar, e ir ao estado 2
+    WHILE               deslocar, e ir ao estado 3
+    DO                  deslocar, e ir ao estado 4
+    SWITCH              deslocar, e ir ao estado 5
+    CASE                deslocar, e ir ao estado 6
+    FOR                 deslocar, e ir ao estado 7
+    ID                  deslocar, e ir ao estado 8
+    LEFT_PARENTHENSIS   deslocar, e ir ao estado 9
+    RIGHT_PARENTHENSIS  deslocar, e ir ao estado 10
+    LEFT_KEY            deslocar, e ir ao estado 11
+    RIGHT_KEY           deslocar, e ir ao estado 12
+    END_OF_FILE         deslocar, e ir ao estado 13
+    BREAK               deslocar, e ir ao estado 14
+    INTEGER             deslocar, e ir ao estado 15
+    FLOATING            deslocar, e ir ao estado 16
+    DEFINE              deslocar, e ir ao estado 17
+    RETURN              deslocar, e ir ao estado 18
+
+    commands            ir ao estado 86
+    cmdprintf           ir ao estado 20
+    cmddefine           ir ao estado 21
+    cmdmain             ir ao estado 22
+    return              ir ao estado 23
+    cmdrk               ir ao estado 24
+    cmdlk               ir ao estado 25
+    cmdlp               ir ao estado 26
+    cmdrp               ir ao estado 27
+    reservated          ir ao estado 28
+    cmdaddsub           ir ao estado 29
+    cmddeclaration      ir ao estado 30
+    cmddeclarationinst  ir ao estado 31
+    cmdattribuition     ir ao estado 32
+    cmdif               ir ao estado 33
+    cmdfor              ir ao estado 34
+    cmdwhile            ir ao estado 35
+    cmddowhile          ir ao estado 36
+    cmdwhilefinal       ir ao estado 37
+    cmdcase             ir ao estado 38
+    cmdbreak            ir ao estado 39
+    cmdswitch           ir ao estado 40
+    exit                ir ao estado 41
 
 
-state 68
+estado 68
 
-   68 cmdswitch: SWITCH LEFT_PARENTHENSIS value . RIGHT_PARENTHENSIS LEFT_KEY @20 commands
+   68 cmdswitch: SWITCH LEFT_PARENTHENSIS value . RIGHT_PARENTHENSIS LEFT_KEY $@20 commands
 
-    RIGHT_PARENTHENSIS  shift, and go to state 87
+    RIGHT_PARENTHENSIS  deslocar, e ir ao estado 87
 
 
-state 69
+estado 69
 
-   64 cmdcase: CASE DEMAIS @18 . commands
+   64 cmdcase: CASE DEMAIS $@18 . commands
 
-    PRINTF              shift, and go to state 1
-    IF                  shift, and go to state 2
-    WHILE               shift, and go to state 3
-    DO                  shift, and go to state 4
-    SWITCH              shift, and go to state 5
-    CASE                shift, and go to state 6
-    FOR                 shift, and go to state 7
-    ID                  shift, and go to state 8
-    LEFT_PARENTHENSIS   shift, and go to state 9
-    RIGHT_PARENTHENSIS  shift, and go to state 10
-    LEFT_KEY            shift, and go to state 11
-    RIGHT_KEY           shift, and go to state 12
-    END_OF_FILE         shift, and go to state 13
-    BREAK               shift, and go to state 14
-    INTEGER             shift, and go to state 15
-    FLOATING            shift, and go to state 16
-    DEFINE              shift, and go to state 17
-    RETURN              shift, and go to state 18
+    PRINTF              deslocar, e ir ao estado 1
+    IF                  deslocar, e ir ao estado 2
+    WHILE               deslocar, e ir ao estado 3
+    DO                  deslocar, e ir ao estado 4
+    SWITCH              deslocar, e ir ao estado 5
+    CASE                deslocar, e ir ao estado 6
+    FOR                 deslocar, e ir ao estado 7
+    ID                  deslocar, e ir ao estado 8
+    LEFT_PARENTHENSIS   deslocar, e ir ao estado 9
+    RIGHT_PARENTHENSIS  deslocar, e ir ao estado 10
+    LEFT_KEY            deslocar, e ir ao estado 11
+    RIGHT_KEY           deslocar, e ir ao estado 12
+    END_OF_FILE         deslocar, e ir ao estado 13
+    BREAK               deslocar, e ir ao estado 14
+    INTEGER             deslocar, e ir ao estado 15
+    FLOATING            deslocar, e ir ao estado 16
+    DEFINE              deslocar, e ir ao estado 17
+    RETURN              deslocar, e ir ao estado 18
 
-    commands            go to state 88
-    cmdprintf           go to state 20
-    cmddefine           go to state 21
-    cmdmain             go to state 22
-    return              go to state 23
-    cmdrk               go to state 24
-    cmdlk               go to state 25
-    cmdlp               go to state 26
-    cmdrp               go to state 27
-    reservated          go to state 28
-    cmdaddsub           go to state 29
-    cmddeclaration      go to state 30
-    cmddeclarationinst  go to state 31
-    cmdattribuition     go to state 32
-    cmdif               go to state 33
-    cmdfor              go to state 34
-    cmdwhile            go to state 35
-    cmddowhile          go to state 36
-    cmdwhilefinal       go to state 37
-    cmdcase             go to state 38
-    cmdbreak            go to state 39
-    cmdswitch           go to state 40
-    exit                go to state 41
+    commands            ir ao estado 88
+    cmdprintf           ir ao estado 20
+    cmddefine           ir ao estado 21
+    cmdmain             ir ao estado 22
+    return              ir ao estado 23
+    cmdrk               ir ao estado 24
+    cmdlk               ir ao estado 25
+    cmdlp               ir ao estado 26
+    cmdrp               ir ao estado 27
+    reservated          ir ao estado 28
+    cmdaddsub           ir ao estado 29
+    cmddeclaration      ir ao estado 30
+    cmddeclarationinst  ir ao estado 31
+    cmdattribuition     ir ao estado 32
+    cmdif               ir ao estado 33
+    cmdfor              ir ao estado 34
+    cmdwhile            ir ao estado 35
+    cmddowhile          ir ao estado 36
+    cmdwhilefinal       ir ao estado 37
+    cmdcase             ir ao estado 38
+    cmdbreak            ir ao estado 39
+    cmdswitch           ir ao estado 40
+    exit                ir ao estado 41
 
 
-state 70
+estado 70
 
-   56 cmdfor: FOR LEFT_PARENTHENSIS value . ATTRIBUITION value FINAL value COMPARE value FINAL value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY @14 commands
+   56 cmdfor: FOR LEFT_PARENTHENSIS value . ATTRIBUITION value FINAL value COMPARE value FINAL value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY $@14 commands
 
-    ATTRIBUITION  shift, and go to state 89
+    ATTRIBUITION  deslocar, e ir ao estado 89
 
 
-state 71
+estado 71
 
-   46 cmdaddsub: ID ATTRIBUITION value . operatoras value FINAL @9 commands
-   52 cmdattribuition: ID ATTRIBUITION value . FINAL @12 commands
+   46 cmdaddsub: ID ATTRIBUITION value . operatoras value FINAL $@9 commands
+   52 cmdattribuition: ID ATTRIBUITION value . FINAL $@12 commands
 
-    FINAL  shift, and go to state 90
-    ADD    shift, and go to state 91
-    SUB    shift, and go to state 92
+    FINAL  deslocar, e ir ao estado 90
+    ADD    deslocar, e ir ao estado 91
+    SUB    deslocar, e ir ao estado 92
 
-    operatoras  go to state 93
+    operatoras  ir ao estado 93
 
 
-state 72
+estado 72
 
-   35 cmdlp: LEFT_PARENTHENSIS @7 commands .
+   35 cmdlp: LEFT_PARENTHENSIS $@7 commands .
 
-    $default  reduce using rule 35 (cmdlp)
+    $padrão  reduzir usando a regra 35 (cmdlp)
 
 
-state 73
+estado 73
 
-   37 cmdrp: RIGHT_PARENTHENSIS @8 commands .
+   37 cmdrp: RIGHT_PARENTHENSIS $@8 commands .
 
-    $default  reduce using rule 37 (cmdrp)
+    $padrão  reduzir usando a regra 37 (cmdrp)
 
 
-state 74
+estado 74
 
-   33 cmdlk: LEFT_KEY @6 commands .
+   33 cmdlk: LEFT_KEY $@6 commands .
 
-    $default  reduce using rule 33 (cmdlk)
+    $padrão  reduzir usando a regra 33 (cmdlk)
 
 
-state 75
+estado 75
 
-   62 cmdwhilefinal: RIGHT_KEY WHILE LEFT_PARENTHENSIS . value COMPARE value RIGHT_PARENTHENSIS FINAL @17 commands
+   62 cmdwhilefinal: RIGHT_KEY WHILE LEFT_PARENTHENSIS . value COMPARE value RIGHT_PARENTHENSIS FINAL $@17 commands
 
-    ID     shift, and go to state 62
-    INT    shift, and go to state 63
-    FLOAT  shift, and go to state 64
+    ID     deslocar, e ir ao estado 62
+    INT    deslocar, e ir ao estado 63
+    FLOAT  deslocar, e ir ao estado 64
 
-    value  go to state 94
+    value  ir ao estado 94
 
 
-state 76
+estado 76
 
-   31 cmdrk: RIGHT_KEY @5 commands .
+   31 cmdrk: RIGHT_KEY $@5 commands .
 
-    $default  reduce using rule 31 (cmdrk)
+    $padrão  reduzir usando a regra 31 (cmdrk)
 
 
-state 77
+estado 77
 
-   66 cmdbreak: BREAK FINAL @19 . commands
+   66 cmdbreak: BREAK FINAL $@19 . commands
 
-    PRINTF              shift, and go to state 1
-    IF                  shift, and go to state 2
-    WHILE               shift, and go to state 3
-    DO                  shift, and go to state 4
-    SWITCH              shift, and go to state 5
-    CASE                shift, and go to state 6
-    FOR                 shift, and go to state 7
-    ID                  shift, and go to state 8
-    LEFT_PARENTHENSIS   shift, and go to state 9
-    RIGHT_PARENTHENSIS  shift, and go to state 10
-    LEFT_KEY            shift, and go to state 11
-    RIGHT_KEY           shift, and go to state 12
-    END_OF_FILE         shift, and go to state 13
-    BREAK               shift, and go to state 14
-    INTEGER             shift, and go to state 15
-    FLOATING            shift, and go to state 16
-    DEFINE              shift, and go to state 17
-    RETURN              shift, and go to state 18
+    PRINTF              deslocar, e ir ao estado 1
+    IF                  deslocar, e ir ao estado 2
+    WHILE               deslocar, e ir ao estado 3
+    DO                  deslocar, e ir ao estado 4
+    SWITCH              deslocar, e ir ao estado 5
+    CASE                deslocar, e ir ao estado 6
+    FOR                 deslocar, e ir ao estado 7
+    ID                  deslocar, e ir ao estado 8
+    LEFT_PARENTHENSIS   deslocar, e ir ao estado 9
+    RIGHT_PARENTHENSIS  deslocar, e ir ao estado 10
+    LEFT_KEY            deslocar, e ir ao estado 11
+    RIGHT_KEY           deslocar, e ir ao estado 12
+    END_OF_FILE         deslocar, e ir ao estado 13
+    BREAK               deslocar, e ir ao estado 14
+    INTEGER             deslocar, e ir ao estado 15
+    FLOATING            deslocar, e ir ao estado 16
+    DEFINE              deslocar, e ir ao estado 17
+    RETURN              deslocar, e ir ao estado 18
 
-    commands            go to state 95
-    cmdprintf           go to state 20
-    cmddefine           go to state 21
-    cmdmain             go to state 22
-    return              go to state 23
-    cmdrk               go to state 24
-    cmdlk               go to state 25
-    cmdlp               go to state 26
-    cmdrp               go to state 27
-    reservated          go to state 28
-    cmdaddsub           go to state 29
-    cmddeclaration      go to state 30
-    cmddeclarationinst  go to state 31
-    cmdattribuition     go to state 32
-    cmdif               go to state 33
-    cmdfor              go to state 34
-    cmdwhile            go to state 35
-    cmddowhile          go to state 36
-    cmdwhilefinal       go to state 37
-    cmdcase             go to state 38
-    cmdbreak            go to state 39
-    cmdswitch           go to state 40
-    exit                go to state 41
+    commands            ir ao estado 95
+    cmdprintf           ir ao estado 20
+    cmddefine           ir ao estado 21
+    cmdmain             ir ao estado 22
+    return              ir ao estado 23
+    cmdrk               ir ao estado 24
+    cmdlk               ir ao estado 25
+    cmdlp               ir ao estado 26
+    cmdrp               ir ao estado 27
+    reservated          ir ao estado 28
+    cmdaddsub           ir ao estado 29
+    cmddeclaration      ir ao estado 30
+    cmddeclarationinst  ir ao estado 31
+    cmdattribuition     ir ao estado 32
+    cmdif               ir ao estado 33
+    cmdfor              ir ao estado 34
+    cmdwhile            ir ao estado 35
+    cmddowhile          ir ao estado 36
+    cmdwhilefinal       ir ao estado 37
+    cmdcase             ir ao estado 38
+    cmdbreak            ir ao estado 39
+    cmdswitch           ir ao estado 40
+    exit                ir ao estado 41
 
 
-state 78
+estado 78
 
-   27 cmdmain: INTEGER MAIN LEFT_PARENTHENSIS . RIGHT_PARENTHENSIS LEFT_KEY @3 commands
+   27 cmdmain: INTEGER MAIN LEFT_PARENTHENSIS . RIGHT_PARENTHENSIS LEFT_KEY $@3 commands
 
-    RIGHT_PARENTHENSIS  shift, and go to state 96
+    RIGHT_PARENTHENSIS  deslocar, e ir ao estado 96
 
 
-state 79
+estado 79
 
-   25 cmddefine: DEFINE ID INT . @2 commands
+   25 cmddefine: DEFINE ID INT . $@2 commands
 
-    $default  reduce using rule 24 (@2)
+    $padrão  reduzir usando a regra 24 ($@2)
 
-    @2  go to state 97
+    $@2  ir ao estado 97
 
 
-state 80
+estado 80
 
-   29 return: RETURN INT FINAL . @4 commands
+   29 return: RETURN INT FINAL . $@4 commands
 
-    $default  reduce using rule 28 (@4)
+    $padrão  reduzir usando a regra 28 ($@4)
 
-    @4  go to state 98
+    $@4  ir ao estado 98
 
 
-state 81
+estado 81
 
-   48 cmddeclaration: reservated ID FINAL . @10 commands
+   48 cmddeclaration: reservated ID FINAL . $@10 commands
 
-    $default  reduce using rule 47 (@10)
+    $padrão  reduzir usando a regra 47 ($@10)
 
-    @10  go to state 99
+    $@10  ir ao estado 99
 
 
-state 82
+estado 82
 
-   50 cmddeclarationinst: reservated ID ATTRIBUITION . value FINAL @11 commands
+   50 cmddeclarationinst: reservated ID ATTRIBUITION . value FINAL $@11 commands
 
-    ID     shift, and go to state 62
-    INT    shift, and go to state 63
-    FLOAT  shift, and go to state 64
+    ID     deslocar, e ir ao estado 62
+    INT    deslocar, e ir ao estado 63
+    FLOAT  deslocar, e ir ao estado 64
 
-    value  go to state 100
+    value  ir ao estado 100
 
 
-state 83
+estado 83
 
-   23 cmdprintf: PRINTF LEFT_PARENTHENSIS ASP ID . ASP RIGHT_PARENTHENSIS FINAL @1 commands
+   23 cmdprintf: PRINTF LEFT_PARENTHENSIS ASP ID . ASP RIGHT_PARENTHENSIS FINAL $@1 commands
 
-    ASP  shift, and go to state 101
+    ASP  deslocar, e ir ao estado 101
 
 
-state 84
+estado 84
 
-   54 cmdif: IF LEFT_PARENTHENSIS value COMPARE . value RIGHT_PARENTHENSIS LEFT_KEY @13 commands
+   54 cmdif: IF LEFT_PARENTHENSIS value COMPARE . value RIGHT_PARENTHENSIS LEFT_KEY $@13 commands
 
-    ID     shift, and go to state 62
-    INT    shift, and go to state 63
-    FLOAT  shift, and go to state 64
+    ID     deslocar, e ir ao estado 62
+    INT    deslocar, e ir ao estado 63
+    FLOAT  deslocar, e ir ao estado 64
 
-    value  go to state 102
+    value  ir ao estado 102
 
 
-state 85
+estado 85
 
-   58 cmdwhile: WHILE LEFT_PARENTHENSIS value COMPARE . value RIGHT_PARENTHENSIS LEFT_KEY @15 commands
+   58 cmdwhile: WHILE LEFT_PARENTHENSIS value COMPARE . value RIGHT_PARENTHENSIS LEFT_KEY $@15 commands
 
-    ID     shift, and go to state 62
-    INT    shift, and go to state 63
-    FLOAT  shift, and go to state 64
+    ID     deslocar, e ir ao estado 62
+    INT    deslocar, e ir ao estado 63
+    FLOAT  deslocar, e ir ao estado 64
 
-    value  go to state 103
+    value  ir ao estado 103
 
 
-state 86
+estado 86
 
-   60 cmddowhile: DO LEFT_KEY @16 commands .
+   60 cmddowhile: DO LEFT_KEY $@16 commands .
 
-    $default  reduce using rule 60 (cmddowhile)
+    $padrão  reduzir usando a regra 60 (cmddowhile)
 
 
-state 87
+estado 87
 
-   68 cmdswitch: SWITCH LEFT_PARENTHENSIS value RIGHT_PARENTHENSIS . LEFT_KEY @20 commands
+   68 cmdswitch: SWITCH LEFT_PARENTHENSIS value RIGHT_PARENTHENSIS . LEFT_KEY $@20 commands
 
-    LEFT_KEY  shift, and go to state 104
+    LEFT_KEY  deslocar, e ir ao estado 104
 
 
-state 88
+estado 88
 
-   64 cmdcase: CASE DEMAIS @18 commands .
+   64 cmdcase: CASE DEMAIS $@18 commands .
 
-    $default  reduce using rule 64 (cmdcase)
+    $padrão  reduzir usando a regra 64 (cmdcase)
 
 
-state 89
+estado 89
 
-   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION . value FINAL value COMPARE value FINAL value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY @14 commands
+   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION . value FINAL value COMPARE value FINAL value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY $@14 commands
 
-    ID     shift, and go to state 62
-    INT    shift, and go to state 63
-    FLOAT  shift, and go to state 64
+    ID     deslocar, e ir ao estado 62
+    INT    deslocar, e ir ao estado 63
+    FLOAT  deslocar, e ir ao estado 64
 
-    value  go to state 105
+    value  ir ao estado 105
 
 
-state 90
+estado 90
 
-   52 cmdattribuition: ID ATTRIBUITION value FINAL . @12 commands
+   52 cmdattribuition: ID ATTRIBUITION value FINAL . $@12 commands
 
-    $default  reduce using rule 51 (@12)
+    $padrão  reduzir usando a regra 51 ($@12)
 
-    @12  go to state 106
+    $@12  ir ao estado 106
 
 
-state 91
+estado 91
 
    43 operatoras: ADD .
 
-    $default  reduce using rule 43 (operatoras)
+    $padrão  reduzir usando a regra 43 (operatoras)
 
 
-state 92
+estado 92
 
    44 operatoras: SUB .
 
-    $default  reduce using rule 44 (operatoras)
+    $padrão  reduzir usando a regra 44 (operatoras)
 
 
-state 93
+estado 93
 
-   46 cmdaddsub: ID ATTRIBUITION value operatoras . value FINAL @9 commands
+   46 cmdaddsub: ID ATTRIBUITION value operatoras . value FINAL $@9 commands
 
-    ID     shift, and go to state 62
-    INT    shift, and go to state 63
-    FLOAT  shift, and go to state 64
-
-    value  go to state 107
-
-
-state 94
-
-   62 cmdwhilefinal: RIGHT_KEY WHILE LEFT_PARENTHENSIS value . COMPARE value RIGHT_PARENTHENSIS FINAL @17 commands
-
-    COMPARE  shift, and go to state 108
-
-
-state 95
-
-   66 cmdbreak: BREAK FINAL @19 commands .
-
-    $default  reduce using rule 66 (cmdbreak)
-
-
-state 96
-
-   27 cmdmain: INTEGER MAIN LEFT_PARENTHENSIS RIGHT_PARENTHENSIS . LEFT_KEY @3 commands
-
-    LEFT_KEY  shift, and go to state 109
-
-
-state 97
-
-   25 cmddefine: DEFINE ID INT @2 . commands
-
-    PRINTF              shift, and go to state 1
-    IF                  shift, and go to state 2
-    WHILE               shift, and go to state 3
-    DO                  shift, and go to state 4
-    SWITCH              shift, and go to state 5
-    CASE                shift, and go to state 6
-    FOR                 shift, and go to state 7
-    ID                  shift, and go to state 8
-    LEFT_PARENTHENSIS   shift, and go to state 9
-    RIGHT_PARENTHENSIS  shift, and go to state 10
-    LEFT_KEY            shift, and go to state 11
-    RIGHT_KEY           shift, and go to state 12
-    END_OF_FILE         shift, and go to state 13
-    BREAK               shift, and go to state 14
-    INTEGER             shift, and go to state 15
-    FLOATING            shift, and go to state 16
-    DEFINE              shift, and go to state 17
-    RETURN              shift, and go to state 18
-
-    commands            go to state 110
-    cmdprintf           go to state 20
-    cmddefine           go to state 21
-    cmdmain             go to state 22
-    return              go to state 23
-    cmdrk               go to state 24
-    cmdlk               go to state 25
-    cmdlp               go to state 26
-    cmdrp               go to state 27
-    reservated          go to state 28
-    cmdaddsub           go to state 29
-    cmddeclaration      go to state 30
-    cmddeclarationinst  go to state 31
-    cmdattribuition     go to state 32
-    cmdif               go to state 33
-    cmdfor              go to state 34
-    cmdwhile            go to state 35
-    cmddowhile          go to state 36
-    cmdwhilefinal       go to state 37
-    cmdcase             go to state 38
-    cmdbreak            go to state 39
-    cmdswitch           go to state 40
-    exit                go to state 41
-
-
-state 98
-
-   29 return: RETURN INT FINAL @4 . commands
-
-    PRINTF              shift, and go to state 1
-    IF                  shift, and go to state 2
-    WHILE               shift, and go to state 3
-    DO                  shift, and go to state 4
-    SWITCH              shift, and go to state 5
-    CASE                shift, and go to state 6
-    FOR                 shift, and go to state 7
-    ID                  shift, and go to state 8
-    LEFT_PARENTHENSIS   shift, and go to state 9
-    RIGHT_PARENTHENSIS  shift, and go to state 10
-    LEFT_KEY            shift, and go to state 11
-    RIGHT_KEY           shift, and go to state 12
-    END_OF_FILE         shift, and go to state 13
-    BREAK               shift, and go to state 14
-    INTEGER             shift, and go to state 15
-    FLOATING            shift, and go to state 16
-    DEFINE              shift, and go to state 17
-    RETURN              shift, and go to state 18
-
-    commands            go to state 111
-    cmdprintf           go to state 20
-    cmddefine           go to state 21
-    cmdmain             go to state 22
-    return              go to state 23
-    cmdrk               go to state 24
-    cmdlk               go to state 25
-    cmdlp               go to state 26
-    cmdrp               go to state 27
-    reservated          go to state 28
-    cmdaddsub           go to state 29
-    cmddeclaration      go to state 30
-    cmddeclarationinst  go to state 31
-    cmdattribuition     go to state 32
-    cmdif               go to state 33
-    cmdfor              go to state 34
-    cmdwhile            go to state 35
-    cmddowhile          go to state 36
-    cmdwhilefinal       go to state 37
-    cmdcase             go to state 38
-    cmdbreak            go to state 39
-    cmdswitch           go to state 40
-    exit                go to state 41
+    ID     deslocar, e ir ao estado 62
+    INT    deslocar, e ir ao estado 63
+    FLOAT  deslocar, e ir ao estado 64
+
+    value  ir ao estado 107
+
+
+estado 94
+
+   62 cmdwhilefinal: RIGHT_KEY WHILE LEFT_PARENTHENSIS value . COMPARE value RIGHT_PARENTHENSIS FINAL $@17 commands
+
+    COMPARE  deslocar, e ir ao estado 108
+
+
+estado 95
+
+   66 cmdbreak: BREAK FINAL $@19 commands .
+
+    $padrão  reduzir usando a regra 66 (cmdbreak)
+
+
+estado 96
+
+   27 cmdmain: INTEGER MAIN LEFT_PARENTHENSIS RIGHT_PARENTHENSIS . LEFT_KEY $@3 commands
+
+    LEFT_KEY  deslocar, e ir ao estado 109
+
+
+estado 97
+
+   25 cmddefine: DEFINE ID INT $@2 . commands
+
+    PRINTF              deslocar, e ir ao estado 1
+    IF                  deslocar, e ir ao estado 2
+    WHILE               deslocar, e ir ao estado 3
+    DO                  deslocar, e ir ao estado 4
+    SWITCH              deslocar, e ir ao estado 5
+    CASE                deslocar, e ir ao estado 6
+    FOR                 deslocar, e ir ao estado 7
+    ID                  deslocar, e ir ao estado 8
+    LEFT_PARENTHENSIS   deslocar, e ir ao estado 9
+    RIGHT_PARENTHENSIS  deslocar, e ir ao estado 10
+    LEFT_KEY            deslocar, e ir ao estado 11
+    RIGHT_KEY           deslocar, e ir ao estado 12
+    END_OF_FILE         deslocar, e ir ao estado 13
+    BREAK               deslocar, e ir ao estado 14
+    INTEGER             deslocar, e ir ao estado 15
+    FLOATING            deslocar, e ir ao estado 16
+    DEFINE              deslocar, e ir ao estado 17
+    RETURN              deslocar, e ir ao estado 18
+
+    commands            ir ao estado 110
+    cmdprintf           ir ao estado 20
+    cmddefine           ir ao estado 21
+    cmdmain             ir ao estado 22
+    return              ir ao estado 23
+    cmdrk               ir ao estado 24
+    cmdlk               ir ao estado 25
+    cmdlp               ir ao estado 26
+    cmdrp               ir ao estado 27
+    reservated          ir ao estado 28
+    cmdaddsub           ir ao estado 29
+    cmddeclaration      ir ao estado 30
+    cmddeclarationinst  ir ao estado 31
+    cmdattribuition     ir ao estado 32
+    cmdif               ir ao estado 33
+    cmdfor              ir ao estado 34
+    cmdwhile            ir ao estado 35
+    cmddowhile          ir ao estado 36
+    cmdwhilefinal       ir ao estado 37
+    cmdcase             ir ao estado 38
+    cmdbreak            ir ao estado 39
+    cmdswitch           ir ao estado 40
+    exit                ir ao estado 41
+
+
+estado 98
+
+   29 return: RETURN INT FINAL $@4 . commands
+
+    PRINTF              deslocar, e ir ao estado 1
+    IF                  deslocar, e ir ao estado 2
+    WHILE               deslocar, e ir ao estado 3
+    DO                  deslocar, e ir ao estado 4
+    SWITCH              deslocar, e ir ao estado 5
+    CASE                deslocar, e ir ao estado 6
+    FOR                 deslocar, e ir ao estado 7
+    ID                  deslocar, e ir ao estado 8
+    LEFT_PARENTHENSIS   deslocar, e ir ao estado 9
+    RIGHT_PARENTHENSIS  deslocar, e ir ao estado 10
+    LEFT_KEY            deslocar, e ir ao estado 11
+    RIGHT_KEY           deslocar, e ir ao estado 12
+    END_OF_FILE         deslocar, e ir ao estado 13
+    BREAK               deslocar, e ir ao estado 14
+    INTEGER             deslocar, e ir ao estado 15
+    FLOATING            deslocar, e ir ao estado 16
+    DEFINE              deslocar, e ir ao estado 17
+    RETURN              deslocar, e ir ao estado 18
+
+    commands            ir ao estado 111
+    cmdprintf           ir ao estado 20
+    cmddefine           ir ao estado 21
+    cmdmain             ir ao estado 22
+    return              ir ao estado 23
+    cmdrk               ir ao estado 24
+    cmdlk               ir ao estado 25
+    cmdlp               ir ao estado 26
+    cmdrp               ir ao estado 27
+    reservated          ir ao estado 28
+    cmdaddsub           ir ao estado 29
+    cmddeclaration      ir ao estado 30
+    cmddeclarationinst  ir ao estado 31
+    cmdattribuition     ir ao estado 32
+    cmdif               ir ao estado 33
+    cmdfor              ir ao estado 34
+    cmdwhile            ir ao estado 35
+    cmddowhile          ir ao estado 36
+    cmdwhilefinal       ir ao estado 37
+    cmdcase             ir ao estado 38
+    cmdbreak            ir ao estado 39
+    cmdswitch           ir ao estado 40
+    exit                ir ao estado 41
 
 
-state 99
+estado 99
 
-   48 cmddeclaration: reservated ID FINAL @10 . commands
+   48 cmddeclaration: reservated ID FINAL $@10 . commands
 
-    PRINTF              shift, and go to state 1
-    IF                  shift, and go to state 2
-    WHILE               shift, and go to state 3
-    DO                  shift, and go to state 4
-    SWITCH              shift, and go to state 5
-    CASE                shift, and go to state 6
-    FOR                 shift, and go to state 7
-    ID                  shift, and go to state 8
-    LEFT_PARENTHENSIS   shift, and go to state 9
-    RIGHT_PARENTHENSIS  shift, and go to state 10
-    LEFT_KEY            shift, and go to state 11
-    RIGHT_KEY           shift, and go to state 12
-    END_OF_FILE         shift, and go to state 13
-    BREAK               shift, and go to state 14
-    INTEGER             shift, and go to state 15
-    FLOATING            shift, and go to state 16
-    DEFINE              shift, and go to state 17
-    RETURN              shift, and go to state 18
-
-    commands            go to state 112
-    cmdprintf           go to state 20
-    cmddefine           go to state 21
-    cmdmain             go to state 22
-    return              go to state 23
-    cmdrk               go to state 24
-    cmdlk               go to state 25
-    cmdlp               go to state 26
-    cmdrp               go to state 27
-    reservated          go to state 28
-    cmdaddsub           go to state 29
-    cmddeclaration      go to state 30
-    cmddeclarationinst  go to state 31
-    cmdattribuition     go to state 32
-    cmdif               go to state 33
-    cmdfor              go to state 34
-    cmdwhile            go to state 35
-    cmddowhile          go to state 36
-    cmdwhilefinal       go to state 37
-    cmdcase             go to state 38
-    cmdbreak            go to state 39
-    cmdswitch           go to state 40
-    exit                go to state 41
-
-
-state 100
-
-   50 cmddeclarationinst: reservated ID ATTRIBUITION value . FINAL @11 commands
-
-    FINAL  shift, and go to state 113
-
-
-state 101
-
-   23 cmdprintf: PRINTF LEFT_PARENTHENSIS ASP ID ASP . RIGHT_PARENTHENSIS FINAL @1 commands
-
-    RIGHT_PARENTHENSIS  shift, and go to state 114
+    PRINTF              deslocar, e ir ao estado 1
+    IF                  deslocar, e ir ao estado 2
+    WHILE               deslocar, e ir ao estado 3
+    DO                  deslocar, e ir ao estado 4
+    SWITCH              deslocar, e ir ao estado 5
+    CASE                deslocar, e ir ao estado 6
+    FOR                 deslocar, e ir ao estado 7
+    ID                  deslocar, e ir ao estado 8
+    LEFT_PARENTHENSIS   deslocar, e ir ao estado 9
+    RIGHT_PARENTHENSIS  deslocar, e ir ao estado 10
+    LEFT_KEY            deslocar, e ir ao estado 11
+    RIGHT_KEY           deslocar, e ir ao estado 12
+    END_OF_FILE         deslocar, e ir ao estado 13
+    BREAK               deslocar, e ir ao estado 14
+    INTEGER             deslocar, e ir ao estado 15
+    FLOATING            deslocar, e ir ao estado 16
+    DEFINE              deslocar, e ir ao estado 17
+    RETURN              deslocar, e ir ao estado 18
+
+    commands            ir ao estado 112
+    cmdprintf           ir ao estado 20
+    cmddefine           ir ao estado 21
+    cmdmain             ir ao estado 22
+    return              ir ao estado 23
+    cmdrk               ir ao estado 24
+    cmdlk               ir ao estado 25
+    cmdlp               ir ao estado 26
+    cmdrp               ir ao estado 27
+    reservated          ir ao estado 28
+    cmdaddsub           ir ao estado 29
+    cmddeclaration      ir ao estado 30
+    cmddeclarationinst  ir ao estado 31
+    cmdattribuition     ir ao estado 32
+    cmdif               ir ao estado 33
+    cmdfor              ir ao estado 34
+    cmdwhile            ir ao estado 35
+    cmddowhile          ir ao estado 36
+    cmdwhilefinal       ir ao estado 37
+    cmdcase             ir ao estado 38
+    cmdbreak            ir ao estado 39
+    cmdswitch           ir ao estado 40
+    exit                ir ao estado 41
+
+
+estado 100
+
+   50 cmddeclarationinst: reservated ID ATTRIBUITION value . FINAL $@11 commands
+
+    FINAL  deslocar, e ir ao estado 113
+
+
+estado 101
+
+   23 cmdprintf: PRINTF LEFT_PARENTHENSIS ASP ID ASP . RIGHT_PARENTHENSIS FINAL $@1 commands
+
+    RIGHT_PARENTHENSIS  deslocar, e ir ao estado 114
 
 
-state 102
+estado 102
 
-   54 cmdif: IF LEFT_PARENTHENSIS value COMPARE value . RIGHT_PARENTHENSIS LEFT_KEY @13 commands
+   54 cmdif: IF LEFT_PARENTHENSIS value COMPARE value . RIGHT_PARENTHENSIS LEFT_KEY $@13 commands
 
-    RIGHT_PARENTHENSIS  shift, and go to state 115
+    RIGHT_PARENTHENSIS  deslocar, e ir ao estado 115
 
 
-state 103
+estado 103
 
-   58 cmdwhile: WHILE LEFT_PARENTHENSIS value COMPARE value . RIGHT_PARENTHENSIS LEFT_KEY @15 commands
+   58 cmdwhile: WHILE LEFT_PARENTHENSIS value COMPARE value . RIGHT_PARENTHENSIS LEFT_KEY $@15 commands
 
-    RIGHT_PARENTHENSIS  shift, and go to state 116
+    RIGHT_PARENTHENSIS  deslocar, e ir ao estado 116
 
 
-state 104
+estado 104
 
-   68 cmdswitch: SWITCH LEFT_PARENTHENSIS value RIGHT_PARENTHENSIS LEFT_KEY . @20 commands
+   68 cmdswitch: SWITCH LEFT_PARENTHENSIS value RIGHT_PARENTHENSIS LEFT_KEY . $@20 commands
 
-    $default  reduce using rule 67 (@20)
+    $padrão  reduzir usando a regra 67 ($@20)
 
-    @20  go to state 117
+    $@20  ir ao estado 117
 
 
-state 105
+estado 105
 
-   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION value . FINAL value COMPARE value FINAL value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY @14 commands
+   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION value . FINAL value COMPARE value FINAL value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY $@14 commands
 
-    FINAL  shift, and go to state 118
+    FINAL  deslocar, e ir ao estado 118
 
 
-state 106
+estado 106
 
-   52 cmdattribuition: ID ATTRIBUITION value FINAL @12 . commands
+   52 cmdattribuition: ID ATTRIBUITION value FINAL $@12 . commands
 
-    PRINTF              shift, and go to state 1
-    IF                  shift, and go to state 2
-    WHILE               shift, and go to state 3
-    DO                  shift, and go to state 4
-    SWITCH              shift, and go to state 5
-    CASE                shift, and go to state 6
-    FOR                 shift, and go to state 7
-    ID                  shift, and go to state 8
-    LEFT_PARENTHENSIS   shift, and go to state 9
-    RIGHT_PARENTHENSIS  shift, and go to state 10
-    LEFT_KEY            shift, and go to state 11
-    RIGHT_KEY           shift, and go to state 12
-    END_OF_FILE         shift, and go to state 13
-    BREAK               shift, and go to state 14
-    INTEGER             shift, and go to state 15
-    FLOATING            shift, and go to state 16
-    DEFINE              shift, and go to state 17
-    RETURN              shift, and go to state 18
+    PRINTF              deslocar, e ir ao estado 1
+    IF                  deslocar, e ir ao estado 2
+    WHILE               deslocar, e ir ao estado 3
+    DO                  deslocar, e ir ao estado 4
+    SWITCH              deslocar, e ir ao estado 5
+    CASE                deslocar, e ir ao estado 6
+    FOR                 deslocar, e ir ao estado 7
+    ID                  deslocar, e ir ao estado 8
+    LEFT_PARENTHENSIS   deslocar, e ir ao estado 9
+    RIGHT_PARENTHENSIS  deslocar, e ir ao estado 10
+    LEFT_KEY            deslocar, e ir ao estado 11
+    RIGHT_KEY           deslocar, e ir ao estado 12
+    END_OF_FILE         deslocar, e ir ao estado 13
+    BREAK               deslocar, e ir ao estado 14
+    INTEGER             deslocar, e ir ao estado 15
+    FLOATING            deslocar, e ir ao estado 16
+    DEFINE              deslocar, e ir ao estado 17
+    RETURN              deslocar, e ir ao estado 18
 
-    commands            go to state 119
-    cmdprintf           go to state 20
-    cmddefine           go to state 21
-    cmdmain             go to state 22
-    return              go to state 23
-    cmdrk               go to state 24
-    cmdlk               go to state 25
-    cmdlp               go to state 26
-    cmdrp               go to state 27
-    reservated          go to state 28
-    cmdaddsub           go to state 29
-    cmddeclaration      go to state 30
-    cmddeclarationinst  go to state 31
-    cmdattribuition     go to state 32
-    cmdif               go to state 33
-    cmdfor              go to state 34
-    cmdwhile            go to state 35
-    cmddowhile          go to state 36
-    cmdwhilefinal       go to state 37
-    cmdcase             go to state 38
-    cmdbreak            go to state 39
-    cmdswitch           go to state 40
-    exit                go to state 41
+    commands            ir ao estado 119
+    cmdprintf           ir ao estado 20
+    cmddefine           ir ao estado 21
+    cmdmain             ir ao estado 22
+    return              ir ao estado 23
+    cmdrk               ir ao estado 24
+    cmdlk               ir ao estado 25
+    cmdlp               ir ao estado 26
+    cmdrp               ir ao estado 27
+    reservated          ir ao estado 28
+    cmdaddsub           ir ao estado 29
+    cmddeclaration      ir ao estado 30
+    cmddeclarationinst  ir ao estado 31
+    cmdattribuition     ir ao estado 32
+    cmdif               ir ao estado 33
+    cmdfor              ir ao estado 34
+    cmdwhile            ir ao estado 35
+    cmddowhile          ir ao estado 36
+    cmdwhilefinal       ir ao estado 37
+    cmdcase             ir ao estado 38
+    cmdbreak            ir ao estado 39
+    cmdswitch           ir ao estado 40
+    exit                ir ao estado 41
 
 
-state 107
+estado 107
 
-   46 cmdaddsub: ID ATTRIBUITION value operatoras value . FINAL @9 commands
+   46 cmdaddsub: ID ATTRIBUITION value operatoras value . FINAL $@9 commands
 
-    FINAL  shift, and go to state 120
+    FINAL  deslocar, e ir ao estado 120
 
 
-state 108
+estado 108
 
-   62 cmdwhilefinal: RIGHT_KEY WHILE LEFT_PARENTHENSIS value COMPARE . value RIGHT_PARENTHENSIS FINAL @17 commands
+   62 cmdwhilefinal: RIGHT_KEY WHILE LEFT_PARENTHENSIS value COMPARE . value RIGHT_PARENTHENSIS FINAL $@17 commands
 
-    ID     shift, and go to state 62
-    INT    shift, and go to state 63
-    FLOAT  shift, and go to state 64
+    ID     deslocar, e ir ao estado 62
+    INT    deslocar, e ir ao estado 63
+    FLOAT  deslocar, e ir ao estado 64
 
-    value  go to state 121
+    value  ir ao estado 121
 
 
-state 109
+estado 109
 
-   27 cmdmain: INTEGER MAIN LEFT_PARENTHENSIS RIGHT_PARENTHENSIS LEFT_KEY . @3 commands
+   27 cmdmain: INTEGER MAIN LEFT_PARENTHENSIS RIGHT_PARENTHENSIS LEFT_KEY . $@3 commands
 
-    $default  reduce using rule 26 (@3)
+    $padrão  reduzir usando a regra 26 ($@3)
 
-    @3  go to state 122
+    $@3  ir ao estado 122
 
 
-state 110
+estado 110
 
-   25 cmddefine: DEFINE ID INT @2 commands .
+   25 cmddefine: DEFINE ID INT $@2 commands .
 
-    $default  reduce using rule 25 (cmddefine)
+    $padrão  reduzir usando a regra 25 (cmddefine)
 
 
-state 111
+estado 111
 
-   29 return: RETURN INT FINAL @4 commands .
+   29 return: RETURN INT FINAL $@4 commands .
 
-    $default  reduce using rule 29 (return)
+    $padrão  reduzir usando a regra 29 (return)
 
 
-state 112
+estado 112
 
-   48 cmddeclaration: reservated ID FINAL @10 commands .
+   48 cmddeclaration: reservated ID FINAL $@10 commands .
 
-    $default  reduce using rule 48 (cmddeclaration)
+    $padrão  reduzir usando a regra 48 (cmddeclaration)
 
 
-state 113
+estado 113
 
-   50 cmddeclarationinst: reservated ID ATTRIBUITION value FINAL . @11 commands
+   50 cmddeclarationinst: reservated ID ATTRIBUITION value FINAL . $@11 commands
 
-    $default  reduce using rule 49 (@11)
+    $padrão  reduzir usando a regra 49 ($@11)
 
-    @11  go to state 123
+    $@11  ir ao estado 123
 
 
-state 114
+estado 114
 
-   23 cmdprintf: PRINTF LEFT_PARENTHENSIS ASP ID ASP RIGHT_PARENTHENSIS . FINAL @1 commands
+   23 cmdprintf: PRINTF LEFT_PARENTHENSIS ASP ID ASP RIGHT_PARENTHENSIS . FINAL $@1 commands
 
-    FINAL  shift, and go to state 124
+    FINAL  deslocar, e ir ao estado 124
 
 
-state 115
+estado 115
 
-   54 cmdif: IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS . LEFT_KEY @13 commands
+   54 cmdif: IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS . LEFT_KEY $@13 commands
 
-    LEFT_KEY  shift, and go to state 125
+    LEFT_KEY  deslocar, e ir ao estado 125
 
 
-state 116
+estado 116
 
-   58 cmdwhile: WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS . LEFT_KEY @15 commands
+   58 cmdwhile: WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS . LEFT_KEY $@15 commands
 
-    LEFT_KEY  shift, and go to state 126
+    LEFT_KEY  deslocar, e ir ao estado 126
 
 
-state 117
+estado 117
 
-   68 cmdswitch: SWITCH LEFT_PARENTHENSIS value RIGHT_PARENTHENSIS LEFT_KEY @20 . commands
+   68 cmdswitch: SWITCH LEFT_PARENTHENSIS value RIGHT_PARENTHENSIS LEFT_KEY $@20 . commands
 
-    PRINTF              shift, and go to state 1
-    IF                  shift, and go to state 2
-    WHILE               shift, and go to state 3
-    DO                  shift, and go to state 4
-    SWITCH              shift, and go to state 5
-    CASE                shift, and go to state 6
-    FOR                 shift, and go to state 7
-    ID                  shift, and go to state 8
-    LEFT_PARENTHENSIS   shift, and go to state 9
-    RIGHT_PARENTHENSIS  shift, and go to state 10
-    LEFT_KEY            shift, and go to state 11
-    RIGHT_KEY           shift, and go to state 12
-    END_OF_FILE         shift, and go to state 13
-    BREAK               shift, and go to state 14
-    INTEGER             shift, and go to state 15
-    FLOATING            shift, and go to state 16
-    DEFINE              shift, and go to state 17
-    RETURN              shift, and go to state 18
+    PRINTF              deslocar, e ir ao estado 1
+    IF                  deslocar, e ir ao estado 2
+    WHILE               deslocar, e ir ao estado 3
+    DO                  deslocar, e ir ao estado 4
+    SWITCH              deslocar, e ir ao estado 5
+    CASE                deslocar, e ir ao estado 6
+    FOR                 deslocar, e ir ao estado 7
+    ID                  deslocar, e ir ao estado 8
+    LEFT_PARENTHENSIS   deslocar, e ir ao estado 9
+    RIGHT_PARENTHENSIS  deslocar, e ir ao estado 10
+    LEFT_KEY            deslocar, e ir ao estado 11
+    RIGHT_KEY           deslocar, e ir ao estado 12
+    END_OF_FILE         deslocar, e ir ao estado 13
+    BREAK               deslocar, e ir ao estado 14
+    INTEGER             deslocar, e ir ao estado 15
+    FLOATING            deslocar, e ir ao estado 16
+    DEFINE              deslocar, e ir ao estado 17
+    RETURN              deslocar, e ir ao estado 18
 
-    commands            go to state 127
-    cmdprintf           go to state 20
-    cmddefine           go to state 21
-    cmdmain             go to state 22
-    return              go to state 23
-    cmdrk               go to state 24
-    cmdlk               go to state 25
-    cmdlp               go to state 26
-    cmdrp               go to state 27
-    reservated          go to state 28
-    cmdaddsub           go to state 29
-    cmddeclaration      go to state 30
-    cmddeclarationinst  go to state 31
-    cmdattribuition     go to state 32
-    cmdif               go to state 33
-    cmdfor              go to state 34
-    cmdwhile            go to state 35
-    cmddowhile          go to state 36
-    cmdwhilefinal       go to state 37
-    cmdcase             go to state 38
-    cmdbreak            go to state 39
-    cmdswitch           go to state 40
-    exit                go to state 41
+    commands            ir ao estado 127
+    cmdprintf           ir ao estado 20
+    cmddefine           ir ao estado 21
+    cmdmain             ir ao estado 22
+    return              ir ao estado 23
+    cmdrk               ir ao estado 24
+    cmdlk               ir ao estado 25
+    cmdlp               ir ao estado 26
+    cmdrp               ir ao estado 27
+    reservated          ir ao estado 28
+    cmdaddsub           ir ao estado 29
+    cmddeclaration      ir ao estado 30
+    cmddeclarationinst  ir ao estado 31
+    cmdattribuition     ir ao estado 32
+    cmdif               ir ao estado 33
+    cmdfor              ir ao estado 34
+    cmdwhile            ir ao estado 35
+    cmddowhile          ir ao estado 36
+    cmdwhilefinal       ir ao estado 37
+    cmdcase             ir ao estado 38
+    cmdbreak            ir ao estado 39
+    cmdswitch           ir ao estado 40
+    exit                ir ao estado 41
 
 
-state 118
+estado 118
 
-   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL . value COMPARE value FINAL value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY @14 commands
+   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL . value COMPARE value FINAL value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY $@14 commands
 
-    ID     shift, and go to state 62
-    INT    shift, and go to state 63
-    FLOAT  shift, and go to state 64
+    ID     deslocar, e ir ao estado 62
+    INT    deslocar, e ir ao estado 63
+    FLOAT  deslocar, e ir ao estado 64
 
-    value  go to state 128
+    value  ir ao estado 128
 
 
-state 119
+estado 119
 
-   52 cmdattribuition: ID ATTRIBUITION value FINAL @12 commands .
+   52 cmdattribuition: ID ATTRIBUITION value FINAL $@12 commands .
 
-    $default  reduce using rule 52 (cmdattribuition)
+    $padrão  reduzir usando a regra 52 (cmdattribuition)
 
 
-state 120
+estado 120
 
-   46 cmdaddsub: ID ATTRIBUITION value operatoras value FINAL . @9 commands
+   46 cmdaddsub: ID ATTRIBUITION value operatoras value FINAL . $@9 commands
 
-    $default  reduce using rule 45 (@9)
+    $padrão  reduzir usando a regra 45 ($@9)
 
-    @9  go to state 129
+    $@9  ir ao estado 129
 
 
-state 121
+estado 121
 
-   62 cmdwhilefinal: RIGHT_KEY WHILE LEFT_PARENTHENSIS value COMPARE value . RIGHT_PARENTHENSIS FINAL @17 commands
+   62 cmdwhilefinal: RIGHT_KEY WHILE LEFT_PARENTHENSIS value COMPARE value . RIGHT_PARENTHENSIS FINAL $@17 commands
 
-    RIGHT_PARENTHENSIS  shift, and go to state 130
+    RIGHT_PARENTHENSIS  deslocar, e ir ao estado 130
 
 
-state 122
+estado 122
 
-   27 cmdmain: INTEGER MAIN LEFT_PARENTHENSIS RIGHT_PARENTHENSIS LEFT_KEY @3 . commands
+   27 cmdmain: INTEGER MAIN LEFT_PARENTHENSIS RIGHT_PARENTHENSIS LEFT_KEY $@3 . commands
 
-    PRINTF              shift, and go to state 1
-    IF                  shift, and go to state 2
-    WHILE               shift, and go to state 3
-    DO                  shift, and go to state 4
-    SWITCH              shift, and go to state 5
-    CASE                shift, and go to state 6
-    FOR                 shift, and go to state 7
-    ID                  shift, and go to state 8
-    LEFT_PARENTHENSIS   shift, and go to state 9
-    RIGHT_PARENTHENSIS  shift, and go to state 10
-    LEFT_KEY            shift, and go to state 11
-    RIGHT_KEY           shift, and go to state 12
-    END_OF_FILE         shift, and go to state 13
-    BREAK               shift, and go to state 14
-    INTEGER             shift, and go to state 15
-    FLOATING            shift, and go to state 16
-    DEFINE              shift, and go to state 17
-    RETURN              shift, and go to state 18
+    PRINTF              deslocar, e ir ao estado 1
+    IF                  deslocar, e ir ao estado 2
+    WHILE               deslocar, e ir ao estado 3
+    DO                  deslocar, e ir ao estado 4
+    SWITCH              deslocar, e ir ao estado 5
+    CASE                deslocar, e ir ao estado 6
+    FOR                 deslocar, e ir ao estado 7
+    ID                  deslocar, e ir ao estado 8
+    LEFT_PARENTHENSIS   deslocar, e ir ao estado 9
+    RIGHT_PARENTHENSIS  deslocar, e ir ao estado 10
+    LEFT_KEY            deslocar, e ir ao estado 11
+    RIGHT_KEY           deslocar, e ir ao estado 12
+    END_OF_FILE         deslocar, e ir ao estado 13
+    BREAK               deslocar, e ir ao estado 14
+    INTEGER             deslocar, e ir ao estado 15
+    FLOATING            deslocar, e ir ao estado 16
+    DEFINE              deslocar, e ir ao estado 17
+    RETURN              deslocar, e ir ao estado 18
 
-    commands            go to state 131
-    cmdprintf           go to state 20
-    cmddefine           go to state 21
-    cmdmain             go to state 22
-    return              go to state 23
-    cmdrk               go to state 24
-    cmdlk               go to state 25
-    cmdlp               go to state 26
-    cmdrp               go to state 27
-    reservated          go to state 28
-    cmdaddsub           go to state 29
-    cmddeclaration      go to state 30
-    cmddeclarationinst  go to state 31
-    cmdattribuition     go to state 32
-    cmdif               go to state 33
-    cmdfor              go to state 34
-    cmdwhile            go to state 35
-    cmddowhile          go to state 36
-    cmdwhilefinal       go to state 37
-    cmdcase             go to state 38
-    cmdbreak            go to state 39
-    cmdswitch           go to state 40
-    exit                go to state 41
+    commands            ir ao estado 131
+    cmdprintf           ir ao estado 20
+    cmddefine           ir ao estado 21
+    cmdmain             ir ao estado 22
+    return              ir ao estado 23
+    cmdrk               ir ao estado 24
+    cmdlk               ir ao estado 25
+    cmdlp               ir ao estado 26
+    cmdrp               ir ao estado 27
+    reservated          ir ao estado 28
+    cmdaddsub           ir ao estado 29
+    cmddeclaration      ir ao estado 30
+    cmddeclarationinst  ir ao estado 31
+    cmdattribuition     ir ao estado 32
+    cmdif               ir ao estado 33
+    cmdfor              ir ao estado 34
+    cmdwhile            ir ao estado 35
+    cmddowhile          ir ao estado 36
+    cmdwhilefinal       ir ao estado 37
+    cmdcase             ir ao estado 38
+    cmdbreak            ir ao estado 39
+    cmdswitch           ir ao estado 40
+    exit                ir ao estado 41
 
 
-state 123
+estado 123
 
-   50 cmddeclarationinst: reservated ID ATTRIBUITION value FINAL @11 . commands
+   50 cmddeclarationinst: reservated ID ATTRIBUITION value FINAL $@11 . commands
 
-    PRINTF              shift, and go to state 1
-    IF                  shift, and go to state 2
-    WHILE               shift, and go to state 3
-    DO                  shift, and go to state 4
-    SWITCH              shift, and go to state 5
-    CASE                shift, and go to state 6
-    FOR                 shift, and go to state 7
-    ID                  shift, and go to state 8
-    LEFT_PARENTHENSIS   shift, and go to state 9
-    RIGHT_PARENTHENSIS  shift, and go to state 10
-    LEFT_KEY            shift, and go to state 11
-    RIGHT_KEY           shift, and go to state 12
-    END_OF_FILE         shift, and go to state 13
-    BREAK               shift, and go to state 14
-    INTEGER             shift, and go to state 15
-    FLOATING            shift, and go to state 16
-    DEFINE              shift, and go to state 17
-    RETURN              shift, and go to state 18
+    PRINTF              deslocar, e ir ao estado 1
+    IF                  deslocar, e ir ao estado 2
+    WHILE               deslocar, e ir ao estado 3
+    DO                  deslocar, e ir ao estado 4
+    SWITCH              deslocar, e ir ao estado 5
+    CASE                deslocar, e ir ao estado 6
+    FOR                 deslocar, e ir ao estado 7
+    ID                  deslocar, e ir ao estado 8
+    LEFT_PARENTHENSIS   deslocar, e ir ao estado 9
+    RIGHT_PARENTHENSIS  deslocar, e ir ao estado 10
+    LEFT_KEY            deslocar, e ir ao estado 11
+    RIGHT_KEY           deslocar, e ir ao estado 12
+    END_OF_FILE         deslocar, e ir ao estado 13
+    BREAK               deslocar, e ir ao estado 14
+    INTEGER             deslocar, e ir ao estado 15
+    FLOATING            deslocar, e ir ao estado 16
+    DEFINE              deslocar, e ir ao estado 17
+    RETURN              deslocar, e ir ao estado 18
 
-    commands            go to state 132
-    cmdprintf           go to state 20
-    cmddefine           go to state 21
-    cmdmain             go to state 22
-    return              go to state 23
-    cmdrk               go to state 24
-    cmdlk               go to state 25
-    cmdlp               go to state 26
-    cmdrp               go to state 27
-    reservated          go to state 28
-    cmdaddsub           go to state 29
-    cmddeclaration      go to state 30
-    cmddeclarationinst  go to state 31
-    cmdattribuition     go to state 32
-    cmdif               go to state 33
-    cmdfor              go to state 34
-    cmdwhile            go to state 35
-    cmddowhile          go to state 36
-    cmdwhilefinal       go to state 37
-    cmdcase             go to state 38
-    cmdbreak            go to state 39
-    cmdswitch           go to state 40
-    exit                go to state 41
+    commands            ir ao estado 132
+    cmdprintf           ir ao estado 20
+    cmddefine           ir ao estado 21
+    cmdmain             ir ao estado 22
+    return              ir ao estado 23
+    cmdrk               ir ao estado 24
+    cmdlk               ir ao estado 25
+    cmdlp               ir ao estado 26
+    cmdrp               ir ao estado 27
+    reservated          ir ao estado 28
+    cmdaddsub           ir ao estado 29
+    cmddeclaration      ir ao estado 30
+    cmddeclarationinst  ir ao estado 31
+    cmdattribuition     ir ao estado 32
+    cmdif               ir ao estado 33
+    cmdfor              ir ao estado 34
+    cmdwhile            ir ao estado 35
+    cmddowhile          ir ao estado 36
+    cmdwhilefinal       ir ao estado 37
+    cmdcase             ir ao estado 38
+    cmdbreak            ir ao estado 39
+    cmdswitch           ir ao estado 40
+    exit                ir ao estado 41
 
 
-state 124
+estado 124
 
-   23 cmdprintf: PRINTF LEFT_PARENTHENSIS ASP ID ASP RIGHT_PARENTHENSIS FINAL . @1 commands
+   23 cmdprintf: PRINTF LEFT_PARENTHENSIS ASP ID ASP RIGHT_PARENTHENSIS FINAL . $@1 commands
 
-    $default  reduce using rule 22 (@1)
+    $padrão  reduzir usando a regra 22 ($@1)
 
-    @1  go to state 133
+    $@1  ir ao estado 133
 
 
-state 125
+estado 125
 
-   54 cmdif: IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY . @13 commands
+   54 cmdif: IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY . $@13 commands
 
-    $default  reduce using rule 53 (@13)
+    $padrão  reduzir usando a regra 53 ($@13)
 
-    @13  go to state 134
+    $@13  ir ao estado 134
 
 
-state 126
+estado 126
 
-   58 cmdwhile: WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY . @15 commands
+   58 cmdwhile: WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY . $@15 commands
 
-    $default  reduce using rule 57 (@15)
+    $padrão  reduzir usando a regra 57 ($@15)
 
-    @15  go to state 135
+    $@15  ir ao estado 135
 
 
-state 127
+estado 127
 
-   68 cmdswitch: SWITCH LEFT_PARENTHENSIS value RIGHT_PARENTHENSIS LEFT_KEY @20 commands .
+   68 cmdswitch: SWITCH LEFT_PARENTHENSIS value RIGHT_PARENTHENSIS LEFT_KEY $@20 commands .
 
-    $default  reduce using rule 68 (cmdswitch)
+    $padrão  reduzir usando a regra 68 (cmdswitch)
 
 
-state 128
+estado 128
 
-   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value . COMPARE value FINAL value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY @14 commands
+   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value . COMPARE value FINAL value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY $@14 commands
 
-    COMPARE  shift, and go to state 136
+    COMPARE  deslocar, e ir ao estado 136
 
 
-state 129
+estado 129
 
-   46 cmdaddsub: ID ATTRIBUITION value operatoras value FINAL @9 . commands
+   46 cmdaddsub: ID ATTRIBUITION value operatoras value FINAL $@9 . commands
 
-    PRINTF              shift, and go to state 1
-    IF                  shift, and go to state 2
-    WHILE               shift, and go to state 3
-    DO                  shift, and go to state 4
-    SWITCH              shift, and go to state 5
-    CASE                shift, and go to state 6
-    FOR                 shift, and go to state 7
-    ID                  shift, and go to state 8
-    LEFT_PARENTHENSIS   shift, and go to state 9
-    RIGHT_PARENTHENSIS  shift, and go to state 10
-    LEFT_KEY            shift, and go to state 11
-    RIGHT_KEY           shift, and go to state 12
-    END_OF_FILE         shift, and go to state 13
-    BREAK               shift, and go to state 14
-    INTEGER             shift, and go to state 15
-    FLOATING            shift, and go to state 16
-    DEFINE              shift, and go to state 17
-    RETURN              shift, and go to state 18
+    PRINTF              deslocar, e ir ao estado 1
+    IF                  deslocar, e ir ao estado 2
+    WHILE               deslocar, e ir ao estado 3
+    DO                  deslocar, e ir ao estado 4
+    SWITCH              deslocar, e ir ao estado 5
+    CASE                deslocar, e ir ao estado 6
+    FOR                 deslocar, e ir ao estado 7
+    ID                  deslocar, e ir ao estado 8
+    LEFT_PARENTHENSIS   deslocar, e ir ao estado 9
+    RIGHT_PARENTHENSIS  deslocar, e ir ao estado 10
+    LEFT_KEY            deslocar, e ir ao estado 11
+    RIGHT_KEY           deslocar, e ir ao estado 12
+    END_OF_FILE         deslocar, e ir ao estado 13
+    BREAK               deslocar, e ir ao estado 14
+    INTEGER             deslocar, e ir ao estado 15
+    FLOATING            deslocar, e ir ao estado 16
+    DEFINE              deslocar, e ir ao estado 17
+    RETURN              deslocar, e ir ao estado 18
 
-    commands            go to state 137
-    cmdprintf           go to state 20
-    cmddefine           go to state 21
-    cmdmain             go to state 22
-    return              go to state 23
-    cmdrk               go to state 24
-    cmdlk               go to state 25
-    cmdlp               go to state 26
-    cmdrp               go to state 27
-    reservated          go to state 28
-    cmdaddsub           go to state 29
-    cmddeclaration      go to state 30
-    cmddeclarationinst  go to state 31
-    cmdattribuition     go to state 32
-    cmdif               go to state 33
-    cmdfor              go to state 34
-    cmdwhile            go to state 35
-    cmddowhile          go to state 36
-    cmdwhilefinal       go to state 37
-    cmdcase             go to state 38
-    cmdbreak            go to state 39
-    cmdswitch           go to state 40
-    exit                go to state 41
+    commands            ir ao estado 137
+    cmdprintf           ir ao estado 20
+    cmddefine           ir ao estado 21
+    cmdmain             ir ao estado 22
+    return              ir ao estado 23
+    cmdrk               ir ao estado 24
+    cmdlk               ir ao estado 25
+    cmdlp               ir ao estado 26
+    cmdrp               ir ao estado 27
+    reservated          ir ao estado 28
+    cmdaddsub           ir ao estado 29
+    cmddeclaration      ir ao estado 30
+    cmddeclarationinst  ir ao estado 31
+    cmdattribuition     ir ao estado 32
+    cmdif               ir ao estado 33
+    cmdfor              ir ao estado 34
+    cmdwhile            ir ao estado 35
+    cmddowhile          ir ao estado 36
+    cmdwhilefinal       ir ao estado 37
+    cmdcase             ir ao estado 38
+    cmdbreak            ir ao estado 39
+    cmdswitch           ir ao estado 40
+    exit                ir ao estado 41
 
 
-state 130
+estado 130
 
-   62 cmdwhilefinal: RIGHT_KEY WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS . FINAL @17 commands
+   62 cmdwhilefinal: RIGHT_KEY WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS . FINAL $@17 commands
 
-    FINAL  shift, and go to state 138
+    FINAL  deslocar, e ir ao estado 138
 
 
-state 131
+estado 131
 
-   27 cmdmain: INTEGER MAIN LEFT_PARENTHENSIS RIGHT_PARENTHENSIS LEFT_KEY @3 commands .
+   27 cmdmain: INTEGER MAIN LEFT_PARENTHENSIS RIGHT_PARENTHENSIS LEFT_KEY $@3 commands .
 
-    $default  reduce using rule 27 (cmdmain)
+    $padrão  reduzir usando a regra 27 (cmdmain)
 
 
-state 132
+estado 132
 
-   50 cmddeclarationinst: reservated ID ATTRIBUITION value FINAL @11 commands .
+   50 cmddeclarationinst: reservated ID ATTRIBUITION value FINAL $@11 commands .
 
-    $default  reduce using rule 50 (cmddeclarationinst)
+    $padrão  reduzir usando a regra 50 (cmddeclarationinst)
 
 
-state 133
+estado 133
 
-   23 cmdprintf: PRINTF LEFT_PARENTHENSIS ASP ID ASP RIGHT_PARENTHENSIS FINAL @1 . commands
+   23 cmdprintf: PRINTF LEFT_PARENTHENSIS ASP ID ASP RIGHT_PARENTHENSIS FINAL $@1 . commands
 
-    PRINTF              shift, and go to state 1
-    IF                  shift, and go to state 2
-    WHILE               shift, and go to state 3
-    DO                  shift, and go to state 4
-    SWITCH              shift, and go to state 5
-    CASE                shift, and go to state 6
-    FOR                 shift, and go to state 7
-    ID                  shift, and go to state 8
-    LEFT_PARENTHENSIS   shift, and go to state 9
-    RIGHT_PARENTHENSIS  shift, and go to state 10
-    LEFT_KEY            shift, and go to state 11
-    RIGHT_KEY           shift, and go to state 12
-    END_OF_FILE         shift, and go to state 13
-    BREAK               shift, and go to state 14
-    INTEGER             shift, and go to state 15
-    FLOATING            shift, and go to state 16
-    DEFINE              shift, and go to state 17
-    RETURN              shift, and go to state 18
+    PRINTF              deslocar, e ir ao estado 1
+    IF                  deslocar, e ir ao estado 2
+    WHILE               deslocar, e ir ao estado 3
+    DO                  deslocar, e ir ao estado 4
+    SWITCH              deslocar, e ir ao estado 5
+    CASE                deslocar, e ir ao estado 6
+    FOR                 deslocar, e ir ao estado 7
+    ID                  deslocar, e ir ao estado 8
+    LEFT_PARENTHENSIS   deslocar, e ir ao estado 9
+    RIGHT_PARENTHENSIS  deslocar, e ir ao estado 10
+    LEFT_KEY            deslocar, e ir ao estado 11
+    RIGHT_KEY           deslocar, e ir ao estado 12
+    END_OF_FILE         deslocar, e ir ao estado 13
+    BREAK               deslocar, e ir ao estado 14
+    INTEGER             deslocar, e ir ao estado 15
+    FLOATING            deslocar, e ir ao estado 16
+    DEFINE              deslocar, e ir ao estado 17
+    RETURN              deslocar, e ir ao estado 18
 
-    commands            go to state 139
-    cmdprintf           go to state 20
-    cmddefine           go to state 21
-    cmdmain             go to state 22
-    return              go to state 23
-    cmdrk               go to state 24
-    cmdlk               go to state 25
-    cmdlp               go to state 26
-    cmdrp               go to state 27
-    reservated          go to state 28
-    cmdaddsub           go to state 29
-    cmddeclaration      go to state 30
-    cmddeclarationinst  go to state 31
-    cmdattribuition     go to state 32
-    cmdif               go to state 33
-    cmdfor              go to state 34
-    cmdwhile            go to state 35
-    cmddowhile          go to state 36
-    cmdwhilefinal       go to state 37
-    cmdcase             go to state 38
-    cmdbreak            go to state 39
-    cmdswitch           go to state 40
-    exit                go to state 41
-
-
-state 134
-
-   54 cmdif: IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY @13 . commands
-
-    PRINTF              shift, and go to state 1
-    IF                  shift, and go to state 2
-    WHILE               shift, and go to state 3
-    DO                  shift, and go to state 4
-    SWITCH              shift, and go to state 5
-    CASE                shift, and go to state 6
-    FOR                 shift, and go to state 7
-    ID                  shift, and go to state 8
-    LEFT_PARENTHENSIS   shift, and go to state 9
-    RIGHT_PARENTHENSIS  shift, and go to state 10
-    LEFT_KEY            shift, and go to state 11
-    RIGHT_KEY           shift, and go to state 12
-    END_OF_FILE         shift, and go to state 13
-    BREAK               shift, and go to state 14
-    INTEGER             shift, and go to state 15
-    FLOATING            shift, and go to state 16
-    DEFINE              shift, and go to state 17
-    RETURN              shift, and go to state 18
+    commands            ir ao estado 139
+    cmdprintf           ir ao estado 20
+    cmddefine           ir ao estado 21
+    cmdmain             ir ao estado 22
+    return              ir ao estado 23
+    cmdrk               ir ao estado 24
+    cmdlk               ir ao estado 25
+    cmdlp               ir ao estado 26
+    cmdrp               ir ao estado 27
+    reservated          ir ao estado 28
+    cmdaddsub           ir ao estado 29
+    cmddeclaration      ir ao estado 30
+    cmddeclarationinst  ir ao estado 31
+    cmdattribuition     ir ao estado 32
+    cmdif               ir ao estado 33
+    cmdfor              ir ao estado 34
+    cmdwhile            ir ao estado 35
+    cmddowhile          ir ao estado 36
+    cmdwhilefinal       ir ao estado 37
+    cmdcase             ir ao estado 38
+    cmdbreak            ir ao estado 39
+    cmdswitch           ir ao estado 40
+    exit                ir ao estado 41
+
+
+estado 134
+
+   54 cmdif: IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY $@13 . commands
+
+    PRINTF              deslocar, e ir ao estado 1
+    IF                  deslocar, e ir ao estado 2
+    WHILE               deslocar, e ir ao estado 3
+    DO                  deslocar, e ir ao estado 4
+    SWITCH              deslocar, e ir ao estado 5
+    CASE                deslocar, e ir ao estado 6
+    FOR                 deslocar, e ir ao estado 7
+    ID                  deslocar, e ir ao estado 8
+    LEFT_PARENTHENSIS   deslocar, e ir ao estado 9
+    RIGHT_PARENTHENSIS  deslocar, e ir ao estado 10
+    LEFT_KEY            deslocar, e ir ao estado 11
+    RIGHT_KEY           deslocar, e ir ao estado 12
+    END_OF_FILE         deslocar, e ir ao estado 13
+    BREAK               deslocar, e ir ao estado 14
+    INTEGER             deslocar, e ir ao estado 15
+    FLOATING            deslocar, e ir ao estado 16
+    DEFINE              deslocar, e ir ao estado 17
+    RETURN              deslocar, e ir ao estado 18
 
-    commands            go to state 140
-    cmdprintf           go to state 20
-    cmddefine           go to state 21
-    cmdmain             go to state 22
-    return              go to state 23
-    cmdrk               go to state 24
-    cmdlk               go to state 25
-    cmdlp               go to state 26
-    cmdrp               go to state 27
-    reservated          go to state 28
-    cmdaddsub           go to state 29
-    cmddeclaration      go to state 30
-    cmddeclarationinst  go to state 31
-    cmdattribuition     go to state 32
-    cmdif               go to state 33
-    cmdfor              go to state 34
-    cmdwhile            go to state 35
-    cmddowhile          go to state 36
-    cmdwhilefinal       go to state 37
-    cmdcase             go to state 38
-    cmdbreak            go to state 39
-    cmdswitch           go to state 40
-    exit                go to state 41
+    commands            ir ao estado 140
+    cmdprintf           ir ao estado 20
+    cmddefine           ir ao estado 21
+    cmdmain             ir ao estado 22
+    return              ir ao estado 23
+    cmdrk               ir ao estado 24
+    cmdlk               ir ao estado 25
+    cmdlp               ir ao estado 26
+    cmdrp               ir ao estado 27
+    reservated          ir ao estado 28
+    cmdaddsub           ir ao estado 29
+    cmddeclaration      ir ao estado 30
+    cmddeclarationinst  ir ao estado 31
+    cmdattribuition     ir ao estado 32
+    cmdif               ir ao estado 33
+    cmdfor              ir ao estado 34
+    cmdwhile            ir ao estado 35
+    cmddowhile          ir ao estado 36
+    cmdwhilefinal       ir ao estado 37
+    cmdcase             ir ao estado 38
+    cmdbreak            ir ao estado 39
+    cmdswitch           ir ao estado 40
+    exit                ir ao estado 41
 
 
-state 135
+estado 135
 
-   58 cmdwhile: WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY @15 . commands
+   58 cmdwhile: WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY $@15 . commands
 
-    PRINTF              shift, and go to state 1
-    IF                  shift, and go to state 2
-    WHILE               shift, and go to state 3
-    DO                  shift, and go to state 4
-    SWITCH              shift, and go to state 5
-    CASE                shift, and go to state 6
-    FOR                 shift, and go to state 7
-    ID                  shift, and go to state 8
-    LEFT_PARENTHENSIS   shift, and go to state 9
-    RIGHT_PARENTHENSIS  shift, and go to state 10
-    LEFT_KEY            shift, and go to state 11
-    RIGHT_KEY           shift, and go to state 12
-    END_OF_FILE         shift, and go to state 13
-    BREAK               shift, and go to state 14
-    INTEGER             shift, and go to state 15
-    FLOATING            shift, and go to state 16
-    DEFINE              shift, and go to state 17
-    RETURN              shift, and go to state 18
+    PRINTF              deslocar, e ir ao estado 1
+    IF                  deslocar, e ir ao estado 2
+    WHILE               deslocar, e ir ao estado 3
+    DO                  deslocar, e ir ao estado 4
+    SWITCH              deslocar, e ir ao estado 5
+    CASE                deslocar, e ir ao estado 6
+    FOR                 deslocar, e ir ao estado 7
+    ID                  deslocar, e ir ao estado 8
+    LEFT_PARENTHENSIS   deslocar, e ir ao estado 9
+    RIGHT_PARENTHENSIS  deslocar, e ir ao estado 10
+    LEFT_KEY            deslocar, e ir ao estado 11
+    RIGHT_KEY           deslocar, e ir ao estado 12
+    END_OF_FILE         deslocar, e ir ao estado 13
+    BREAK               deslocar, e ir ao estado 14
+    INTEGER             deslocar, e ir ao estado 15
+    FLOATING            deslocar, e ir ao estado 16
+    DEFINE              deslocar, e ir ao estado 17
+    RETURN              deslocar, e ir ao estado 18
 
-    commands            go to state 141
-    cmdprintf           go to state 20
-    cmddefine           go to state 21
-    cmdmain             go to state 22
-    return              go to state 23
-    cmdrk               go to state 24
-    cmdlk               go to state 25
-    cmdlp               go to state 26
-    cmdrp               go to state 27
-    reservated          go to state 28
-    cmdaddsub           go to state 29
-    cmddeclaration      go to state 30
-    cmddeclarationinst  go to state 31
-    cmdattribuition     go to state 32
-    cmdif               go to state 33
-    cmdfor              go to state 34
-    cmdwhile            go to state 35
-    cmddowhile          go to state 36
-    cmdwhilefinal       go to state 37
-    cmdcase             go to state 38
-    cmdbreak            go to state 39
-    cmdswitch           go to state 40
-    exit                go to state 41
+    commands            ir ao estado 141
+    cmdprintf           ir ao estado 20
+    cmddefine           ir ao estado 21
+    cmdmain             ir ao estado 22
+    return              ir ao estado 23
+    cmdrk               ir ao estado 24
+    cmdlk               ir ao estado 25
+    cmdlp               ir ao estado 26
+    cmdrp               ir ao estado 27
+    reservated          ir ao estado 28
+    cmdaddsub           ir ao estado 29
+    cmddeclaration      ir ao estado 30
+    cmddeclarationinst  ir ao estado 31
+    cmdattribuition     ir ao estado 32
+    cmdif               ir ao estado 33
+    cmdfor              ir ao estado 34
+    cmdwhile            ir ao estado 35
+    cmddowhile          ir ao estado 36
+    cmdwhilefinal       ir ao estado 37
+    cmdcase             ir ao estado 38
+    cmdbreak            ir ao estado 39
+    cmdswitch           ir ao estado 40
+    exit                ir ao estado 41
 
 
-state 136
+estado 136
 
-   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE . value FINAL value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY @14 commands
+   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE . value FINAL value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY $@14 commands
 
-    ID     shift, and go to state 62
-    INT    shift, and go to state 63
-    FLOAT  shift, and go to state 64
+    ID     deslocar, e ir ao estado 62
+    INT    deslocar, e ir ao estado 63
+    FLOAT  deslocar, e ir ao estado 64
 
-    value  go to state 142
+    value  ir ao estado 142
 
 
-state 137
+estado 137
 
-   46 cmdaddsub: ID ATTRIBUITION value operatoras value FINAL @9 commands .
+   46 cmdaddsub: ID ATTRIBUITION value operatoras value FINAL $@9 commands .
 
-    $default  reduce using rule 46 (cmdaddsub)
+    $padrão  reduzir usando a regra 46 (cmdaddsub)
 
 
-state 138
+estado 138
 
-   62 cmdwhilefinal: RIGHT_KEY WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS FINAL . @17 commands
+   62 cmdwhilefinal: RIGHT_KEY WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS FINAL . $@17 commands
 
-    $default  reduce using rule 61 (@17)
+    $padrão  reduzir usando a regra 61 ($@17)
 
-    @17  go to state 143
+    $@17  ir ao estado 143
 
 
-state 139
+estado 139
 
-   23 cmdprintf: PRINTF LEFT_PARENTHENSIS ASP ID ASP RIGHT_PARENTHENSIS FINAL @1 commands .
+   23 cmdprintf: PRINTF LEFT_PARENTHENSIS ASP ID ASP RIGHT_PARENTHENSIS FINAL $@1 commands .
 
-    $default  reduce using rule 23 (cmdprintf)
+    $padrão  reduzir usando a regra 23 (cmdprintf)
 
 
-state 140
+estado 140
 
-   54 cmdif: IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY @13 commands .
+   54 cmdif: IF LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY $@13 commands .
 
-    $default  reduce using rule 54 (cmdif)
+    $padrão  reduzir usando a regra 54 (cmdif)
 
 
-state 141
+estado 141
 
-   58 cmdwhile: WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY @15 commands .
+   58 cmdwhile: WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS LEFT_KEY $@15 commands .
 
-    $default  reduce using rule 58 (cmdwhile)
+    $padrão  reduzir usando a regra 58 (cmdwhile)
 
 
-state 142
+estado 142
 
-   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value . FINAL value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY @14 commands
+   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value . FINAL value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY $@14 commands
 
-    FINAL  shift, and go to state 144
+    FINAL  deslocar, e ir ao estado 144
 
 
-state 143
+estado 143
 
-   62 cmdwhilefinal: RIGHT_KEY WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS FINAL @17 . commands
+   62 cmdwhilefinal: RIGHT_KEY WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS FINAL $@17 . commands
 
-    PRINTF              shift, and go to state 1
-    IF                  shift, and go to state 2
-    WHILE               shift, and go to state 3
-    DO                  shift, and go to state 4
-    SWITCH              shift, and go to state 5
-    CASE                shift, and go to state 6
-    FOR                 shift, and go to state 7
-    ID                  shift, and go to state 8
-    LEFT_PARENTHENSIS   shift, and go to state 9
-    RIGHT_PARENTHENSIS  shift, and go to state 10
-    LEFT_KEY            shift, and go to state 11
-    RIGHT_KEY           shift, and go to state 12
-    END_OF_FILE         shift, and go to state 13
-    BREAK               shift, and go to state 14
-    INTEGER             shift, and go to state 15
-    FLOATING            shift, and go to state 16
-    DEFINE              shift, and go to state 17
-    RETURN              shift, and go to state 18
+    PRINTF              deslocar, e ir ao estado 1
+    IF                  deslocar, e ir ao estado 2
+    WHILE               deslocar, e ir ao estado 3
+    DO                  deslocar, e ir ao estado 4
+    SWITCH              deslocar, e ir ao estado 5
+    CASE                deslocar, e ir ao estado 6
+    FOR                 deslocar, e ir ao estado 7
+    ID                  deslocar, e ir ao estado 8
+    LEFT_PARENTHENSIS   deslocar, e ir ao estado 9
+    RIGHT_PARENTHENSIS  deslocar, e ir ao estado 10
+    LEFT_KEY            deslocar, e ir ao estado 11
+    RIGHT_KEY           deslocar, e ir ao estado 12
+    END_OF_FILE         deslocar, e ir ao estado 13
+    BREAK               deslocar, e ir ao estado 14
+    INTEGER             deslocar, e ir ao estado 15
+    FLOATING            deslocar, e ir ao estado 16
+    DEFINE              deslocar, e ir ao estado 17
+    RETURN              deslocar, e ir ao estado 18
 
-    commands            go to state 145
-    cmdprintf           go to state 20
-    cmddefine           go to state 21
-    cmdmain             go to state 22
-    return              go to state 23
-    cmdrk               go to state 24
-    cmdlk               go to state 25
-    cmdlp               go to state 26
-    cmdrp               go to state 27
-    reservated          go to state 28
-    cmdaddsub           go to state 29
-    cmddeclaration      go to state 30
-    cmddeclarationinst  go to state 31
-    cmdattribuition     go to state 32
-    cmdif               go to state 33
-    cmdfor              go to state 34
-    cmdwhile            go to state 35
-    cmddowhile          go to state 36
-    cmdwhilefinal       go to state 37
-    cmdcase             go to state 38
-    cmdbreak            go to state 39
-    cmdswitch           go to state 40
-    exit                go to state 41
+    commands            ir ao estado 145
+    cmdprintf           ir ao estado 20
+    cmddefine           ir ao estado 21
+    cmdmain             ir ao estado 22
+    return              ir ao estado 23
+    cmdrk               ir ao estado 24
+    cmdlk               ir ao estado 25
+    cmdlp               ir ao estado 26
+    cmdrp               ir ao estado 27
+    reservated          ir ao estado 28
+    cmdaddsub           ir ao estado 29
+    cmddeclaration      ir ao estado 30
+    cmddeclarationinst  ir ao estado 31
+    cmdattribuition     ir ao estado 32
+    cmdif               ir ao estado 33
+    cmdfor              ir ao estado 34
+    cmdwhile            ir ao estado 35
+    cmddowhile          ir ao estado 36
+    cmdwhilefinal       ir ao estado 37
+    cmdcase             ir ao estado 38
+    cmdbreak            ir ao estado 39
+    cmdswitch           ir ao estado 40
+    exit                ir ao estado 41
 
 
-state 144
+estado 144
 
-   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value FINAL . value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY @14 commands
+   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value FINAL . value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY $@14 commands
 
-    ID     shift, and go to state 62
-    INT    shift, and go to state 63
-    FLOAT  shift, and go to state 64
+    ID     deslocar, e ir ao estado 62
+    INT    deslocar, e ir ao estado 63
+    FLOAT  deslocar, e ir ao estado 64
 
-    value  go to state 146
+    value  ir ao estado 146
 
 
-state 145
+estado 145
 
-   62 cmdwhilefinal: RIGHT_KEY WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS FINAL @17 commands .
+   62 cmdwhilefinal: RIGHT_KEY WHILE LEFT_PARENTHENSIS value COMPARE value RIGHT_PARENTHENSIS FINAL $@17 commands .
 
-    $default  reduce using rule 62 (cmdwhilefinal)
+    $padrão  reduzir usando a regra 62 (cmdwhilefinal)
 
 
-state 146
+estado 146
 
-   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value FINAL value . operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY @14 commands
+   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value FINAL value . operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY $@14 commands
 
-    ADD  shift, and go to state 91
-    SUB  shift, and go to state 92
+    ADD  deslocar, e ir ao estado 91
+    SUB  deslocar, e ir ao estado 92
 
-    operatoras  go to state 147
+    operatoras  ir ao estado 147
 
 
-state 147
+estado 147
 
-   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value FINAL value operatoras . operatoras RIGHT_PARENTHENSIS LEFT_KEY @14 commands
+   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value FINAL value operatoras . operatoras RIGHT_PARENTHENSIS LEFT_KEY $@14 commands
 
-    ADD  shift, and go to state 91
-    SUB  shift, and go to state 92
+    ADD  deslocar, e ir ao estado 91
+    SUB  deslocar, e ir ao estado 92
 
-    operatoras  go to state 148
+    operatoras  ir ao estado 148
 
 
-state 148
+estado 148
 
-   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value FINAL value operatoras operatoras . RIGHT_PARENTHENSIS LEFT_KEY @14 commands
+   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value FINAL value operatoras operatoras . RIGHT_PARENTHENSIS LEFT_KEY $@14 commands
 
-    RIGHT_PARENTHENSIS  shift, and go to state 149
+    RIGHT_PARENTHENSIS  deslocar, e ir ao estado 149
 
 
-state 149
+estado 149
 
-   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value FINAL value operatoras operatoras RIGHT_PARENTHENSIS . LEFT_KEY @14 commands
+   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value FINAL value operatoras operatoras RIGHT_PARENTHENSIS . LEFT_KEY $@14 commands
 
-    LEFT_KEY  shift, and go to state 150
+    LEFT_KEY  deslocar, e ir ao estado 150
 
 
-state 150
+estado 150
 
-   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value FINAL value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY . @14 commands
+   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value FINAL value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY . $@14 commands
 
-    $default  reduce using rule 55 (@14)
+    $padrão  reduzir usando a regra 55 ($@14)
 
-    @14  go to state 151
+    $@14  ir ao estado 151
 
 
-state 151
+estado 151
 
-   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value FINAL value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY @14 . commands
+   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value FINAL value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY $@14 . commands
 
-    PRINTF              shift, and go to state 1
-    IF                  shift, and go to state 2
-    WHILE               shift, and go to state 3
-    DO                  shift, and go to state 4
-    SWITCH              shift, and go to state 5
-    CASE                shift, and go to state 6
-    FOR                 shift, and go to state 7
-    ID                  shift, and go to state 8
-    LEFT_PARENTHENSIS   shift, and go to state 9
-    RIGHT_PARENTHENSIS  shift, and go to state 10
-    LEFT_KEY            shift, and go to state 11
-    RIGHT_KEY           shift, and go to state 12
-    END_OF_FILE         shift, and go to state 13
-    BREAK               shift, and go to state 14
-    INTEGER             shift, and go to state 15
-    FLOATING            shift, and go to state 16
-    DEFINE              shift, and go to state 17
-    RETURN              shift, and go to state 18
+    PRINTF              deslocar, e ir ao estado 1
+    IF                  deslocar, e ir ao estado 2
+    WHILE               deslocar, e ir ao estado 3
+    DO                  deslocar, e ir ao estado 4
+    SWITCH              deslocar, e ir ao estado 5
+    CASE                deslocar, e ir ao estado 6
+    FOR                 deslocar, e ir ao estado 7
+    ID                  deslocar, e ir ao estado 8
+    LEFT_PARENTHENSIS   deslocar, e ir ao estado 9
+    RIGHT_PARENTHENSIS  deslocar, e ir ao estado 10
+    LEFT_KEY            deslocar, e ir ao estado 11
+    RIGHT_KEY           deslocar, e ir ao estado 12
+    END_OF_FILE         deslocar, e ir ao estado 13
+    BREAK               deslocar, e ir ao estado 14
+    INTEGER             deslocar, e ir ao estado 15
+    FLOATING            deslocar, e ir ao estado 16
+    DEFINE              deslocar, e ir ao estado 17
+    RETURN              deslocar, e ir ao estado 18
 
-    commands            go to state 152
-    cmdprintf           go to state 20
-    cmddefine           go to state 21
-    cmdmain             go to state 22
-    return              go to state 23
-    cmdrk               go to state 24
-    cmdlk               go to state 25
-    cmdlp               go to state 26
-    cmdrp               go to state 27
-    reservated          go to state 28
-    cmdaddsub           go to state 29
-    cmddeclaration      go to state 30
-    cmddeclarationinst  go to state 31
-    cmdattribuition     go to state 32
-    cmdif               go to state 33
-    cmdfor              go to state 34
-    cmdwhile            go to state 35
-    cmddowhile          go to state 36
-    cmdwhilefinal       go to state 37
-    cmdcase             go to state 38
-    cmdbreak            go to state 39
-    cmdswitch           go to state 40
-    exit                go to state 41
+    commands            ir ao estado 152
+    cmdprintf           ir ao estado 20
+    cmddefine           ir ao estado 21
+    cmdmain             ir ao estado 22
+    return              ir ao estado 23
+    cmdrk               ir ao estado 24
+    cmdlk               ir ao estado 25
+    cmdlp               ir ao estado 26
+    cmdrp               ir ao estado 27
+    reservated          ir ao estado 28
+    cmdaddsub           ir ao estado 29
+    cmddeclaration      ir ao estado 30
+    cmddeclarationinst  ir ao estado 31
+    cmdattribuition     ir ao estado 32
+    cmdif               ir ao estado 33
+    cmdfor              ir ao estado 34
+    cmdwhile            ir ao estado 35
+    cmddowhile          ir ao estado 36
+    cmdwhilefinal       ir ao estado 37
+    cmdcase             ir ao estado 38
+    cmdbreak            ir ao estado 39
+    cmdswitch           ir ao estado 40
+    exit                ir ao estado 41
 
 
-state 152
+estado 152
 
-   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value FINAL value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY @14 commands .
+   56 cmdfor: FOR LEFT_PARENTHENSIS value ATTRIBUITION value FINAL value COMPARE value FINAL value operatoras operatoras RIGHT_PARENTHENSIS LEFT_KEY $@14 commands .
 
-    $default  reduce using rule 56 (cmdfor)
+    $padrão  reduzir usando a regra 56 (cmdfor)

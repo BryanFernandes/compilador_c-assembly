@@ -28,6 +28,24 @@ G1:
 		BIPUSH 3
 		IADD
 		ISTORE p
+		BIPUSH 'H'
+		OUT
+		BIPUSH 'e'
+		OUT
+		BIPUSH 'l'
+		OUT
+		BIPUSH 'l'
+		OUT
+		BIPUSH 'o'
+		OUT
+		BIPUSH 'w'
+		OUT
+		BIPUSH 'o'
+		OUT
+		BIPUSH 'r'
+		OUT
+		BIPUSH 'd'
+		OUT
 DO1:
 		BIPUSH 5
 		ISTORE x

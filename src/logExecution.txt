@@ -214,7 +214,7 @@ A final: ;
 >>>>>>> [BRYANHF]	[y] 2
 >>>>>>> [(null)]	[y] 3
 	 testando função -1
-	 TESTANDO TABELA DE SIMBOLOS>> y valor: VAZIO 0x0 Tipo: int indice: 3
+	 TESTANDO TABELA DE SIMBOLOS>> y valor: VAZIO (nil) Tipo: int indice: 3
 A Line: 9
 A keyword: int
 An identifier: x
@@ -318,7 +318,7 @@ A final: ;
 >>>>>>> [p]	[j] 5
 >>>>>>> [(null)]	[j] 6
 	 testando função -1
-	 TESTANDO TABELA DE SIMBOLOS>> j valor: VAZIO 0x0 Tipo: int indice: 6
+	 TESTANDO TABELA DE SIMBOLOS>> j valor: VAZIO (nil) Tipo: int indice: 6
 A Line: 17
 A Line: 18
 An identifier: p
